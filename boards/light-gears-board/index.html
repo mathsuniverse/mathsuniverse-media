@@ -1,0 +1,467 @@
+<title>Light &amp; Gears</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Sunlight in a mug and a pair of gears draw the same curve. Play with both machines on The Math Universe lab board.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a lab bench. The cup (canvas) is the instrument on the left and stays in view; the controls and the
+   numbered experiments sit to its right, and stack under it on a phone. Ink colours = the channel's Shorts. */
+:root {
+  --paper: #f6f7f9;
+  --sheet: #ffffff;
+  --ink: #1d2230;
+  --ink-2: #5b6274;
+  --rule: #dfe2ea;
+  --light: #d98008;      /* sunlight and lamps */
+  --gear: #d1336b;       /* the gears and the pen */
+  --table: #1b7fae;      /* the times-table lines */
+  --match: #1c8a4a;
+  --cup: #9aa1b2;
+  --focus: #1b7fae;
+  --f-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12151c; --sheet: #191d27; --ink: #e9ecf3; --ink-2: #a3aabb; --rule: #2b3140;
+    --light: #f5a524; --gear: #ff5c93; --table: #4fb6e6; --match: #4cc77f; --cup: #6c7488; --focus: #4fb6e6;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12151c; --sheet: #191d27; --ink: #e9ecf3; --ink-2: #a3aabb; --rule: #2b3140;
+  --light: #f5a524; --gear: #ff5c93; --table: #4fb6e6; --match: #4cc77f; --cup: #6c7488; --focus: #4fb6e6;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 40px;
+}
+.wrap { max-width: 1120px; margin: 0 auto; display: grid; gap: 20px; }
+header { display: grid; gap: 6px; }
+.eyebrow { font-family: var(--f-data); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.08; margin: 0; text-wrap: balance; }
+h1 em { font-style: italic; font-weight: 500; }
+h1 .l { color: var(--light); } h1 .g { color: var(--gear); }
+.lede { margin: 0; max-width: 62ch; color: var(--ink-2); }
+.bench { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 820px) { .bench { grid-template-columns: minmax(0, 1fr); } }
+.stage { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); display: grid; gap: 10px; }
+@media (max-width: 820px) { .stage { position: static; } }
+.cupbox { position: relative; background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; aspect-ratio: 1 / 1; max-width: 100%; overflow: hidden; }
+canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.badge { position: absolute; left: 12px; bottom: 12px; font-family: var(--f-data); font-size: 13px; padding: 5px 10px; border-radius: 999px;
+  background: var(--sheet); border: 1.5px solid var(--match); color: var(--match); opacity: 0; transform: translateY(4px); transition: opacity .25s, transform .25s; }
+.badge.on { opacity: 1; transform: none; }
+.readout { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.ro { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 8px 10px; min-width: 0; }
+.ro b { display: block; font-family: var(--f-data); font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.ro span { font-family: var(--f-data); font-size: 17px; font-variant-numeric: tabular-nums; }
+.ro.l span { color: var(--light); } .ro.g span { color: var(--gear); } .ro.t span { color: var(--table); }
+.note { font-size: 14px; color: var(--ink-2); margin: 0; min-height: 3em; }
+.panel { display: grid; gap: 14px; }
+.machine { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 12px 14px; display: grid; gap: 10px; }
+.mhead { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.mhead h2 { font-family: var(--f-display); font-weight: 600; font-size: 21px; margin: 0; flex: 1 1 auto; }
+.dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.machine.l .dot { background: var(--light); } .machine.g .dot { background: var(--gear); } .machine.t .dot { background: var(--table); }
+.machine.off .body { opacity: .45; }
+.switch { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--ink-2); cursor: pointer; }
+.switch input { width: 18px; height: 18px; accent-color: var(--ink); }
+.body { display: grid; gap: 10px; transition: opacity .2s; }
+.row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.row label { font-size: 13px; color: var(--ink-2); min-width: 7.5em; }
+.row output { font-family: var(--f-data); font-size: 13px; font-variant-numeric: tabular-nums; min-width: 4.5em; }
+input[type=range] { flex: 1 1 140px; min-width: 0; accent-color: var(--ink); }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.seg button, .btn, .step button { font: inherit; font-size: 13px; background: var(--sheet); color: var(--ink); border: 0; padding: 6px 12px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); }
+.btn { border: 1px solid var(--rule); border-radius: 8px; }
+.btn:hover, .seg button:hover, .step button:hover { filter: brightness(.96); }
+.step { display: inline-flex; align-items: center; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+.step button { padding: 6px 11px; font-family: var(--f-data); }
+.step span { font-family: var(--f-data); min-width: 2.2em; text-align: center; font-variant-numeric: tabular-nums; }
+.ratio { font-family: var(--f-data); font-size: 15px; color: var(--gear); }
+.presets { display: flex; flex-wrap: wrap; gap: 6px; }
+.presets button { font-family: var(--f-data); font-size: 12px; padding: 4px 9px; border-radius: 999px; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); cursor: pointer; }
+.presets button[aria-pressed="true"] { border-color: var(--gear); color: var(--gear); }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.lab { display: grid; gap: 12px; }
+.lab h2 { font-family: var(--f-display); font-size: 26px; font-weight: 600; margin: 0; }
+.exps { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 10px; counter-reset: x; }
+.exp { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 12px 14px; display: grid; gap: 6px; align-content: start; }
+.exp h3 { margin: 0; font-size: 15px; font-weight: 600; }
+.exp h3::before { counter-increment: x; content: counter(x) "  "; font-family: var(--f-data); color: var(--ink-2); font-weight: 400; }
+.exp p { margin: 0; font-size: 14px; color: var(--ink-2); }
+.exp .btn { justify-self: start; margin-top: 4px; }
+.exp.active { border-color: var(--ink); }
+.next { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; display: grid; gap: 4px; }
+.next p { margin: 0; max-width: 65ch; }
+.next .q { font-family: var(--f-display); font-size: 22px; font-style: italic; }
+a { color: var(--table); }
+footer { font-size: 13px; color: var(--ink-2); }
+/* film mode: just the cup, for recording */
+body.film { padding: 0; background: var(--sheet); }
+body.film header, body.film .panel, body.film .readout, body.film .note, body.film .lab, body.film footer, body.film .next { display: none; }
+body.film .bench { grid-template-columns: 1fr; } body.film .cupbox { border: 0; border-radius: 0; }
+@media (prefers-reduced-motion: reduce) { .badge { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">The Math Universe · Lab board</div>
+    <h1><em class="l">Light</em> drew one. <em class="g">A gear</em> drew the other.</h1>
+    <p class="lede">Sunlight bouncing inside a mug piles up into a bright curve. Roll one gear around another and a pen on the small gear draws a curve too. Run both machines in the same cup and compare them for yourself.</p>
+  </header>
+
+  <div class="bench">
+    <div class="stage">
+      <div class="cupbox">
+        <canvas id="cup" aria-label="The cup: light rays, gears and times-table lines drawn inside a circle"></canvas>
+        <div class="badge" id="badge">same curve</div>
+      </div>
+      <div class="readout">
+        <div class="ro g"><b>Gears</b><span id="roG">2 : 1</span></div>
+        <div class="ro t"><b>Times table</b><span id="roT">×3</span></div>
+        <div class="ro l"><b>Light</b><span id="roL">sun</span></div>
+      </div>
+      <p class="note" id="note"></p>
+    </div>
+
+    <div class="panel">
+      <section class="machine l" id="mL">
+        <div class="mhead"><span class="dot"></span><h2>Light machine</h2>
+          <label class="switch"><input type="checkbox" id="onL" checked> show</label></div>
+        <div class="body">
+          <div class="row"><label>Light source</label>
+            <div class="seg" role="group" aria-label="Light source">
+              <button type="button" id="srcSun" aria-pressed="true">Sun</button>
+              <button type="button" id="srcLamp" aria-pressed="false">Lamp</button>
+            </div></div>
+          <div class="row" id="lampRow"><label for="lampD">Lamp position</label>
+            <input type="range" id="lampD" min="0" max="1" step="0.01" value="1"><output id="lampDo">rim</output></div>
+          <div class="row"><label for="rays">Rays</label>
+            <input type="range" id="rays" min="12" max="900" step="1" value="320"><output id="rayso">320</output></div>
+        </div>
+      </section>
+
+      <section class="machine g" id="mG">
+        <div class="mhead"><span class="dot"></span><h2>Gear machine</h2>
+          <label class="switch"><input type="checkbox" id="onG" checked> show</label></div>
+        <div class="body">
+          <div class="row"><label>Fixed : rolling</label>
+            <div class="step"><button type="button" id="pM" aria-label="Fewer teeth on the fixed gear">−</button><span id="pV">2</span><button type="button" id="pP" aria-label="More teeth on the fixed gear">+</button></div>
+            <span class="ratio">:</span>
+            <div class="step"><button type="button" id="qM" aria-label="Fewer teeth on the rolling gear">−</button><span id="qV">1</span><button type="button" id="qP" aria-label="More teeth on the rolling gear">+</button></div>
+          </div>
+          <div class="presets" id="presets"></div>
+          <div class="row"><label for="speed">Speed</label>
+            <input type="range" id="speed" min="0.2" max="3" step="0.1" value="1"><output id="speedo">1.0×</output></div>
+          <div class="row">
+            <button type="button" class="btn" id="play">Pause</button>
+            <button type="button" class="btn" id="restart">Draw again</button>
+            <label class="switch"><input type="checkbox" id="showRig" checked> show the gears</label>
+          </div>
+        </div>
+      </section>
+
+      <section class="machine t off" id="mT">
+        <div class="mhead"><span class="dot"></span><h2>Times-table machine</h2>
+          <label class="switch"><input type="checkbox" id="onT"> show</label></div>
+        <div class="body">
+          <p class="note" style="min-height:0">Number points round the cup and join each point to the point at <i>m</i> times its number.</p>
+          <div class="row"><label for="link">Multiplier</label>
+            <label class="switch"><input type="checkbox" id="link" checked> follow the gears</label>
+            <input type="range" id="mult" min="2" max="10" step="0.5" value="3" disabled><output id="multo">×3</output></div>
+          <div class="row"><label for="npts">Points</label>
+            <input type="range" id="npts" min="20" max="400" step="1" value="200"><output id="nptso">200</output></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <section class="lab">
+    <h2>Experiments</h2>
+    <div class="exps">
+      <article class="exp" data-exp="1"><h3>Sunlight in a mug</h3>
+        <p>Only the light is on. How many sharp points does the bright curve have? Count them before you look again.</p>
+        <button class="btn" type="button">Set it up</button></article>
+      <article class="exp" data-exp="2"><h3>Roll the gears</h3>
+        <p>A gear rolls round one twice its size. Watch the pen. Does it ever leave the light's curve?</p>
+        <button class="btn" type="button">Set it up</button></article>
+      <article class="exp" data-exp="3"><h3>Bring in a lamp</h3>
+        <p>A lamp near the middle of the cup. Slide it out towards the rim. Where does its curve become a gear curve?</p>
+        <button class="btn" type="button">Set it up</button></article>
+      <article class="exp" data-exp="4"><h3>Lines that copy</h3>
+        <p>Join each point to 3 times itself. Which machine are the lines copying? Now try ×2.</p>
+        <button class="btn" type="button">Set it up</button></article>
+      <article class="exp" data-exp="5"><h3>Your turn</h3>
+        <p>The gears are at 3 : 1. Can any lamp, anywhere in the cup, or the sun draw this curve? Tell us what you find in the comments.</p>
+        <button class="btn" type="button">Set it up</button></article>
+    </div>
+    <div class="next">
+      <p class="q">Light and gears have nothing in common. So why the same shape?</p>
+      <p>The answer comes on Thursday 5 November in <b>Two machines, one curve</b>, on <a href="https://www.youtube.com/@mathsuniversespace" target="_blank" rel="noopener">The Math Universe</a>.</p>
+    </div>
+  </section>
+
+  <footer>Every curve here is computed live: the light by reflecting each ray off the cup wall, the gears by rolling, and the lines by joining points. Nothing is drawn from a picture.</footer>
+</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const film = /[?&]film=1\b/.test(location.search) || location.hash === '#film';
+  if (film) document.body.classList.add('film');
+
+  const S = {
+    light: true, gears: true, table: false,
+    source: 'sun', lamp: 1, rays: 320,
+    p: 2, q: 1, speed: 1, playing: true, rig: true,
+    link: true, mult: 3, npts: 200,
+    t: 0
+  };
+  const gcd = (a, b) => b ? gcd(b, a % b) : a;
+  const PRESETS = [[1, 1], [2, 1], [3, 1], [4, 1], [5, 2], [7, 3], [3, 2]];
+
+  // ---------- canvas ----------
+  const cv = $('cup'), cx2 = cv.getContext('2d');
+  let W = 600, DPR = 1;
+  function size() {
+    DPR = Math.min(2, window.devicePixelRatio || 1);
+    const r = cv.getBoundingClientRect(); W = Math.max(200, r.width);
+    cv.width = Math.round(W * DPR); cv.height = Math.round(W * DPR);
+  }
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  let C = {};
+  function colours() { C = { ink: css('--ink'), light: css('--light'), gear: css('--gear'), table: css('--table'), cup: css('--cup'), sheet: css('--sheet'), ink2: css('--ink-2') }; }
+  const R = () => W * 0.43;
+  const X = x => W / 2 + R() * x, Y = y => W / 2 - R() * y;
+
+  // ---------- maths ----------
+  const k = () => S.p / S.q;                        // gear ratio fixed : rolling
+  const geom = () => { const kk = k(); return { a: kk / (kk + 2), b: 1 / (kk + 2) }; };   // cup radius 1, curve touches the cup
+  function pen(t) {                                   // epicycloid: z = (a+b) e^{it} - b e^{i(1+k)t}
+    const { a, b } = geom(), kk = k();
+    return [(a + b) * Math.cos(t) - b * Math.cos((1 + kk) * t), (a + b) * Math.sin(t) - b * Math.sin((1 + kk) * t)];
+  }
+  const turns = () => 2 * Math.PI * (S.q / gcd(S.p, S.q));
+  const mult = () => S.link ? k() + 1 : S.mult;
+
+  // one reflection off the cup wall: incoming direction d hits the wall at P; returns the far end Q of the reflected chord
+  function reflect(P, d) {
+    const dn = d[0] * P[0] + d[1] * P[1];
+    const r = [d[0] - 2 * dn * P[0], d[1] - 2 * dn * P[1]];
+    const s = -2 * (P[0] * r[0] + P[1] * r[1]);
+    return [P[0] + s * r[0], P[1] + s * r[1]];
+  }
+  function rays() {
+    const out = [], n = S.rays;
+    if (S.source === 'sun') {                         // parallel light from the left, hitting the right-hand wall
+      for (let i = 0; i < n; i++) {
+        const h = -0.998 + 1.996 * (i + 0.5) / n;
+        const P = [Math.sqrt(1 - h * h), h];
+        out.push({ A: [-Math.sqrt(1 - h * h), h], P, Q: reflect(P, [1, 0]) });
+      }
+    } else {                                          // lamp on the horizontal diameter, d from the centre, on the left
+      const L = [-S.lamp, 0];
+      for (let i = 0; i < n; i++) {
+        const ph = 2 * Math.PI * (i + 0.5) / n, u = [Math.cos(ph), Math.sin(ph)];
+        const lu = L[0] * u[0] + L[1] * u[1], disc = lu * lu - (S.lamp * S.lamp - 1);
+        const tt = -lu + Math.sqrt(Math.max(0, disc));
+        if (tt < 1e-6) continue;                     // lamp on the rim: rays pointing out of the cup
+        const P = [L[0] + tt * u[0], L[1] + tt * u[1]];
+        out.push({ A: L, P, Q: reflect(P, u) });
+      }
+    }
+    return out;
+  }
+
+  // ---------- drawing ----------
+  function gearPath(c, gx, gy, r, teeth, rot) {
+    const depth = Math.min(W * 0.012, r * 0.12), w = 2 * Math.PI / teeth;
+    c.beginPath();
+    for (let i = 0; i < teeth; i++) {
+      const a0 = rot + i * w;
+      [[0, r - depth], [.18, r - depth], [.30, r + depth], [.70, r + depth], [.82, r - depth]].forEach(([f, rr], j) => {
+        const a = a0 + f * w, x = gx + rr * Math.cos(a), y = gy - rr * Math.sin(a);
+        (i === 0 && j === 0) ? c.moveTo(x, y) : c.lineTo(x, y);
+      });
+    }
+    c.closePath();
+  }
+  
+  function draw() {
+    const c = cx2; c.setTransform(DPR, 0, 0, DPR, 0, 0);
+    c.clearRect(0, 0, W, W); c.fillStyle = C.sheet; c.fillRect(0, 0, W, W);
+    c.lineCap = 'round'; c.lineJoin = 'round';
+    // the cup
+    c.globalAlpha = 1; c.strokeStyle = C.cup; c.lineWidth = Math.max(2, W * 0.006);
+    c.beginPath(); c.arc(W / 2, W / 2, R(), 0, 2 * Math.PI); c.stroke();
+
+    // times-table lines
+    if (S.table) {
+      const m = mult(), phi = Math.PI / (m - 1);
+      const den = (S.link ? S.q / gcd(S.p, S.q) : (Number.isInteger(m) ? 1 : 2));
+      const N = S.npts * den;
+      c.strokeStyle = C.table; c.lineWidth = 1; c.globalAlpha = Math.min(.5, 22 / Math.sqrt(N) * .12 + .08);
+      c.beginPath();
+      for (let j = 0; j < N; j++) {
+        const th = 2 * Math.PI * den * j / N;
+        c.moveTo(X(Math.cos(th - phi)), Y(Math.sin(th - phi)));
+        c.lineTo(X(Math.cos(m * th - phi)), Y(Math.sin(m * th - phi)));
+      }
+      c.stroke();
+    }
+
+    // light
+    if (S.light) {
+      const rs = rays(), a = Math.min(.5, 3.2 / Math.sqrt(rs.length) * .55);
+      c.strokeStyle = C.light; c.lineWidth = 1;
+      c.globalAlpha = a * .35; c.beginPath();
+      rs.forEach((r, i) => { if (S.source === 'lamp' || i % 9 === 4) { c.moveTo(X(r.A[0]), Y(r.A[1])); c.lineTo(X(r.P[0]), Y(r.P[1])); } });
+      c.stroke();
+      c.globalAlpha = a; c.beginPath();
+      rs.forEach(r => { c.moveTo(X(r.P[0]), Y(r.P[1])); c.lineTo(X(r.Q[0]), Y(r.Q[1])); });
+      c.stroke();
+      if (S.source === 'lamp') {
+        c.globalAlpha = 1; c.fillStyle = C.light;
+        c.beginPath(); c.arc(X(-S.lamp), Y(0), W * 0.02, 0, 2 * Math.PI); c.fill();
+      } else {
+        c.globalAlpha = .9; c.fillStyle = C.light;
+        c.font = `500 ${Math.round(W * 0.03)}px ${css('--f-data')}`; c.textBaseline = 'middle';
+        c.fillText('sun →', W * 0.02, W * 0.08);
+      }
+    }
+
+    // gears
+    if (S.gears) {
+      const T = turns(), tEnd = Math.min(S.t, T);
+      const n = Math.max(2, Math.ceil(500 * tEnd / (2 * Math.PI)));
+      c.globalAlpha = 1; c.strokeStyle = C.gear; c.lineWidth = Math.max(2.5, W * 0.007);
+      c.beginPath();
+      for (let i = 0; i <= n; i++) { const z = pen(tEnd * i / n); i ? c.lineTo(X(z[0]), Y(z[1])) : c.moveTo(X(z[0]), Y(z[1])); }
+      c.stroke();
+      if (S.rig) {
+        const { a, b } = geom(), tt = S.t % T, kk = k();
+        const q = S.q / gcd(S.p, S.q);
+        const nb = q > 1 ? 6 * q : 8, na = Math.round(nb * kk);
+        gearPath(c, W / 2, W / 2, R() * a, na, 0);
+        c.globalAlpha = .08; c.fillStyle = C.ink; c.fill(); c.globalAlpha = .55; c.strokeStyle = C.ink2; c.lineWidth = 1.6; c.stroke();
+        const gx = X((a + b) * Math.cos(tt)), gy = Y((a + b) * Math.sin(tt));
+        gearPath(c, gx, gy, R() * b, nb, (1 + kk) * tt + Math.PI - Math.PI / nb);
+        c.globalAlpha = .14; c.fillStyle = C.gear; c.fill(); c.globalAlpha = .9; c.strokeStyle = C.gear; c.lineWidth = 1.8; c.stroke();
+        const z = pen(tt);
+        c.globalAlpha = 1; c.lineWidth = Math.max(2, W * .005);
+        c.beginPath(); c.moveTo(gx, gy); c.lineTo(X(z[0]), Y(z[1])); c.stroke();
+        c.fillStyle = C.gear; c.beginPath(); c.arc(X(z[0]), Y(z[1]), W * 0.014, 0, 2 * Math.PI); c.fill();
+        c.fillStyle = C.ink2; c.beginPath(); c.arc(gx, gy, W * 0.006, 0, 2 * Math.PI); c.fill();
+      }
+    }
+    c.globalAlpha = 1;
+  }
+
+  // ---------- readouts ----------
+  function fracStr(num, den) { const g = gcd(num, den); num /= g; den /= g; return den === 1 ? `${num}` : `${num}/${den}`; }
+  function lightMatches() {                      // the two light curves that are gear curves (checked by ray tracing)
+    if (S.source === 'sun') return k() === 2;
+    return S.lamp >= 0.995 && k() === 1;
+  }
+  function readouts() {
+    const g = gcd(S.p, S.q), p = S.p / g, q = S.q / g;
+    $('roG').textContent = `${S.p} : ${S.q}`;
+    $('roT').textContent = S.link ? `×${fracStr(S.p + S.q, S.q)}` : `×${S.mult % 1 ? (S.mult * 2) + '/2' : S.mult}`;
+    $('roL').textContent = S.source === 'sun' ? 'sun' : (S.lamp >= 0.995 ? 'lamp on rim' : (S.lamp <= 0.005 ? 'lamp at centre' : `lamp ${S.lamp.toFixed(2)}`));
+    const parts = [];
+    if (S.gears) parts.push(`The pen draws ${p} sharp point${p > 1 ? 's' : ''} and goes round ${q} time${q > 1 ? 's' : ''} before the curve closes.`);
+    if (S.light && S.gears) parts.push(lightMatches() ? 'The light and the pen are on the same curve.' : 'The light and the pen draw different curves here. Try another ratio or move the light.');
+    if (S.table && S.gears && S.link) parts.push('The lines follow the pen.');
+    $('note').textContent = parts.join(' ');
+    const same = (S.light && S.gears && lightMatches()) || (S.table && S.gears && S.link && !S.light);
+    $('badge').classList.toggle('on', same);
+    $('badge').textContent = (S.light && S.gears && lightMatches() && S.table && S.link) ? 'three machines, same curve' : 'same curve';
+    $('pV').textContent = S.p; $('qV').textContent = S.q;
+    $('mL').classList.toggle('off', !S.light); $('mG').classList.toggle('off', !S.gears); $('mT').classList.toggle('off', !S.table);
+    $('onL').checked = S.light; $('onG').checked = S.gears; $('onT').checked = S.table;
+    $('srcSun').setAttribute('aria-pressed', S.source === 'sun'); $('srcLamp').setAttribute('aria-pressed', S.source === 'lamp');
+    $('lampRow').hidden = S.source !== 'lamp';
+    $('lampD').value = S.lamp; $('lampDo').textContent = S.lamp >= .995 ? 'rim' : (S.lamp <= .005 ? 'centre' : S.lamp.toFixed(2));
+    $('rays').value = S.rays; $('rayso').textContent = S.rays;
+    $('speed').value = S.speed; $('speedo').textContent = S.speed.toFixed(1) + '×';
+    $('play').textContent = S.playing ? 'Pause' : 'Play';
+    $('showRig').checked = S.rig;
+    $('link').checked = S.link; $('mult').disabled = S.link; $('mult').value = S.link ? Math.min(10, k() + 1) : S.mult;
+    $('multo').textContent = $('roT').textContent;
+    $('npts').value = S.npts; $('nptso').textContent = S.npts;
+    [...$('presets').children].forEach(b => b.setAttribute('aria-pressed', +b.dataset.p === S.p && +b.dataset.q === S.q));
+  }
+
+  // ---------- controls ----------
+  PRESETS.forEach(([p, q]) => {
+    const b = document.createElement('button'); b.type = 'button'; b.textContent = `${p} : ${q}`; b.dataset.p = p; b.dataset.q = q;
+    b.onclick = () => set({ p, q, t: 0 }); $('presets').appendChild(b);
+  });
+  const clampPQ = v => Math.max(1, Math.min(9, v));
+  $('pM').onclick = () => set({ p: clampPQ(S.p - 1), t: 0 }); $('pP').onclick = () => set({ p: clampPQ(S.p + 1), t: 0 });
+  $('qM').onclick = () => set({ q: clampPQ(S.q - 1), t: 0 }); $('qP').onclick = () => set({ q: clampPQ(S.q + 1), t: 0 });
+  $('onL').onchange = e => set({ light: e.target.checked });
+  $('onG').onchange = e => set({ gears: e.target.checked });
+  $('onT').onchange = e => set({ table: e.target.checked });
+  $('srcSun').onclick = () => set({ source: 'sun' }); $('srcLamp').onclick = () => set({ source: 'lamp' });
+  $('lampD').oninput = e => set({ lamp: +e.target.value });
+  $('rays').oninput = e => set({ rays: +e.target.value });
+  $('speed').oninput = e => set({ speed: +e.target.value });
+  $('play').onclick = () => set({ playing: !S.playing });
+  $('restart').onclick = () => set({ t: 0, playing: true });
+  $('showRig').onchange = e => set({ rig: e.target.checked });
+  $('link').onchange = e => set({ link: e.target.checked, mult: Math.round(Math.min(10, k() + 1) * 2) / 2 });
+  $('mult').oninput = e => set({ mult: +e.target.value });
+  $('npts').oninput = e => set({ npts: +e.target.value });
+
+  const EXPS = {
+    1: { light: true, gears: false, table: false, source: 'sun', rays: 320 },
+    2: { light: true, gears: true, table: false, source: 'sun', p: 2, q: 1, t: 0, playing: true, rig: true },
+    3: { light: true, gears: true, table: false, source: 'lamp', lamp: 0.4, rays: 360, p: 1, q: 1, t: 0, playing: true },
+    4: { light: true, gears: false, table: true, link: false, mult: 3, source: 'sun', npts: 200 },
+    5: { light: true, gears: true, table: false, source: 'lamp', lamp: 0.6, p: 3, q: 1, t: 0, playing: true }
+  };
+  document.querySelectorAll('.exp').forEach(el => el.querySelector('button').onclick = () => {
+    document.querySelectorAll('.exp').forEach(x => x.classList.toggle('active', x === el));
+    set(EXPS[el.dataset.exp]);
+    if (window.matchMedia('(max-width: 820px)').matches) $('cup').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  function set(o) { Object.assign(S, o); readouts(); draw(); }
+
+  // ---------- loop ----------
+  let last = performance.now();
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function tick(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (S.playing && S.gears && !film) {
+      S.t += dt * 1.1 * S.speed * (reduced ? 0.5 : 1);
+      draw();
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ---------- film control (for recording the long video) ----------
+  window.__board = {
+    set: o => set(o), get: () => ({ ...S }),
+    seek: t => { S.t = t; draw(); }, play: () => set({ playing: true }), pause: () => set({ playing: false }),
+    turns: () => turns()
+  };
+
+  const ro = new ResizeObserver(() => { size(); draw(); }); ro.observe(cv);
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const recolour = () => { colours(); draw(); };
+  mq.addEventListener ? mq.addEventListener('change', recolour) : mq.addListener(recolour);
+  new MutationObserver(recolour).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  size(); colours(); readouts(); draw(); requestAnimationFrame(tick);
+})();
+</script>

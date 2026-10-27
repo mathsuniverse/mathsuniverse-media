@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Symmetry Engine</title>
+<meta name="description" content="Symmetry Engine: the moves that change nothing. Find a shape's symmetries, draw with a kaleidoscope, explore the 7 frieze patterns and the 17 wallpaper patterns, and see the symmetry hidden in Spirographs, fractals and times-table curves.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --paper: #f6f7f9; --sheet: #ffffff; --ink: #1d2230; --ink-2: #5b6274; --rule: #dfe2ea;
+  --accent: #d1336b; --ok: #1c8a4a; --no: #c2410c; --focus: #1b7fae; --gold: #b7791f; --ghost: #9aa1b2;
+  --f-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --paper: #12151c; --sheet: #191d27; --ink: #e9ecf3; --ink-2: #a3aabb; --rule: #2b3140;
+    --accent: #ff5c93; --ok: #4cc77f; --no: #fb923c; --focus: #4fb6e6; --gold: #f6c453; --ghost: #6c7488; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --paper: #12151c; --sheet: #191d27; --ink: #e9ecf3; --ink-2: #a3aabb; --rule: #2b3140;
+  --accent: #ff5c93; --ok: #4cc77f; --no: #fb923c; --focus: #4fb6e6; --gold: #f6c453; --ghost: #6c7488; color-scheme: dark; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px; }
+a { color: var(--focus); }
+.wrap { max-width: 1120px; margin: 0 auto; }
+.top { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--rule); margin: 0 -16px; padding: 10px 16px; }
+.top .wrap { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.brand { font-family: var(--f-display); font-weight: 600; font-size: 20px; text-decoration: none; color: var(--ink); white-space: nowrap; }
+.brand span { color: var(--accent); }
+nav.tabs { display: flex; gap: 4px; flex-wrap: wrap; flex: 1 1 auto; justify-content: flex-end; }
+nav.tabs a { font-family: var(--f-data); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; text-decoration: none; color: var(--ink-2); padding: 6px 9px; border-radius: 8px; white-space: nowrap; }
+nav.tabs a:hover { color: var(--ink); background: var(--sheet); }
+.vip { font-family: var(--f-data); font-size: 10px; letter-spacing: .06em; color: var(--gold); border: 1px solid var(--gold); border-radius: 999px; padding: 1px 6px; margin-left: 4px; vertical-align: 1px; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 28px; align-items: center; padding: 34px 0 10px; }
+@media (max-width: 820px) { .hero { grid-template-columns: minmax(0, 1fr); } }
+.eyebrow { font-family: var(--f-data); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(36px, 6vw, 62px); line-height: 1.02; margin: 6px 0 12px; text-wrap: balance; }
+h1 em { font-style: italic; font-weight: 500; color: var(--accent); }
+.lede { margin: 0 0 16px; max-width: 58ch; color: var(--ink-2); font-size: 17px; }
+.heroArt { background: var(--sheet); border: 1px solid var(--rule); border-radius: 18px; aspect-ratio: 1; overflow: hidden; }
+section.chapter { padding: 40px 0 8px; border-top: 1px solid var(--rule); margin-top: 32px; scroll-margin-top: 64px; }
+.chHead { display: grid; gap: 4px; margin-bottom: 16px; }
+.chHead h2 { font-family: var(--f-display); font-weight: 600; font-size: clamp(26px, 4vw, 36px); margin: 0; line-height: 1.1; }
+.chHead p { margin: 0; color: var(--ink-2); max-width: 70ch; }
+.bench { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 820px) { .bench { grid-template-columns: minmax(0, 1fr); } }
+.box { position: relative; background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; }
+.box.sq { aspect-ratio: 1; } .box.strip { aspect-ratio: 3 / 1; } @media (max-width: 640px) { .box.strip { aspect-ratio: 2 / 1; } }
+canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 12px 14px; display: grid; gap: 10px; min-width: 0; }
+.card h3 { font-family: var(--f-display); font-weight: 600; font-size: 20px; margin: 0; }
+.row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.row label { font-size: 13px; color: var(--ink-2); min-width: 6.5em; }
+.row output { font-family: var(--f-data); font-size: 13px; min-width: 3.5em; font-variant-numeric: tabular-nums; }
+input[type=range] { flex: 1 1 140px; min-width: 0; accent-color: var(--ink); }
+.btn { font: inherit; font-size: 13px; background: var(--sheet); color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+.btn:hover { border-color: var(--ink-2); }
+.btn.primary { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.btn.gold { background: var(--gold); border-color: var(--gold); color: #fff; }
+.btn:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chips .btn { padding: 5px 9px; font-size: 12px; }
+.status { font-family: var(--f-data); font-size: 13px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--rule); background: var(--paper); min-height: 2.6em; }
+.status.ok { border-color: var(--ok); color: var(--ok); } .status.no { border-color: var(--no); color: var(--no); }
+.found { display: flex; flex-wrap: wrap; gap: 6px; }
+.found span { font-family: var(--f-data); font-size: 12px; border: 1px solid var(--ok); color: var(--ok); border-radius: 999px; padding: 2px 8px; }
+.meter { font-family: var(--f-display); font-size: 22px; } .meter b { color: var(--accent); }
+.note { font-size: 14px; color: var(--ink-2); margin: 0; }
+.big { font-family: var(--f-data); font-size: 14px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 900px) { .grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .grid3 { grid-template-columns: minmax(0, 1fr); } }
+.vcard { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; display: grid; }
+.vcard .art { aspect-ratio: 1; border-bottom: 1px solid var(--rule); cursor: pointer; }
+.vcard .txt { padding: 12px 14px; display: grid; gap: 6px; }
+.vcard h3 { font-family: var(--f-display); font-weight: 600; font-size: 19px; margin: 0; }
+.tag { font-family: var(--f-data); font-size: 12px; color: var(--accent); }
+.locked { position: relative; }
+.locked .veil { position: absolute; inset: 0; display: grid; place-items: center; background: color-mix(in srgb, var(--paper) 55%, transparent); backdrop-filter: blur(3px); border-radius: inherit; z-index: 2; text-align: center; padding: 16px; }
+.veil .inner { display: grid; gap: 8px; justify-items: center; max-width: 34ch; }
+.veil b { font-family: var(--f-display); font-size: 22px; }
+.wpgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 6px; }
+.wpgrid button { font: inherit; font-family: var(--f-data); font-size: 12px; padding: 6px 2px; border-radius: 8px; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); cursor: pointer; position: relative; }
+.wpgrid button[aria-pressed="true"] { background: var(--ink); color: var(--sheet); }
+.wpgrid button.lock::after { content: "VIP"; position: absolute; top: -6px; right: -4px; font-size: 8px; background: var(--gold); color: #fff; border-radius: 999px; padding: 0 4px; }
+.quiz { display: grid; gap: 10px; }
+.quiz .opts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px solid var(--rule); padding-top: 16px; display: grid; gap: 6px; }
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#top">Symmetry <span>Engine</span></a>
+  <nav class="tabs" aria-label="Chapters">
+    <a href="#moves">1 · Moves</a><a href="#kaleido">2 · Kaleidoscope</a><a href="#friezes">3 · Friezes</a>
+    <a href="#wallpaper">4 · Wallpaper<span class="vip">VIP</span></a><a href="#videos">5 · In our videos</a><a href="#measure">6 · Measure<span class="vip">VIP</span></a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Interactive Explorer · Symmetry Engine</div>
+      <h1>The moves that <em>change nothing</em>.</h1>
+      <p class="lede">Turn a snowflake by a sixth of a circle and it looks exactly the same. That move is a symmetry. Collect a shape's symmetries, draw with them, and discover why there are only 7 ways to repeat a pattern along a border and only 17 ways to repeat one across a wall.</p>
+      <div class="row"><a class="btn primary" href="#moves">Start with a shape</a><a class="btn" href="#kaleido">Just let me draw</a></div>
+    </div>
+    <div class="heroArt"><canvas id="heroCv" aria-label="A kaleidoscope pattern drawing itself"></canvas></div>
+  </section>
+
+  <!-- 1 MOVES -->
+  <section class="chapter" id="moves">
+    <div class="chHead"><div class="eyebrow">Chapter 1 · free</div><h2>What is a symmetry?</h2>
+      <p>A symmetry is a move that leaves a shape looking exactly the same. Pick a shape, then turn it or flip it. The faint outline shows where it started. If the shape lands on its own outline, you have found a symmetry. Can you find them all?</p></div>
+    <div class="bench">
+      <div class="box sq"><canvas id="mvCv" aria-label="The chosen shape, its starting outline and the move you try"></canvas></div>
+      <div style="display:grid;gap:14px;min-width:0">
+        <div class="card"><h3>Pick a shape</h3><div class="chips" id="mvShapes"></div></div>
+        <div class="card">
+          <h3>Try a move</h3>
+          <div class="row"><label for="mvTurn">turn by</label><input id="mvTurn" type="range" min="0" max="359" step="1" value="120"><output id="mvTurnO">120°</output><button class="btn primary" id="mvDoTurn" type="button">Turn</button></div>
+          <div class="row"><label for="mvFlip">mirror line at</label><input id="mvFlip" type="range" min="0" max="179.5" step="0.5" value="90"><output id="mvFlipO">90°</output><button class="btn primary" id="mvDoFlip" type="button">Flip</button></div>
+          <div class="status" id="mvStatus" aria-live="polite">Choose a move.</div>
+          <div class="meter" id="mvMeter"></div>
+          <div class="found" id="mvFound"></div>
+          <div class="row"><button class="btn" id="mvReset" type="button">Start this shape again</button><button class="btn" id="mvShow" type="button">Show me all of them</button></div>
+        </div>
+        <p class="note" id="mvLesson"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 KALEIDOSCOPE -->
+  <section class="chapter" id="kaleido">
+    <div class="chHead"><div class="eyebrow">Chapter 2 · free</div><h2>Draw with a symmetry</h2>
+      <p>Draw anywhere. The engine copies every stroke with the symmetry you choose: only turns (a pinwheel), or turns and mirrors (a snowflake). Every flower, mandala and rose window is one of these two families.</p></div>
+    <div class="bench">
+      <div class="box sq"><canvas id="kCv" aria-label="Kaleidoscope drawing canvas"></canvas></div>
+      <div style="display:grid;gap:14px;min-width:0">
+        <div class="card">
+          <h3>Your symmetry</h3>
+          <div class="row"><label for="kN">turns</label><input id="kN" type="range" min="1" max="16" step="1" value="6"><output id="kNO">6</output></div>
+          <div class="row"><label>mirrors</label><button class="btn" id="kMir" type="button" aria-pressed="true">Mirrors on</button><button class="btn" id="kGuides" type="button" aria-pressed="true">Guides on</button></div>
+          <div class="row"><label for="kW">pen width</label><input id="kW" type="range" min="1" max="12" step="1" value="3"><output id="kWO">3</output></div>
+          <div class="big" id="kName"></div>
+          <div class="row"><button class="btn" id="kUndo" type="button">Undo</button><button class="btn" id="kClear" type="button">Clear</button><button class="btn" id="kDemo" type="button">Draw one for me</button><button class="btn" id="kSave" type="button">Save picture</button></div>
+        </div>
+        <p class="note">The rule behind it: with <b>n</b> turns and no mirrors there are <b>n</b> symmetries (the cyclic group C<sub>n</sub>). Add mirrors and there are <b>2n</b> (the dihedral group D<sub>n</sub>). Leonardo da Vinci noticed that every pattern around a single point is one of these.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 FRIEZES -->
+  <section class="chapter" id="friezes">
+    <div class="chHead"><div class="eyebrow">Chapter 3 · free</div><h2>Seven ways to walk</h2>
+      <p>A frieze repeats along a strip: a border, a railing, a line of footprints. However inventive the design, there are only seven kinds. John Conway named them after the footprints you would leave: hop, step, sidle, jump and their spinning versions. Draw in the strip and watch your mark repeat.</p></div>
+    <div class="box strip"><canvas id="fCv" aria-label="Frieze strip"></canvas></div>
+    <div class="card" style="margin-top:14px">
+      <div class="chips" id="fChips"></div>
+      <div class="row"><span class="big" id="fName"></span></div>
+      <div class="row"><button class="btn" id="fUndo" type="button">Undo</button><button class="btn" id="fClear" type="button">Clear</button><button class="btn" id="fFoot" type="button">Footprint</button><span class="note">Draw inside the shaded cell, or anywhere in the strip.</span></div>
+    </div>
+  </section>
+
+  <!-- 4 WALLPAPER (VIP) -->
+  <section class="chapter" id="wallpaper">
+    <div class="chHead"><div class="eyebrow">Chapter 4 · <span class="vip">VIP</span> · three patterns free</div><h2>Seventeen wallpapers</h2>
+      <p>Repeat a pattern across a whole wall and the possibilities are still not endless: there are exactly 17 kinds, proved by Evgraf Fedorov in 1891. The Alhambra's tilings use many of them. Draw a stroke and the engine fills the wall with it. Three patterns are free; VIP opens all 17 and the "Name that wallpaper" challenge.</p></div>
+    <div class="bench">
+      <div class="box sq"><canvas id="wCv" aria-label="Wallpaper pattern canvas"></canvas></div>
+      <div style="display:grid;gap:14px;min-width:0">
+        <div class="card"><h3>Choose a wallpaper group</h3><div class="wpgrid" id="wGrid"></div><div class="big" id="wName"></div>
+          <div class="row"><button class="btn" id="wUndo" type="button">Undo</button><button class="btn" id="wClear" type="button">Clear</button><button class="btn" id="wDemo" type="button">Draw one for me</button><button class="btn" id="wCell" type="button" aria-pressed="true">Show the tile</button></div></div>
+        <div class="card quiz locked" id="quiz">
+          <h3>Name that wallpaper</h3>
+          <div class="box sq" style="max-width:260px"><canvas id="qCv" aria-label="Mystery wallpaper"></canvas></div>
+          <div class="opts" id="qOpts"></div>
+          <div class="status" id="qStatus">Which group made this pattern?</div>
+          <div class="veil" id="quizVeil"><div class="inner"><b>VIP challenge</b><span class="note">Twelve rounds, from easy to Alhambra-hard.</span><a class="btn gold" href="/vip">Unlock VIP</a></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 VIDEOS -->
+  <section class="chapter" id="videos">
+    <div class="chHead"><div class="eyebrow">Chapter 5 · free · from The Math Universe</div><h2>Symmetry in our videos</h2>
+      <p>The art in our Shorts is full of symmetry, and you can now count it. Tap a picture to show its mirrors and turning centre. The number in pink is how many moves leave it unchanged.</p></div>
+    <div class="grid3" id="vGrid"></div>
+  </section>
+
+  <!-- 6 MEASURE (VIP) -->
+  <section class="chapter" id="measure">
+    <div class="chHead"><div class="eyebrow">Chapter 6 · <span class="vip">VIP</span></div><h2>How symmetric is it?</h2>
+      <p>Real things are almost symmetric: faces, leaves, sensor readings, a spinning machine. The Symmetry Index measures how far something is from perfect balance, using the Cauchy–Schwarz inequality: it is exactly 1 when every part is equal and falls as the parts drift apart.</p></div>
+    <div class="card locked" style="min-height:220px">
+      <div class="bench">
+        <div><canvas id="mCv" style="aspect-ratio:2/1;height:auto" aria-label="Symmetry index preview"></canvas></div>
+        <div class="note">Six readings x₁…x₆. Symmetry Index = (x₁ + … + x₆)² ÷ (6 · (x₁² + … + x₆²)). Drag the readings, watch the index, and see which departures matter most.</div>
+      </div>
+      <div class="veil"><div class="inner"><b>The Symmetry Index lab</b><span class="note">Live sensors, the 3D symmetry orb and the stability log.</span><a class="btn gold" href="/vip">Unlock VIP</a></div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Symmetry Engine is part of <a href="https://interactiveexplorer.space/">Interactive Explorer</a>. The videos are from <a href="https://interactiveexplorer.space/math-universe">The Math Universe</a>.</div>
+    <div>The maths: rosettes are the groups C<sub>n</sub> and D<sub>n</sub>; friezes and wallpapers use the standard symmetry operations of the 7 frieze groups and 17 plane groups (International Tables for Crystallography), each checked to be closed under composition.</div>
+  </footer>
+</main>
+
+<script src="groups.js"></script>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const { FRIEZES, WALLPAPERS, rosette, apply } = window.SYM;
+  const PAL = ['#db2945','#f27a0d','#d9a800','#29a13d','#00999e','#1a66d9','#6b3dd1','#cc2e9e'];
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  let VIP = !!window.SE_VIP;
+  try { if (new URLSearchParams(location.search).get('vip') === 'preview') VIP = true; } catch (e) {}
+
+  // ------------------------------------------------------------- canvas helper
+  function sized(cv) {
+    const dpr = Math.min(2, window.devicePixelRatio || 1), b = cv.getBoundingClientRect();
+    cv.width = Math.max(1, Math.round(b.width * dpr)); cv.height = Math.max(1, Math.round(b.height * dpr));
+    const c = cv.getContext('2d'); c.setTransform(dpr, 0, 0, dpr, 0, 0); return { c, w: b.width, h: b.height };
+  }
+  function pointer(cv, onDown, onMove, onUp) {
+    const pos = e => { const b = cv.getBoundingClientRect(); return [e.clientX - b.left, e.clientY - b.top]; };
+    let down = false;
+    cv.addEventListener('pointerdown', e => { down = true; cv.setPointerCapture(e.pointerId); onDown(pos(e)); e.preventDefault(); });
+    cv.addEventListener('pointermove', e => { if (down) { onMove(pos(e)); e.preventDefault(); } });
+    const up = () => { if (down) { down = false; onUp && onUp(); } };
+    cv.addEventListener('pointerup', up); cv.addEventListener('pointercancel', up);
+  }
+  const strokePath = (c, pts) => { c.beginPath(); pts.forEach((p, i) => i ? c.lineTo(p[0], p[1]) : c.moveTo(p[0], p[1])); c.stroke(); };
+
+  // ------------------------------------------------------------- shapes for chapter 1
+  // each: name, points generator on unit scale, group: n (rotation order), mirrors (bool), m0 (a mirror angle in degrees)
+  const poly = (k, r = 1, rot = 90) => Array.from({ length: k + 1 }, (_, i) => { const a = (rot + 360 * i / k) * Math.PI / 180; return [r * Math.cos(a), r * Math.sin(a)]; });
+  const star = (k, r1, r2) => Array.from({ length: 2 * k + 1 }, (_, i) => { const a = (90 + 180 * i / k) * Math.PI / 180, r = i % 2 ? r2 : r1; return [r * Math.cos(a), r * Math.sin(a)]; });
+  const spiro = (p, q, pen) => { const r = p / q, d = pen * r, N = 1400, out = []; for (let i = 0; i <= N; i++) { const t = 2 * Math.PI * p * i / N, a = -(1 - r) * t / r; out.push([(1 - r) * Math.cos(t) + d * Math.cos(a), (1 - r) * Math.sin(t) + d * Math.sin(a)].map(v => v * 1.05)); } return out; };
+  const heart = () => Array.from({ length: 241 }, (_, i) => { const t = 2 * Math.PI * i / 240; return [0.055 * 16 * Math.sin(t) ** 3, 0.055 * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t)) + 0.05]; });
+  const pinwheel = () => { const out = []; for (let k = 0; k < 4; k++) { const R = a => { const t = a + k * Math.PI / 2; return t; };
+      const pts = [[0, 0], [0.9, 0], [0.9, 0.42], [0.25, 0.08]]; pts.forEach(([x, y], i) => { const t = k * Math.PI / 2; out.push([x * Math.cos(t) - y * Math.sin(t), x * Math.sin(t) + y * Math.cos(t)]); }); }
+    out.push([0, 0]); return out; };
+  const letterS = () => { const out = []; for (let i = 0; i <= 120; i++) { const t = Math.PI * (0.25 + 1.5 * i / 120); out.push([0.42 * Math.cos(t), 0.42 + 0.42 * Math.sin(t)]); }
+    for (let i = 0; i <= 120; i++) { const t = Math.PI * (0.75 - 1.5 * i / 120); out.push([0.42 * Math.cos(t), -0.42 + 0.42 * Math.sin(t)]); } return out; };
+  const SHAPES = [
+    { name: 'Triangle', pts: poly(3, 0.95), n: 3, mirrors: true, m0: 90, lesson: 'An equilateral triangle has 3 turns (including doing nothing) and 3 mirrors: 6 symmetries, the group D3.' },
+    { name: 'Square', pts: poly(4, 0.95, 45), n: 4, mirrors: true, m0: 0, lesson: 'A square has 4 turns and 4 mirrors: 8 symmetries, the group D4.' },
+    { name: 'Rectangle', pts: [[-.9,-.5],[.9,-.5],[.9,.5],[-.9,.5],[-.9,-.5]], n: 2, mirrors: true, m0: 0, lesson: 'A rectangle keeps only the half turn and 2 mirrors: 4 symmetries. Squashing a square loses half of them.' },
+    { name: 'Pinwheel', pts: pinwheel(), n: 4, mirrors: false, m0: 0, lesson: 'The pinwheel turns 4 ways but has no mirror: its blades all lean one way. 4 symmetries, the group C4.' },
+    { name: 'Heart', pts: heart(), n: 1, mirrors: true, m0: 90, lesson: 'A heart has one mirror and no turn except a full one: 2 symmetries, the group D1. Most animals and faces are like this.' },
+    { name: 'Letter S', pts: letterS(), n: 2, mirrors: false, m0: 0, lesson: 'An S looks the same upside down (a half turn) but has no mirror: 2 symmetries, the group C2.' },
+    { name: 'Star', pts: star(5, 0.95, 0.4), n: 5, mirrors: true, m0: 90, lesson: 'A five-pointed star: 5 turns and 5 mirrors, 10 symmetries, the group D5.' },
+    { name: 'Spirograph 3/8', pts: spiro(3, 8, 0.8), n: 8, mirrors: true, m0: 0, lesson: 'The Spirograph from our Short: gear 3/8 gives 8 lobes, so 8 turns and 8 mirrors, 16 symmetries (D8). The bottom number of the gear is the number of turns.' },
+  ];
+  const MV = { shape: 0, found: new Set(), anim: null, ang: 0, flipAxis: null, flipT: 0 };
+  const total = s => s.n * (s.mirrors ? 2 : 1);
+  const nearInt = (x, tol = 1e-6) => Math.abs(x - Math.round(x)) < tol;
+  const isRot = (s, deg) => nearInt(deg / (360 / s.n));
+  const isFlip = (s, deg) => s.mirrors && nearInt(((deg - s.m0) % 180 + 180) % 180 / (180 / s.n));
+  function shapeChips() {
+    const box = $('mvShapes');
+    SHAPES.forEach((s, i) => { const b = document.createElement('button'); b.className = 'btn'; b.type = 'button'; b.textContent = s.name;
+      b.setAttribute('aria-pressed', i === MV.shape); b.onclick = () => { MV.shape = i; MV.found = new Set(); [...box.children].forEach((c, j) => c.setAttribute('aria-pressed', j === i)); mvUpdate('Choose a move.'); }; box.append(b); });
+  }
+  function mvUpdate(msg, cls) {
+    const s = SHAPES[MV.shape];
+    $('mvStatus').textContent = msg; $('mvStatus').className = 'status' + (cls ? ' ' + cls : '');
+    $('mvMeter').innerHTML = `Found <b>${MV.found.size + 1}</b> of ${total(s)} <span class="note">(doing nothing counts)</span>`;
+    $('mvFound').innerHTML = '<span>do nothing</span>' + [...MV.found].map(f => `<span>${f}</span>`).join('');
+    $('mvLesson').textContent = MV.found.size + 1 >= total(s) ? 'All found. ' + s.lesson : '';
+  }
+  function mvDraw() {
+    const cv = $('mvCv'), { c, w } = sized(cv), s = SHAPES[MV.shape], R = w * 0.4, cx = w / 2;
+    const toS = ([x, y]) => [cx + R * x, cx - R * y];
+    c.lineJoin = c.lineCap = 'round';
+    // ghost outline
+    c.strokeStyle = css('--ghost'); c.lineWidth = 6; c.globalAlpha = .45; strokePath(c, s.pts.map(toS)); c.globalAlpha = 1;
+    // moving copy
+    let T = p => p;
+    if (MV.anim && MV.anim.kind === 'turn') { const a = MV.anim.deg * ease(MV.anim.t) * Math.PI / 180, C = Math.cos(a), S = Math.sin(a); T = ([x, y]) => [C * x - S * y, S * x + C * y]; }
+    if (MV.anim && MV.anim.kind === 'flip') { const th = MV.anim.deg * Math.PI / 180, u = [Math.cos(th), Math.sin(th)], k = Math.cos(Math.PI * ease(MV.anim.t));
+      T = ([x, y]) => { const along = x * u[0] + y * u[1], px = x - along * u[0], py = y - along * u[1]; return [along * u[0] + k * px, along * u[1] + k * py]; };
+      c.strokeStyle = css('--focus'); c.lineWidth = 1.5; c.setLineDash([6, 6]); c.beginPath(); c.moveTo(cx - R * 1.2 * u[0], cx + R * 1.2 * u[1]); c.lineTo(cx + R * 1.2 * u[0], cx - R * 1.2 * u[1]); c.stroke(); c.setLineDash([]); }
+    c.strokeStyle = css('--accent'); c.lineWidth = 3; strokePath(c, s.pts.map(p => toS(T(p))));
+    // a marker dot so turns and flips are visible on symmetric shapes
+    const m = toS(T(s.pts[0])); c.beginPath(); c.arc(m[0], m[1], 7, 0, 2 * Math.PI); c.fillStyle = css('--focus'); c.fill();
+    const g = toS(s.pts[0]); c.beginPath(); c.arc(g[0], g[1], 7, 0, 2 * Math.PI); c.strokeStyle = css('--ghost'); c.lineWidth = 2; c.stroke();
+    c.beginPath(); c.arc(cx, cx, 3, 0, 2 * Math.PI); c.fillStyle = css('--ink'); c.fill();
+  }
+  const ease = u => u < .5 ? 2 * u * u : 1 - (-2 * u + 2) ** 2 / 2;
+  function mvRun(kind, deg) {
+    MV.anim = { kind, deg, t: 0 }; const s = SHAPES[MV.shape];
+    const t0 = performance.now();
+    const step = now => { MV.anim.t = Math.min(1, (now - t0) / 900); mvDraw(); if (MV.anim.t < 1) requestAnimationFrame(step); else {
+      const ok = kind === 'turn' ? isRot(s, deg) : isFlip(s, deg);
+      const label = kind === 'turn' ? `turn ${deg}°` : `mirror at ${deg}°`;
+      if (kind === 'turn' && deg % 360 === 0) { mvUpdate('A full turn: that is the same as doing nothing.', 'ok'); }
+      else if (ok) { MV.found.add(label); mvUpdate(`Yes: ${label} is a symmetry. It lands exactly on its outline.`, 'ok'); }
+      else mvUpdate(`No: after ${label} the shape no longer sits on its outline. Watch the blue dot.`, 'no');
+      setTimeout(() => { if (MV.anim && MV.anim.t >= 1) { MV.anim = null; mvDraw(); } }, 1100);
+    } };
+    requestAnimationFrame(step);
+  }
+  $('mvTurn').oninput = e => $('mvTurnO').textContent = e.target.value + '°';
+  $('mvFlip').oninput = e => $('mvFlipO').textContent = e.target.value + '°';
+  $('mvDoTurn').onclick = () => mvRun('turn', +$('mvTurn').value);
+  $('mvDoFlip').onclick = () => mvRun('flip', +$('mvFlip').value);
+  $('mvReset').onclick = () => { MV.found = new Set(); mvUpdate('Choose a move.'); };
+  $('mvShow').onclick = () => { const s = SHAPES[MV.shape]; for (let k = 1; k < s.n; k++) MV.found.add(`turn ${Math.round(360 * k / s.n)}°`);
+    if (s.mirrors) for (let k = 0; k < s.n; k++) MV.found.add(`mirror at ${+(((s.m0 + 180 * k / s.n) % 180 + 180) % 180).toFixed(1)}°`); mvUpdate('Here they all are.', 'ok'); };
+
+  // ------------------------------------------------------------- generic stroke-board (rosette / frieze / wallpaper)
+  function board(cv, opts) {
+    const B = { strokes: [], cur: null, hue: 0, ...opts };
+    pointer(cv, p => { B.cur = { pts: [B.toModel(p)], col: PAL[B.hue++ % 8], w: B.width ? B.width() : 3 }; B.strokes.push(B.cur); B.draw(); },
+      p => { B.cur.pts.push(B.toModel(p)); B.draw(); }, () => { B.cur = null; });
+    return B;
+  }
+
+  // ------------------------------------------------------------- 2 kaleidoscope
+  const K = board($('kCv'), { n: 6, mirrors: true, guides: true });
+  K.width = () => +$('kW').value;
+  K.toModel = ([x, y]) => { const w = K.w || 1; return [(x - w / 2) / (w / 2), (w / 2 - y) / (w / 2)]; };
+  K.draw = () => {
+    const { c, w } = sized($('kCv')); K.w = w; const ops = rosette(K.n, K.mirrors), R = w / 2, toS = ([x, y]) => [R + R * x, R - R * y];
+    if (K.guides) { c.strokeStyle = css('--rule'); c.lineWidth = 1;
+      for (let k = 0; k < K.n; k++) { const a = Math.PI * k / K.n; if (K.mirrors) { c.beginPath(); c.moveTo(R - R * Math.cos(a), R + R * Math.sin(a)); c.lineTo(R + R * Math.cos(a), R - R * Math.sin(a)); c.stroke(); } }
+      c.beginPath(); c.arc(R, R, 4, 0, 2 * Math.PI); c.fillStyle = css('--ink-2'); c.fill(); }
+    c.lineJoin = c.lineCap = 'round';
+    for (const s of K.strokes) { c.strokeStyle = s.col; c.lineWidth = s.w; for (const o of ops) strokePath(c, s.pts.map(p => toS(apply(o, p[0], p[1])))); }
+    $('kName').textContent = K.mirrors ? `D${K.n}: ${K.n} turn${K.n > 1 ? 's' : ''} + ${K.n} mirror${K.n > 1 ? 's' : ''} = ${2 * K.n} symmetries` : `C${K.n}: ${K.n} turn${K.n > 1 ? 's' : ''}, no mirrors = ${K.n} symmetr${K.n > 1 ? 'ies' : 'y'}`;
+  };
+  $('kN').oninput = e => { K.n = +e.target.value; $('kNO').textContent = K.n; K.draw(); };
+  $('kW').oninput = e => { $('kWO').textContent = e.target.value; };
+  $('kMir').onclick = e => { K.mirrors = !K.mirrors; e.target.setAttribute('aria-pressed', K.mirrors); e.target.textContent = K.mirrors ? 'Mirrors on' : 'Mirrors off'; K.draw(); };
+  $('kGuides').onclick = e => { K.guides = !K.guides; e.target.setAttribute('aria-pressed', K.guides); e.target.textContent = K.guides ? 'Guides on' : 'Guides off'; K.draw(); };
+  $('kUndo').onclick = () => { K.strokes.pop(); K.draw(); };
+  $('kClear').onclick = () => { K.strokes = []; K.draw(); };
+  const demoStrokes = () => { const out = []; let seed = Math.random() * 1000; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+    for (let j = 0; j < 4; j++) { const pts = [], r0 = .15 + .8 * rnd(), a0 = rnd() * .5, amp = .05 + .2 * rnd(), f = 2 + Math.floor(rnd() * 5);
+      for (let i = 0; i <= 60; i++) { const u = i / 60, r = r0 * (0.35 + 0.65 * u), a = a0 + 0.55 * u + amp * Math.sin(f * Math.PI * u); pts.push([r * Math.cos(a), r * Math.sin(a)]); }
+      out.push({ pts, col: PAL[(j * 2 + Math.floor(rnd() * 2)) % 8], w: 2 + Math.floor(rnd() * 4) }); } return out; };
+  $('kDemo').onclick = () => { K.strokes.push(...demoStrokes()); K.draw(); };
+  $('kSave').onclick = () => { const a = document.createElement('a'); a.download = `symmetry-${K.mirrors ? 'D' : 'C'}${K.n}.png`; a.href = $('kCv').toDataURL('image/png'); a.click(); };
+
+  // ------------------------------------------------------------- 3 friezes
+  const F = board($('fCv'), { g: 0 });
+  F.cellW = () => Math.min(180, F.w / 5);
+  F.toModel = ([x, y]) => [x / F.cellW(), (F.h / 2 - y) / F.cellW()];
+  F.draw = () => {
+    const { c, w, h } = sized($('fCv')); F.w = w; F.h = h; const cw = F.cellW(), g = FRIEZES[F.g], toS = ([x, y]) => [x * cw, h / 2 - y * cw];
+    c.fillStyle = css('--paper'); c.fillRect(0, h / 2 - cw * .9, cw, cw * 1.8);
+    c.strokeStyle = css('--rule'); c.lineWidth = 1; c.beginPath(); c.moveTo(0, h / 2); c.lineTo(w, h / 2); c.stroke();
+    c.lineJoin = c.lineCap = 'round';
+    const n0 = -2, n1 = Math.ceil(w / cw) + 2;
+    for (const s of F.strokes) { c.strokeStyle = s.col; c.lineWidth = s.w;
+      for (const o of g.ops) for (let k = n0; k <= n1; k++) strokePath(c, s.pts.map(p => { const q = apply(o, p[0], p[1]); return toS([q[0] + k, q[1]]); })); }
+    $('fName').textContent = `${g.conway[0].toUpperCase() + g.conway.slice(1)} · ${g.id} · ${g.ops.length} move${g.ops.length > 1 ? 's' : ''} per step, plus sliding along`;
+  };
+  const foot = () => { const pts = []; for (let i = 0; i <= 40; i++) { const t = 2 * Math.PI * i / 40; pts.push([0.18 + 0.1 * Math.cos(t), 0.42 + 0.2 * Math.sin(t)]); } return [{ pts, col: PAL[5], w: 4 }, { pts: [[0.12, 0.7], [0.14, 0.72]], col: PAL[5], w: 7 }, { pts: [[0.2, 0.74], [0.22, 0.76]], col: PAL[5], w: 7 }, { pts: [[0.27, 0.72], [0.29, 0.73]], col: PAL[5], w: 7 }]; };
+  FRIEZES.forEach((g, i) => { const b = document.createElement('button'); b.className = 'btn'; b.type = 'button'; b.textContent = g.conway; b.setAttribute('aria-pressed', i === 0);
+    b.onclick = () => { F.g = i; [...$('fChips').children].forEach((x, j) => x.setAttribute('aria-pressed', j === i)); F.draw(); }; $('fChips').append(b); });
+  $('fUndo').onclick = () => { F.strokes.pop(); F.draw(); };
+  $('fClear').onclick = () => { F.strokes = []; F.draw(); };
+  $('fFoot').onclick = () => { F.strokes = foot(); F.draw(); };
+  F.strokes = foot();
+
+  // ------------------------------------------------------------- 4 wallpaper
+  const FREE_WP = ['p1', 'p4m', 'p6m'];
+  const W = board($('wCv'), { g: WALLPAPERS.findIndex(g => g.id === 'p4m'), cell: true });
+  W.scale = () => (W.w || 400) / 3.2;
+  const basis = g => g.lattice;
+  W.toModel = ([x, y]) => { const g = WALLPAPERS[W.g], { A, B } = basis(g), s = W.scale(), X = (x - W.w / 2) / s, Y = (W.w / 2 - y) / s, det = A[0] * B[1] - B[0] * A[1];
+    return [(X * B[1] - Y * B[0]) / det, (A[0] * Y - A[1] * X) / det]; };
+  function drawWall(c, w, g, strokes, s, showCell) {
+    const { A, B } = basis(g), toS = ([u, v]) => [w / 2 + s * (u * A[0] + v * B[0]), w / 2 - s * (u * A[1] + v * B[1])];
+    const reach = Math.ceil(w / s / Math.min(Math.hypot(...A), Math.abs(A[0] * B[1] - B[0] * A[1]) / Math.hypot(...A))) + 2;
+    if (showCell) { c.fillStyle = css('--paper'); c.beginPath(); [[0, 0], [1, 0], [1, 1], [0, 1]].forEach((p, i) => { const q = toS(p); i ? c.lineTo(...q) : c.moveTo(...q); }); c.closePath(); c.fill();
+      c.strokeStyle = css('--ghost'); c.setLineDash([4, 5]); c.lineWidth = 1; c.stroke(); c.setLineDash([]); }
+    c.lineJoin = c.lineCap = 'round';
+    for (const st of strokes) { c.strokeStyle = st.col; c.lineWidth = st.w;
+      for (const o of g.ops) { const base = st.pts.map(p => apply(o, p[0], p[1]));
+        for (let i = -reach; i <= reach; i++) for (let j = -reach; j <= reach; j++) strokePath(c, base.map(([u, v]) => toS([u + i, v + j]))); } }
+  }
+  W.draw = () => { const { c, w } = sized($('wCv')); W.w = w; const g = WALLPAPERS[W.g];
+    drawWall(c, w, g, W.strokes, W.scale(), W.cell);
+    const locked = !VIP && !FREE_WP.includes(g.id);
+    $('wName').textContent = `${g.id} · ${g.order} way${g.order > 1 ? 's' : ''} to place each stroke in a tile` + (locked ? ' · VIP preview' : '');
+    if (locked) { c.fillStyle = css('--paper'); c.globalAlpha = .55; c.fillRect(0, 0, w, w); c.globalAlpha = 1;
+      c.font = '600 22px Newsreader, Georgia, serif'; c.fillStyle = css('--ink'); c.textAlign = 'center'; c.fillText(`${g.id} is a VIP pattern`, w / 2, w / 2 - 6);
+      c.font = '13px IBM Plex Sans, sans-serif'; c.fillStyle = css('--ink-2'); c.fillText('Unlock all 17 at the VIP page', w / 2, w / 2 + 18); }
+  };
+  WALLPAPERS.forEach((g, i) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = g.id; b.setAttribute('aria-pressed', i === W.g);
+    if (!VIP && !FREE_WP.includes(g.id)) b.classList.add('lock');
+    b.onclick = () => { W.g = i; [...$('wGrid').children].forEach((x, j) => x.setAttribute('aria-pressed', j === i)); W.draw(); }; $('wGrid').append(b); });
+  const wDemo = () => [{ pts: [[.08, .1], [.2, .12], [.3, .22], [.34, .36]], col: PAL[0], w: 4 }, { pts: [[.12, .3], [.16, .4], [.12, .46]], col: PAL[5], w: 4 }, { pts: [[.3, .08], [.36, .08]], col: PAL[3], w: 6 }];
+  $('wUndo').onclick = () => { W.strokes.pop(); W.draw(); };
+  $('wClear').onclick = () => { W.strokes = []; W.draw(); };
+  $('wDemo').onclick = () => { W.strokes = wDemo(); W.draw(); };
+  $('wCell').onclick = e => { W.cell = !W.cell; e.target.setAttribute('aria-pressed', W.cell); W.draw(); };
+  W.strokes = wDemo();
+
+  // quiz (VIP; one round visible behind the veil)
+  const Q = { round: 0 };
+  function quizRound() {
+    const ids = ['p4m', 'p4', 'p4g', 'pmm', 'p6m', 'p6', 'p3', 'p31m', 'p3m1', 'pgg', 'pmg', 'cmm'];
+    const id = ids[Q.round % ids.length], g = WALLPAPERS.find(x => x.id === id);
+    const cv = $('qCv'), { c, w } = sized(cv); drawWall(c, w, g, wDemo(), w / 2.6, false);
+    const same = WALLPAPERS.filter(x => x.lattice === g.lattice && x.id !== id).map(x => x.id).slice(0, 3);
+    const opts = [id, ...same].sort(); $('qOpts').innerHTML = '';
+    opts.forEach(o => { const b = document.createElement('button'); b.className = 'btn'; b.type = 'button'; b.textContent = o;
+      b.onclick = () => { if (!VIP) return; const ok = o === id; $('qStatus').textContent = ok ? `Right: ${id}. Next one…` : `Not quite. Look for mirrors, then for turning centres.`; $('qStatus').className = 'status ' + (ok ? 'ok' : 'no'); if (ok) { Q.round++; setTimeout(quizRound, 1100); } };
+      $('qOpts').append(b); });
+  }
+  if (VIP) { $('quiz').classList.remove('locked'); $('quizVeil').hidden = true; document.querySelector('#measure .card').classList.remove('locked'); document.querySelector('#measure .veil').hidden = true; }
+
+  // ------------------------------------------------------------- 5 symmetry in our videos
+  const YT = 'https://www.youtube.com/';
+  const VIDS = [
+    { title: 'Spirograph 3/8', tag: 'D8 · 16 symmetries', n: 8, mir: true, m0: 0, link: YT + 'shorts/mfP_vpkPfGQ', linkText: 'Watch: Can a gear draw a straight line?', draw: (c, R) => { [0, 1, 2, 3].forEach(k => { const p = spiroPhase(3, 8, .8, 2 * Math.PI * k / 4); c.strokeStyle = PAL[k * 2]; c.lineWidth = 1.6; strokePath(c, p.map(([x, y]) => [R + R * .92 * x, R - R * .92 * y])); }); },
+      note: 'With 4 pens the picture keeps all 8 turns and all 8 mirrors of one pen, because the pens sit at quarter turns.' },
+    { title: 'Times table ×2: the cardioid', tag: 'D1 · 2 symmetries', n: 1, mir: true, m0: 0, link: YT + 'playlist?list=PLaTBNQiFiy28', linkText: 'Playlist: One Rule, curves from times tables', draw: (c, R) => chords(c, R, 2, 200), note: 'Joining point k to point 2k: one mirror (the horizontal line) and nothing else. A half turn would send 2k to 2k + half the circle, which is not 2(k + half).' },
+    { title: 'Times table ×3: the nephroid', tag: 'D2 · 4 symmetries', n: 2, mir: true, m0: 0, link: YT + 'shorts/LXxjxsSf4-0', linkText: 'Watch: Your coffee cup hides this curve', draw: (c, R) => chords(c, R, 3, 200), note: 'Joining k to 3k: two mirrors and a half turn. In general the ×m picture has m − 1 cusps and m − 1 turns.' },
+    { title: 'Chaos game, 3 corners', tag: 'D3 · 6 symmetries', n: 3, mir: true, m0: 90, link: YT + 'playlist?list=PLRvDKYb8Ojkw', linkText: 'Playlist: Chaos & Order', draw: (c, R) => chaos(c, R, 3, .5, 30000), note: 'Random dice, yet the Sierpinski triangle has every symmetry of the triangle: 3 turns and 3 mirrors.' },
+    { title: 'Chaos game, 5 corners, jump 0.618', tag: 'D5 · 10 symmetries', n: 5, mir: true, m0: 90, link: YT + 'playlist?list=PLRvDKYb8Ojkw', linkText: 'Playlist: Chaos & Order', draw: (c, R) => chaos(c, R, 5, 1 - 1 / (1 + (1 + Math.sqrt(5)) / 2), 40000), note: 'The golden-ratio pentagon fractal: 5 turns and 5 mirrors, like a starfish.' },
+    { title: 'Chaos game, 6 corners, jump 2/3', tag: 'D6 · 12 symmetries', n: 6, mir: true, m0: 90, link: YT + 'playlist?list=PLRvDKYb8Ojkw', linkText: 'Playlist: Chaos & Order', draw: (c, R) => chaos(c, R, 6, 2 / 3, 40000, Math.PI / 6), note: 'The hexagon fractal with a Koch snowflake hole: the 12 symmetries of a snowflake.' },
+  ];
+  function spiroPhase(p, q, pen, phi) { const r = p / q, d = pen * r, N = 1200, out = []; for (let i = 0; i <= N; i++) { const t = 2 * Math.PI * p * i / N, a = phi - (1 - r) * t / r; out.push([(1 - r) * Math.cos(t) + d * Math.cos(a), (1 - r) * Math.sin(t) + d * Math.sin(a)]); } return out; }
+  function chords(c, R, m, n) { for (let k = 0; k < n; k++) { const a = 2 * Math.PI * k / n, b = 2 * Math.PI * ((m * k) % n) / n;
+      c.strokeStyle = PAL[(k * 8 / n | 0) % 8]; c.globalAlpha = .7; c.lineWidth = 1; c.beginPath(); c.moveTo(R + R * .9 * Math.cos(a), R - R * .9 * Math.sin(a)); c.lineTo(R + R * .9 * Math.cos(b), R - R * .9 * Math.sin(b)); c.stroke(); } c.globalAlpha = 1; }
+  function chaos(c, R, n, f, N, rot = 0) { const V = Array.from({ length: n }, (_, k) => [Math.sin(2 * Math.PI * k / n + rot), Math.cos(2 * Math.PI * k / n + rot)]);
+    let x = .1, y = .1, seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    for (let i = 0; i < N; i++) { const k = Math.floor(rnd() * n); x += f * (V[k][0] - x); y += f * (V[k][1] - y); if (i > 20) { c.fillStyle = PAL[(k * 8 / n | 0) % 8]; c.fillRect(R + R * .9 * x, R - R * .9 * y, 1.3, 1.3); } } }
+  function overlay(c, R, v) { c.save(); c.strokeStyle = css('--accent'); c.lineWidth = 1.5; c.setLineDash([6, 5]);
+    if (v.mir) for (let k = 0; k < v.n; k++) { const a = (v.m0 + 180 * k / v.n) * Math.PI / 180; c.beginPath(); c.moveTo(R - R * Math.cos(a), R + R * Math.sin(a)); c.lineTo(R + R * Math.cos(a), R - R * Math.sin(a)); c.stroke(); }
+    c.setLineDash([]); if (v.n > 1) { c.beginPath(); c.arc(R, R, 7, 0, 2 * Math.PI); c.fillStyle = css('--accent'); c.fill(); } c.restore(); }
+  VIDS.forEach(v => {
+    const el = document.createElement('article'); el.className = 'vcard';
+    el.innerHTML = `<div class="art"><canvas aria-label="${v.title}"></canvas></div><div class="txt"><span class="tag">${v.tag}</span><h3>${v.title}</h3><p class="note">${v.note}</p><a href="${v.link}" target="_blank" rel="noopener">${v.linkText} ↗</a></div>`;
+    $('vGrid').append(el); const cv = el.querySelector('canvas'); let show = false;
+    v.render = () => { const { c, w } = sized(cv); v.draw(c, w / 2); if (show) overlay(c, w / 2, v); };
+    el.querySelector('.art').onclick = () => { show = !show; v.render(); };
+  });
+
+  // ------------------------------------------------------------- 6 measure preview
+  function measure() { const cv = $('mCv'), { c, w, h } = sized(cv), xs = [5, 4.6, 5.3, 3.4, 5.1, 4.8], S = xs.reduce((a, b) => a + b), Q = xs.reduce((a, b) => a + b * b, 0), idx = S * S / (6 * Q);
+    const bw = w / 9; xs.forEach((x, i) => { c.fillStyle = PAL[i]; c.fillRect(bw * (1 + i * 1.2), h - 20 - x * (h - 50) / 6, bw * .9, x * (h - 50) / 6); });
+    c.fillStyle = css('--ink'); c.font = '600 18px IBM Plex Mono, monospace'; c.fillText(`index = ${idx.toFixed(4)}`, 12, 24); }
+
+  // ------------------------------------------------------------- hero: a slowly self-drawing kaleidoscope
+  const hero = { strokes: demoStrokes(), t: 0 };
+  function heroDraw(now) {
+    const { c, w } = sized($('heroCv')), R = w / 2, ops = rosette(6, true), u = ((now / 1000) % 9) / 6;
+    c.lineJoin = c.lineCap = 'round';
+    hero.strokes.forEach((s, j) => { const n = Math.max(2, Math.floor(s.pts.length * Math.min(1, Math.max(0, u * 4 - j)))); c.strokeStyle = s.col; c.lineWidth = s.w;
+      for (const o of ops) strokePath(c, s.pts.slice(0, n).map(p => { const q = apply(o, p[0], p[1]); return [R + R * .9 * q[0], R - R * .9 * q[1]]; })); });
+    if (((now / 1000) % 9) < 0.03) hero.strokes = demoStrokes();
+    requestAnimationFrame(heroDraw);
+  }
+
+  // ------------------------------------------------------------- boot
+  function all() { mvDraw(); K.draw(); F.draw(); W.draw(); quizRound(); VIDS.forEach(v => v.render()); measure(); }
+  shapeChips(); mvUpdate('Choose a move.'); K.strokes = demoStrokes();
+  window.addEventListener('resize', () => all());
+  all(); requestAnimationFrame(heroDraw);
+})();
+</script>
+</body>
+</html>

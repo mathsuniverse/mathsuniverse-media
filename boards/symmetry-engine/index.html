@@ -100,7 +100,7 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
   <a class="brand" href="#top">Symmetry <span>Engine</span></a>
   <nav class="tabs" aria-label="Chapters">
     <a href="#moves">1 · Moves</a><a href="#kaleido">2 · Kaleidoscope</a><a href="#friezes">3 · Friezes</a>
-    <a href="#wallpaper">4 · Wallpaper<span class="vip">VIP</span></a><a href="#videos">5 · In our videos</a><a href="#measure">6 · Measure<span class="vip">VIP</span></a>
+    <a href="#wallpaper">4 · Wallpaper<span class="vip">VIP</span></a><a href="#videos">5 · In our videos</a><a href="#vipzone">VIP labs<span class="vip">VIP</span></a>
   </nav>
 </div></header>
 
@@ -196,9 +196,87 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     <div class="grid3" id="vGrid"></div>
   </section>
 
-  <!-- 6 MEASURE (VIP) -->
+  <!-- VIP ZONE -->
+  <section class="chapter" id="vipzone">
+    <div class="chHead"><div class="eyebrow"><span class="vip">VIP</span> · the deep end</div><h2>Five labs for the curious</h2>
+      <p>Everything above is free. The labs below go further: a real proof you can play with, the pattern nature was "not allowed" to make, Escher's infinite kaleidoscopes, open research problems, and a lab for measuring imperfect symmetry. Each one shows you its first step for free.</p>
+      <div class="row" style="margin-top:6px"><a class="btn gold" href="/vip" id="vipBtnTop">Unlock the VIP labs</a><span class="note" id="vipState"></span></div></div>
+  </section>
+
+  <!-- 6 MAGIC THEOREM -->
+  <section class="chapter" id="magic">
+    <div class="chHead"><div class="eyebrow">Lab 6 · <span class="vip">VIP</span></div><h2>Why exactly 17? Shop for a wallpaper</h2>
+      <p>John Conway found a price list for symmetry. Every wallpaper pattern is described by a short code, and every symbol in the code has a price. His "magic theorem": a pattern can tile the plane exactly when its code costs <b>$2</b>. Spend exactly $2 in every possible way and you find all 17 wallpapers, no more and no fewer.</p></div>
+    <div class="bench">
+      <div class="box sq"><canvas id="mgCv" aria-label="The wallpaper your basket buys"></canvas></div>
+      <div style="display:grid;gap:14px;min-width:0">
+        <div class="card locked" id="mgCard">
+          <div class="veil"><div class="inner"><b>Conway's shop</b><span class="note">Spend exactly $2 and discover all 17 wallpapers yourself.</span><a class="btn gold" href="/vip">Unlock VIP</a></div></div>
+          <h3>The price list</h3>
+          <div class="note">Turning points are written as numbers (a 4 means a quarter-turn centre). Mirrors are a star *. Numbers after a star are corners where mirrors meet. A glide is a cross x. A plain repeat is an o.</div>
+          <div class="chips" id="mgShop"></div>
+          <div class="status big" id="mgBasket">Your basket is empty: $0</div>
+          <div class="row"><button class="btn" id="mgUndo" type="button">Put one back</button><button class="btn" id="mgClear" type="button">Empty basket</button></div>
+          <div class="found" id="mgFound"></div>
+        </div>
+        <p class="note">Free example: the snowflake wallpaper p6m has code <b>*632</b>: a star ($1) plus corners 6, 3 and 2 ($5/12 + $1/3 + $1/4). Total: exactly $2.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 FORBIDDEN FIVE -->
+  <section class="chapter" id="five">
+    <div class="chHead"><div class="eyebrow">Lab 7 · first part free · <span class="vip">VIP</span></div><h2>The forbidden five</h2>
+      <p>Wallpapers can turn by a half, a third, a quarter or a sixth, but never by a fifth. Try it: turn a grid of points about one of its points and see whether it lands on itself. The reason is a one-line proof: the turn must move grid points to grid points, so 2 cos(360°/n) has to be a whole number, which only happens for n = 1, 2, 3, 4 and 6.</p></div>
+    <div class="bench">
+      <div class="box sq"><canvas id="fvCv" aria-label="A lattice and its turned copy"></canvas></div>
+      <div style="display:grid;gap:14px;min-width:0">
+        <div class="card">
+          <h3>Turn the grid</h3>
+          <div class="row"><label>grid</label><button class="btn" id="fvSq" type="button" aria-pressed="true">Square</button><button class="btn" id="fvHex" type="button" aria-pressed="false">Triangular</button></div>
+          <div class="row"><label for="fvN">turn by 1/n, n =</label><input id="fvN" type="range" min="2" max="8" step="1" value="5"><output id="fvNO">5</output></div>
+          <div class="status" id="fvStatus"></div>
+        </div>
+        <div class="card locked" id="penCard">
+          <h3>But nature found a way</h3>
+          <div class="box sq" style="max-width:340px"><canvas id="penCv" aria-label="A Penrose tiling with five-fold symmetry"></canvas></div>
+          <p class="note">A Penrose tiling has a centre with perfect five-fold symmetry, yet it never repeats: slide it anywhere and it does not land on itself. In 1982 Dan Shechtman found crystals built like this, quasicrystals, and won the 2011 Nobel Prize in Chemistry.</p>
+          <div class="row"><button class="btn" id="penRot" type="button">Turn by 72°</button><button class="btn" id="penSlide" type="button">Try to slide it</button></div>
+          <div class="status" id="penStatus">The pink outline is a moved copy. Watch whether it lands on the tiles.</div>
+          <div class="veil"><div class="inner"><b>Quasicrystals</b><span class="note">Build a Penrose tiling from five grids and test its symmetry.</span><a class="btn gold" href="/vip">Unlock VIP</a></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 INFINITE KALEIDOSCOPE -->
+  <section class="chapter" id="hyper">
+    <div class="chHead"><div class="eyebrow">Lab 8 · view free · drawing <span class="vip">VIP</span></div><h2>Escher's infinite kaleidoscope</h2>
+      <p>Three mirrors meeting at angles of 180°/p, 180°/q and 90° make a kaleidoscope. When 1/p + 1/q = 1/2 the mirrors tile the flat plane. When 1/p + 1/q is smaller, there is too much room: the copies shrink towards the rim of a disc and never end. This is the hyperbolic plane, the geometry M. C. Escher used for his <i>Circle Limit</i> prints. Two colours show the trick: every mirror swaps black and white.</p></div>
+    <div class="bench">
+      <div class="box sq" id="hyBox"><canvas id="hyCv" aria-label="Triangle-group kaleidoscope"></canvas></div>
+      <div style="display:grid;gap:14px;min-width:0">
+        <div class="card">
+          <h3>Choose the mirrors</h3>
+          <div class="chips" id="hyChips"></div>
+          <div class="row"><button class="btn" id="hyTwo" type="button" aria-pressed="true">Two colours</button><button class="btn" id="hyClear" type="button">Clear drawing</button></div>
+          <div class="big" id="hyName"></div>
+          <p class="note" id="hyNote">VIP: draw inside the disc and every stroke is copied by all the mirrors, smaller and smaller towards the rim.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 RESEARCH CORNER -->
+  <section class="chapter" id="research">
+    <div class="chHead"><div class="eyebrow">Lab 9 · titles free · <span class="vip">VIP</span></div><h2>Research corner</h2>
+      <p>For students who want to go further: real questions about symmetry and tiling, some solved only recently and some still open, each with a project to start on and where to read more.</p></div>
+    <div class="grid3" id="rsGrid"></div>
+  </section>
+
+  <!-- 10 MEASURE (VIP) -->
   <section class="chapter" id="measure">
-    <div class="chHead"><div class="eyebrow">Chapter 6 · <span class="vip">VIP</span></div><h2>How symmetric is it?</h2>
+    <div class="chHead"><div class="eyebrow">Lab 10 · <span class="vip">VIP</span></div><h2>How symmetric is it?</h2>
       <p>Real things are almost symmetric: faces, leaves, sensor readings, a spinning machine. The Symmetry Index measures how far something is from perfect balance, using the Cauchy–Schwarz inequality: it is exactly 1 when every part is equal and falls as the parts drift apart.</p></div>
     <div class="card locked" style="min-height:220px">
       <div class="bench">
@@ -468,8 +546,149 @@ footer { margin-top: 40px; color: var(--ink-2); font-size: 13px; border-top: 1px
     requestAnimationFrame(heroDraw);
   }
 
+  // ------------------------------------------------------------- 6 Conway's magic theorem (costs in 24ths of a dollar)
+  const ORB = { 'o': 'p1', '2222': 'p2', '**': 'pm', 'xx': 'pg', '*x': 'cm', '*2222': 'pmm', '22*': 'pmg', '22x': 'pgg', '2*22': 'cmm',
+    '442': 'p4', '*442': 'p4m', '4*2': 'p4g', '333': 'p3', '*333': 'p3m1', '3*3': 'p31m', '632': 'p6', '*632': 'p6m' };
+  const MG = { o: 0, g: [], stars: 0, c: [], x: 0, log: [], found: new Set() };
+  const ITEMS = [
+    { k: 'o', label: 'o · plain repeat', cost: 48 }, { k: '*', label: '* · mirror', cost: 24 }, { k: 'x', label: 'x · glide', cost: 24 },
+    ...[2, 3, 4, 6].map(n => ({ k: 'g' + n, label: `${n} · turning point`, cost: 24 * (n - 1) / n })),
+    ...[2, 3, 4, 6].map(n => ({ k: 'c' + n, label: `*${n} · mirror corner`, cost: 12 * (n - 1) / n })),
+  ];
+  const gcd = (a, b) => b ? gcd(b, a % b) : a;
+  const money = c => { const r = Math.round(c), whole = Math.floor(r / 24), rest = r - 24 * whole, g = gcd(rest, 24);
+    return '$' + (whole ? whole : '') + (rest ? (whole ? ' ' : '') + `${rest / g}/${24 / g}` : (whole ? '' : '0')); };
+  const mgCost = () => 48 * MG.o + 24 * MG.stars + 24 * MG.x + MG.g.reduce((a, n) => a + 24 * (n - 1) / n, 0) + MG.c.reduce((a, n) => a + 12 * (n - 1) / n, 0);
+  const mgSig = () => (MG.o ? 'o' : '') + [...MG.g].sort((a, b) => b - a).join('') + (MG.stars ? '*' + [...MG.c].sort((a, b) => b - a).join('') : '') + (MG.stars > 1 ? '*' : '') + 'x'.repeat(MG.x);
+  function mgRender() {
+    const cost = mgCost(), sig = mgSig(), id = ORB[sig], b = $('mgBasket');
+    if (!sig) { b.textContent = 'Your basket is empty: $0'; b.className = 'status big'; }
+    else if (Math.abs(cost - 48) < 1e-9 && id) { b.textContent = `${sig} costs exactly $2: that is the wallpaper ${id}!`; b.className = 'status big ok'; MG.found.add(id); }
+    else if (cost > 48 + 1e-9) { b.textContent = `${sig} costs ${money(cost)}: too much. Put something back.`; b.className = 'status big no'; }
+    else b.textContent = `${sig}: ${money(cost)} spent, ${money(48 - cost)} to go.`, b.className = 'status big';
+    $('mgFound').innerHTML = `<span>${MG.found.size} of 17 found</span>` + [...MG.found].map(f => `<span>${f}</span>`).join('');
+    const { c, w } = sized($('mgCv')); const g = WALLPAPERS.find(x => x.id === (id || 'p1'));
+    if (id) drawWall(c, w, g, wDemo(), w / 3.2, false);
+    else if (!VIP) { drawWall(c, w, WALLPAPERS.find(x => x.id === 'p6m'), wDemo(), w / 3.2, false); c.fillStyle = css('--sheet'); c.fillRect(0, w - 44, w, 44); c.fillStyle = css('--ink'); c.font = '500 15px IBM Plex Mono, monospace'; c.textAlign = 'center'; c.fillText('*632 · $1 + $5/12 + $1/3 + $1/4 = $2 · p6m', w / 2, w - 17); }
+    else { c.fillStyle = css('--ink-2'); c.font = '600 20px Newsreader, Georgia, serif'; c.textAlign = 'center'; c.fillText('Spend exactly $2', w / 2, w / 2); }
+  }
+  ITEMS.forEach(it => { const b = document.createElement('button'); b.className = 'btn'; b.type = 'button'; b.textContent = `${it.label} · ${money(it.cost)}`;
+    b.onclick = () => { if (!VIP) return; const k = it.k;
+      if (k === 'o') { if (MG.o) return; MG.o = 1; } else if (k === '*') { if (MG.stars >= 2) return; MG.stars++; } else if (k === 'x') MG.x++;
+      else if (k[0] === 'g') { if (MG.stars) { $('mgBasket').textContent = 'Turning points are written before the star: empty the basket to buy more.'; return; } MG.g.push(+k.slice(1)); }
+      else { if (MG.stars !== 1) { $('mgBasket').textContent = 'A mirror corner needs exactly one star first.'; return; } MG.c.push(+k.slice(1)); }
+      MG.log.push(k); mgRender(); };
+    $('mgShop').append(b); });
+  $('mgUndo').onclick = () => { const k = MG.log.pop(); if (!k) return; if (k === 'o') MG.o = 0; else if (k === '*') MG.stars--; else if (k === 'x') MG.x--; else if (k[0] === 'g') MG.g.pop(); else MG.c.pop(); mgRender(); };
+  $('mgClear').onclick = () => { Object.assign(MG, { o: 0, g: [], stars: 0, c: [], x: 0, log: [] }); mgRender(); };
+
+  // ------------------------------------------------------------- 7 forbidden five: lattice turn test + Penrose (de Bruijn pentagrid, gamma = 1/5)
+  const FV = { hex: false, n: 5 };
+  function fvDraw() {
+    const { c, w } = sized($('fvCv')), s = w / 9, A = [1, 0], B = FV.hex ? [.5, Math.sqrt(3) / 2] : [0, 1], pts = [];
+    for (let i = -12; i <= 12; i++) for (let j = -12; j <= 12; j++) { const x = (i * A[0] + j * B[0]) * s, y = (i * A[1] + j * B[1]) * s; if (Math.abs(x) < w * .75 && Math.abs(y) < w * .75) pts.push([x, y]); }
+    const t = 2 * Math.PI / FV.n, ct = Math.cos(t), st = Math.sin(t);
+    let hit = 0, tot = 0;
+    for (const [x, y] of pts) { if (Math.abs(x) > w / 2 || Math.abs(y) > w / 2) continue; c.beginPath(); c.arc(w / 2 + x, w / 2 - y, 5, 0, 2 * Math.PI); c.fillStyle = css('--ink'); c.fill(); }
+    for (const [x, y] of pts) { const X = ct * x - st * y, Y = st * x + ct * y; if (Math.abs(X) > w / 2 || Math.abs(Y) > w / 2) continue; tot++;
+      const on = pts.some(([u, v]) => Math.hypot(u - X, v - Y) < 1e-6 * s); if (on) hit++;
+      c.beginPath(); c.arc(w / 2 + X, w / 2 - Y, 8, 0, 2 * Math.PI); c.strokeStyle = on ? css('--ok') : css('--accent'); c.lineWidth = 2; c.stroke(); }
+    const fits = hit === tot;
+    const st2 = $('fvStatus'); st2.className = 'status ' + (fits ? 'ok' : 'no');
+    st2.textContent = fits ? `Turning by 1/${FV.n} fits: every dot lands on a dot. 2cos(360°/${FV.n}) = ${(+(2 * Math.cos(t)).toFixed(3))}, a whole number.`
+      : `Turning by 1/${FV.n} does not fit: only ${hit} of ${tot} dots land on dots. 2cos(360°/${FV.n}) = ${(2 * Math.cos(t)).toFixed(3)}, not a whole number.`;
+  }
+  $('fvSq').onclick = () => { FV.hex = false; $('fvSq').setAttribute('aria-pressed', true); $('fvHex').setAttribute('aria-pressed', false); fvDraw(); };
+  $('fvHex').onclick = () => { FV.hex = true; $('fvSq').setAttribute('aria-pressed', false); $('fvHex').setAttribute('aria-pressed', true); fvDraw(); };
+  $('fvN').oninput = e => { FV.n = +e.target.value; $('fvNO').textContent = FV.n; fvDraw(); };
+  const PEN = (() => { const e = [0, 1, 2, 3, 4].map(j => [Math.cos(2 * Math.PI * j / 5), Math.sin(2 * Math.PI * j / 5)]), g = 0.2, N = 7, out = [];
+    for (let r = 0; r < 5; r++) for (let s = r + 1; s < 5; s++) for (let kr = -N; kr <= N; kr++) for (let ks = -N; ks <= N; ks++) {
+      const A = kr + g, B = ks + g, det = e[r][0] * e[s][1] - e[r][1] * e[s][0], x = (A * e[s][1] - e[r][1] * B) / det, y = (e[r][0] * B - A * e[s][0]) / det;
+      const K = e.map((v, j) => j === r ? kr : j === s ? ks : Math.ceil(x * v[0] + y * v[1] - g));
+      const P = [0, 0]; K.forEach((k, j) => { P[0] += k * e[j][0]; P[1] += k * e[j][1]; });
+      const v = [P, [P[0] + e[r][0], P[1] + e[r][1]], [P[0] + e[r][0] + e[s][0], P[1] + e[r][1] + e[s][1]], [P[0] + e[s][0], P[1] + e[s][1]]];
+      out.push({ v, thick: (s - r) === 1 || (s - r) === 4 }); }
+    return out; })();
+  const PV = { rot: 0, dx: 0, anim: null };
+  function penDraw() {
+    const { c, w } = sized($('penCv')), sc = w / 9, cx = w / 2, draw = (rot, dx, ghost) => {
+      const C = Math.cos(rot), S = Math.sin(rot);
+      for (const t of PEN) { c.beginPath(); t.v.forEach(([x, y], i) => { const X = C * x - S * y + dx, Y = S * x + C * y; i ? c.lineTo(cx + X * sc, cx - Y * sc) : c.moveTo(cx + X * sc, cx - Y * sc); }); c.closePath();
+        if (ghost) { c.strokeStyle = css('--accent'); c.lineWidth = 1.6; c.stroke(); } else { c.fillStyle = t.thick ? '#f7c9d6' : '#c9dcf7'; c.fill(); c.strokeStyle = css('--ink'); c.lineWidth = .8; c.stroke(); } } };
+    draw(0, 0, false); if (PV.rot || PV.dx) draw(PV.rot, PV.dx, true);
+  }
+  function penAnim(kind) { if (!VIP) return; const t0 = performance.now();
+    const step = now => { const u = Math.min(1, (now - t0) / 1400); if (kind === 'rot') PV.rot = 2 * Math.PI / 5 * u, PV.dx = 0; else PV.dx = 1.7 * u, PV.rot = 0; penDraw(); if (u < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+    setTimeout(() => { const st = $('penStatus'); st.className = 'status ' + (kind === 'rot' ? 'ok' : 'no'); st.textContent = kind === 'rot' ? 'Turned by 72° about the centre: every pink edge lies on a tile edge. Five-fold symmetry.' : 'Slid sideways: the pink copy never fits again, wherever you stop. No repeating.'; }, 1450); }
+  $('penRot').onclick = () => penAnim('rot'); $('penSlide').onclick = () => penAnim('slide');
+
+  // ------------------------------------------------------------- 8 infinite kaleidoscope: triangle groups (p, q, 2), folded per pixel
+  const HY = { P: 5, Q: 4, two: true, strokes: [], cur: null, res: 400 };
+  const PRESETS = [[4, 4, 'flat'], [6, 3, 'flat'], [5, 4, 'disc'], [7, 3, 'disc'], [6, 4, 'disc'], [8, 3, 'disc']];
+  const FREE_HY = '5,4';
+  function fold(x, y, P, Q) {
+    const a = Math.PI / P, ca = Math.cos(a), sa = Math.sin(a), flat = Math.abs(1 / P + 1 / Q - .5) < 1e-9; let par = 0;
+    let D = 0, R2 = 0; const L = .3; if (!flat) { const cq = Math.cos(Math.PI / Q); D = 1 / Math.sqrt(1 - sa * sa / (cq * cq)); R2 = D * D - 1; }
+    for (let i = 0; i < 90; i++) { let ch = false;
+      if (y < 0) { y = -y; par ^= 1; ch = true; }
+      const d = -sa * x + ca * y; if (d > 0) { x += 2 * d * sa; y -= 2 * d * ca; par ^= 1; ch = true; }
+      if (flat) { if (x > L) { x = 2 * L - x; par ^= 1; ch = true; } }
+      else { const dx = x - D, dd = dx * dx + y * y; if (dd < R2) { const k = R2 / dd; x = D + dx * k; y *= k; par ^= 1; ch = true; } }
+      if (!ch) break; }
+    return [x, y, par];
+  }
+  const motif = document.createElement('canvas'); motif.width = motif.height = 600; const mctx = motif.getContext('2d', { willReadFrequently: true });
+  function hyMotif() { mctx.clearRect(0, 0, 600, 600); mctx.lineCap = mctx.lineJoin = 'round';
+    for (const s of HY.strokes) { mctx.strokeStyle = s.col; mctx.lineWidth = 5; let prev = null;
+      for (const p of s.pts) { const f = fold(p[0], p[1], HY.P, HY.Q); if (prev && Math.hypot(f[0] - prev[0], f[1] - prev[1]) < .08) { mctx.beginPath(); mctx.moveTo(300 + 300 * prev[0], 300 - 300 * prev[1]); mctx.lineTo(300 + 300 * f[0], 300 - 300 * f[1]); mctx.stroke(); } prev = f; } } }
+  function hyDraw() {
+    const cv = $('hyCv'), b = cv.getBoundingClientRect(), n = HY.res; cv.width = n; cv.height = n; const c = cv.getContext('2d');
+    const img = c.createImageData(n, n), md = mctx.getImageData(0, 0, 600, 600).data, flat = Math.abs(1 / HY.P + 1 / HY.Q - .5) < 1e-9;
+    const dark = HY.two ? [29, 34, 48] : [228, 231, 239], light = HY.two ? [246, 247, 249] : [240, 242, 247], out = [246, 247, 249];
+    for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) { const x = (i + .5) / n * 2 - 1, y = 1 - (j + .5) / n * 2, o = 4 * (j * n + i);
+      if (!flat && x * x + y * y >= .9995) { img.data[o] = out[0]; img.data[o + 1] = out[1]; img.data[o + 2] = out[2]; img.data[o + 3] = 255; continue; }
+      const [fx, fy, par] = fold(x, y, HY.P, HY.Q); let col = par ? dark : light;
+      const mx = Math.round(300 + 300 * fx), my = Math.round(300 - 300 * fy);
+      if (mx >= 0 && mx < 600 && my >= 0 && my < 600) { const q = 4 * (my * 600 + mx); if (md[q + 3] > 40) col = [md[q], md[q + 1], md[q + 2]]; }
+      img.data[o] = col[0]; img.data[o + 1] = col[1]; img.data[o + 2] = col[2]; img.data[o + 3] = 255; }
+    c.putImageData(img, 0, 0);
+    $('hyName').textContent = `mirrors at 180°/${HY.P}, 180°/${HY.Q} and 90° · 1/${HY.P} + 1/${HY.Q} ${flat ? '= 1/2: the flat plane' : '< 1/2: the hyperbolic plane'}`;
+  }
+  PRESETS.forEach(([p, q, kind]) => { const b = document.createElement('button'); b.className = 'btn'; b.type = 'button'; b.textContent = `${p}, ${q}${kind === 'flat' ? ' · flat' : ''}`;
+    b.setAttribute('aria-pressed', `${p},${q}` === `${HY.P},${HY.Q}`);
+    b.onclick = () => { if (!VIP && `${p},${q}` !== FREE_HY) { $('hyNote').textContent = 'This kaleidoscope is in the VIP lab. The 5, 4 one is free to look at.'; return; }
+      HY.P = p; HY.Q = q; [...$('hyChips').children].forEach(x => x.setAttribute('aria-pressed', x === b)); hyMotif(); hyDraw(); };
+    $('hyChips').append(b); });
+  $('hyTwo').onclick = e => { HY.two = !HY.two; e.target.setAttribute('aria-pressed', HY.two); hyDraw(); };
+  $('hyClear').onclick = () => { HY.strokes = []; hyMotif(); hyDraw(); };
+  (() => { const cv = $('hyCv'); let raf = 0; const toM = ([x, y]) => { const b = cv.getBoundingClientRect(); return [x / b.width * 2 - 1, 1 - y / b.height * 2]; };
+    pointer(cv, p => { if (!VIP) return; HY.cur = { pts: [toM(p)], col: PAL[HY.strokes.length % 8] }; HY.strokes.push(HY.cur); },
+      p => { if (!HY.cur) return; HY.cur.pts.push(toM(p)); if (!raf) raf = requestAnimationFrame(() => { raf = 0; hyMotif(); hyDraw(); }); }, () => { HY.cur = null; }); })();
+
+  // ------------------------------------------------------------- 9 research corner
+  const RS = [
+    { t: 'Heesch\'s problem', s: 'Open', p: 'Some shapes cannot tile the plane, yet can be surrounded by copies of themselves once, twice, several times before getting stuck. The record so far is a shape that can be surrounded 6 times (Bojan Bašić, 2020). Is there a largest possible number?',
+      j: 'Start with polyominoes on squared paper: find a shape you can surround once but not twice. Craig Kaplan has computed these numbers for thousands of small shapes.', l: [['Heesch\'s problem', 'https://en.wikipedia.org/wiki/Heesch%27s_problem'], ['Kaplan: Heesch numbers of unmarked polyforms', 'https://arxiv.org/abs/2105.09438']] },
+    { t: 'The einstein tile', s: 'Solved in 2023', p: 'For 50 years mathematicians asked for a single tile that covers the plane but never in a repeating pattern. In 2023 David Smith, Joseph Myers, Craig Kaplan and Chaim Goodman-Strauss found the "hat", and soon after the "spectre", which needs no mirror images.',
+      j: 'Print and cut out hats. Can you find the places where reflected hats are forced? What is the ratio of reflected to unreflected hats in a big patch?', l: [['An aperiodic monotile (arXiv)', 'https://arxiv.org/abs/2303.10798']] },
+    { t: 'Two-colour symmetry', s: 'Classical, still rich', p: 'Allow a move to swap black and white and the counting changes: there are 17 two-colour friezes and 46 two-colour wallpapers. Escher\'s fish and birds use them.',
+      j: 'Collect ten black-and-white patterns (floors, fabrics, Escher prints) and find which moves keep the pattern and which swap the colours.', l: [['Symmetry engine: Lab 8, two colours', '#hyper']] },
+    { t: 'Turns in higher dimensions', s: 'A neat theorem', p: 'In the plane a grid can only turn by 1/2, 1/3, 1/4 or 1/6. In four dimensions a grid can turn by a fifth. There is an exact formula for the smallest dimension in which a grid allows a turn of order n.',
+      j: 'Using 2cos(360°/n) and its cousins, explain why order 5 needs four dimensions and order 7 needs six.', l: [['Crystallographic restriction theorem', 'https://en.wikipedia.org/wiki/Crystallographic_restriction_theorem']] },
+    { t: 'Quasicrystals', s: 'Nobel Prize 2011', p: 'Penrose tilings have five-fold symmetry about a point but never repeat. Dan Shechtman saw the same order in a real alloy in 1982 and was first told it was impossible.',
+      j: 'In Lab 7 the tiling comes from five families of parallel lines (de Bruijn\'s method). Change the offsets of the lines: which choices keep a five-fold centre?', l: [['Nobel Prize in Chemistry 2011', 'https://www.nobelprize.org/prizes/chemistry/2011/summary/']] },
+    { t: 'Symmetry of rolling curves', s: 'Project', p: 'A Spirograph with gear p/q has q-fold turning symmetry and q mirrors. With several pens, when does the picture keep all of them, and when does it gain or lose some?',
+      j: 'Use the Spirograph Lab to test 2, 3 and 4 pens with gear 3/8 and gear 5/12, then prove what you see.', l: [['Spirograph Lab', 'https://interactiveexplorer.space/math-universe/spirograph-lab']] },
+  ];
+  RS.forEach((r, i) => { const el = document.createElement('article'); el.className = 'card' + (VIP ? '' : ' locked');
+    el.innerHTML = `<span class="tag">${r.s}</span><h3>${r.t}</h3><p class="note">${r.p}</p><p><b>Project.</b> ${r.j}</p><div class="note">${r.l.map(([a, h]) => `<a href="${h}"${h[0] === '#' ? '' : ' target="_blank" rel="noopener"'}>${a}</a>`).join(' · ')}</div>` +
+      (VIP ? '' : `<div class="veil" style="place-items:end center;backdrop-filter:none;-webkit-backdrop-filter:none;background:linear-gradient(to bottom, transparent 38%, var(--sheet) 58%)"><div class="inner"><a class="btn gold" href="/vip">Read the project in VIP</a></div></div>`);
+    $('rsGrid').append(el); });
+
   // ------------------------------------------------------------- boot
-  function all() { mvDraw(); K.draw(); F.draw(); W.draw(); quizRound(); VIDS.forEach(v => v.render()); measure(); }
+  if (VIP) { ['mgCard', 'penCard'].forEach(id => { $(id).classList.remove('locked'); $(id).querySelector('.veil').hidden = true; }); $('hyNote').textContent = 'Draw inside the picture: every stroke is copied by all the mirrors.'; $('vipState').textContent = 'VIP unlocked. Enjoy the labs.'; $('vipBtnTop').hidden = true; }
+  function all() { mvDraw(); K.draw(); F.draw(); W.draw(); quizRound(); VIDS.forEach(v => v.render()); measure(); mgRender(); fvDraw(); penDraw(); hyMotif(); hyDraw(); }
   shapeChips(); mvUpdate('Choose a move.'); K.strokes = demoStrokes();
   window.addEventListener('resize', () => all());
   all(); requestAnimationFrame(heroDraw);

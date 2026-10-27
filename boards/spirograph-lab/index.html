@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spirograph Lab</title>
+<meta name="description" content="Roll a gear inside a ring and draw with a pen: pick two numbers, a gear size and a pen position, and watch the art appear. Find the gear that draws a straight line.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Same lab-bench layout as Light & Gears: the instrument (canvas) left and sticky, controls and experiments right;
+   stacked on a phone. Colours: ink + the channel's Shorts palette. */
+:root {
+  --paper: #f6f7f9; --sheet: #ffffff; --ink: #1d2230; --ink-2: #5b6274; --rule: #dfe2ea;
+  --gear: #d1336b; --ring: #9aa1b2; --match: #1c8a4a; --focus: #1b7fae;
+  --f-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-data: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12151c; --sheet: #191d27; --ink: #e9ecf3; --ink-2: #a3aabb; --rule: #2b3140;
+    --gear: #ff5c93; --ring: #6c7488; --match: #4cc77f; --focus: #4fb6e6; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12151c; --sheet: #191d27; --ink: #e9ecf3; --ink-2: #a3aabb; --rule: #2b3140;
+  --gear: #ff5c93; --ring: #6c7488; --match: #4cc77f; --focus: #4fb6e6; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 40px; }
+a { color: var(--focus); }
+.wrap { max-width: 1120px; margin: 0 auto; display: grid; gap: 20px; }
+header { display: grid; gap: 6px; }
+.eyebrow { font-family: var(--f-data); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+.eyebrow a { color: inherit; text-decoration: none; } .eyebrow a:hover { color: var(--ink); }
+h1 { font-family: var(--f-display); font-weight: 600; font-size: clamp(30px, 5vw, 46px); line-height: 1.08; margin: 0; text-wrap: balance; }
+h1 em { font-style: italic; font-weight: 500; color: var(--gear); }
+.lede { margin: 0; max-width: 64ch; color: var(--ink-2); }
+.bench { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 820px) { .bench { grid-template-columns: minmax(0, 1fr); } }
+.stage { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); display: grid; gap: 10px; }
+@media (max-width: 820px) { .stage { position: static; } }
+.box { position: relative; background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; aspect-ratio: 1 / 1; overflow: hidden; }
+canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+.badge { position: absolute; left: 12px; bottom: 12px; font-family: var(--f-data); font-size: 13px; padding: 5px 10px; border-radius: 999px;
+  background: var(--sheet); border: 1.5px solid var(--match); color: var(--match); opacity: 0; transform: translateY(4px); transition: opacity .25s, transform .25s; }
+.badge.on { opacity: 1; transform: none; }
+.readout { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 420px) { .readout { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ro { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 8px 10px; min-width: 0; }
+.ro b { display: block; font-family: var(--f-data); font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.ro span { font-family: var(--f-data); font-size: 17px; font-variant-numeric: tabular-nums; }
+.note { font-size: 14px; color: var(--ink-2); margin: 0; min-height: 3em; }
+.panel { display: grid; gap: 14px; min-width: 0; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 12px 14px; display: grid; gap: 10px; min-width: 0; }
+.card h2 { font-family: var(--f-display); font-weight: 600; font-size: 21px; margin: 0; }
+.row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.row label { font-size: 13px; color: var(--ink-2); min-width: 7em; }
+.row output { font-family: var(--f-data); font-size: 13px; font-variant-numeric: tabular-nums; min-width: 4.5em; }
+input[type=range] { flex: 1 1 140px; min-width: 0; accent-color: var(--ink); }
+.btn { font: inherit; font-size: 13px; background: var(--sheet); color: var(--ink); border: 1px solid var(--rule); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+.btn:hover { border-color: var(--ink-2); }
+.btn.primary { background: var(--ink); color: var(--sheet); border-color: var(--ink); }
+.btn:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.gallery button { font: inherit; background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 6px; cursor: pointer; display: grid; gap: 4px; color: var(--ink); min-width: 0; }
+.gallery button:hover { border-color: var(--ink-2); }
+.gallery canvas { aspect-ratio: 1 / 1; height: auto; }
+.gallery span { font-family: var(--f-data); font-size: 11px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+ol.exp { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; }
+ol.exp li::marker { font-family: var(--f-data); color: var(--ink-2); }
+ol.exp b { font-weight: 600; }
+.share { display: grid; gap: 8px; }
+.share code { font-family: var(--f-data); font-size: 13px; background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 10px; overflow-wrap: anywhere; }
+.links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 640px) { .links { grid-template-columns: minmax(0, 1fr); } }
+.links a.card { text-decoration: none; color: var(--ink); }
+.links a.card:hover { border-color: var(--ink-2); }
+.links small { font-family: var(--f-data); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.links p { margin: 0; color: var(--ink-2); font-size: 14px; }
+footer { color: var(--ink-2); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow"><a href="/math-universe">The Math Universe</a> · Rolling Circles · Lab board</div>
+    <h1>Spirograph Lab: <em>two numbers</em>, one drawing</h1>
+    <p class="lede">A gear rolls inside a ring and a pen rides on the gear. Choose the gear's size as a fraction of the ring and how far out the pen sits. One choice draws a perfectly straight line. Can you find it?</p>
+  </header>
+
+  <section class="bench">
+    <div class="stage">
+      <div class="box">
+        <canvas id="cv" aria-label="The ring, the rolling gear and the curve its pen draws"></canvas>
+        <div class="badge" id="badge">a straight line: the Tusi couple</div>
+      </div>
+      <div class="readout" aria-live="polite">
+        <div class="ro"><b>gear</b><span id="roGear">3/8</span></div>
+        <div class="ro"><b>pen</b><span id="roPen">0.80</span></div>
+        <div class="ro"><b>lobes</b><span id="roLobes">8</span></div>
+        <div class="ro"><b>laps to close</b><span id="roLaps">3</span></div>
+      </div>
+      <p class="note" id="note"></p>
+    </div>
+
+    <div class="panel">
+      <div class="card">
+        <h2>Your two numbers</h2>
+        <div class="row"><label for="num">gear top</label><input id="num" type="range" min="1" max="23" step="1" value="3"><output id="numO">3</output></div>
+        <div class="row"><label for="den">gear bottom</label><input id="den" type="range" min="2" max="24" step="1" value="8"><output id="denO">8</output></div>
+        <div class="row"><label for="pen">pen position</label><input id="pen" type="range" min="0" max="1" step="0.01" value="0.8"><output id="penO">0.80</output></div>
+        <div class="row"><label for="pens">pens</label><input id="pens" type="range" min="1" max="8" step="1" value="4"><output id="pensO">4</output></div>
+        <div class="row"><label for="spd">speed</label><input id="spd" type="range" min="0.2" max="4" step="0.1" value="1.2"><output id="spdO">1.2×</output></div>
+        <div class="row">
+          <button class="btn primary" id="play" type="button">Pause</button>
+          <button class="btn" id="instant" type="button">Draw it all</button>
+          <button class="btn" id="clear" type="button">Start again</button>
+          <label class="row" style="gap:6px;min-width:0"><input type="checkbox" id="showGear" checked> show the gear</label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Start from these</h2>
+        <div class="gallery" id="gallery"></div>
+      </div>
+
+      <div class="card">
+        <h2>Experiments</h2>
+        <ol class="exp">
+          <li><b>Find the straight line.</b> Try gear 1/2. Move the pen to 1, right on the rim. What does the pen do?</li>
+          <li><b>Count the lobes.</b> Try 1/3, 1/4, 1/5. How does the number of points relate to the gear's bottom number?</li>
+          <li><b>Count the laps.</b> Try 3/8, then 5/8. How many times does the gear go round the ring before the drawing closes?</li>
+          <li><b>Pull the pen in.</b> Keep the gear and slide the pen from 1 to 0. When do the sharp points turn into loops, and then into smooth waves?</li>
+          <li><b>Make your own.</b> When you find one you love, copy your numbers and post them under the video. We draw the best ones in a Short.</li>
+        </ol>
+      </div>
+
+      <div class="card share">
+        <h2>Share your numbers</h2>
+        <code id="shareText"></code>
+        <div class="row"><button class="btn primary" id="copy" type="button">Copy for the comments</button><span id="copied" class="note" style="min-height:0"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="links">
+    <a class="card" href="https://www.youtube.com/shorts/mfP_vpkPfGQ" target="_blank" rel="noopener">
+      <small>Watch the Short</small>
+      <h2>Can a gear draw a straight line?</h2>
+      <p>Spirograph art from two numbers, in 41 seconds.</p>
+    </a>
+    <a class="card" href="https://interactiveart.space/" target="_blank" rel="noopener">
+      <small>Go deeper · Interactive Art</small>
+      <h2>Make more art from simple rules</h2>
+      <p>Generative brushes, a kaleidoscope and particle fields in the Interactive Explorer suite.</p>
+    </a>
+  </section>
+  <footer>The maths: a gear of radius r rolls inside a ring of radius 1. With r = p/q in lowest terms the drawing has q lobes and closes after p laps. At r = 1/2 with the pen on the rim, every point of the gear's edge moves on a straight line: the Tusi couple, described by Nasir al-Din al-Tusi in the 13th century.</footer>
+</div>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const cv = $('cv'), ctx = cv.getContext('2d');
+  const PAL = ['#db2945','#f27a0d','#d9a800','#29a13d','#00999e','#1a66d9','#6b3dd1','#cc2e9e'];
+  const gcd = (a, b) => b ? gcd(b, a % b) : a;
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const S = { num: 3, den: 8, pen: 0.8, pens: 4, speed: 1.2, playing: true, t: 0, showGear: true };
+
+  // read shared numbers from the address: ?g=3-8&p=0.8&n=4
+  try {
+    const q = new URLSearchParams(location.search);
+    const g = (q.get('g') || '').split(/[-\/]/).map(Number);
+    if (g.length === 2 && g[0] >= 1 && g[1] >= 2 && g[1] <= 24 && g[0] < g[1]) { S.num = g[0]; S.den = g[1]; }
+    const p = parseFloat(q.get('p')); if (p >= 0 && p <= 1) S.pen = p;
+    const n = parseInt(q.get('n')); if (n >= 1 && n <= 8) S.pens = n;
+  } catch (e) {}
+
+  const reduced = () => { const g = gcd(S.num, S.den); return [S.num / g, S.den / g]; };
+  const r = () => S.num / S.den;
+  // pen position z(t) for ring radius 1, gear radius r, pen at d = pen * r, phase phi
+  const z = (t, rr, d, phi) => {
+    const a = phi - (1 - rr) * t / rr;
+    return [(1 - rr) * Math.cos(t) + d * Math.cos(a), (1 - rr) * Math.sin(t) + d * Math.sin(a)];
+  };
+  const period = () => 2 * Math.PI * reduced()[0];          // closes after p laps of the centre
+
+  let W = 0, dpr = 1;
+  function size() {
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    const b = cv.getBoundingClientRect(); W = b.width;
+    cv.width = Math.round(b.width * dpr); cv.height = Math.round(b.height * dpr);
+  }
+  const X = x => W / 2 + x * W * 0.44, Y = y => W / 2 - y * W * 0.44;
+
+  function drawCurve(c, size_, rr, pen, pens, tEnd, lw, alpha) {
+    const cx = size_ / 2, R = size_ * 0.44, d = pen * rr;
+    const steps = Math.max(200, Math.ceil(tEnd / (2 * Math.PI) * 360));
+    for (let k = 0; k < pens; k++) {
+      const phi = 2 * Math.PI * k / pens;
+      c.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const t = tEnd * i / steps, [x, y] = z(t, rr, d, phi);
+        const px = cx + x * R, py = cx - y * R;
+        i ? c.lineTo(px, py) : c.moveTo(px, py);
+      }
+      c.strokeStyle = PAL[(k * 8 / pens | 0) % 8]; c.globalAlpha = alpha; c.lineWidth = lw; c.stroke();
+    }
+    c.globalAlpha = 1;
+  }
+
+  function gearShape(cx, cy, rad, teeth, rot) {
+    const dd = Math.min(5, rad * 0.12), w = 2 * Math.PI / teeth;
+    ctx.beginPath();
+    for (let i = 0; i < teeth; i++) {
+      const a0 = rot + i * w;
+      [[0, rad - dd], [.2, rad - dd], [.32, rad + dd], [.68, rad + dd], [.8, rad - dd]].forEach(([f, rr], j) => {
+        const a = a0 + f * w, x = cx + rr * Math.cos(a), y = cy - rr * Math.sin(a);
+        (i === 0 && j === 0) ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      });
+    }
+    ctx.closePath();
+  }
+
+  function frame() {
+    const rr = r(), T = period();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, W);
+    // ring
+    ctx.beginPath(); ctx.arc(W / 2, W / 2, W * 0.44, 0, 2 * Math.PI);
+    ctx.strokeStyle = css('--ring'); ctx.lineWidth = 2; ctx.stroke();
+    const tEnd = Math.min(S.t, T);
+    drawCurve(ctx, W, rr, S.pen, S.pens, Math.max(0.0001, tEnd), 2.2, 0.95);
+    if (S.showGear) {
+      const t = S.t % T, c = [(1 - rr) * Math.cos(t), (1 - rr) * Math.sin(t)], rot = -(1 - rr) * t / rr;
+      gearShape(X(c[0]), Y(c[1]), rr * W * 0.44, Math.max(8, Math.round(48 * rr)), rot);
+      ctx.fillStyle = css('--gear'); ctx.globalAlpha = .08; ctx.fill(); ctx.globalAlpha = .8;
+      ctx.strokeStyle = css('--gear'); ctx.lineWidth = 1.5; ctx.stroke(); ctx.globalAlpha = 1;
+      for (let k = 0; k < S.pens; k++) {
+        const phi = 2 * Math.PI * k / S.pens, [x, y] = z(t, rr, S.pen * rr, phi);
+        ctx.beginPath(); ctx.moveTo(X(c[0]), Y(c[1])); ctx.lineTo(X(x), Y(y));
+        ctx.strokeStyle = css('--ink'); ctx.globalAlpha = .35; ctx.lineWidth = 1; ctx.stroke(); ctx.globalAlpha = 1;
+        ctx.beginPath(); ctx.arc(X(x), Y(y), 4.5, 0, 2 * Math.PI); ctx.fillStyle = PAL[(k * 8 / S.pens | 0) % 8]; ctx.fill();
+      }
+    }
+  }
+
+  let last = performance.now();
+  function loop(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (S.playing) S.t += dt * S.speed * 2.2;
+    frame(); requestAnimationFrame(loop);
+  }
+
+  function readouts() {
+    const [p, q] = reduced();
+    $('roGear').textContent = `${S.num}/${S.den}` + ((p !== S.num) ? ` = ${p}/${q}` : '');
+    $('roPen').textContent = S.pen.toFixed(2);
+    $('roLobes').textContent = q;
+    $('roLaps').textContent = p;
+    $('numO').textContent = S.num; $('denO').textContent = S.den; $('penO').textContent = S.pen.toFixed(2);
+    $('pensO').textContent = S.pens; $('spdO').textContent = S.speed.toFixed(1) + '×';
+    const line = (p === 1 && q === 2 && S.pen > 0.995);
+    $('badge').classList.toggle('on', line);
+    let note = '';
+    if (line) note = 'Every pen on the rim of a half-size gear slides back and forth on a straight line. A rolling circle making straight motion.';
+    else if (p === 1 && q === 2) note = 'Half-size gear: with the pen inside the rim you get ellipses. Push the pen all the way out to 1.';
+    else if (S.pen > 0.995) note = `Pen on the rim: ${q} sharp points (cusps), because the gear fits into the ring ${q}/${p} times.`;
+    else if (S.pen < 0.02) note = 'Pen at the centre of the gear: it just draws a circle.';
+    else note = `Gear ${p}/${q}: the drawing has ${q} lobes and closes after ${p} lap${p > 1 ? 's' : ''} of the ring.`;
+    $('note').textContent = note;
+    const share = `gear ${S.num}/${S.den} · pen ${S.pen.toFixed(2)}` + (S.pens > 1 ? ` · ${S.pens} pens` : '');
+    $('shareText').textContent = share + ' — ' + location.origin + location.pathname + `?g=${S.num}-${S.den}&p=${S.pen.toFixed(2)}&n=${S.pens}`;
+    try { history.replaceState(null, '', `?g=${S.num}-${S.den}&p=${S.pen.toFixed(2)}&n=${S.pens}`); } catch (e) {}
+  }
+
+  function setInputs() {
+    $('num').max = S.den - 1; $('num').value = S.num; $('den').value = S.den; $('pen').value = S.pen; $('pens').value = S.pens; $('spd').value = S.speed;
+  }
+  const restart = () => { S.t = 0; readouts(); };
+  $('num').addEventListener('input', e => { S.num = +e.target.value; restart(); });
+  $('den').addEventListener('input', e => { S.den = +e.target.value; if (S.num >= S.den) S.num = S.den - 1; setInputs(); restart(); });
+  $('pen').addEventListener('input', e => { S.pen = +e.target.value; restart(); });
+  $('pens').addEventListener('input', e => { S.pens = +e.target.value; restart(); });
+  $('spd').addEventListener('input', e => { S.speed = +e.target.value; readouts(); });
+  $('play').addEventListener('click', () => { S.playing = !S.playing; $('play').textContent = S.playing ? 'Pause' : 'Play'; });
+  $('instant').addEventListener('click', () => { S.t = period(); });
+  $('clear').addEventListener('click', () => { S.t = 0; });
+  $('showGear').addEventListener('change', e => { S.showGear = e.target.checked; });
+  $('copy').addEventListener('click', async () => {
+    const txt = $('shareText').textContent;
+    try { await navigator.clipboard.writeText(txt); $('copied').textContent = 'Copied. Paste it under the video.'; }
+    catch (e) { $('copied').textContent = 'Select the text above and copy it.'; }
+  });
+
+  // gallery
+  const G = [
+    ['Tusi line', 1, 2, 1.0, 6], ['Deltoid', 1, 3, 1.0, 1], ['Astroid', 1, 4, 1.0, 1],
+    ['3/8 · 0.8', 3, 8, 0.8, 4], ['5/12 · 0.9', 5, 12, 0.9, 3], ['7/16 · 0.62', 7, 16, 0.62, 4],
+  ];
+  const gal = $('gallery');
+  G.forEach(([name, n, d, p, k]) => {
+    const b = document.createElement('button'); b.type = 'button';
+    const c = document.createElement('canvas'); const s = 120; c.width = s * 2; c.height = s * 2;
+    const g = c.getContext('2d'); g.scale(2, 2);
+    const gg = gcd(n, d); drawCurve(g, s, n / d, p, k, 2 * Math.PI * (n / gg), 1.2, 0.95);
+    const l = document.createElement('span'); l.textContent = name;
+    b.append(c, l); b.setAttribute('aria-label', `Load ${name}: gear ${n}/${d}, pen ${p}`);
+    b.addEventListener('click', () => { S.num = n; S.den = d; S.pen = p; S.pens = k; setInputs(); restart(); });
+    gal.append(b);
+  });
+
+  window.addEventListener('resize', size);
+  size(); setInputs(); readouts(); requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

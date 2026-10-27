@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>pmm wallpaper group: how to spot it, examples | Symmetry Engine</title><meta name="description" content="The pmm wallpaper group (*2222): Mirrors in two perpendicular directions; every half-turn centre sits where mirrors cross. How to recognise it, real examples, and a live pattern you can explore.">
+<link rel="canonical" href="https://symmetryengine.space/patterns/wallpaper/pmm/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>:root{--paper:#f6f7f9;--sheet:#fff;--ink:#1d2230;--ink-2:#5b6274;--rule:#dfe2ea;--accent:#d1336b;--focus:#1b7fae;--gold:#b7791f;
+--f-display:"Newsreader","Iowan Old Style",Georgia,serif;--f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--f-data:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#12151c;--sheet:#191d27;--ink:#e9ecf3;--ink-2:#a3aabb;--rule:#2b3140;--accent:#ff5c93;--focus:#4fb6e6;--gold:#f6c453;color-scheme:dark}}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;padding:0 max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+a{color:var(--focus)}.wrap{max-width:1080px;margin:0 auto}
+.top{border-bottom:1px solid var(--rule);margin:0 -16px 24px;padding:10px 16px}.top .wrap{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.brand{font-family:var(--f-display);font-weight:600;font-size:20px;color:var(--ink);text-decoration:none}.brand span{color:var(--accent)}
+.top nav{display:flex;gap:14px;flex-wrap:wrap}.top nav a{font-family:var(--f-data);font-size:12px;text-transform:uppercase;letter-spacing:.05em;text-decoration:none;color:var(--ink-2)}
+.eyebrow{font-family:var(--f-data);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:0}.eyebrow a{color:inherit}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(32px,5.5vw,52px);line-height:1.05;margin:6px 0 10px}h1 em{color:var(--accent)}
+h2{font-family:var(--f-display);font-weight:600;font-size:21px;margin:0 0 6px}.sec{font-size:28px;margin:28px 0 12px}
+.lede{font-size:18px;color:var(--ink-2);max-width:62ch;margin:0 0 20px}
+.bench{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px;align-items:start}@media(max-width:820px){.bench{grid-template-columns:minmax(0,1fr)}}
+.side{display:grid;gap:12px;min-width:0}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}@media(max-width:640px){.grid2{grid-template-columns:minmax(0,1fr)}}
+.box{background:var(--sheet);border:1px solid var(--rule);border-radius:14px;overflow:hidden;aspect-ratio:1}.box.strip{aspect-ratio:3/1}@media(max-width:640px){.box.strip{aspect-ratio:2/1}}
+canvas{display:block;width:100%;height:100%}
+.card{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;padding:14px 16px;min-width:0}.card p{margin:0 0 8px}
+.mono,code{font-family:var(--f-data);font-size:14px}.note{color:var(--ink-2);font-size:14px}
+.btn{display:inline-block;font-size:14px;border-radius:8px;padding:7px 14px;text-decoration:none;border:1px solid var(--rule);color:var(--ink);background:var(--sheet);cursor:pointer;font-family:inherit}
+.btn.primary{background:var(--ink);color:var(--sheet);border-color:var(--ink)}.btn.gold{background:var(--gold);border-color:var(--gold);color:#fff}
+.pn{display:flex;justify-content:space-between;gap:10px;margin:24px 0;font-family:var(--f-data);font-size:14px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.tiles.fr{grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.tile{background:var(--sheet);border:1px solid var(--rule);border-radius:12px;overflow:hidden;text-decoration:none;color:var(--ink);display:grid}
+.tile canvas{aspect-ratio:1;border-bottom:1px solid var(--rule)}.tile.wide canvas{aspect-ratio:3/1}.tile b{font-family:var(--f-data);padding:8px 10px 0}.tile span{font-size:13px;color:var(--ink-2);padding:0 10px 10px}
+.wsgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:16px 0}.ws canvas{aspect-ratio:1;border:1px solid var(--rule);border-radius:8px}.ws p{font-size:14px}
+.answers{font-size:12px;color:var(--ink-2);border-top:1px dashed var(--rule);padding-top:10px}
+footer{color:var(--ink-2);font-size:13px;border-top:1px solid var(--rule);padding-top:14px;margin-top:30px}
+@media print{.noprint,.top,footer{display:none}body{background:#fff;color:#000}.wsgrid{gap:10px}}
+</style></head><body>
+<header class="top"><div class="wrap"><a class="brand" href="/">Symmetry <span>Engine</span></a><nav><a href="/patterns/">All 24 patterns</a><a href="/#wallpaper">Draw</a><a href="/vip/">VIP</a></nav></div></header>
+<main class="wrap"><p class="eyebrow"><a href="/patterns/">Wallpaper patterns</a> · 6 of 17</p>
+<h1>The <em>pmm</em> wallpaper pattern</h1>
+<p class="lede">Mirrors in two perpendicular directions; every half-turn centre sits where mirrors cross.</p>
+<div class="bench"><div class="box"><canvas id="cv" aria-label="A wallpaper pattern with symmetry group pmm"></canvas></div>
+<div class="side">
+<div class="card"><h2>How to spot it</h2><p>A grid of mirror lines, like a window lattice.</p></div>
+<div class="card"><h2>Where you see it</h2><p>A lattice fence; a mummy case in the Louvre; the colour filter of Fujifilm X-Trans sensors.</p></div>
+<div class="card"><h2>Conway's code: <code>*2222</code></h2><p class="mono">* $1 + corner 2 $1/4 + corner 2 $1/4 + corner 2 $1/4 + corner 2 $1/4 = $2</p><p class="note">Every wallpaper code costs exactly $2. <a href="/#magic">Why?</a></p></div>
+<div class="card"><p>Drawing your own pmm wallpaper is part of Symmetry Engine VIP.</p><a class="btn gold" href="/vip/">Unlock all 17</a></div>
+</div></div>
+<nav class="pn"><a href="/patterns/wallpaper/cm/">← cm</a><a href="/patterns/">All patterns</a><a href="/patterns/wallpaper/pmg/">pmg →</a></nav></main>
+<footer class="wrap">Symmetry Engine · part of <a href="https://interactiveexplorer.space/">Interactive Explorer</a> · videos by <a href="https://interactiveexplorer.space/math-universe">The Math Universe</a></footer>
+<script src="/groups.js"></script><script>const PAL=['#db2945','#f27a0d','#d9a800','#29a13d','#00999e','#1a66d9','#6b3dd1','#cc2e9e'];
+const {FRIEZES,WALLPAPERS,apply}=window.SYM;
+const MOTIF=[{pts:[[.08,.1],[.2,.12],[.3,.22],[.34,.36]],col:PAL[0],w:4},{pts:[[.12,.3],[.16,.4],[.12,.46]],col:PAL[5],w:4},{pts:[[.3,.08],[.36,.08]],col:PAL[3],w:6}];
+const FMOTIF=[{pts:[[.1,.25],[.18,.3],[.28,.5],[.3,.7]],col:PAL[5],w:4},{pts:[[.14,.6],[.2,.62]],col:PAL[0],w:6}];
+function sized(cv){const d=Math.min(2,devicePixelRatio||1),b=cv.getBoundingClientRect();cv.width=Math.max(1,Math.round(b.width*d));cv.height=Math.max(1,Math.round(b.height*d));const c=cv.getContext('2d');c.setTransform(d,0,0,d,0,0);return {c,w:b.width,h:b.height};}
+function line(c,pts){c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1]));c.stroke();}
+function wall(cv,id,cell,scaleDiv){const {c,w,h}=sized(cv),g=WALLPAPERS.find(x=>x.id===id),{A,B}=g.lattice,s=w/(scaleDiv||3.2),cx=w/2,cy=h/2;
+ const toS=([u,v])=>[cx+s*(u*A[0]+v*B[0]),cy-s*(u*A[1]+v*B[1])];const R=Math.ceil(Math.max(w,h)/s/0.6)+2;
+ c.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--sheet');c.fillRect(0,0,w,h);
+ if(cell){c.beginPath();[[0,0],[1,0],[1,1],[0,1]].forEach((p,i)=>{const q=toS(p);i?c.lineTo(...q):c.moveTo(...q)});c.closePath();c.strokeStyle='#9aa1b2';c.setLineDash([4,5]);c.lineWidth=1;c.stroke();c.setLineDash([]);}
+ c.lineCap=c.lineJoin='round';for(const st of MOTIF){c.strokeStyle=st.col;c.lineWidth=st.w*w/600+1;for(const o of g.ops){const b=st.pts.map(p=>apply(o,p[0],p[1]));for(let i=-R;i<=R;i++)for(let j=-R;j<=R;j++)line(c,b.map(([u,v])=>toS([u+i,v+j])));}}}
+function frieze(cv,id){const {c,w,h}=sized(cv),g=FRIEZES.find(x=>x.id===id),cw=Math.min(h*.55,w/5),toS=([x,y])=>[x*cw,h/2-y*cw];
+ c.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--sheet');c.fillRect(0,0,w,h);c.strokeStyle='#dfe2ea';c.beginPath();c.moveTo(0,h/2);c.lineTo(w,h/2);c.stroke();
+ c.lineCap=c.lineJoin='round';for(const st of FMOTIF){c.strokeStyle=st.col;c.lineWidth=st.w*h/300+1;for(const o of g.ops)for(let k=-2;k<=Math.ceil(w/cw)+2;k++)line(c,st.pts.map(p=>{const q=apply(o,p[0],p[1]);return toS([q[0]+k,q[1]]);}));}}
+function renderWallpaper(id){const cv=document.getElementById('cv');const go=()=>wall(cv,id,true);go();addEventListener('resize',go);}
+function renderFrieze(id){const cv=document.getElementById('cv');const go=()=>frieze(cv,id);go();addEventListener('resize',go);}
+function renderTiles(){const go=()=>{document.querySelectorAll('canvas[data-wp]').forEach(cv=>wall(cv,cv.dataset.wp,false,cv.dataset.ws?2.4:1.6));document.querySelectorAll('canvas[data-fr]').forEach(cv=>frieze(cv,cv.dataset.fr));};go();addEventListener('resize',go);}
+
+renderWallpaper('pmm');</script></body></html>

@@ -1,0 +1,20 @@
+1
+00:00:00,000 --> 00:00:03,631
+Every point on this rolling gear draws a straight line.
+
+2
+00:00:05,231 --> 00:00:07,817
+Now make the gear a third of the ring.
+
+3
+00:00:10,417 --> 00:00:11,410
+A quarter.
+
+4
+00:00:14,010 --> 00:00:17,797
+Move the pen inside the gear, and try other sizes.
+
+5
+00:00:32,797 --> 00:00:39,798
+One rule. Two numbers: gear size and pen position. Give us yours, and we'll draw it next.
+

@@ -10,7 +10,7 @@ Go deeper with VIP (any gear ratio, several pens at once, 4K export): https://in
 🌌 More rolling circles: https://interactiveexplorer.space/math-universe/rolling-circles
 
 #maths #puzzle #geometry #ladder
-Pinned comment: Answer: B, a perfect quarter circle. Did you get it? Every other rung draws an oval, and all the ladders draw a star. Try it with gears: https://interactiveart.space/gears
+Pinned comment: Answer: B, a perfect quarter circle. Did you get it? Every other rung draws an oval, and all the ladders draw a star. Try it with gears: https://interactiveart.space/gears and play the free VIP teaser: https://interactiveart.space/vip/
 
 ## 2. A2, cube nets (Santa version): "Santa's elves cut 4 wrapping papers. Which one won't fold?"
 Title: Santa's elves cut 4 wrapping papers. Which one won't fold?
@@ -22,7 +22,7 @@ Go deeper with VIP (all 35 shapes, nets of other solids, printable worksheets): 
 🌌 More puzzles: https://interactiveexplorer.space/math-universe/puzzles-and-proofs
 
 #cubenets #puzzle #christmas #11plus #nonverbalreasoning
-Pinned comment: Answer: B. Any net with a 2×2 block of squares can't fold. Only 11 of the 35 six-square shapes make a box. Try them all: https://plicolab.space/cube-nets
+Pinned comment: Answer: B. Any net with a 2×2 block of squares can't fold. Only 11 of the 35 six-square shapes make a box. Try them all: https://plicolab.space/cube-nets and test yourself in the free VIP teaser, "Does this net fold?": https://plicolab.space/vip/
 
 ## 3. B2, Tusi: "Circle illusion"
 Title: Circle illusion: 32 dots, all moving in straight lines
@@ -34,7 +34,7 @@ Go deeper with VIP (any gear ratio, several pens at once, 4K export): https://in
 🌌 More rolling circles: https://interactiveexplorer.space/math-universe/rolling-circles
 
 #illusion #maths #tusicouple #geometry
-Pinned comment: Every dot moves only in a straight line. The circle is a gear half the size of the ring rolling inside it: the Tusi couple (1247). Roll it yourself: https://interactiveart.space/gears
+Pinned comment: Every dot moves only in a straight line. The circle is a gear half the size of the ring rolling inside it: the Tusi couple (1247). Roll it yourself: https://interactiveart.space/gears and go deeper in the free VIP teaser: https://interactiveart.space/vip/
 
 ## 4. B4, Spirograph: "Two numbers"
 Title: Spirograph art from two numbers: 7 turns, one perfect pattern
@@ -46,4 +46,4 @@ Go deeper with VIP (any gear ratio, pen anywhere, layered art, 4K export): https
 🌌 More rolling circles: https://interactiveexplorer.space/math-universe/rolling-circles
 
 #spirograph #mathart #maths #satisfying
-Pinned comment: Gear 7/16, pen 0.8: closes after 7 turns. Which two numbers should we draw next? Try yours: https://interactiveart.space/gears
+Pinned comment: Gear 7/16, pen 0.8: closes after 7 turns. Which two numbers should we draw next? Try yours: https://interactiveart.space/gears and go deeper in the free VIP teaser: https://interactiveart.space/vip/

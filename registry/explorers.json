@@ -93,7 +93,7 @@
   "link_for": "Satellites, orbits, Starlink, space debris",
   "applications": "Orbital mechanics, communications",
   "paid_url": "https://satelliteweb.space/vip/",
-  "target": "to confirm"
+  "target": "$19.99 (keep)"
  },
  {
   "name": "Voyagers in Space",
@@ -117,7 +117,7 @@
   "link_for": "Codes, ciphers, Enigma, cryptography puzzles",
   "applications": "Cryptography, puzzles, security basics",
   "paid_url": "https://cipherexplorer.app/vip",
-  "target": "$9.99"
+  "target": "$9.99 (keep)"
  },
  {
   "name": "Civilisation Atlas",
@@ -141,7 +141,7 @@
   "link_for": "Hacking, cyber attacks, passwords",
   "applications": "Security training, SOC skills",
   "paid_url": "https://cyberexplorer.space/premium",
-  "target": "to confirm"
+  "target": "$19.99 (keep)"
  },
  {
   "name": "Genome Explorer",
@@ -153,7 +153,7 @@
   "link_for": "DNA, CRISPR, genetics, inheritance",
   "applications": "Genetics study, biotech",
   "paid_url": "https://genomeexplorer.space/premium",
-  "target": "to confirm"
+  "target": "$29.99 (keep)"
  },
  {
   "name": "Interactive Exoplanet",
@@ -165,7 +165,7 @@
   "link_for": "Exoplanets, habitable worlds, JWST news",
   "applications": "Astronomy, planet science",
   "paid_url": "https://interactiveexoplanet.space/premium",
-  "target": "$9.99"
+  "target": "$9.99 (keep)"
  },
  {
   "name": "Interactive Mind",
@@ -213,7 +213,7 @@
   "link_for": "Medical breakthroughs, vaccines, surgery history",
   "applications": "Medicine, health science",
   "paid_url": "https://medicalfrontier.space/pricing",
-  "target": "to confirm"
+  "target": "$49.99 (keep lower tier)"
  },
  {
   "name": "Molecular World",
@@ -249,7 +249,7 @@
   "link_for": "3D spatial puzzles, rotation tests",
   "applications": "Brain training, spatial IQ",
   "paid_url": "https://orthoslab.space/premium",
-  "target": "$9.99"
+  "target": "$9.99 (keep)"
  },
  {
   "name": "Particle Physics",
@@ -261,7 +261,7 @@
   "link_for": "Standard Model, quarks, CERN",
   "applications": "Particle physics",
   "paid_url": "https://particlephysics.space/premium",
-  "target": "$9.99"
+  "target": "$7.99 (keep)"
  },
  {
   "name": "Shape Puzzle",
@@ -273,7 +273,7 @@
   "link_for": "Tangrams, shape puzzles, 2-player games (also shapepuzzle.app)",
   "applications": "Puzzles, logic",
   "paid_url": "https://shapepuzzle.space/premium",
-  "target": "$9.99"
+  "target": "$9.99 (keep)"
  },
  {
   "name": "Trade Pulse",
@@ -297,7 +297,7 @@
   "link_for": "Music and maths, harmonics, piano",
   "applications": "Music learning",
   "paid_url": "https://visualmusic.space/premium",
-  "target": "to confirm"
+  "target": "$19.99 (keep)"
  },
  {
   "name": "Architectural Wonders",
@@ -321,7 +321,7 @@
   "link_for": "AI history and futures",
   "applications": "AI literacy",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "City Explorer",
@@ -333,7 +333,7 @@
   "link_for": "Cities, urban growth, architecture over time",
   "applications": "Urban planning, geography",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Climate Futures",
@@ -345,7 +345,7 @@
   "link_for": "Climate change, 1850 to 2100",
   "applications": "Climate science",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Deep Time Explorer",
@@ -357,7 +357,7 @@
   "link_for": "Geological time, dinosaurs, Earth history",
   "applications": "Geology, evolution",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Echo-N Lab",
@@ -369,7 +369,7 @@
   "link_for": "Working memory, dual n-back",
   "applications": "Brain training",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Engineering Systems",
@@ -381,7 +381,7 @@
   "link_for": "How It Works (devices pulled apart), systems",
   "applications": "Engineering education",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Focus Swarm",
@@ -393,7 +393,7 @@
   "link_for": "Focus and attention",
   "applications": "Concentration training",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Interactive Code",
@@ -405,7 +405,7 @@
   "link_for": "Logic gates, coding",
   "applications": "Computing basics",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Interactive Cosmic Scale",
@@ -417,7 +417,7 @@
   "link_for": "Scale of the universe, atoms to galaxies",
   "applications": "Sense of scale",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Interactive Cosmos",
@@ -429,7 +429,7 @@
   "link_for": "Stars, galaxies, night sky",
   "applications": "Astronomy",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Interactive History",
@@ -441,7 +441,7 @@
   "link_for": "World history timeline",
   "applications": "History lessons",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Interactive Money",
@@ -453,7 +453,7 @@
   "link_for": "Money, interest, inflation",
   "applications": "Personal finance, economics",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Interactive Physics",
@@ -465,7 +465,7 @@
   "link_for": "Gravity, free fall, mechanics",
   "applications": "Physics lessons",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Micro Explorer",
@@ -477,7 +477,7 @@
   "link_for": "Bacteria, microscope, cells",
   "applications": "Microbiology",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Ocean Explorer",
@@ -489,7 +489,7 @@
   "link_for": "Ocean zones, deep sea",
   "applications": "Marine science",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "$14.99 (keep)"
  },
  {
   "name": "Pattern Pulse",
@@ -501,7 +501,7 @@
   "link_for": "IQ patterns, sequences",
   "applications": "Fluid intelligence",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Perspective Point",
@@ -513,7 +513,7 @@
   "link_for": "3D perspective puzzles",
   "applications": "Spatial reasoning",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Pioneer Explorers",
@@ -525,7 +525,7 @@
   "link_for": "Age of exploration, navigators",
   "applications": "History, navigation",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Quantum Mechanics",
@@ -537,7 +537,7 @@
   "link_for": "Quantum, double slit, superposition",
   "applications": "Quantum physics",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  },
  {
   "name": "Solar Planet",
@@ -549,6 +549,6 @@
   "link_for": "Planets, solar system",
   "applications": "Astronomy for all ages",
   "paid_url": "",
-  "target": "$9.99"
+  "target": "existing price if any, else $9.99"
  }
 ]

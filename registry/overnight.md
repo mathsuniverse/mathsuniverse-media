@@ -60,3 +60,10 @@ Pattern: unfinished.
 ## 10:05-10:15 UK (Razvan)
 - Razvan added STRIPE_SECRET_KEY to Deep Time and Ocean. Ocean live config: checkoutEnabled true. Deep Time republished 10:10 but /api/vip/status still available:false -> after allowance reset ask its agent why production reports unavailable with the key present (price lookup? livemode? webhook provisioning?) and fix, then republish.
 - PRICES (Razvan 10:07): Interactive Cosmos AND Pioneer = $49.99 VIP lifetime; nothing monthly or recurring annual. Cosmos agent must switch from $99 to a $49.99 one-time price (reuse existing $49.99 if one exists, else create one; never archive). Pioneer already $49.99 -> publish after confirming no recurring plan in UI/checkout.
+
+## 10:30 UK (Razvan added STRIPE_SECRET_KEY to Code, Cosmic Scale, History, Money, Micro, City, Echo-N)
+- Code republished 10:33 -> checkoutAvailable true, $9.99. Its agent mode selector now shows POWER (auto-switched when allowance ran out): switch to Free (mode button, then Free) BEFORE sending anything.
+- TODO republish to pick up key, then verify checkout on: Cosmic Scale, History, Money, Micro. (City, Echo-N publish after their lifetime-rule edits finish.)
+- Two City projects exist: "City Evolution main" (ours, cityexplorer.space) and "City Evolution". Razvan added the key to only one: check City Evolution main's Secrets has STRIPE_SECRET_KEY; if not, tell Razvan which one is the right one.
+- Solar Planet: Razvan will bring it into this Replit space LAST, after all others are finished.
+- Razvan may restart his laptop ~10:40; Chrome may be offline for a while; retry later if unreachable.

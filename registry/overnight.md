@@ -74,3 +74,11 @@ Pattern: unfinished.
 - City Evolution main (cityexplorer.space) HAS STRIPE_SECRET_KEY (correct project). Its STRIPE_WEBHOOK_SECRET sits under Configurations (plain, non-secret) -> after reset ask its agent to store webhook secret as a Secret / server-side table, not a configuration (do not print it).
 - Pioneer: hold publish until lifetime_rule is applied (after reset), then publish at $49.99.
 - Deep Time still available:false with key -> agent diagnose after reset.
+
+## 14:02-14:35 UK (VIP check 7)
+- Agents stop after ~4 min in Free with a "Power is a better fit" upsell (mode stays Free). Reply with a Continue message in Free.
+- Continued (Free): City ($29.99, webhook secret out of Configurations), Deep Time (available:false diagnosis), Swarm ($19.99, read-only legacy subscriber check), Pattern (lifetime rule, small edits).
+- Cosmos: ready ($49.99, 14/14 tests) but Republish is DISABLED: "This app uses a Stripe sandbox connection. Complete the setup in the Publishing pane before publishing." The $49.99 price was created in the sandbox -> Razvan must complete the Stripe live setup in Cosmos's Publishing pane (his Stripe login). Then republish.
+- Physics: ready ($9.99, 16 tests, dev db push done). Migration additive (6 new tables, indexes, FKs between new tables). Publish stuck at "Validating database migrations" for 20+ min; cancelled once, retried, still stuck.
+- Pioneer: ready ($49.99 lifetime, 20 tests). Migration additive (9 new tables incl. users). Also stuck validating.
+- Not yet visited this check: Micro, AI, Echo-N, Engineering, Code (switch to Free first), Climate.

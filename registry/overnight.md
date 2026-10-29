@@ -37,3 +37,11 @@ Not yet checked this pass: AI, Echo-N, Engineering, Swarm, Code, Cosmic, Cosmos,
 ## 05:45 UK pass
 Allowance NOT reset yet (banner "Your free allowance for this window is up, resets in 25m" -> ~06:12 UK).
 MISTAKE: sending "Continue..." to Climate while the banner showed "allowance is up" auto-switched it to Power ("You're now on Power", used credits ~18 s). Stopped it, switched mode back to Free. RULE: if the tail contains "allowance for this window is up" or "Continue on Power", DO NOT send anything; wait for reset.
+
+## 06:25-07:10 UK pass (after reset)
+PUBLISHED + verified live (curl):
+- Code Explorer (interactivecode.space): $9.99 (no existing price), 15/15 tests. Migration: 6 new tables + FKs between them. /vip/ ok, access/challenges/saved-work 401, engine/* POST 401, bad-sig 400. Stripe key missing -> "VIP opens soon". NOTE: first publish attempt was lost when I navigated away during "Validating database migrations"; stay on page until Approve appears.
+- Cosmic Scale (interactivecosmicscale.com): $9.99 (existing lower tier; $29.99 legacy accepted). Migration: 3 new tables. /vip/ ok, light-speed/missions/notebook/temporal/tours 401, bad-sig 400. Stripe key missing.
+Resumed via "Stay on Free" (upsell): City, AI, Echo-N, Engineering, Cosmos, History, Money, Physics, Micro, Pattern, Perspective, Pioneer, Quantum. Climate running.
+Focus Swarm asked which price: answered "Existing $19.99 lifetime" (also had $7.99 monthly).
+Live so far: Deep Time, Ocean, Code, Cosmic Scale (4/20).

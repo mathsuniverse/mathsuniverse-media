@@ -67,3 +67,10 @@ Pattern: unfinished.
 - Two City projects exist: "City Evolution main" (ours, cityexplorer.space) and "City Evolution". Razvan added the key to only one: check City Evolution main's Secrets has STRIPE_SECRET_KEY; if not, tell Razvan which one is the right one.
 - Solar Planet: Razvan will bring it into this Replit space LAST, after all others are finished.
 - Razvan may restart his laptop ~10:40; Chrome may be offline for a while; retry later if unreachable.
+
+## 10:45-11:00 UK
+- Checkout ON (key picked up): Code ($9.99), Cosmic Scale, History, Money ($9.99, republished 10:55), Ocean, Perspective, Quantum.
+- Micro live checkout ON but at $49.99 (runtime found existing Premium price 4999). Asked Razvan: keep $49.99 or $9.99?
+- City Evolution main (cityexplorer.space) HAS STRIPE_SECRET_KEY (correct project). Its STRIPE_WEBHOOK_SECRET sits under Configurations (plain, non-secret) -> after reset ask its agent to store webhook secret as a Secret / server-side table, not a configuration (do not print it).
+- Pioneer: hold publish until lifetime_rule is applied (after reset), then publish at $49.99.
+- Deep Time still available:false with key -> agent diagnose after reset.

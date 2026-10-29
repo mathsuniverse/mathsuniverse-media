@@ -88,3 +88,9 @@ Pattern: unfinished.
 - Pioneer: published by Razvan ~15:15. Verified: $49.99, checkout available, 401s, bad-sig 400, no monthly.
 - Cosmos: Razvan fixed the Stripe sandbox connection; prod DB created; LIVE. availability checkoutAvailable:true, 4999 cents; premium 401; bad-sig 400. Dev VIP tables were empty (nothing to copy).
 - Physics: prod DB created (old live build used no DB; dev tables empty); LIVE. VIP API up, bad-sig 400, access {"hasVip":false}. availability ready:false because STRIPE_SECRET_KEY is not set -> Razvan to add the key, then republish.
+
+## 16:00-16:45 UK (Free on; tip: give agents ONE small step per message, long asks get cancelled after ~1 min)
+LIVE + verified (vipcheck, checkout status, no monthly): AI Horizon (aifuturesim.com, $29.99), Echo-N (echonlab.space, $9.99; migration = new tables + 5 nullable ADD COLUMNs on premium_purchases), City (cityexplorer.space, $29.99), Deep Time ($14.99, checkout now available: webhook-provisioning failure no longer disables checkout), Pattern (patternbeat.space, $9.99), Micro (microexplorer.space, $49.99, VIP page update), Engineering (engineeringsystems.space, $19.99), Climate (already live, $9.99).
+Code agent switched Power -> Free.
+Swarm (focusswarm.space): published but /vip/ 404 from prod server (routing only /api) and bad-sig webhook 500; checkout unavailable (no STRIPE_SECRET_KEY in prod). Agent fixing routing + webhook 400/503; republish after 'ready to republish'.
+Razvan to-do: STRIPE_SECRET_KEY for Physics and Swarm; City: move STRIPE_WEBHOOK_SECRET from Configurations to a Secret (same name, code reads env). Deep Time: dev restart ran catalog setup which renamed the matched Stripe product (no archive/delete).

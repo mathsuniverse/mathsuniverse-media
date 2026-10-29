@@ -48,3 +48,11 @@ Live so far: Deep Time, Ocean, Code, Cosmic Scale (4/20).
 
 ## RULE (Razvan, 07:03 UK 29 Oct): LIFETIME PRICES ONLY, no monthly anywhere.
 Send briefs/vip-briefs.json key lifetime_rule to every unpublished agent at the next check (when allowance OK, mode Free). Before publishing any explorer, confirm its report says no recurring plan, and scan the live bundle for "monthly|/month|subscription". Live four (Deep Time, Ocean, Code, Cosmic) scanned 07:05: no monthly found.
+
+## 07:50-09:00 UK pass (allowance used up ~08:00, resets ~11:20 UK)
+PUBLISHED + verified live: History ($9.99), Money ($9.99), Micro (price set at runtime: existing lower lifetime or $9.99; key missing), Perspective Point ($9.99, checkout AVAILABLE), Quantum ($9.99 reused existing; checkout AVAILABLE; an extra unused $9.99 lookup-key price was created by the agent, left untouched). No monthly/subscription strings in any live bundle.
+LIVE TOTAL 9/20: Deep Time, Ocean, Code, Cosmic Scale, History, Money, Micro, Perspective, Quantum.
+HELD for Razvan (price discrepancy): Cosmos $99 lifetime (also had annual), Pioneer $49.99 (lower existing tier).
+HELD (dev migration not applied): Physics -> after reset ask agent to apply dev migration (db push) then publish.
+Got lifetime_rule just before allowance ran out (may be mid-edit; wait for agent to finish): Climate, City, AI, Echo-N, Engineering. Rule NOT yet sent: Swarm (has $7.99 monthly - must get it), Cosmos, Physics, Pattern, Pioneer, Micro (published; needs rule so runtime picks lifetime only).
+Pattern: unfinished.

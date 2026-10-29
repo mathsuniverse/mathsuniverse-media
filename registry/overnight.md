@@ -82,3 +82,9 @@ Pattern: unfinished.
 - Physics: ready ($9.99, 16 tests, dev db push done). Migration additive (6 new tables, indexes, FKs between new tables). Publish stuck at "Validating database migrations" for 20+ min; cancelled once, retried, still stuck.
 - Pioneer: ready ($49.99 lifetime, 20 tests). Migration additive (9 new tables incl. users). Also stuck validating.
 - Not yet visited this check: Micro, AI, Echo-N, Engineering, Code (switch to Free first), Climate.
+
+## 15:25-16:00 UK
+- ROOT CAUSE of publishes stuck on "Validating database migrations": the project had NO production database (old deployments). Fix: Publishing -> Adjust settings -> Database settings -> tick "Create production database" (leave "set up with development data" OFF) -> Republish. Then it builds and goes live with no approve step. Razvan approved creating prod DBs (15:4x).
+- Pioneer: published by Razvan ~15:15. Verified: $49.99, checkout available, 401s, bad-sig 400, no monthly.
+- Cosmos: Razvan fixed the Stripe sandbox connection; prod DB created; LIVE. availability checkoutAvailable:true, 4999 cents; premium 401; bad-sig 400. Dev VIP tables were empty (nothing to copy).
+- Physics: prod DB created (old live build used no DB; dev tables empty); LIVE. VIP API up, bad-sig 400, access {"hasVip":false}. availability ready:false because STRIPE_SECRET_KEY is not set -> Razvan to add the key, then republish.

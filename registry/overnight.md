@@ -45,3 +45,6 @@ PUBLISHED + verified live (curl):
 Resumed via "Stay on Free" (upsell): City, AI, Echo-N, Engineering, Cosmos, History, Money, Physics, Micro, Pattern, Perspective, Pioneer, Quantum. Climate running.
 Focus Swarm asked which price: answered "Existing $19.99 lifetime" (also had $7.99 monthly).
 Live so far: Deep Time, Ocean, Code, Cosmic Scale (4/20).
+
+## RULE (Razvan, 07:03 UK 29 Oct): LIFETIME PRICES ONLY, no monthly anywhere.
+Send briefs/vip-briefs.json key lifetime_rule to every unpublished agent at the next check (when allowance OK, mode Free). Before publishing any explorer, confirm its report says no recurring plan, and scan the live bundle for "monthly|/month|subscription". Live four (Deep Time, Ocean, Code, Cosmic) scanned 07:05: no monthly found.

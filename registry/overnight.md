@@ -13,8 +13,14 @@ Interactive-Engineering-explorer (engineeringsystems.space; was Power -> Free), 
 Code-Explorer (interactivecode.space), Cosmic-Zoom (interactivecosmicscale.com), InteractiveCosmos (was Max -> Free)
 InteractiveHistoryspace, InteractiveMoney-Explorer, InteractivePhysicsspace
 
-## Not yet sent (after allowance reset)
-Micro-World-explorer (microexplorer.space), Pattern-Pulse, Perspective-Point-POV-reasoning, Pioneers-Explorers-Trailblazers, Quantum-Mechanics-app
-Solar Planet: in a different Replit space (Razvan, 28 Oct): switch workspace via the "Personal workspace" dropdown to find it.
+## Sent at ~01:40 UK (vip_auto + keep-existing-price line)
+Micro-World-explorer, Pattern-Pulse, Perspective-Point-POV-reasoning, Pioneers-Explorers-Trailblazers (had unpublished VIP work from earlier), Quantum-Mechanics-app (Pro + VIP tiers; Stripe integration 'needs reconnecting' banner, Razvan to reconnect; secrets present)
+Solar Planet: in a different Replit account (only Personal workspace visible here) -> Razvan to run it, or log that account into this Chrome.
 
 ## Then for each: read report, check migration SQL is additive, republish (Razvan approved publishing each as it passes), verify /vip/ live, premium endpoint 401, bad-signature webhook 400.
+
+## 01:10-01:40 UK pass
+All 14 earlier agents: price_rule sent, upsells answered "Stay on Free", all resumed in Free. Ocean told $14.99.
+Deep Time: all 10 security tests pass, doing production build.
+STRIPE_SECRET_KEY missing so far: Ocean, Deep Time, Code Explorer, Cosmic Scale, Interactive History, Interactive Money (others not yet reported).
+Agents show "Free usage limit reached" mid-run sometimes; "Stay on Free" radio = input[type=radio][value=free], then button "Stay on Free".

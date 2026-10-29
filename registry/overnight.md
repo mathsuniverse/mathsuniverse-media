@@ -94,3 +94,8 @@ LIVE + verified (vipcheck, checkout status, no monthly): AI Horizon (aifuturesim
 Code agent switched Power -> Free.
 Swarm (focusswarm.space): published but /vip/ 404 from prod server (routing only /api) and bad-sig webhook 500; checkout unavailable (no STRIPE_SECRET_KEY in prod). Agent fixing routing + webhook 400/503; republish after 'ready to republish'.
 Razvan to-do: STRIPE_SECRET_KEY for Physics and Swarm; City: move STRIPE_WEBHOOK_SECRET from Configurations to a Secret (same name, code reads env). Deep Time: dev restart ran catalog setup which renamed the matched Stripe product (no archive/delete).
+
+## 17:00-17:35 UK
+- Physics: key added by Razvan; agent created the $9.99 one-time price in live Stripe (fixed recurring-only product edge case). Republished -> availability ready:true $9.99, bad-sig 400. DONE.
+- Swarm: dev DB had no VIP tables (agent pushed them); no-charge live checkout session test passed at $19.99 payment mode (expired). Republished with 11 new vip_* tables (additive). Live: /vip/ 200 with VIP title, premium 401. BUT config available:false + webhook 503: prod log vip_webhook_secret_missing_for_existing_endpoint (endpoint was created from dev; its signing secret is only in the dev DB). Fix in progress: env fallback STRIPE_WEBHOOK_SECRET; Razvan to paste the endpoint's signing secret (Stripe dashboard -> Developers -> Webhooks -> focusswarm.space endpoint) as a Replit Secret, then republish.
+ALL OTHER EXPLORERS LIVE with checkout on.

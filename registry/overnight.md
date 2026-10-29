@@ -33,3 +33,7 @@ Not ready (stopped on allowance after price rule):
 - Climate: verifying Stripe products/prices.
 - City: two tiers $29.99/$39.99 -> $29.99; no Stripe key.
 Not yet checked this pass: AI, Echo-N, Engineering, Swarm, Code, Cosmic, Cosmos, History, Money, Physics, Micro, Pattern, Perspective, Pioneer, Quantum.
+
+## 05:45 UK pass
+Allowance NOT reset yet (banner "Your free allowance for this window is up, resets in 25m" -> ~06:12 UK).
+MISTAKE: sending "Continue..." to Climate while the banner showed "allowance is up" auto-switched it to Power ("You're now on Power", used credits ~18 s). Stopped it, switched mode back to Free. RULE: if the tail contains "allowance for this window is up" or "Continue on Power", DO NOT send anything; wait for reset.

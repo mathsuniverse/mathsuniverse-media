@@ -24,3 +24,12 @@ All 14 earlier agents: price_rule sent, upsells answered "Stay on Free", all res
 Deep Time: all 10 security tests pass, doing production build.
 STRIPE_SECRET_KEY missing so far: Ocean, Deep Time, Code Explorer, Cosmic Scale, Interactive History, Interactive Money (others not yet reported).
 Agents show "Free usage limit reached" mid-run sometimes; "Stay on Free" radio = input[type=radio][value=free], then button "Stay on Free".
+
+## 03:15-03:50 UK pass (allowance 97%, resets ~05:30 UK)
+PUBLISHED + verified live:
+- Deep Time (deeptimeexplorer.com primary, .earth also serves): $14.99 (two tiers $14.99/$99.99, lower kept, $99.99 legacy accepted). /vip/ ok, canonical .com, content/globe|lab|science 401, taste 200, bad-sig webhook 400. Migration = 5 new tables only. Stripe key missing -> "VIP opens soon".
+- Ocean (oceanexplorer.space): $14.99 kept, 7 existing extras. /vip/ ok, features/* 401, status 401, bad-sig 400, config checkoutEnabled:true. Migration: ALTER premium_purchases ADD COLUMN (nullable / NOT NULL DEFAULT true) + new tables.
+Not ready (stopped on allowance after price rule):
+- Climate: verifying Stripe products/prices.
+- City: two tiers $29.99/$39.99 -> $29.99; no Stripe key.
+Not yet checked this pass: AI, Echo-N, Engineering, Swarm, Code, Cosmic, Cosmos, History, Money, Physics, Micro, Pattern, Perspective, Pioneer, Quantum.

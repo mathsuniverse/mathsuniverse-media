@@ -429,7 +429,7 @@
   "link_for": "Stars, galaxies, night sky",
   "applications": "Astronomy",
   "paid_url": "",
-  "target": "existing price if any, else $9.99"
+  "target": "$49.99 lifetime"
  },
  {
   "name": "Interactive History",
@@ -477,7 +477,7 @@
   "link_for": "Bacteria, microscope, cells",
   "applications": "Microbiology",
   "paid_url": "",
-  "target": "existing price if any, else $9.99"
+  "target": "$49.99 lifetime"
  },
  {
   "name": "Ocean Explorer",
@@ -525,7 +525,7 @@
   "link_for": "Age of exploration, navigators",
   "applications": "History, navigation",
   "paid_url": "",
-  "target": "existing price if any, else $9.99"
+  "target": "$49.99 lifetime"
  },
  {
   "name": "Quantum Mechanics",

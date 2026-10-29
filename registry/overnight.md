@@ -56,3 +56,7 @@ HELD for Razvan (price discrepancy): Cosmos $99 lifetime (also had annual), Pion
 HELD (dev migration not applied): Physics -> after reset ask agent to apply dev migration (db push) then publish.
 Got lifetime_rule just before allowance ran out (may be mid-edit; wait for agent to finish): Climate, City, AI, Echo-N, Engineering. Rule NOT yet sent: Swarm (has $7.99 monthly - must get it), Cosmos, Physics, Pattern, Pioneer, Micro (published; needs rule so runtime picks lifetime only).
 Pattern: unfinished.
+
+## 10:05-10:15 UK (Razvan)
+- Razvan added STRIPE_SECRET_KEY to Deep Time and Ocean. Ocean live config: checkoutEnabled true. Deep Time republished 10:10 but /api/vip/status still available:false -> after allowance reset ask its agent why production reports unavailable with the key present (price lookup? livemode? webhook provisioning?) and fix, then republish.
+- PRICES (Razvan 10:07): Interactive Cosmos AND Pioneer = $49.99 VIP lifetime; nothing monthly or recurring annual. Cosmos agent must switch from $99 to a $49.99 one-time price (reuse existing $49.99 if one exists, else create one; never archive). Pioneer already $49.99 -> publish after confirming no recurring plan in UI/checkout.

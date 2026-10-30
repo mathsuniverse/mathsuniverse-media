@@ -1,0 +1,45 @@
+Symmetry in nature is everywhere: six-armed snowflakes, five-fold starfish, flowers, and the one mirror line down almost every animal. But a universe that kept every symmetry would be empty. Everything you see exists because symmetry broke, five times, from the first second after the Big Bang to the moment your heart moved to the left.
+
+What symmetry is (a move that leaves a thing unchanged: reflection, rotation, translation), why nature is so symmetric, Emmy Noether's theorem (every symmetry of the laws of physics comes with a conservation law), and spontaneous symmetry breaking in physics, chemistry and biology.
+
+PLAY WITH IT: Symmetry Engine, build a perfect pattern, then break one rule and watch what grows.
+→ https://symmetryengine.space
+
+CHAPTERS
+0:00 A perfect snowflake, and you
+0:50 What symmetry is
+1:45 Symmetry in nature
+2:54 Noether: symmetry and conservation
+3:51 Break one: matter beats antimatter
+4:48 Break two: a smooth universe gets lumpy
+5:30 Break three: life picks a hand
+6:32 Break four: from a ball to a body
+7:34 Break five: the heart moves left
+8:19 The chain of broken symmetries
+8:48 Your turn
+
+THE FIVE BREAKS
+1. Matter beats antimatter: for roughly every billion particles of antimatter there was about one extra particle of matter (CERN). The first lopsidedness was caught in 1964 in kaons (Cronin and Fitch). Why the universe tipped is still open.
+2. A smooth universe gets lumpy: the oldest light, from about 380,000 years after the Big Bang, varies by about 1 part in 100,000. Gravity grew those ripples into galaxies.
+3. Life picks a hand: Pasteur sorted left- and right-handed crystals by hand in 1848. Life's amino acids are left-handed, the sugars in DNA right-handed, and the double helix twists to the right.
+4. From a ball to a body: Alan Turing (1952) showed an even mix of reacting, spreading chemicals can break its own symmetry into spots and stripes. Animals with a front, a back and one mirror line appear about 555 million years ago; over 98% of known animal species are built this way.
+5. The heart moves left: spinning cilia in the embryo's node push fluid to the left (Nonaka et al., Cell, 1998). Fully mirrored organs happen in about 1 in 10,000 people.
+
+YOUR TURN
+Find one thing near you with perfect symmetry, and one that is almost symmetric. Which tells you more about how it was made? Tell us in the comments.
+
+SOURCES
+Noether's theorem: https://en.wikipedia.org/wiki/Noether%27s_theorem
+Antimatter: https://home.cern/science/physics/antimatter
+CMB: https://svs.gsfc.nasa.gov/14720
+Snow crystals: https://www.snowcrystals.com/science/science.html
+Pasteur: https://openstax.org/books/organic-chemistry/pages/5-4-pasteurs-discovery-of-enantiomers
+Homochirality: https://en.wikipedia.org/wiki/Homochirality
+Turing: https://en.wikipedia.org/wiki/The_Chemical_Basis_of_Morphogenesis
+Bilateria: https://en.wikipedia.org/wiki/Bilateria
+Nodal flow: https://www.qxmd.com/r/9865700
+
+More symmetry: the Symmetry in Nature & Mirrors playlist on this channel (snowflakes, the universe, Escher).
+More interactive maths: https://interactiveexplorer.space/math-universe
+
+#symmetry #symmetryinnature #symmetrybreaking #noether #maths #physics #biology #science

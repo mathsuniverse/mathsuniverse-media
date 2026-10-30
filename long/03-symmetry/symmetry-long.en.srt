@@ -1,0 +1,791 @@
+1
+00:00:00,000 --> 00:00:01,580
+Here is a snowflake.
+
+2
+00:00:01,760 --> 00:00:03,740
+Turn it by a sixth of a turn,
+
+3
+00:00:03,760 --> 00:00:05,260
+and nothing changes.
+
+4
+00:00:05,440 --> 00:00:07,900
+Flip it over, and nothing changes.
+
+5
+00:00:08,080 --> 00:00:11,260
+It is one of the most symmetric things in nature.
+
+6
+00:00:23,365 --> 00:00:24,305
+Here is you.
+
+7
+00:00:24,325 --> 00:00:26,705
+Your heart sits on the left.
+
+8
+00:00:26,885 --> 00:00:29,825
+Your face is a little different on each side.
+
+9
+00:00:29,925 --> 00:00:32,865
+And the molecules in your body all twist the same
+
+10
+00:00:32,885 --> 00:00:33,885
+way.
+
+11
+00:00:44,327 --> 00:00:46,067
+Here is the strange part.
+
+12
+00:00:46,327 --> 00:00:49,267
+If the universe had kept every symmetry it started
+
+13
+00:00:49,287 --> 00:00:52,707
+with, there would be no snowflake and no you.
+
+14
+00:00:52,967 --> 00:00:54,067
+Nothing at all.
+
+15
+00:00:54,407 --> 00:00:58,227
+Everything you see exists because, again and again,
+
+16
+00:00:58,367 --> 00:01:00,387
+a perfect symmetry broke.
+
+17
+00:01:17,149 --> 00:01:20,689
+Today we follow those breaks, from the first second
+
+18
+00:01:20,709 --> 00:01:23,529
+of the universe to the moment your heart moved to
+
+19
+00:01:23,549 --> 00:01:27,049
+the left. Five breaks, and at the end of them,
+
+20
+00:01:27,309 --> 00:01:28,309
+you.
+
+21
+00:01:40,560 --> 00:01:43,660
+First, what does symmetry actually mean?
+
+22
+00:01:43,840 --> 00:01:47,020
+Mathematicians have a beautifully simple answer.
+
+23
+00:01:47,280 --> 00:01:50,060
+A symmetry is something you can do to an object
+
+24
+00:01:50,080 --> 00:01:52,620
+that leaves it looking exactly the same.
+
+25
+00:02:05,388 --> 00:02:06,328
+Take a square.
+
+26
+00:02:06,348 --> 00:02:09,448
+Turn it a quarter turn: same square.
+
+27
+00:02:09,708 --> 00:02:12,648
+Flip it across a diagonal: same square.
+
+28
+00:02:12,828 --> 00:02:15,928
+Count every move that works and you find eight.
+
+29
+00:02:16,108 --> 00:02:19,728
+A circle has infinitely many: turn it by any angle
+
+30
+00:02:19,748 --> 00:02:20,748
+at all.
+
+31
+00:02:36,277 --> 00:02:39,297
+Three kinds of move do almost all the work.
+
+32
+00:02:39,477 --> 00:02:41,217
+Reflection, a mirror.
+
+33
+00:02:41,397 --> 00:02:43,297
+Rotation, a turn.
+
+34
+00:02:43,397 --> 00:02:46,977
+And translation, a slide, like a wallpaper pattern
+
+35
+00:02:46,997 --> 00:02:48,497
+that repeats forever.
+
+36
+00:03:01,419 --> 00:03:04,839
+Notice something. The more symmetric a thing is,
+
+37
+00:03:04,859 --> 00:03:06,999
+the less there is to say about it.
+
+38
+00:03:07,179 --> 00:03:10,279
+A blank circle has the most symmetry and the least
+
+39
+00:03:10,299 --> 00:03:12,919
+information. Hold on to that idea.
+
+40
+00:03:13,019 --> 00:03:15,239
+It is the key to the whole story.
+
+41
+00:03:31,204 --> 00:03:33,024
+Nature is full of it.
+
+42
+00:03:33,124 --> 00:03:36,784
+A snowflake has six arms because water molecules lock
+
+43
+00:03:36,804 --> 00:03:39,184
+together into a hexagonal lattice.
+
+44
+00:03:39,484 --> 00:03:42,544
+And all six arms grow through the same changing air
+
+45
+00:03:42,564 --> 00:03:45,584
+at the same moment, so they nearly match.
+
+46
+00:04:00,839 --> 00:04:04,179
+A starfish has five-fold symmetry, although,
+
+47
+00:04:04,199 --> 00:04:06,579
+as a larva, it had a left and a right
+
+48
+00:04:06,599 --> 00:04:08,259
+side, just like us.
+
+49
+00:04:08,439 --> 00:04:12,099
+A daisy, a sunflower, an orange cut in half:
+
+50
+00:04:12,359 --> 00:04:13,619
+rotations again.
+
+51
+00:04:27,234 --> 00:04:29,294
+And look at almost any animal:
+
+52
+00:04:29,394 --> 00:04:32,174
+a butterfly, a fish, a tiger,
+
+53
+00:04:32,354 --> 00:04:35,134
+you. One mirror line down the middle.
+
+54
+00:04:35,314 --> 00:04:39,214
+Biologists call it bilateral symmetry, and over ninety-eight
+
+55
+00:04:39,234 --> 00:04:42,014
+percent of known animal species share it.
+
+56
+00:04:57,496 --> 00:04:59,796
+Why is nature so symmetric?
+
+57
+00:04:59,976 --> 00:05:02,036
+Because the rules behind it are.
+
+58
+00:05:02,296 --> 00:05:06,036
+In 1894 Pierre Curie made a simple point:
+
+59
+00:05:06,296 --> 00:05:09,156
+whatever symmetry the causes have shows up in the
+
+60
+00:05:09,176 --> 00:05:12,356
+effects. So if something is lopsided,
+
+61
+00:05:12,416 --> 00:05:14,996
+the lopsidedness had to come from somewhere.
+
+62
+00:05:33,243 --> 00:05:35,383
+Which raises the real question.
+
+63
+00:05:35,563 --> 00:05:38,983
+If the laws are symmetric, where does all the asymmetry
+
+64
+00:05:39,003 --> 00:05:40,003
+come from?
+
+65
+00:05:48,504 --> 00:05:52,644
+In 1918 the mathematician Emmy Noether proved what
+
+66
+00:05:52,664 --> 00:05:56,004
+many physicists call one of the most beautiful results
+
+67
+00:05:56,024 --> 00:05:57,124
+in science.
+
+68
+00:06:06,436 --> 00:06:10,496
+Do an experiment today, then the same experiment tomorrow.
+
+69
+00:06:10,596 --> 00:06:13,496
+You get the same result, because the laws of physics
+
+70
+00:06:13,516 --> 00:06:15,216
+do not change with time.
+
+71
+00:06:15,516 --> 00:06:16,896
+That is a symmetry.
+
+72
+00:06:17,156 --> 00:06:20,656
+Noether proved that this symmetry is exactly why energy
+
+73
+00:06:20,676 --> 00:06:21,776
+is conserved.
+
+74
+00:06:37,795 --> 00:06:40,335
+Slide the experiment across the room:
+
+75
+00:06:40,595 --> 00:06:44,175
+same laws, and that is why momentum is conserved.
+
+76
+00:06:44,435 --> 00:06:46,175
+Turn it to face another way:
+
+77
+00:06:46,435 --> 00:06:49,695
+same laws, and that is why angular momentum,
+
+78
+00:06:49,915 --> 00:06:51,455
+spin, is conserved.
+
+79
+00:07:05,967 --> 00:07:08,827
+Every symmetry of the laws comes with something that
+
+80
+00:07:08,847 --> 00:07:11,387
+can never be created or destroyed.
+
+81
+00:07:11,727 --> 00:07:13,947
+Symmetry is not decoration.
+
+82
+00:07:14,127 --> 00:07:16,587
+It is the deepest rule in physics.
+
+83
+00:07:27,921 --> 00:07:31,021
+But a world that kept every symmetry would be very
+
+84
+00:07:31,041 --> 00:07:34,381
+dull. Let's see what happens when one breaks.
+
+85
+00:07:42,817 --> 00:07:46,157
+Break one happened in the first fraction of a second.
+
+86
+00:07:46,417 --> 00:07:50,237
+The young universe made matter and antimatter in pairs:
+
+87
+00:07:50,337 --> 00:07:52,317
+a perfectly symmetric deal.
+
+88
+00:07:52,657 --> 00:07:55,117
+When a particle meets its antiparticle,
+
+89
+00:07:55,217 --> 00:07:57,037
+both vanish into light.
+
+90
+00:08:11,929 --> 00:08:13,829
+If the deal had been perfect,
+
+91
+00:08:13,929 --> 00:08:16,309
+every particle would have found its partner,
+
+92
+00:08:16,489 --> 00:08:19,029
+and the universe would be nothing but light.
+
+93
+00:08:19,249 --> 00:08:22,069
+No atoms, no stars, nothing.
+
+94
+00:08:33,048 --> 00:08:34,548
+It wasn't perfect.
+
+95
+00:08:34,648 --> 00:08:37,908
+For roughly every billion particles of antimatter,
+
+96
+00:08:37,928 --> 00:08:40,788
+there was about one extra particle of matter.
+
+97
+00:08:41,048 --> 00:08:42,948
+The billions annihilated.
+
+98
+00:08:43,008 --> 00:08:44,708
+The extra one survived.
+
+99
+00:08:44,888 --> 00:08:48,788
+Every galaxy, every star, every atom in your body
+
+100
+00:08:48,808 --> 00:08:50,708
+is made of those leftovers.
+
+101
+00:09:09,213 --> 00:09:12,153
+Physicists first caught nature playing favourites
+
+102
+00:09:12,173 --> 00:09:16,073
+in 1964, in particles called kaons.
+
+103
+00:09:16,413 --> 00:09:19,513
+Exactly how the universe tipped the balance is still
+
+104
+00:09:19,533 --> 00:09:22,393
+one of the biggest open questions in physics.
+
+105
+00:09:37,588 --> 00:09:41,168
+Break two. Look at the oldest light there is,
+
+106
+00:09:41,308 --> 00:09:44,128
+released about three hundred and eighty thousand years
+
+107
+00:09:44,148 --> 00:09:45,408
+after the Big Bang.
+
+108
+00:09:45,708 --> 00:09:49,208
+It is almost perfectly smooth: the same temperature
+
+109
+00:09:49,228 --> 00:09:50,688
+in every direction.
+
+110
+00:10:04,506 --> 00:10:08,566
+Almost. The differences are about one part in a hundred
+
+111
+00:10:08,586 --> 00:10:11,846
+thousand, like ripples a hundredth of a millimetre
+
+112
+00:10:11,866 --> 00:10:14,246
+high on a pond a metre deep.
+
+113
+00:10:24,684 --> 00:10:26,504
+Gravity loves a lump.
+
+114
+00:10:26,684 --> 00:10:29,784
+A slightly denser spot pulls in a little more,
+
+115
+00:10:29,844 --> 00:10:31,624
+which makes it denser still.
+
+116
+00:10:31,884 --> 00:10:35,144
+Over billions of years those tiny ripples grew into
+
+117
+00:10:35,164 --> 00:10:37,784
+galaxies, stars and planets.
+
+118
+00:10:37,964 --> 00:10:41,064
+A perfectly smooth universe would have stayed smooth
+
+119
+00:10:41,084 --> 00:10:42,084
+forever.
+
+120
+00:11:01,209 --> 00:11:03,989
+Break three. Hold up your hands.
+
+121
+00:11:04,089 --> 00:11:07,309
+They are mirror images, but you cannot turn one into
+
+122
+00:11:07,329 --> 00:11:09,989
+the other. Many molecules are like that:
+
+123
+00:11:10,169 --> 00:11:13,429
+they come in a left-handed and a right-handed version.
+
+124
+00:11:26,350 --> 00:11:30,690
+In 1848 a young Louis Pasteur looked at crystals under
+
+125
+00:11:30,710 --> 00:11:33,210
+a microscope and saw two shapes,
+
+126
+00:11:33,390 --> 00:11:34,970
+mirror images of each other.
+
+127
+00:11:35,430 --> 00:11:38,250
+He separated them by hand, with tweezers.
+
+128
+00:11:38,550 --> 00:11:41,930
+Dissolved in water, one turned polarised light one
+
+129
+00:11:41,950 --> 00:11:44,810
+way, and the other turned it the opposite way,
+
+130
+00:11:44,830 --> 00:11:46,730
+by exactly the same amount.
+
+131
+00:12:07,792 --> 00:12:11,532
+Ordinary chemistry makes both hands in equal amounts.
+
+132
+00:12:11,632 --> 00:12:13,052
+Life does not.
+
+133
+00:12:13,232 --> 00:12:16,972
+Almost every amino acid in your proteins is left-handed.
+
+134
+00:12:17,152 --> 00:12:19,852
+The sugars in your DNA are right-handed,
+
+135
+00:12:19,872 --> 00:12:22,492
+and the double helix twists to the right.
+
+136
+00:12:37,897 --> 00:12:40,597
+Life chose one hand and stuck with it.
+
+137
+00:12:40,857 --> 00:12:43,477
+How that first choice was made is still an open
+
+138
+00:12:43,497 --> 00:12:46,677
+question. But without it, the parts of a cell could
+
+139
+00:12:46,697 --> 00:12:49,557
+not fit together, like trying to shake a right hand
+
+140
+00:12:49,577 --> 00:12:50,577
+with a left.
+
+141
+00:13:05,122 --> 00:13:08,542
+Break four. You began as a single cell,
+
+142
+00:13:08,642 --> 00:13:10,062
+roughly a ball.
+
+143
+00:13:10,322 --> 00:13:13,102
+A ball looks the same from every direction.
+
+144
+00:13:13,322 --> 00:13:16,062
+So how does it decide where the head goes?
+
+145
+00:13:27,704 --> 00:13:31,524
+In 1952 Alan Turing, the codebreaker,
+
+146
+00:13:31,544 --> 00:13:34,084
+wrote a paper about exactly this.
+
+147
+00:13:34,344 --> 00:13:37,244
+He showed that an even mix of chemicals that react
+
+148
+00:13:37,264 --> 00:13:40,724
+and spread can become unstable, precisely because
+
+149
+00:13:40,744 --> 00:13:44,164
+they spread, and settle all by itself into spots and
+
+150
+00:13:44,184 --> 00:13:48,244
+stripes. Tiny random differences get amplified,
+
+151
+00:13:48,264 --> 00:13:50,564
+just like the lumps in the early universe.
+
+152
+00:14:13,796 --> 00:14:16,976
+Processes like that, together with cues already in
+
+153
+00:14:16,996 --> 00:14:18,896
+the egg, lay out a body:
+
+154
+00:14:19,156 --> 00:14:21,616
+head and tail, back and belly.
+
+155
+00:14:21,956 --> 00:14:25,296
+About five hundred and fifty-five million years ago,
+
+156
+00:14:25,396 --> 00:14:27,856
+some of the first animals built like this,
+
+157
+00:14:28,036 --> 00:14:31,136
+small worm-like creatures, crawled across the sea
+
+158
+00:14:31,156 --> 00:14:32,976
+floor and left their tracks.
+
+159
+00:14:33,236 --> 00:14:36,336
+A front, a back, and one mirror line down the
+
+160
+00:14:36,356 --> 00:14:39,856
+middle. That body plan leads all the way to you.
+
+161
+00:15:08,084 --> 00:15:10,944
+But you are not quite mirror symmetric either.
+
+162
+00:15:11,124 --> 00:15:12,704
+Your heart is on the left,
+
+163
+00:15:12,724 --> 00:15:14,384
+your liver on the right.
+
+164
+00:15:14,404 --> 00:15:15,584
+Who decided?
+
+165
+00:15:23,769 --> 00:15:26,869
+In the early embryo there is a tiny pit called
+
+166
+00:15:26,889 --> 00:15:29,829
+the node, lined with hair-like cilia.
+
+167
+00:15:30,209 --> 00:15:33,029
+They all spin clockwise, seen from below,
+
+168
+00:15:33,209 --> 00:15:36,069
+and because they tilt backwards, they push the fluid
+
+169
+00:15:36,089 --> 00:15:37,349
+towards the left.
+
+170
+00:15:38,009 --> 00:15:41,749
+Japanese scientists filmed it happening in 1998.
+
+171
+00:15:41,769 --> 00:15:45,429
+That gentle current, in a pit smaller than a millimetre,
+
+172
+00:15:45,449 --> 00:15:48,629
+is the first moment your body knows its left from
+
+173
+00:15:48,649 --> 00:15:49,649
+its right.
+
+174
+00:16:15,765 --> 00:16:18,305
+Every so often the flow goes wrong,
+
+175
+00:16:18,325 --> 00:16:21,025
+and a person is born with their organs mirrored.
+
+176
+00:16:21,365 --> 00:16:24,545
+It happens to roughly one person in ten thousand,
+
+177
+00:16:24,645 --> 00:16:26,465
+and many never find out.
+
+178
+00:16:39,176 --> 00:16:40,516
+So here is the chain.
+
+179
+00:16:40,536 --> 00:16:43,316
+The laws of physics are symmetric.
+
+180
+00:16:43,576 --> 00:16:46,836
+Matter beat antimatter by one in a billion.
+
+181
+00:16:47,016 --> 00:16:50,356
+The smooth universe got lumpy and made stars.
+
+182
+00:16:50,536 --> 00:16:52,116
+Life picked a hand.
+
+183
+00:16:52,216 --> 00:16:54,836
+A round cell picked a head and a tail.
+
+184
+00:16:54,896 --> 00:16:57,316
+And a whirl of cilia put your heart on the
+
+185
+00:16:57,336 --> 00:16:58,336
+left.
+
+186
+00:17:17,588 --> 00:17:20,288
+Symmetry gives the world its rules.
+
+187
+00:17:20,468 --> 00:17:23,248
+Breaking it gives the world its stories.
+
+188
+00:17:23,508 --> 00:17:26,608
+You are made of five broken symmetries.
+
+189
+00:17:37,603 --> 00:17:39,023
+Now it is your turn.
+
+190
+00:17:39,043 --> 00:17:42,463
+Find something near you with perfect symmetry,
+
+191
+00:17:42,483 --> 00:17:45,903
+and something that is almost symmetric but not quite.
+
+192
+00:17:46,163 --> 00:17:48,943
+Which one tells you more about how it was made?
+
+193
+00:18:01,125 --> 00:18:04,545
+You can play with symmetry yourself in Symmetry Engine.
+
+194
+00:18:04,725 --> 00:18:08,265
+Build a perfect pattern, then break one rule and watch
+
+195
+00:18:08,285 --> 00:18:11,865
+what grows. The symmetry playlist has the snowflake,
+
+196
+00:18:11,885 --> 00:18:13,665
+the universe and Escher.
+
+197
+00:18:13,925 --> 00:18:16,425
+Tell me in the comments which break surprised you
+
+198
+00:18:16,445 --> 00:18:18,705
+most. I read every comment.

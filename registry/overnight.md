@@ -101,3 +101,10 @@ Razvan to-do: STRIPE_SECRET_KEY for Physics and Swarm; City: move STRIPE_WEBHOOK
 ALL OTHER EXPLORERS LIVE with checkout on.
 - 17:50 Swarm: Razvan added STRIPE_WEBHOOK_SECRET; env fallback shipped; republished. Live: /vip/ 200, config available:true $19.99, bad-sig 400, premium 401, no monthly. DONE.
 ALL 20 VIP EXPLORERS LIVE WITH CHECKOUT (Solar Planet still to bring over last).
+
+## 30 Oct 22:20 — explorer-link audit (15 public videos: 13 Shorts, 2 long)
+Fourier Short TBsLYV3ujsk scheduled Mon 2 Nov 17:00 (end card + description → interactiveart.space/vip/). Draft JijK82b0UKQ (v2, no end card) left Private.
+Descriptions fixed (Interactive Art + /vip/), verified on public pages: x3MSIa1RKPQ coffee caustic, LXxjxsSf4-0 coffee cup, OUBoiaEtoro long coffee (trimmed closing line; 4994/5000 chars), Jt_K2IZLxFY rose, KHqBvjPWvF8 cardioid heart.
+Already linked in description: PhTYI5jeYoM, E0DofA3563s, QPQCDMLc2Y4, A6-mM5vas2Q, o5gAkaaDT40, mfP_vpkPfGQ, dWAIqKuUxi8.
+Open (needs Razvan's explorer choice): fP6QCI_mx5U Lycurgus, L3X0ClYLdgU sunflowers, Fyy457oZZak long golden angle.
+Comments: no channel comment on KHqBvjPWvF8, L3X0ClYLdgU, Fyy457oZZak; Jt_K2IZLxFY comment not pinned; pinned comments without an explorer link: PhTYI5jeYoM, x3MSIa1RKPQ, dWAIqKuUxi8 (hub only), fP6QCI_mx5U, LXxjxsSf4-0, OUBoiaEtoro (hub only). Drafts sent to Razvan for approval.

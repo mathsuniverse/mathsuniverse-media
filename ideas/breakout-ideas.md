@@ -14,3 +14,10 @@ Big hammer: stop showing beautiful maths; use maths to answer what people care a
 Test plan: 3 formats × 2 Shorts this week alongside the queue; compare "viewed vs swiped away" at 24 h; keep the winner.
 First batch: #5 Halloween (31 Oct), #1 37% dating rule, #2 rope around the Earth.
 Replay rule (Razvan): raw, give them a reason to play back (hidden detail, "watch again").
+
+## Long video: symmetry (agreed 30 Oct, after the symmetry Shorts run)
+The symmetry Shorts are hooks; the funnel is the "Symmetry in Nature & Mirrors" playlist + symmetryengine.space. At the end of the run, make one long video that the Shorts point to (related video).
+Search demand (YouTube autocomplete, 30 Oct): "symmetry in nature" (+ maths project, art, drawing), "types of symmetry" (geometry, biology, animals), "symmetry in math/mathematics", "what is symmetry", "symmetry breaking" / "spontaneous symmetry breaking", "noether theorem" (veritasium appears), "symmetry explained" (rotational, CPT, facial).
+Working title to test: "Symmetry in nature, maths and physics: what it is, the types, and why breaking it made us".
+Arc: types of symmetry (reflection, rotation, translation) -> nature (snowflake, flowers, animals) -> Escher/kaleidoscopes -> Noether (symmetry = conservation) -> symmetry breaking (matter/antimatter, DNA handedness).
+Once live: set it as related video on every symmetry Short.

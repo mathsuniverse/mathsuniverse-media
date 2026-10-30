@@ -32,3 +32,14 @@ devil's curve, witch of agnesi, nephroid, maurer rose, astroid, golden angle, ti
 - Voice: Piper TTS (en_US-ryan-high, pitched down + echo) works locally; voiced Halloween cut made (cursed_curves_voice.mp4).
 - Captions upload in Studio did not take (manual subtitle dialog closes while auto-subs "still processing"); retry later. SRT files ready for 3 Shorts.
 - Symmetry Engine, Plico Lab, Interactive Art, Fractal Chaos are NOT in the businesswavep Replit account (other account) -> embeds there need Razvan's access.
+
+## 30 Oct evening: queue retitled to searched phrases (YouTube autocomplete)
+Rule from Razvan: every Short is titled with words people actually search, not our own phrasing.
+Raw suggestions: scratchpad research/autocomplete_queue.json
+- A1L2FbgEtUI "walkie talkie building london melts car" -> Walkie Talkie building London melts a car: the maths of a skyscraper caustic
+- biyJZYl7Uew "chaos game sierpinski triangle" -> Chaos game: random dice draw the Sierpinski triangle (and the Koch snowflake)
+- W6OmHFcJ8D0 "coffee cup caustic" -> Coffee cup caustic: light and a gear draw the same curve (the nephroid)
+- FWpfMMu2d28 "mirror on the moon laser" / "laser reflector on the moon" -> Laser reflector on the Moon: the mirror that always sends light back
+- AnIy3vlXGE4 "galileo puzzle", "dice probability problems" -> Galileo's dice puzzle: is 9 or 10 more likely with three dice? (probability)
+- Kept: Epicycloid (already leads with "epicycloid"), Spirograph art (leads with "spirograph art"), 37% rule (Razvan's own edit, matches "37 rule dating").
+- No search demand for "universe without symmetry"; that Short relies on the hook. Searched variant is "symmetry in the universe".

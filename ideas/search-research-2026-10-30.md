@@ -27,3 +27,8 @@ devil's curve, witch of agnesi, nephroid, maurer rose, astroid, golden angle, ti
 - Halloween Short title -> lead with "Cursed math".
 - Cube nets Short -> add "11+ non verbal reasoning" phrasing.
 - Channel keywords + playlist names rewritten to these phrases (see Studio).
+- 30 Oct: channel keywords replaced (26, searched phrases), 7 playlists renamed + searchable first description line, Halloween title -> "Cursed math: ...", cube nets title -> "Cube nets 11+ non verbal reasoning: ...".
+- Hub interactiveexplorer.space/math-universe: "Latest Shorts" row + Shorts strips on rooms, click-to-play, VideoObject JSON-LD (8 Shorts; Halloween appears after 18:00 30 Oct). Live.
+- Voice: Piper TTS (en_US-ryan-high, pitched down + echo) works locally; voiced Halloween cut made (cursed_curves_voice.mp4).
+- Captions upload in Studio did not take (manual subtitle dialog closes while auto-subs "still processing"); retry later. SRT files ready for 3 Shorts.
+- Symmetry Engine, Plico Lab, Interactive Art, Fractal Chaos are NOT in the businesswavep Replit account (other account) -> embeds there need Razvan's access.

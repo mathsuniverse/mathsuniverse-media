@@ -113,3 +113,9 @@ Comments: no channel comment on KHqBvjPWvF8, L3X0ClYLdgU, Fyy457oZZak; Jt_K2IZLx
 31 Oct 10:40 — channel settings audit (Kaleb Karnow "10 settings"), Razvan approved 4 changes, all verified: channel audience = not Made for Kids; upload defaults = Private, description template with hub link, 6 channel tags; homepage = Symmetry in Nature & Mirrors playlist added as first section after For you (Studio saved; public page lags); Golden Angle long Fyy457oZZak end screen = subscribe + best-for-viewer video (2:30–2:50). Channel description rewrite drafted for approval.
 31 Oct 10:50 — tagline "Mathematics made a pleasure": channel description live; banner v2 live (subtitle + chips Symmetry/Fourier/Fractals/Curves/Puzzles/Nature; source registry/make_banner_v2.py). Hub: Replit task #35 "Update Math Universe Eyebrow" (Free) changes /math-universe eyebrow to MATHEMATICS MADE A PLEASURE; NOT published — hub republish waits until the Eureka Engine session's pending hub work (#34) is reviewed, since a republish would push it live too.
 31 Oct 11:20 — hub task #35 applied to main and republished (Razvan OK'd); /math-universe eyebrow now MATHEMATICS MADE A PLEASURE, verified live. Eureka #34 left unapplied.
+
+## 31 Oct, afternoon
+- Long video mhHGxDVe1Fc "Symmetry in nature: how breaking it made the universe, and you" scheduled: Sun 1 Nov 2026 12:00 (GMT+00:00 London), Razvan's choice. Thumbnail, 2 playlists, 18 tags, end screen, English subtitles, VIP line in description.
+- Temp branch tmp-upload-long03: proxy refuses branch deletion; force-pushed a 1-file commit so the 65 MB video is no longer on it. Razvan can delete the branch in GitHub.
+- Coffee-cup pin (W6OmHFcJ8D0, Mon 2 Nov 07:03): last line changed to "Draw it yourself: interactiveart.space" (Razvan, 31 Oct).
+- To do after Sun 12:00: set related video on A6-mM5vas2Q and mJdtaUa3dfs to mhHGxDVe1Fc; pinned comment on the long video needs Razvan's text.

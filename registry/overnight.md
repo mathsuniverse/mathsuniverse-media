@@ -119,3 +119,5 @@ Comments: no channel comment on KHqBvjPWvF8, L3X0ClYLdgU, Fyy457oZZak; Jt_K2IZLx
 - Temp branch tmp-upload-long03: proxy refuses branch deletion; force-pushed a 1-file commit so the 65 MB video is no longer on it. Razvan can delete the branch in GitHub.
 - Coffee-cup pin (W6OmHFcJ8D0, Mon 2 Nov 07:03): last line changed to "Draw it yourself: interactiveart.space" (Razvan, 31 Oct).
 - To do after Sun 12:00: set related video on A6-mM5vas2Q and mJdtaUa3dfs to mhHGxDVe1Fc; pinned comment on the long video needs Razvan's text.
+- 31 Oct 14:35: mhHGxDVe1Fc switched to a Premiere (Sun 1 Nov 12:00 London), saved; Studio thumbnail shows PREMIERE badge. Razvan approved the long video's pinned comment; added to the Sun 12:10 task (trig_01PH4eog1HfpWFbNmRXtdr5q).
+- Sun 1 Nov line-up: 07:00 Walkie-Talkie Short (pin 07:03), 12:00 symmetry Premiere (Shorts linked + pin 12:10), 17:00 chaos-game Short (pin 17:03).

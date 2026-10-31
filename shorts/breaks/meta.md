@@ -57,3 +57,10 @@ Fri 6 Nov B5 heart (strongest hook) · Sat 7 B1 antimatter · Sun 8 B3 hands · 
 - Mon 9 Nov  Turing      40U3nuBMRiM
 - Tue 10 Nov lumpy       9nwC1MaLqrc
 Related video for all five → mhHGxDVe1Fc (set after the Premiere goes public, Sun 1 Nov 12:10 task).
+
+## Pinned comments (approved by Razvan 31 Oct 20:18; scheduled tasks post them at 17:03 on each day)
+- heart: Did you know your heart was on the left before you were born? 👇 Break the symmetry yourself: symmetryengine.space/break
+- antimatter: One extra particle in a billion, and here we are. What would a universe of pure light look like? 👇 Break the symmetry yourself: symmetryengine.space/break
+- hands: Left hand or right hand: which one do you think life would pick on another planet? 👇 Break the symmetry yourself: symmetryengine.space/break
+- Turing: Leopard spots or zebra stripes: which pattern would you grow? 👇 Make your own: symmetryengine.space/break
+- lumpy: Ripples 1 part in 100,000, and they built every galaxy. What's the smallest thing that changed everything for you? 👇 Break the symmetry yourself: symmetryengine.space/break

@@ -49,3 +49,11 @@ Tags: why is the heart on the left, situs inversus, cilia, nodal flow, left righ
 
 ## Proposed schedule (one a day, 17:00 London, after the morning Shorts end Thu 5 Nov)
 Fri 6 Nov B5 heart (strongest hook) · Sat 7 B1 antimatter · Sun 8 B3 hands · Mon 9 B4 body · Tue 10 B2 lumpy universe
+
+## Uploaded 31 Oct 2026 (scheduled 17:00 London, playlists: Symmetry in Nature & Mirrors + The Maths Behind Nature)
+- Fri 6 Nov  heart       lJJGIOAu1x4
+- Sat 7 Nov  antimatter  pmPUhEBvgkI
+- Sun 8 Nov  hands       Gf0E9mbTAt8
+- Mon 9 Nov  Turing      40U3nuBMRiM
+- Tue 10 Nov lumpy       9nwC1MaLqrc
+Related video for all five → mhHGxDVe1Fc (set after the Premiere goes public, Sun 1 Nov 12:10 task).

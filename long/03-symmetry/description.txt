@@ -2,8 +2,13 @@ Symmetry in nature is everywhere: six-armed snowflakes, five-fold starfish, flow
 
 What symmetry is (a move that leaves a thing unchanged: reflection, rotation, translation), why nature is so symmetric, Emmy Noether's theorem (every symmetry of the laws of physics comes with a conservation law), and spontaneous symmetry breaking in physics, chemistry and biology.
 
-PLAY WITH IT: Symmetry Engine, build a perfect pattern, then break one rule and watch what grows.
-→ https://symmetryengine.space
+PLAY WITH IT: free labs in Symmetry Engine
+→ What is a symmetry? https://symmetryengine.space/#moves
+→ Draw a snowflake with 6-fold turns: https://symmetryengine.space/#kaleido
+→ All 24 patterns: https://symmetryengine.space/patterns/
+→ Escher's infinity in a circle: https://symmetryengine.space/escher/
+→ Printable classroom worksheet: https://symmetryengine.space/patterns/worksheet/
+VIP (one-time, lifetime, $8.99): all 17 wallpaper patterns and the VIP labs → https://symmetryengine.space/vip/
 
 CHAPTERS
 0:00 A perfect snowflake, and you

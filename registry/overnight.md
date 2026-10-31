@@ -122,3 +122,4 @@ Comments: no channel comment on KHqBvjPWvF8, L3X0ClYLdgU, Fyy457oZZak; Jt_K2IZLx
 - 31 Oct 14:35: mhHGxDVe1Fc switched to a Premiere (Sun 1 Nov 12:00 London), saved; Studio thumbnail shows PREMIERE badge. Razvan approved the long video's pinned comment; added to the Sun 12:10 task (trig_01PH4eog1HfpWFbNmRXtdr5q).
 - Sun 1 Nov line-up: 07:00 Walkie-Talkie Short (pin 07:03), 12:00 symmetry Premiere (Shorts linked + pin 12:10), 17:00 chaos-game Short (pin 17:03).
 - 31 Oct 14:50: community post published (Razvan approved) announcing the Premiere, with the video card attached ("Premieres 01/11/2026, 12:00", Notify me). Verified on the Posts tab after reload.
+- 31 Oct 15:10: long video description PLAY WITH IT block now deep-links #moves, #kaleido, /patterns/, /escher/, /patterns/worksheet/ + VIP line ($8.99, wallpapers + VIP labs). All links checked live; saved and verified after reload. Site "Symmetry in our videos" update scheduled for Sun 12:30.

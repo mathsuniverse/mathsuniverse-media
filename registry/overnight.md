@@ -108,3 +108,4 @@ Descriptions fixed (Interactive Art + /vip/), verified on public pages: x3MSIa1R
 Already linked in description: PhTYI5jeYoM, E0DofA3563s, QPQCDMLc2Y4, A6-mM5vas2Q, o5gAkaaDT40, mfP_vpkPfGQ, dWAIqKuUxi8.
 Open (needs Razvan's explorer choice): fP6QCI_mx5U Lycurgus, L3X0ClYLdgU sunflowers, Fyy457oZZak long golden angle.
 Comments: no channel comment on KHqBvjPWvF8, L3X0ClYLdgU, Fyy457oZZak; Jt_K2IZLxFY comment not pinned; pinned comments without an explorer link: PhTYI5jeYoM, x3MSIa1RKPQ, dWAIqKuUxi8 (hub only), fP6QCI_mx5U, LXxjxsSf4-0, OUBoiaEtoro (hub only). Drafts sent to Razvan for approval.
+31 Oct 09:05 — Razvan's picks applied to descriptions, verified public: fP6QCI_mx5U Lycurgus → molecularworld.space/premium; L3X0ClYLdgU sunflowers + Fyy457oZZak golden angle long → interactivemaths.space/vip/. All 15 public videos now link an explorer in the description. Comment drafts still awaiting approval.

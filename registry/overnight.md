@@ -121,3 +121,4 @@ Comments: no channel comment on KHqBvjPWvF8, L3X0ClYLdgU, Fyy457oZZak; Jt_K2IZLx
 - To do after Sun 12:00: set related video on A6-mM5vas2Q and mJdtaUa3dfs to mhHGxDVe1Fc; pinned comment on the long video needs Razvan's text.
 - 31 Oct 14:35: mhHGxDVe1Fc switched to a Premiere (Sun 1 Nov 12:00 London), saved; Studio thumbnail shows PREMIERE badge. Razvan approved the long video's pinned comment; added to the Sun 12:10 task (trig_01PH4eog1HfpWFbNmRXtdr5q).
 - Sun 1 Nov line-up: 07:00 Walkie-Talkie Short (pin 07:03), 12:00 symmetry Premiere (Shorts linked + pin 12:10), 17:00 chaos-game Short (pin 17:03).
+- 31 Oct 14:50: community post published (Razvan approved) announcing the Premiere, with the video card attached ("Premieres 01/11/2026, 12:00", Notify me). Verified on the Posts tab after reload.

@@ -25,7 +25,7 @@ one tile, and the generators can be read off the tile itself:
 
 - each edge segment e of T is matched to a neighbour g_e T; the maps g_e generate Γ;
 - the vertices give the relations (Poincaré's polygon theorem: the products of the g_e around each vertex cycle are the identity or a rotation of finite order);
-- there are exactly 93 combinatorial types of isohedral tiling (Grünbaum–Shephard), and deciding whether a polygon admits one is a finite check.
+- there are exactly 81 types of isohedral tiling (93 counting marked tiles; Grünbaum–Shephard), and deciding whether a polygon admits one is a finite check.
 
 So for periodic tilings, "covering = a group with finitely many generators" is a theorem, and the
 generators are the edge-pairings of the tile. Most tiles that tile at all are of this kind.
@@ -93,3 +93,13 @@ Steps 2 and 3 are where computation helps. Steps 1–4 together are what the hat
 The useful question is not "which shape?" but **"which substitution?"**:
 look for small systems (m cluster types, inflation λ, edge-matching data) that can be realised by
 copies of a single tile. A shape found that way comes with steps 2–4 already outlined.
+
+## 7. What is known (summary, 1 Nov 2026)
+- Classified: the 17 wallpaper groups; isohedral tilings (81 types, 93 marked); convex tiles
+  (all triangles and quadrilaterals; 3 hexagon families, Reinhardt 1918; 15 pentagon families, list complete, Rao 2017;
+  no convex n ≥ 7). All convex tilers tile periodically, so an aperiodic monotile must be non-convex.
+- Not classified: tiles in general; no general algorithm known for "does T tile?" for one tile.
+- Aperiodic sets: Berger 1966 (20,426 Wang tiles), Robinson (6), Penrose (2), minimum Wang set 11 (Jeandel–Rao 2015).
+- Aperiodic monotiles: Socolar–Taylor 2010 (needs markings or a disconnected tile); the hat family Tile(a,b) and the
+  Spectre (2023). Every known clean aperiodic monotile is in this one family.
+- Each aperiodic monotile admits uncountably many tilings, all locally indistinguishable.

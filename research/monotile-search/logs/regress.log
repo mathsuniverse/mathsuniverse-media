@@ -1,0 +1,44 @@
+1 {'shapes_old': 1, 'shapes_new': 1, 'identical_shape_lists': True, 'class_disagreements': 0, 'min_period_disagreements': 0, 'fail_radius_disagreements': 0, 'counts_new': {'PERIODIC': 1}, 'counts_old': {'PERIODIC': 1}, 'open_shapes': []}
+2 {'shapes_old': 2, 'shapes_new': 2, 'identical_shape_lists': True, 'class_disagreements': 0, 'min_period_disagreements': 0, 'fail_radius_disagreements': 0, 'counts_new': {'PERIODIC': 1, 'STUCK': 1}, 'counts_old': {'PERIODIC': 1, 'STUCK': 1}, 'open_shapes': []}
+3 {'shapes_old': 4, 'shapes_new': 4, 'identical_shape_lists': True, 'class_disagreements': 0, 'min_period_disagreements': 0, 'fail_radius_disagreements': 0, 'counts_new': {'PERIODIC': 4}, 'counts_old': {'PERIODIC': 4}, 'open_shapes': []}
+4 {'shapes_old': 10, 'shapes_new': 10, 'identical_shape_lists': True, 'class_disagreements': 0, 'min_period_disagreements': 0, 'fail_radius_disagreements': 0, 'counts_new': {'STUCK': 5, 'PERIODIC': 5}, 'counts_old': {'STUCK': 5, 'PERIODIC': 5}, 'open_shapes': []}
+5 {'shapes_old': 27, 'shapes_new': 27, 'identical_shape_lists': True, 'class_disagreements': 0, 'min_period_disagreements': 0, 'fail_radius_disagreements': 0, 'counts_new': {'STUCK': 26, 'PERIODIC': 1}, 'counts_old': {'STUCK': 26, 'PERIODIC': 1}, 'open_shapes': []}
+6 {'shapes_old': 85, 'shapes_new': 85, 'identical_shape_lists': True, 'class_disagreements': 0, 'min_period_disagreements': 0, 'fail_radius_disagreements': 0, 'counts_new': {'PERIODIC': 71, 'STUCK': 14}, 'counts_old': {'PERIODIC': 71, 'STUCK': 14}, 'open_shapes': []}
+7 {'shapes_old': 262, 'shapes_new': 262, 'identical_shape_lists': True, 'class_disagreements': 0, 'min_period_disagreements': 0, 'fail_radius_disagreements': 0, 'counts_new': {'PERIODIC': 55, 'STUCK': 207}, 'counts_old': {'PERIODIC': 55, 'STUCK': 207}, 'open_shapes': []}
+8 {'shapes_old': 873, 'shapes_new': 873, 'identical_shape_lists': True, 'class_disagreements': 0, 'min_period_disagreements': 0, 'fail_radius_disagreements': 0, 'counts_new': {'PERIODIC': 39, 'STUCK': 833, 'OPEN': 1}, 'counts_old': {'PERIODIC': 39, 'STUCK': 833, 'OPEN': 1}, 'open_shapes': ['hat']}
+9 {'shapes_old': 2917, 'shapes_new': 2917, 'identical_shape_lists': True, 'class_disagreements': 0, 'min_period_disagreements': 0, 'fail_radius_disagreements': 0, 'counts_new': {'PERIODIC': 755, 'STUCK': 2162}, 'counts_old': {'PERIODIC': 755, 'STUCK': 2162}, 'open_shapes': []}
+10 {'shapes_old': 10011, 'shapes_new': 10011, 'identical_shape_lists': True, 'class_disagreements': 0, 'min_period_disagreements': 0, 'fail_radius_disagreements': 0, 'counts_new': {'STUCK': 9996, 'PERIODIC': 14, 'OPEN': 1}, 'counts_old': {'STUCK': 9996, 'PERIODIC': 14, 'OPEN': 1}, 'open_shapes': ['turtle']}
+square 1 Myers 1 0 | ours 1 {'PERIODIC': 1} MATCH
+square 2 Myers 1 0 | ours 1 {'PERIODIC': 1} MATCH
+square 3 Myers 2 0 | ours 2 {'PERIODIC': 2} MATCH
+square 4 Myers 5 0 | ours 5 {'PERIODIC': 5} MATCH
+square 5 Myers 12 0 | ours 12 {'PERIODIC': 12} MATCH
+square 6 Myers 35 0 | ours 35 {'PERIODIC': 35} MATCH
+square 7 Myers 108 4 | ours 108 {'PERIODIC': 104, 'STUCK': 4} MATCH
+square 8 Myers 369 26 | ours 369 {'PERIODIC': 343, 'STUCK': 26} MATCH
+hex 1 Myers 1 0 | ours 1 {'PERIODIC': 1} MATCH
+hex 2 Myers 1 0 | ours 1 {'PERIODIC': 1} MATCH
+hex 3 Myers 3 0 | ours 3 {'PERIODIC': 3} MATCH
+hex 4 Myers 7 0 | ours 7 {'PERIODIC': 7} MATCH
+hex 5 Myers 22 0 | ours 22 {'PERIODIC': 22} MATCH
+hex 6 Myers 82 5 | ours 82 {'PERIODIC': 77, 'STUCK': 5} MATCH
+tri 1 Myers 1 0 | ours 1 {'PERIODIC': 1} MATCH
+tri 2 Myers 1 0 | ours 1 {'PERIODIC': 1} MATCH
+tri 3 Myers 1 0 | ours 1 {'PERIODIC': 1} MATCH
+tri 4 Myers 3 0 | ours 3 {'PERIODIC': 3} MATCH
+tri 5 Myers 4 0 | ours 4 {'PERIODIC': 4} MATCH
+tri 6 Myers 12 0 | ours 12 {'PERIODIC': 12} MATCH
+tri 7 Myers 24 1 | ours 24 {'PERIODIC': 23, 'STUCK': 1} MATCH
+tri 8 Myers 66 0 | ours 66 {'PERIODIC': 66} MATCH
+tri 9 Myers 160 21 | ours 160 {'PERIODIC': 139, 'STUCK': 21} MATCH
+tri 10 Myers 448 107 | ours 448 {'PERIODIC': 341, 'STUCK': 107} MATCH
+kite 1 Myers 1 0 | ours 1 {'PERIODIC': 1} MATCH
+kite 2 Myers 2 1 | ours 2 {'PERIODIC': 1, 'STUCK': 1} MATCH
+kite 3 Myers 4 0 | ours 4 {'PERIODIC': 4} MATCH
+kite 4 Myers 10 5 | ours 10 {'PERIODIC': 5, 'STUCK': 5} MATCH
+kite 5 Myers 27 26 | ours 27 {'PERIODIC': 1, 'STUCK': 26} MATCH
+kite 6 Myers 85 14 | ours 85 {'PERIODIC': 71, 'STUCK': 14} MATCH
+kite 7 Myers 262 207 | ours 262 {'PERIODIC': 55, 'STUCK': 207} MATCH
+kite 8 Myers 873 833 | ours 873 {'OPEN': 1, 'PERIODIC': 39, 'STUCK': 833} MATCH
+kite 9 Myers 2917 2162 | ours 2917 {'PERIODIC': 755, 'STUCK': 2162} MATCH
+kite 10 Myers 10011 9996 | ours 10011 {'OPEN': 1, 'PERIODIC': 14, 'STUCK': 9996} MATCH

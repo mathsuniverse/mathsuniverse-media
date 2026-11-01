@@ -1,0 +1,10 @@
+floret [3^4.6]*: 6 cell type(s) per lattice cell, 6 point symmetries (mod translations) [chiral], 0 partial congruences
+  floret n=2: 3  (0.0s)
+  floret n=3: 8  (0.0s)
+  floret n=4: 25  (0.0s)
+  floret n=5: 80  (0.0s)
+  floret n=6: 291  (0.0s)
+  floret n=7: 1036  (0.1s)
+  floret n=8: 3875  (0.3s)
+  floret n=9: 14561  (1.8s)
+floret n=8: 3875 free (3875 sym)  {'PERIODIC': 106, 'STUCK': 3769}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 40.4}]  verified 400 fails 0  42.7s

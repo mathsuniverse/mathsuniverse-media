@@ -169,7 +169,7 @@
    "PERIODIC": 77,
    "STUCK": 5
   },
-  "enum_time_total": 0.3,
+  "enum_time_total": 0.4,
   "free": 82,
   "max_fail_R": 3,
   "max_tiles_needed": 2,
@@ -180,7 +180,7 @@
    {
     "open_after": 0,
     "rcap": 6,
-    "seconds": 136.1,
+    "seconds": 485.1,
     "tcap": 12
    }
   ],
@@ -207,7 +207,7 @@
    "STUCK: glucose4 pairwise encoding": 3
   },
   "verify_mode": "sample",
-  "verify_time": 18.9,
-  "wall_time": 155.1
+  "verify_time": 9.9,
+  "wall_time": 495.0
  }
 }

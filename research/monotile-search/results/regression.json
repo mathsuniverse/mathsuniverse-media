@@ -1,0 +1,570 @@
+{
+ "kite": {
+  "1": {
+   "shapes_old": 1,
+   "shapes_new": 1,
+   "identical_shape_lists": true,
+   "class_disagreements": 0,
+   "min_period_disagreements": 0,
+   "fail_radius_disagreements": 0,
+   "counts_new": {
+    "PERIODIC": 1
+   },
+   "counts_old": {
+    "PERIODIC": 1
+   },
+   "open_shapes": []
+  },
+  "2": {
+   "shapes_old": 2,
+   "shapes_new": 2,
+   "identical_shape_lists": true,
+   "class_disagreements": 0,
+   "min_period_disagreements": 0,
+   "fail_radius_disagreements": 0,
+   "counts_new": {
+    "PERIODIC": 1,
+    "STUCK": 1
+   },
+   "counts_old": {
+    "PERIODIC": 1,
+    "STUCK": 1
+   },
+   "open_shapes": []
+  },
+  "3": {
+   "shapes_old": 4,
+   "shapes_new": 4,
+   "identical_shape_lists": true,
+   "class_disagreements": 0,
+   "min_period_disagreements": 0,
+   "fail_radius_disagreements": 0,
+   "counts_new": {
+    "PERIODIC": 4
+   },
+   "counts_old": {
+    "PERIODIC": 4
+   },
+   "open_shapes": []
+  },
+  "4": {
+   "shapes_old": 10,
+   "shapes_new": 10,
+   "identical_shape_lists": true,
+   "class_disagreements": 0,
+   "min_period_disagreements": 0,
+   "fail_radius_disagreements": 0,
+   "counts_new": {
+    "STUCK": 5,
+    "PERIODIC": 5
+   },
+   "counts_old": {
+    "STUCK": 5,
+    "PERIODIC": 5
+   },
+   "open_shapes": []
+  },
+  "5": {
+   "shapes_old": 27,
+   "shapes_new": 27,
+   "identical_shape_lists": true,
+   "class_disagreements": 0,
+   "min_period_disagreements": 0,
+   "fail_radius_disagreements": 0,
+   "counts_new": {
+    "STUCK": 26,
+    "PERIODIC": 1
+   },
+   "counts_old": {
+    "STUCK": 26,
+    "PERIODIC": 1
+   },
+   "open_shapes": []
+  },
+  "6": {
+   "shapes_old": 85,
+   "shapes_new": 85,
+   "identical_shape_lists": true,
+   "class_disagreements": 0,
+   "min_period_disagreements": 0,
+   "fail_radius_disagreements": 0,
+   "counts_new": {
+    "PERIODIC": 71,
+    "STUCK": 14
+   },
+   "counts_old": {
+    "PERIODIC": 71,
+    "STUCK": 14
+   },
+   "open_shapes": []
+  },
+  "7": {
+   "shapes_old": 262,
+   "shapes_new": 262,
+   "identical_shape_lists": true,
+   "class_disagreements": 0,
+   "min_period_disagreements": 0,
+   "fail_radius_disagreements": 0,
+   "counts_new": {
+    "PERIODIC": 55,
+    "STUCK": 207
+   },
+   "counts_old": {
+    "PERIODIC": 55,
+    "STUCK": 207
+   },
+   "open_shapes": []
+  },
+  "8": {
+   "shapes_old": 873,
+   "shapes_new": 873,
+   "identical_shape_lists": true,
+   "class_disagreements": 0,
+   "min_period_disagreements": 0,
+   "fail_radius_disagreements": 0,
+   "counts_new": {
+    "PERIODIC": 39,
+    "STUCK": 833,
+    "OPEN": 1
+   },
+   "counts_old": {
+    "PERIODIC": 39,
+    "STUCK": 833,
+    "OPEN": 1
+   },
+   "open_shapes": [
+    "hat"
+   ]
+  },
+  "9": {
+   "shapes_old": 2917,
+   "shapes_new": 2917,
+   "identical_shape_lists": true,
+   "class_disagreements": 0,
+   "min_period_disagreements": 0,
+   "fail_radius_disagreements": 0,
+   "counts_new": {
+    "PERIODIC": 755,
+    "STUCK": 2162
+   },
+   "counts_old": {
+    "PERIODIC": 755,
+    "STUCK": 2162
+   },
+   "open_shapes": []
+  },
+  "10": {
+   "shapes_old": 10011,
+   "shapes_new": 10011,
+   "identical_shape_lists": true,
+   "class_disagreements": 0,
+   "min_period_disagreements": 0,
+   "fail_radius_disagreements": 0,
+   "counts_new": {
+    "STUCK": 9996,
+    "PERIODIC": 14,
+    "OPEN": 1
+   },
+   "counts_old": {
+    "STUCK": 9996,
+    "PERIODIC": 14,
+    "OPEN": 1
+   },
+   "open_shapes": [
+    "turtle"
+   ]
+  }
+ },
+ "myers": {
+  "square1": {
+   "grid": "square",
+   "n": 1,
+   "myers_shapes": 1,
+   "myers_nontilers": 0,
+   "ours_shapes": 1,
+   "ours": {
+    "PERIODIC": 1
+   },
+   "match": true
+  },
+  "square2": {
+   "grid": "square",
+   "n": 2,
+   "myers_shapes": 1,
+   "myers_nontilers": 0,
+   "ours_shapes": 1,
+   "ours": {
+    "PERIODIC": 1
+   },
+   "match": true
+  },
+  "square3": {
+   "grid": "square",
+   "n": 3,
+   "myers_shapes": 2,
+   "myers_nontilers": 0,
+   "ours_shapes": 2,
+   "ours": {
+    "PERIODIC": 2
+   },
+   "match": true
+  },
+  "square4": {
+   "grid": "square",
+   "n": 4,
+   "myers_shapes": 5,
+   "myers_nontilers": 0,
+   "ours_shapes": 5,
+   "ours": {
+    "PERIODIC": 5
+   },
+   "match": true
+  },
+  "square5": {
+   "grid": "square",
+   "n": 5,
+   "myers_shapes": 12,
+   "myers_nontilers": 0,
+   "ours_shapes": 12,
+   "ours": {
+    "PERIODIC": 12
+   },
+   "match": true
+  },
+  "square6": {
+   "grid": "square",
+   "n": 6,
+   "myers_shapes": 35,
+   "myers_nontilers": 0,
+   "ours_shapes": 35,
+   "ours": {
+    "PERIODIC": 35
+   },
+   "match": true
+  },
+  "square7": {
+   "grid": "square",
+   "n": 7,
+   "myers_shapes": 108,
+   "myers_nontilers": 4,
+   "ours_shapes": 108,
+   "ours": {
+    "PERIODIC": 104,
+    "STUCK": 4
+   },
+   "match": true
+  },
+  "square8": {
+   "grid": "square",
+   "n": 8,
+   "myers_shapes": 369,
+   "myers_nontilers": 26,
+   "ours_shapes": 369,
+   "ours": {
+    "PERIODIC": 343,
+    "STUCK": 26
+   },
+   "match": true
+  },
+  "hex1": {
+   "grid": "hex",
+   "n": 1,
+   "myers_shapes": 1,
+   "myers_nontilers": 0,
+   "ours_shapes": 1,
+   "ours": {
+    "PERIODIC": 1
+   },
+   "match": true
+  },
+  "hex2": {
+   "grid": "hex",
+   "n": 2,
+   "myers_shapes": 1,
+   "myers_nontilers": 0,
+   "ours_shapes": 1,
+   "ours": {
+    "PERIODIC": 1
+   },
+   "match": true
+  },
+  "hex3": {
+   "grid": "hex",
+   "n": 3,
+   "myers_shapes": 3,
+   "myers_nontilers": 0,
+   "ours_shapes": 3,
+   "ours": {
+    "PERIODIC": 3
+   },
+   "match": true
+  },
+  "hex4": {
+   "grid": "hex",
+   "n": 4,
+   "myers_shapes": 7,
+   "myers_nontilers": 0,
+   "ours_shapes": 7,
+   "ours": {
+    "PERIODIC": 7
+   },
+   "match": true
+  },
+  "hex5": {
+   "grid": "hex",
+   "n": 5,
+   "myers_shapes": 22,
+   "myers_nontilers": 0,
+   "ours_shapes": 22,
+   "ours": {
+    "PERIODIC": 22
+   },
+   "match": true
+  },
+  "hex6": {
+   "grid": "hex",
+   "n": 6,
+   "myers_shapes": 82,
+   "myers_nontilers": 5,
+   "ours_shapes": 82,
+   "ours": {
+    "PERIODIC": 77,
+    "STUCK": 5
+   },
+   "match": true
+  },
+  "tri1": {
+   "grid": "tri",
+   "n": 1,
+   "myers_shapes": 1,
+   "myers_nontilers": 0,
+   "ours_shapes": 1,
+   "ours": {
+    "PERIODIC": 1
+   },
+   "match": true
+  },
+  "tri2": {
+   "grid": "tri",
+   "n": 2,
+   "myers_shapes": 1,
+   "myers_nontilers": 0,
+   "ours_shapes": 1,
+   "ours": {
+    "PERIODIC": 1
+   },
+   "match": true
+  },
+  "tri3": {
+   "grid": "tri",
+   "n": 3,
+   "myers_shapes": 1,
+   "myers_nontilers": 0,
+   "ours_shapes": 1,
+   "ours": {
+    "PERIODIC": 1
+   },
+   "match": true
+  },
+  "tri4": {
+   "grid": "tri",
+   "n": 4,
+   "myers_shapes": 3,
+   "myers_nontilers": 0,
+   "ours_shapes": 3,
+   "ours": {
+    "PERIODIC": 3
+   },
+   "match": true
+  },
+  "tri5": {
+   "grid": "tri",
+   "n": 5,
+   "myers_shapes": 4,
+   "myers_nontilers": 0,
+   "ours_shapes": 4,
+   "ours": {
+    "PERIODIC": 4
+   },
+   "match": true
+  },
+  "tri6": {
+   "grid": "tri",
+   "n": 6,
+   "myers_shapes": 12,
+   "myers_nontilers": 0,
+   "ours_shapes": 12,
+   "ours": {
+    "PERIODIC": 12
+   },
+   "match": true
+  },
+  "tri7": {
+   "grid": "tri",
+   "n": 7,
+   "myers_shapes": 24,
+   "myers_nontilers": 1,
+   "ours_shapes": 24,
+   "ours": {
+    "PERIODIC": 23,
+    "STUCK": 1
+   },
+   "match": true
+  },
+  "tri8": {
+   "grid": "tri",
+   "n": 8,
+   "myers_shapes": 66,
+   "myers_nontilers": 0,
+   "ours_shapes": 66,
+   "ours": {
+    "PERIODIC": 66
+   },
+   "match": true
+  },
+  "tri9": {
+   "grid": "tri",
+   "n": 9,
+   "myers_shapes": 160,
+   "myers_nontilers": 21,
+   "ours_shapes": 160,
+   "ours": {
+    "PERIODIC": 139,
+    "STUCK": 21
+   },
+   "match": true
+  },
+  "tri10": {
+   "grid": "tri",
+   "n": 10,
+   "myers_shapes": 448,
+   "myers_nontilers": 107,
+   "ours_shapes": 448,
+   "ours": {
+    "PERIODIC": 341,
+    "STUCK": 107
+   },
+   "match": true
+  },
+  "kite1": {
+   "grid": "kite",
+   "n": 1,
+   "myers_shapes": 1,
+   "myers_nontilers": 0,
+   "ours_shapes": 1,
+   "ours": {
+    "PERIODIC": 1
+   },
+   "match": true
+  },
+  "kite2": {
+   "grid": "kite",
+   "n": 2,
+   "myers_shapes": 2,
+   "myers_nontilers": 1,
+   "ours_shapes": 2,
+   "ours": {
+    "PERIODIC": 1,
+    "STUCK": 1
+   },
+   "match": true
+  },
+  "kite3": {
+   "grid": "kite",
+   "n": 3,
+   "myers_shapes": 4,
+   "myers_nontilers": 0,
+   "ours_shapes": 4,
+   "ours": {
+    "PERIODIC": 4
+   },
+   "match": true
+  },
+  "kite4": {
+   "grid": "kite",
+   "n": 4,
+   "myers_shapes": 10,
+   "myers_nontilers": 5,
+   "ours_shapes": 10,
+   "ours": {
+    "PERIODIC": 5,
+    "STUCK": 5
+   },
+   "match": true
+  },
+  "kite5": {
+   "grid": "kite",
+   "n": 5,
+   "myers_shapes": 27,
+   "myers_nontilers": 26,
+   "ours_shapes": 27,
+   "ours": {
+    "PERIODIC": 1,
+    "STUCK": 26
+   },
+   "match": true
+  },
+  "kite6": {
+   "grid": "kite",
+   "n": 6,
+   "myers_shapes": 85,
+   "myers_nontilers": 14,
+   "ours_shapes": 85,
+   "ours": {
+    "PERIODIC": 71,
+    "STUCK": 14
+   },
+   "match": true
+  },
+  "kite7": {
+   "grid": "kite",
+   "n": 7,
+   "myers_shapes": 262,
+   "myers_nontilers": 207,
+   "ours_shapes": 262,
+   "ours": {
+    "PERIODIC": 55,
+    "STUCK": 207
+   },
+   "match": true
+  },
+  "kite8": {
+   "grid": "kite",
+   "n": 8,
+   "myers_shapes": 873,
+   "myers_nontilers": 833,
+   "ours_shapes": 873,
+   "ours": {
+    "OPEN": 1,
+    "PERIODIC": 39,
+    "STUCK": 833
+   },
+   "match": true
+  },
+  "kite9": {
+   "grid": "kite",
+   "n": 9,
+   "myers_shapes": 2917,
+   "myers_nontilers": 2162,
+   "ours_shapes": 2917,
+   "ours": {
+    "PERIODIC": 755,
+    "STUCK": 2162
+   },
+   "match": true
+  },
+  "kite10": {
+   "grid": "kite",
+   "n": 10,
+   "myers_shapes": 10011,
+   "myers_nontilers": 9996,
+   "ours_shapes": 10011,
+   "ours": {
+    "OPEN": 1,
+    "PERIODIC": 14,
+    "STUCK": 9996
+   },
+   "match": true
+  }
+ }
+}

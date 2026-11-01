@@ -16,3 +16,6 @@ P3 decorated round {"rho": 3.5, "classes": 73, "best_fraction": 0.8408, "best_si
 P3 decorated round {"rho": 4.0, "classes": 82, "best_fraction": 0.9066, "best_size": 61}
 P3 decorated round {"rho": 4.5, "classes": 97, "best_fraction": 0.917, "best_size": 76}
 P3 decorated round {"rho": 5.0, "classes": 115, "best_fraction": 0.9319, "best_size": 96}
+P3 decorated round {"rho": 5.5, "classes": 127, "best_fraction": 0.8281, "best_size": 121}
+P3 decorated round {"rho": 6.0, "classes": 146, "best_fraction": 0.8881, "best_size": 141}
+P3 decorated round {"rho": 7.0, "classes": 176, "best_fraction": 0.9343, "best_size": 187}

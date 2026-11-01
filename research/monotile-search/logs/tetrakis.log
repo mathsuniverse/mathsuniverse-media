@@ -1,0 +1,22 @@
+tetrakis [4.8^2]*: 4 cell type(s) per lattice cell, 8 point symmetries (mod translations), 0 partial congruences
+  tetrakis n=2: 2  (0.0s)
+  tetrakis n=3: 2  (0.0s)
+  tetrakis n=4: 6  (0.0s)
+  tetrakis n=5: 8  (0.0s)
+  tetrakis n=6: 22  (0.0s)
+  tetrakis n=7: 42  (0.0s)
+  tetrakis n=8: 112  (0.0s)
+  tetrakis n=9: 252  (0.0s)
+  tetrakis n=10: 650  (0.1s)
+  tetrakis n=11: 1584  (0.2s)
+  tetrakis n=12: 4091  (0.7s)
+tetrakis n=1: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 1 fails 0  0.1s
+tetrakis n=2: 2 free (2 sym)  {'PERIODIC': 2}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 2 fails 0  0.0s
+tetrakis n=3: 2 free (2 sym)  {'STUCK': 1, 'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 2 fails 0  0.0s
+tetrakis n=4: 6 free (6 sym)  {'PERIODIC': 6}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 6 fails 0  0.1s
+tetrakis n=5: 8 free (8 sym)  {'PERIODIC': 5, 'STUCK': 3}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 8 fails 0  0.2s
+tetrakis n=6: 22 free (22 sym)  {'PERIODIC': 16, 'STUCK': 6}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.3}]  verified 22 fails 0  0.5s
+tetrakis n=7: 42 free (42 sym)  {'STUCK': 33, 'PERIODIC': 9}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 1.4}]  verified 42 fails 0  2.6s
+tetrakis n=8: 112 free (112 sym)  {'PERIODIC': 79, 'STUCK': 33}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.9}]  verified 112 fails 0  1.6s
+tetrakis n=9: 252 free (252 sym)  {'STUCK': 227, 'PERIODIC': 25}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 1, 'seconds': 6.1}, {'tcap': 24, 'rcap': 8.0, 'retested': 1, 'open_after': 0, 'seconds': 1.4}]  verified 252 fails 0  14.4s
+tetrakis n=10: 650 free (650 sym)  {'PERIODIC': 219, 'STUCK': 431}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 11.3}]  verified 400 fails 0  18.1s

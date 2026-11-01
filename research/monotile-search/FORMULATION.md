@@ -165,3 +165,32 @@ linear maps (turtle, chevron, hat, comet covered); the Spectre is not covered.
 Pisot-type pure point orders are the expected model sets (Pisot conjecture).
 **Search route C (projection-first):** choose an irrational plane (silver: 8-fold, bronze: hexagonal) and a window, project,
 then look for a single shape whose copies merge the resulting tiles (as the hat merges its metatiles).
+
+## 12. The Pisot family as the organising theory
+
+**Definitions.** λ > 1 is a Pisot number if it is an algebraic integer whose other conjugates all have |·| < 1
+(Salem: conjugates ≤ 1 with one on the unit circle). A Pisot unit has norm ±1.
+
+**Key theorems (standard, to be cited precisely in any write-up):**
+1. Meyer (1972): if Λ is a Meyer set (e.g. a cut-and-project set) and λΛ ⊆ Λ with λ > 1, then λ is Pisot or Salem.
+   So projection + self-similarity ⇒ Pisot/Salem inflation.
+2. Thurston, Kenyon (1996): expansion factors of self-similar plane tilings are exactly the complex Perron numbers
+   (a much larger class); so non-Pisot inflations exist (pinwheel, λ = √5, conjugate −√5) but are not model sets.
+3. Solomyak and the Pisot substitution programme: for Pisot inflations, pure point diffraction ⇔ model-set
+   structure (proved in many cases, conjectured in general: the Pisot conjecture).
+4. Internal space: unimodular (unit) Pisot inflations lead to Euclidean internal spaces (Rauzy-fractal windows);
+   non-unit ones need p-adic factors from the primes dividing the norm.
+   Example: the chair, λ = 2 (Pisot, norm 2) has a 2-adic internal space; the hat, λ = φ² (unit) has internal space R².
+
+**So the earlier "counterexamples" fit:** chair = integer Pisot, non-unit → p-adic; pinwheel = non-Pisot → no projection;
+12-fold = 2+√3, a quadratic Pisot unit (sibling).
+
+**Quadratic Pisot units (computed):** roots of x² − n x − 1 (metallic, n ≥ 1) and x² − n x + 1 (siblings, n ≥ 3):
+1.6180 golden (n=1), 2.4142 silver (n=2), 2.6180 = φ² (sibling n=3: the hat), 3.3028 bronze (n=3),
+3.7321 = 2+√3 (sibling n=4: 12-fold), 4.2361 = φ³ (n=4), 4.7913 (sibling n=5), 5.1926 (n=5),
+5.8284 = (1+√2)² (sibling n=6), 6.1623 (n=6). Siblings with n = m² + 2 are squares of metallic means.
+
+**Working conjecture (refined):** an aperiodic monotile whose tilings are pure point (quasicrystal-like) has a Pisot
+inflation. If that is a unit, the window is Euclidean and the order is "metallic-type"; the quadratic cases are
+exactly the list above. Known monotiles realise only the golden field Q(√5) (hat: φ²). Open: Q(√2) (silver), Q(√13) (bronze),
+Q(√3) (12-fold).

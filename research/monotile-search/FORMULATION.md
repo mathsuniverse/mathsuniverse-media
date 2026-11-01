@@ -194,3 +194,30 @@ then look for a single shape whose copies merge the resulting tiles (as the hat 
 inflation. If that is a unit, the window is Euclidean and the order is "metallic-type"; the quadratic cases are
 exactly the list above. Known monotiles realise only the golden field Q(√5) (hat: φ²). Open: Q(√2) (silver), Q(√13) (bronze),
 Q(√3) (12-fold).
+
+## 13. Testing the silver / bronze / 12-fold question (1 Nov 2026, evening)
+
+**Correction to section 12.** The Spectre is NOT golden. Its area inflation is 4+√15 ≈ 7.873 (root of x² − 8x + 1),
+field Q(√15), internal space R⁴, Rauzy-fractal windows (Baake, Gähler, Mazáč, Sadun, arXiv 2411.15503).
+The hat's area inflation is φ⁴ ≈ 6.854 (root of x² − 7x + 1); measured here from hat counts 4, 25, 169, 1156, 7921
+(ratios 6.25, 6.76, 6.840, 6.852 → 6.854). So the two known monotile families realise two fields, Q(√5) and Q(√15),
+and both area factors are sibling Pisot units (norm +1, n = 7 and n = 8). Socolar–Taylor: λ = 2 (rational, 2-adic).
+
+**Sibling unit in each target field** (x² − n x + 1, field Q(√(n² − 4))):
+Q(√3): n=4, 2+√3 = 3.732 · Q(√2): n=6, (1+√2)² = 5.828 · Q(√5): n=7, φ⁴ (hat) · Q(√15): n=8 (Spectre) ·
+Q(√6): n=10 · Q(√13): n=11, β² = 10.908 (β bronze).
+
+**Lemma A (no single-cluster collapse).** If a tiling by two prototiles has an irrational frequency ratio
+(Ammann–Beenker squares:rhombs = √2, Penrose thick:thin = φ), it cannot be partitioned into copies of one cluster of
+its own tiles: every copy has the same rational composition, so the ratio would be rational. Hence a silver monotile
+cannot be "a patch of Ammann–Beenker"; the irrational must live in orientation or neighbourhood frequencies, as in the
+hat (unreflected:reflected → φ⁴ with all hats congruent).
+
+**Lemma B (deformation keeps the field; standard, cite before use).** Shape changes that keep the combinatorics
+(the hat's Tile(a,b) family, the Spectre's curved edges) give homeomorphic tiling spaces with the same substitution
+matrix, hence the same inflation and field. So deforming the hat can never reach √2, √3 or √13: route 4a is closed for
+this question; a new field needs new combinatorics (route 4b, structure first).
+
+**What the searches answer so far.** Kite grid, n ≤ 10: 13,212 shapes; the only open ones are the hat and the turtle
+(golden). So no small polykite monotile exists for any other field. Silver / √3 / bronze remain open; the next test is
+structure-first: search small substitutions with these sibling inflations and ask whether one shape realises them.

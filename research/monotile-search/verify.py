@@ -78,14 +78,47 @@ def check_periodic(g, cells, lat, R=4):
 
 def _backtrack(region, placements, node_limit):
     """Exact cover of `region` (every region cell covered once; placements may stick out
-    but must not overlap).  Returns True / False / None (node limit)."""
+    but must not overlap).  Dancing-links style: live-option counts per region cell are
+    kept incrementally; branch on the uncovered cell with fewest live options.
+    Returns (True / False / None (node limit), nodes)."""
+    placements = [tuple(p) for p in placements]
     by_cell = {}
     for k, p in enumerate(placements):
         for c in p:
             by_cell.setdefault(c, []).append(k)
-    used = set()
     todo = set(region)
+    cnt = {c: len(by_cell.get(c, ())) for c in todo}
+    dead = [0] * len(placements)
     nodes = [0]
+
+    def kill(k):
+        if dead[k] == 0:
+            for c in placements[k]:
+                if c in cnt:
+                    cnt[c] -= 1
+        dead[k] += 1
+
+    def revive(k):
+        dead[k] -= 1
+        if dead[k] == 0:
+            for c in placements[k]:
+                if c in cnt:
+                    cnt[c] += 1
+
+    def place(k):
+        killed = []
+        for c in placements[k]:
+            for k2 in by_cell[c]:
+                kill(k2)
+                killed.append(k2)
+        removed = [c for c in placements[k] if c in todo]
+        todo.difference_update(removed)
+        return killed, removed
+
+    def unplace(killed, removed):
+        todo.update(removed)
+        for k2 in reversed(killed):
+            revive(k2)
 
     def rec():
         nodes[0] += 1
@@ -93,26 +126,19 @@ def _backtrack(region, placements, node_limit):
             return None
         if not todo:
             return True
-        best, best_opts = None, None
-        for c in todo:
-            opts = [k for k in by_cell.get(c, ()) if not (placements[k] & used)]
-            if best_opts is None or len(opts) < len(best_opts):
-                best, best_opts = c, opts
-                if len(opts) <= 1:
-                    break
-        if not best_opts:
+        best = min(todo, key=cnt.__getitem__)
+        if cnt[best] == 0:
             return False
-        for k in best_opts:
-            p = placements[k]
-            used.update(p)
-            removed = [c for c in p if c in todo]
-            todo.difference_update(removed)
+        opts = [k for k in by_cell.get(best, ()) if dead[k] == 0]
+        for k in opts:
+            killed, removed = place(k)
             r = rec()
-            todo.update(removed)
-            used.difference_update(p)
+            unplace(killed, removed)
             if r is None or r:
                 return r
         return False
+    import sys
+    sys.setrecursionlimit(max(10000, 4 * len(region) + 100))
     return rec(), nodes[0]
 
 

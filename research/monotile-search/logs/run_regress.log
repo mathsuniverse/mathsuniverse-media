@@ -1,0 +1,1 @@
++ python3 sieve.py square --nmax 8 --verify all --dovetail 24:8 --shape-time 120

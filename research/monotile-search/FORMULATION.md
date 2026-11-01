@@ -147,3 +147,21 @@ x² − n x + 1 (n ≥ 3), e.g. φ² (n = 3: the hat's inflation) and 2+√3 (n 
 Pisot units. Conjecture: every aperiodic monotile whose tilings have pure point diffraction has a Pisot inflation
 factor; in the quadratic case it is a metallic mean or a sibling. The Pisot part is supported by Solomyak's theory
 of pure point spectrum for self-similar tilings; the monotile restriction is open. Next members to look for: silver, bronze.
+
+## 11. Lifting: tilings as projections (Razvan, 1 Nov: "a projection from higher dimensional space ... maybe a Gauss map")
+
+**Cut-and-project.** Lattice L ⊂ Rᴺ (e.g. Z⁵ for Penrose); split Rᴺ = E ⊕ E⊥ with E the 2D physical plane;
+window W ⊂ E⊥; vertex set Λ = { π_E(x) : x ∈ L, π_⊥(x) ∈ W }.
+**The "angle"** is the point E ∈ Gr(2, N), the Grassmannian of 2-planes (generalising the Gauss map, which takes values in
+Gr(1,3) = the sphere of normals up to sign). Literal Gauss-map version: lift a tiling to a stepped surface in Zᴺ
+(each edge = a unit lattice step); its asymptotic tangent plane is a point of Gr(2,N).
+**Two parameters:** slope E (rational → periodic, irrational → quasiperiodic) and offset (a point of the torus Rᴺ/L,
+selecting the individual tiling; uncountably many).
+**The hat is a projection:** Baake, Gähler, Mazáč, Sadun, "Dynamics and topology of the Hat family of tilings" (arXiv 2305.05639):
+control points of the CAP tiling form a cut-and-project set with internal space R², total window a regular hexagon,
+subwindow boundaries partly Koch-type fractals (dimension ≈ 1.368); all Hat-family tilings are topologically conjugate up to
+linear maps (turtle, chevron, hat, comet covered); the Spectre is not covered.
+**Not all aperiodic orders are Euclidean projections:** chair (2-adic internal space), pinwheel (not a model set);
+Pisot-type pure point orders are the expected model sets (Pisot conjecture).
+**Search route C (projection-first):** choose an irrational plane (silver: 8-fold, bronze: hexagonal) and a window, project,
+then look for a single shape whose copies merge the resulting tiles (as the hat merges its metatiles).

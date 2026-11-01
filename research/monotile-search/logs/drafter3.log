@@ -1,0 +1,16 @@
+drafter [4.6.12]*: 12 cell type(s) per lattice cell, 12 point symmetries (mod translations), 0 partial congruences
+  drafter n=2: 3  (0.0s)
+  drafter n=3: 3  (0.0s)
+  drafter n=4: 9  (0.0s)
+  drafter n=5: 14  (0.0s)
+  drafter n=6: 38  (0.0s)
+  drafter n=7: 74  (0.0s)
+  drafter n=8: 185  (0.0s)
+  drafter n=9: 414  (0.1s)
+  drafter n=10: 1026  (0.3s)
+  drafter n=11: 2440  (0.6s)
+  drafter n=12: 6077  (1.8s)
+  drafter n=13: 14926  (5.1s)
+  drafter n=14: 37454  (13.5s)
+  drafter n=15: 93749  (36.8s)
+drafter n=14: 37454 free (37454 sym)  {'PERIODIC': 567, 'STUCK': 36887}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 1, 'seconds': 383.2}, {'tcap': 24, 'rcap': 8.0, 'retested': 1, 'open_after': 0, 'seconds': 0.8}]  verified 401 fails 0  388.5s

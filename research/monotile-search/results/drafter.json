@@ -180,6 +180,51 @@
   "verify_time": 3.2,
   "wall_time": 84.2
  },
+ "14": {
+  "class_merge_time": 45.2,
+  "counts": {
+   "PERIODIC": 567,
+   "STUCK": 36887
+  },
+  "enum_time_total": 58.3,
+  "free": 37454,
+  "max_fail_R": 8,
+  "max_tiles_needed": 6,
+  "n": 14,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 1,
+    "rcap": 6,
+    "seconds": 383.2,
+    "tcap": 12
+   },
+   {
+    "open_after": 0,
+    "rcap": 8.0,
+    "retested": 1,
+    "seconds": 0.8,
+    "tcap": 24
+   }
+  ],
+  "sym_classes": 37454,
+  "verified": 401,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 48 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 49 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 50 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 51 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 52 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 53 tiles": 1,
+   "STUCK: backtracking": 390,
+   "STUCK: glucose4 pairwise encoding": 2
+  },
+  "verify_mode": "sample",
+  "verify_time": 4.4,
+  "wall_time": 388.5
+ },
  "2": {
   "class_merge_time": 0.0,
   "counts": {

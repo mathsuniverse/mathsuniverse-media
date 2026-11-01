@@ -176,6 +176,20 @@ All grids pass exact checks: prototile areas add up to the lattice cell (exactly
 | kite | 9 | 2917 / 2162 | 2917 / 2162 / 755 / 0 | yes |
 | kite | 10 | 10011 / 9996 | 10011 / 9996 / 14 / 1 | yes |
 
+## Frontier grids: summary
+
+| grid | sieved up to n | shapes classified | STUCK | PERIODIC | OPEN after dovetail (caps) |
+|---|---|---|---|---|---|
+| tetrakis | 14 | 44079 | 41007 | 3072 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
+| drafter | 13 | 25210 | 24289 | 921 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
+| floret | 9 | 19880 | 18198 | 1682 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
+| triakis | 10 | 212 | 168 | 44 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
+| rhomb | 8 | 334 | 258 | 76 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
+| cairo | 6 | 286 | 68 | 218 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
+| prismatic | 6 | 310 | 38 | 272 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
+
+No shape on any frontier grid is OPEN after the caps: every polyform listed above was settled with a re-checkable certificate (every certificate re-checked for n with <= 400 shapes, a random 400 plus every dovetail certificate otherwise; 0 failures). Control: the hat and turtle, taken as polydrafters (16 and 20 drafters), are OPEN on the drafter grid at torus <= 24 / R <= 8 (`results/drafter_hat_turtle.json`); the full drafter sieve would reach them only at n = 16 (237,035 shapes).
+
 ## Frontier grids
 
 ### tetrakis [4.8^2]* (half-square triangles)
@@ -198,6 +212,10 @@ Geometry: 45 deg (p4m; cell angles 45-45-90; edges in 4 directions, 0/45/90/135 
 | 10 | 650 (=) | 431 | 219 | 0 | 0 (caps 12/R6) | 4 | 3 | 400 (sample), 0 failed | 18.1s |
 | 11 | 1584 (=) | 1538 | 46 | 0 | 0 (caps 12/R6) | 8 | 5 | 400 (sample), 0 failed | 71.1s |
 | 12 | 4091 (=) | 3161 | 930 | 0 | 0 (caps 12/R6) | 8 | 4 | 400 (sample), 0 failed | 154.6s |
+| 13 | 10369 (=) | 10122 | 247 | 0 | 0 (caps 12/R6) | 8 | 6 | 400 (sample), 0 failed | 288.1s |
+| 14 | 26938 (=) | 25452 | 1486 | 1 | 0 (caps 24/R8) | 12 | 8 | 401 (sample), 0 failed | 850.8s |
+
+Settled only by dovetailing (would have been false OPEN at caps 12/R6): tetrakis9_00144 PERIODIC (20 tiles per period); tetrakis14_26903 STUCK (covers R=6, fails R=8).
 
 ### drafter [4.6.12]* (drafters)
 
@@ -221,9 +239,13 @@ Geometry: 30/60 deg (p6m; 30-60-90 triangles; 12 edge directions).
 | 12 | 6077 (=) | 5253 | 824 | 0 | 0 (caps 12/R6) | 12 | 4 | 400 (sample), 0 failed | 39.6s |
 | 13 | 14926 (=) | 14923 | 3 | 2 | 0 (caps 24/R8) | 12 | 8 | 402 (sample), 0 failed | 84.2s |
 
+Settled only by dovetailing (would have been false OPEN at caps 12/R6): drafter11_01850 STUCK (covers R=6, fails R=8); drafter13_10457 STUCK (covers R=6, fails R=8); drafter13_14384 STUCK (covers R=6, fails R=8).
+
 ### floret [3^4.6]* (floret pentagons)
 
 Laves floret pentagon: angles 60,120,120,120,120, sides 2,1,1,1,2.
+
+The floret grid is chiral (symmetry group p6): a mirror image of a polyform lies on the mirror grid, never on this one (no off-group congruent copies were found), so placements use the 6 rotations only. This is the on-grid convention used throughout (as in Myers' tables).
 
 Geometry: 60 deg (p6, chiral; angles 60,120,120,120,120).
 
@@ -237,6 +259,7 @@ Geometry: 60 deg (p6, chiral; angles 60,120,120,120,120).
 | 6 | 291 (=) | 189 | 102 | 0 | 0 (caps 12/R6) | 3 | 3 | 291 (sample), 0 failed | 6.7s |
 | 7 | 1036 (=) | 873 | 163 | 0 | 0 (caps 12/R6) | 6 | 3 | 400 (sample), 0 failed | 19.2s |
 | 8 | 3875 (=) | 3769 | 106 | 0 | 0 (caps 12/R6) | 3 | 3 | 400 (sample), 0 failed | 42.7s |
+| 9 | 14561 (=) | 13273 | 1288 | 0 | 0 (caps 12/R6) | 6 | 3 | 400 (sample), 0 failed | 99.7s |
 
 ### triakis [3.12^2]* (triakis triangles)
 
@@ -324,4 +347,8 @@ Largest SAT-covered disc per shape; orientation classes counted over all tiles a
 | kite | turtle | 20 | 915 (654) | 6.6891 | 6.8795 | phi^4 (0.4%), silver^2 (18.0%) |
 | kite | turtle | 25 | 1422 (1100) | 6.7705 | 6.6923 | phi^4 (2.4%), silver^2 (14.8%) |
 | kite | turtle | 30 | 2025 (1643) | 6.8488 | 6.9372 | phi^4 (1.2%), silver^2 (19.0%) |
+| tetrakis | tetrakis9_00144_periodic_control | 6 | 106 (27) | 1.0784 | 1.25 | sqrt2 (11.6%), phi (22.8%) |
+| tetrakis | tetrakis9_00144_periodic_control | 10 | 272 (131) | 1.176 | 1.2586 | sqrt2 (11.0%), phi (22.2%) |
+| tetrakis | tetrakis9_00144_periodic_control | 16 | 668 (436) | 1.3114 | 1.4494 | sqrt2 (2.5%), phi (10.4%) |
+| tetrakis | tetrakis9_00144_periodic_control | 20 | 1026 (730) | 1.2304 | 1.2054 | sqrt2 (14.8%), phi (25.5%) |
 

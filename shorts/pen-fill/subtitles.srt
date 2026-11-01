@@ -19,6 +19,22 @@ Count them. For every flipped hat, there are about six point eight five normal o
 It was found in 2023 by David Smith, an amateur from Yorkshire.
 
 6
-00:00:31,815 --> 00:00:34,166
-So why can it never repeat?
+00:00:31,965 --> 00:00:39,436
+But look closer. The hats secretly team up into clusters, and every gold hat sits in a cluster of four.
+
+7
+00:00:39,836 --> 00:00:49,240
+The clusters team up again. Four hats, then twenty five, then one hundred and sixty nine, then one thousand one hundred and fifty six.
+
+8
+00:00:49,640 --> 00:00:58,730
+Two squared, five squared, thirteen squared, thirty four squared. Squares of Fibonacci numbers, hiding in the floor.
+
+9
+00:00:59,130 --> 00:01:05,165
+Bigger and bigger copies, forever. That ladder is why it can never repeat.
+
+10
+00:01:05,515 --> 00:01:08,754
+So which other shapes hide a ladder like this?
 

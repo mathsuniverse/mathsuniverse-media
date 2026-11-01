@@ -13,3 +13,4 @@ tetrakis [4.8^2]*: 4 cell type(s) per lattice cell, 8 point symmetries (mod tran
   tetrakis n=13: 10369  (2.4s)
   tetrakis n=14: 26938  (6.3s)
 tetrakis n=13: 10369 free (10369 sym)  {'STUCK': 10122, 'PERIODIC': 247}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 274.9}]  verified 400 fails 0  288.1s
+tetrakis n=14: 26938 free (26938 sym)  {'PERIODIC': 1486, 'STUCK': 25452}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 1, 'seconds': 722.4}, {'tcap': 24, 'rcap': 8.0, 'retested': 1, 'open_after': 0, 'seconds': 111.4}]  verified 401 fails 0  850.8s

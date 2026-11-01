@@ -77,6 +77,24 @@ def main():
             L.append(f"| {r['grid']} | {r['n']} | {r['myers_shapes']} / {r['myers_nontilers']} | {r['ours_shapes']} / "
                      f"{c.get('STUCK', 0)} / {c.get('PERIODIC', 0)} / {c.get('OPEN', 0)} | {'yes' if r['match'] else 'NO'} |")
         L.append('')
+    L += ['## Frontier grids: summary', '',
+          '| grid | sieved up to n | shapes classified | STUCK | PERIODIC | OPEN after dovetail (caps) |',
+          '|---|---|---|---|---|---|']
+    for nm in FRONTIER:
+        p = os.path.join(HERE, 'results', f'{nm}.json')
+        if not os.path.exists(p):
+            continue
+        res = json.load(open(p))
+        tot = {}
+        for r in res.values():
+            for k, v in r['counts'].items():
+                tot[k] = tot.get(k, 0) + v
+        L.append(f"| {nm} | {max(map(int, res))} | {sum(r['free'] for r in res.values())} | {tot.get('STUCK', 0)} | "
+                 f"{tot.get('PERIODIC', 0)} | {tot.get('OPEN', 0)} (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |")
+    L += ['', 'No shape on any frontier grid is OPEN after the caps: every polyform listed above was settled with a '
+          're-checkable certificate (every certificate re-checked for n with <= 400 shapes, a random 400 plus every dovetail certificate otherwise; 0 failures). Control: the hat and turtle, taken as '
+          'polydrafters (16 and 20 drafters), are OPEN on the drafter grid at torus <= 24 / R <= 8 '
+          '(`results/drafter_hat_turtle.json`); the full drafter sieve would reach them only at n = 16 (237,035 shapes).', '']
     L += ['## Frontier grids', '']
     for nm in FRONTIER:
         p = os.path.join(HERE, 'results', f'{nm}.json')
@@ -107,6 +125,15 @@ def main():
             L.append(f"| {n} | {r['free']}{oe} | {c.get('STUCK', 0)} | {c.get('PERIODIC', 0)} | {o0} | {caps} | "
                      f"{r['max_tiles_needed']} | {r['max_fail_R']} | {ver} | {r['wall_time']}s |")
         L.append('')
+        import gzip
+        sp = os.path.join(HERE, 'results', f'{nm}_shapes.json.gz')
+        if os.path.exists(sp):
+            dv = [r for rs in json.load(gzip.open(sp, 'rt')).values() for r in rs if r.get('stage', 0) > 0]
+            if dv:
+                L += ['Settled only by dovetailing (would have been false OPEN at caps 12/R6): ' + '; '.join(
+                    f"{r['id']} {r['cls']}" + (f" ({r['tiles_per_domain']} tiles per period)" if r['cls'] == 'PERIODIC'
+                                                else f" (covers R={r.get('max_cover_R')}, fails R={r.get('fail_R')})")
+                    for r in dv) + '.', '']
         for n, r in sorted(res.items(), key=lambda x: int(x[0])):
             for oid in r['open_ids']:
                 L += [f'**{oid}** ({n} {g.cellname}s): OPEN after the caps above.', '',

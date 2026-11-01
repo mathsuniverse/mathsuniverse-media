@@ -8,6 +8,9 @@ partition the patch, or, in the weaker Gummelt sense, cover it with overlaps.
 Results and honest wording: see `RESULTS.md`. Nothing here is called "aperiodic"; the strongest label used
 is "OPEN candidate", and none was found.
 
+The partition route is closed by Lemma A (FORMULATION.md section 13). The undecorated unit 8-, 10- and 12-gon clusters
+cover AB, P3 and the 12-fold shield tiling with overlaps; whether decorated overlap rules force the tiling is the open next step.
+
 ## Files
 
 | file | what it does |
@@ -20,6 +23,7 @@ is "OPEN candidate", and none was found.
 | `periodic.py` | step 3: BN / Conway census of all shapes with k ≤ 6, and classification of every partition survivor. Writes `results/periodic.json`. |
 | `render_partition.py` | PNG of each partition found (`partition_*.png`) and of the shape (`shape_*.png`). |
 | `covering.py` | coordinator's extension: Gummelt-style covering clusters (overlaps allowed), plain and decorated (1-vertex-collar), exhaustive k ≤ 4 and round clusters C_ρ(v). `python3 covering.py AB 30 15 4 1,1.5,...` Writes `results/cover_*.json`, `cover_*.png`. |
+| `covering_polygon.py` | covering by the unit regular n-gon cluster (8 AB, 10 P3 = Gummelt's decagon shape, 12 shield): occurrences that are exact unions of tiles, coverage fraction, greedy copy count. `python3 covering_polygon.py AB 38 30`. Writes `results/cover_ngon_*.json`, `cover_ngon_*.png`. |
 
 ## Definitions used
 
@@ -42,6 +46,7 @@ python3 merge_search.py SQ 4 3,5,8 6
 python3 merge_search.py AB 8 3,4.5,6,8,10,13 8
 python3 merge_search.py P3 8 3,4.5,6,8,10,13 8
 python3 periodic.py results/SQ_k4.json results/AB_k8.json.gz results/P3_k8.json.gz
+for s in AB SH P3; do python3 covering_polygon.py $s 38 30; python3 covering_polygon.py $s 24 15; done
 for s in AB SH P3; do python3 covering.py $s 30 15 4 1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6,7; done
 ```
 (`merge_search.py` writes plain `.json`; the committed copies are gzipped.)

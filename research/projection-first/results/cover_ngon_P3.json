@@ -1,13 +1,13 @@
 {
  "system": "P3",
  "ngon": 10,
- "RC": 30.0,
- "interior_tiles": 3488,
- "occurrences": 984,
+ "RC": 15.0,
+ "interior_tiles": 867,
+ "occurrences": 316,
  "compositions": {
-  "(('thick', 5), ('thin', 5))": 984
+  "(('thick', 5), ('thin', 5))": 316
  },
  "covered_fraction": 1.0,
  "uncovered_by_type": {},
- "greedy_copies": 526
+ "greedy_copies": 136
 }

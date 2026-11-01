@@ -1,0 +1,13 @@
+{
+ "system": "SH",
+ "ngon": 12,
+ "RC": 30.0,
+ "interior_tiles": 3565,
+ "occurrences": 1161,
+ "compositions": {
+  "(('poly6', 2), ('square', 3), ('triangle', 8))": 1161
+ },
+ "covered_fraction": 1.0,
+ "uncovered_by_type": {},
+ "greedy_copies": 490
+}

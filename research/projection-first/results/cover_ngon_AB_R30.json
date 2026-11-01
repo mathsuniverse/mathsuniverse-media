@@ -1,0 +1,13 @@
+{
+ "system": "AB",
+ "ngon": 8,
+ "RC": 30.0,
+ "interior_tiles": 3426,
+ "occurrences": 2383,
+ "compositions": {
+  "(('rhomb', 4), ('square', 2))": 2383
+ },
+ "covered_fraction": 1.0,
+ "uncovered_by_type": {},
+ "greedy_copies": 851
+}

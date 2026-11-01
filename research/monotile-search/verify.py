@@ -142,7 +142,7 @@ def _backtrack(region, placements, node_limit):
     return rec(), nodes[0]
 
 
-def check_stuck(g, cells, R, node_limit=200000):
+def check_stuck(g, cells, R, node_limit=3000):
     sh = E.Shape(g, cells)
     region = E.disc_cells(g, R)
     # independent placement list: translate every form so that each of its cells lands

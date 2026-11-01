@@ -1,0 +1,17 @@
+tri [6^3]: 2 cell type(s) per lattice cell, 12 point symmetries (mod translations), 0 partial congruences
+  tri n=2: 1  (0.0s)
+  tri n=3: 1  (0.0s)
+  tri n=4: 3  (0.0s)
+  tri n=5: 4  (0.0s)
+  tri n=6: 12  (0.0s)
+  tri n=7: 24  (0.0s)
+  tri n=8: 66  (0.0s)
+  tri n=9: 160  (0.0s)
+  tri n=10: 448  (0.1s)
+tri n=1: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 1 fails 0  0.0s
+tri n=2: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 1 fails 0  0.0s
+tri n=3: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 1 fails 0  0.0s
+tri n=4: 3 free (3 sym)  {'PERIODIC': 3}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 3 fails 0  0.0s
+tri n=5: 4 free (4 sym)  {'PERIODIC': 4}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 4 fails 0  0.1s
+tri n=6: 12 free (12 sym)  {'PERIODIC': 12}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 12 fails 0  0.2s
+tri n=7: 24 free (24 sym)  {'PERIODIC': 23, 'STUCK': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.6}]  verified 24 fails 0  1.6s

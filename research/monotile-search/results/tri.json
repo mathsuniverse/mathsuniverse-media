@@ -1,0 +1,228 @@
+{
+ "1": {
+  "class_merge_time": 0.0,
+  "counts": {
+   "PERIODIC": 1
+  },
+  "enum_time_total": 0.1,
+  "free": 1,
+  "max_fail_R": null,
+  "max_tiles_needed": 2,
+  "n": 1,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 0.0,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 1,
+  "verified": 1,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 552 tiles": 1
+  },
+  "verify_mode": "all",
+  "verify_time": 0.0,
+  "wall_time": 0.0
+ },
+ "2": {
+  "class_merge_time": 0.0,
+  "counts": {
+   "PERIODIC": 1
+  },
+  "enum_time_total": 0.1,
+  "free": 1,
+  "max_fail_R": null,
+  "max_tiles_needed": 1,
+  "n": 2,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 0.0,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 1,
+  "verified": 1,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 288 tiles": 1
+  },
+  "verify_mode": "all",
+  "verify_time": 0.0,
+  "wall_time": 0.0
+ },
+ "3": {
+  "class_merge_time": 0.0,
+  "counts": {
+   "PERIODIC": 1
+  },
+  "enum_time_total": 0.1,
+  "free": 1,
+  "max_fail_R": null,
+  "max_tiles_needed": 2,
+  "n": 3,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 0.0,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 1,
+  "verified": 1,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 202 tiles": 1
+  },
+  "verify_mode": "all",
+  "verify_time": 0.0,
+  "wall_time": 0.0
+ },
+ "4": {
+  "class_merge_time": 0.0,
+  "counts": {
+   "PERIODIC": 3
+  },
+  "enum_time_total": 0.1,
+  "free": 3,
+  "max_fail_R": null,
+  "max_tiles_needed": 2,
+  "n": 4,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 0.0,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 3,
+  "verified": 3,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 150 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 152 tiles": 1
+  },
+  "verify_mode": "all",
+  "verify_time": 0.0,
+  "wall_time": 0.0
+ },
+ "5": {
+  "class_merge_time": 0.0,
+  "counts": {
+   "PERIODIC": 4
+  },
+  "enum_time_total": 0.1,
+  "free": 4,
+  "max_fail_R": null,
+  "max_tiles_needed": 2,
+  "n": 5,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 0.0,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 4,
+  "verified": 4,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 124 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 126 tiles": 2
+  },
+  "verify_mode": "all",
+  "verify_time": 0.1,
+  "wall_time": 0.1
+ },
+ "6": {
+  "class_merge_time": 0.0,
+  "counts": {
+   "PERIODIC": 12
+  },
+  "enum_time_total": 0.1,
+  "free": 12,
+  "max_fail_R": null,
+  "max_tiles_needed": 2,
+  "n": 6,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 0.1,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 12,
+  "verified": 12,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 104 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 106 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 107 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 108 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 109 tiles": 3,
+   "PERIODIC: lifted to disc R=4, 110 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 112 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 113 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 114 tiles": 1
+  },
+  "verify_mode": "all",
+  "verify_time": 0.1,
+  "wall_time": 0.2
+ },
+ "7": {
+  "class_merge_time": 0.0,
+  "counts": {
+   "PERIODIC": 23,
+   "STUCK": 1
+  },
+  "enum_time_total": 0.1,
+  "free": 24,
+  "max_fail_R": 1.5,
+  "max_tiles_needed": 4,
+  "n": 7,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 0.6,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 24,
+  "verified": 24,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 92 tiles": 4,
+   "PERIODIC: lifted to disc R=4, 94 tiles": 9,
+   "PERIODIC: lifted to disc R=4, 95 tiles": 7,
+   "PERIODIC: lifted to disc R=4, 96 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 97 tiles": 2,
+   "STUCK: backtracking": 1
+  },
+  "verify_mode": "all",
+  "verify_time": 1.1,
+  "wall_time": 1.6
+ }
+}

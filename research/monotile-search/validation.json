@@ -1,0 +1,274 @@
+[
+ {
+  "name": "kite",
+  "n": 1,
+  "cover": [
+   {
+    "R": 2,
+    "covered": true,
+    "kites_in_disc": 84,
+    "seconds": 0.0
+   },
+   {
+    "R": 4,
+    "covered": true,
+    "kites_in_disc": 342,
+    "seconds": 0.01
+   },
+   {
+    "R": 6,
+    "covered": true,
+    "kites_in_disc": 786,
+    "seconds": 0.02
+   },
+   {
+    "R": 8,
+    "covered": true,
+    "kites_in_disc": 1386,
+    "seconds": 0.02
+   },
+   {
+    "R": 10,
+    "covered": true,
+    "kites_in_disc": 2178,
+    "seconds": 0.03
+   },
+   {
+    "R": 12,
+    "covered": true,
+    "kites_in_disc": 3132,
+    "seconds": 0.04
+   },
+   {
+    "R": 15,
+    "covered": true,
+    "kites_in_disc": 4890,
+    "seconds": 0.06
+   },
+   {
+    "R": 20,
+    "covered": true,
+    "kites_in_disc": 8694,
+    "seconds": 0.11
+   }
+  ],
+  "periodic": {
+   "tcap_tiles_per_domain": 60,
+   "max_hexagons_per_domain": 10,
+   "lattice_classes_tried": 28,
+   "found": {
+    "lattice_hnf": [
+     1,
+     0,
+     1
+    ],
+    "tiles_per_domain": 6
+   },
+   "seconds": 0.0,
+   "lift_verified_R4": true
+  }
+ },
+ {
+  "name": "hexagon",
+  "n": 6,
+  "cover": [
+   {
+    "R": 2,
+    "covered": true,
+    "kites_in_disc": 84,
+    "seconds": 0.0
+   },
+   {
+    "R": 4,
+    "covered": true,
+    "kites_in_disc": 342,
+    "seconds": 0.01
+   },
+   {
+    "R": 6,
+    "covered": true,
+    "kites_in_disc": 786,
+    "seconds": 0.01
+   },
+   {
+    "R": 8,
+    "covered": true,
+    "kites_in_disc": 1386,
+    "seconds": 0.02
+   },
+   {
+    "R": 10,
+    "covered": true,
+    "kites_in_disc": 2178,
+    "seconds": 0.03
+   },
+   {
+    "R": 12,
+    "covered": true,
+    "kites_in_disc": 3132,
+    "seconds": 0.04
+   },
+   {
+    "R": 15,
+    "covered": true,
+    "kites_in_disc": 4890,
+    "seconds": 0.06
+   },
+   {
+    "R": 20,
+    "covered": true,
+    "kites_in_disc": 8694,
+    "seconds": 0.11
+   }
+  ],
+  "periodic": {
+   "tcap_tiles_per_domain": 60,
+   "max_hexagons_per_domain": 60,
+   "lattice_classes_tried": 634,
+   "found": {
+    "lattice_hnf": [
+     1,
+     0,
+     1
+    ],
+    "tiles_per_domain": 1
+   },
+   "seconds": 0.06,
+   "lift_verified_R4": true
+  }
+ },
+ {
+  "name": "hat",
+  "n": 8,
+  "cover": [
+   {
+    "R": 2,
+    "covered": true,
+    "kites_in_disc": 84,
+    "seconds": 0.01
+   },
+   {
+    "R": 4,
+    "covered": true,
+    "kites_in_disc": 342,
+    "seconds": 0.03
+   },
+   {
+    "R": 6,
+    "covered": true,
+    "kites_in_disc": 786,
+    "seconds": 0.07
+   },
+   {
+    "R": 8,
+    "covered": true,
+    "kites_in_disc": 1386,
+    "seconds": 0.18
+   },
+   {
+    "R": 10,
+    "covered": true,
+    "kites_in_disc": 2178,
+    "seconds": 0.32
+   },
+   {
+    "R": 12,
+    "covered": true,
+    "kites_in_disc": 3132,
+    "seconds": 1.11
+   },
+   {
+    "R": 15,
+    "covered": true,
+    "kites_in_disc": 4890,
+    "seconds": 1.52
+   },
+   {
+    "R": 20,
+    "covered": true,
+    "kites_in_disc": 8694,
+    "seconds": 5.24
+   }
+  ],
+  "periodic": {
+   "tcap_tiles_per_domain": 60,
+   "max_hexagons_per_domain": 80,
+   "lattice_classes_tried": 398,
+   "found": null,
+   "seconds": 98.16
+  },
+  "coronas": {
+   "k_tested": 3,
+   "max_k_found": 3,
+   "stopped_at_cap": true,
+   "seconds": 0.41
+  }
+ },
+ {
+  "name": "turtle",
+  "n": 10,
+  "cover": [
+   {
+    "R": 2,
+    "covered": true,
+    "kites_in_disc": 84,
+    "seconds": 0.02
+   },
+   {
+    "R": 4,
+    "covered": true,
+    "kites_in_disc": 342,
+    "seconds": 0.07
+   },
+   {
+    "R": 6,
+    "covered": true,
+    "kites_in_disc": 786,
+    "seconds": 0.12
+   },
+   {
+    "R": 8,
+    "covered": true,
+    "kites_in_disc": 1386,
+    "seconds": 0.27
+   },
+   {
+    "R": 10,
+    "covered": true,
+    "kites_in_disc": 2178,
+    "seconds": 0.36
+   },
+   {
+    "R": 12,
+    "covered": true,
+    "kites_in_disc": 3132,
+    "seconds": 0.63
+   },
+   {
+    "R": 15,
+    "covered": true,
+    "kites_in_disc": 4890,
+    "seconds": 1.85
+   },
+   {
+    "R": 20,
+    "covered": true,
+    "kites_in_disc": 8694,
+    "seconds": 6.67
+   }
+  ],
+  "periodic": {
+   "tcap_tiles_per_domain": 60,
+   "max_hexagons_per_domain": 100,
+   "lattice_classes_tried": 383,
+   "found": null,
+   "seconds": 156.11
+  },
+  "coronas": {
+   "k_tested": 3,
+   "max_k_found": 3,
+   "stopped_at_cap": true,
+   "seconds": 0.51
+  }
+ }
+]

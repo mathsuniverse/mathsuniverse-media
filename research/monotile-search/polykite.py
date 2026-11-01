@@ -260,7 +260,9 @@ def enumerate_free(nmax, verbose=False):
     return levels
 
 
-A057786 = [1, 2, 4, 10, 25, 70, 196, 574, 1712, 5223, 16032, 49863]
+# OEIS A057786 "Number of polykites with n cells" (checked against oeis.org, Nov 2026).
+# NB: the list 1, 2, 4, 10, 25, 70, 196, 574, 1712, 5223 sometimes quoted is NOT A057786.
+A057786 = [1, 2, 4, 10, 27, 85, 262, 873, 2917, 10011, 34561, 120815]
 
 
 # ---------------------------------------------------------------- polygon <-> polykite

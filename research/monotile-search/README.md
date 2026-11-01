@@ -1,0 +1,130 @@
+# Monotile search: hunting for "einstein" candidates among polykites
+
+Research tool for the Math Universe film on how the 2023 *hat* tile was found
+(Smith, Myers, Kaplan, Goodman-Strauss, arXiv:2303.10798). It rebuilds, in a small
+way, the kind of computer search that helped confirm the hat was special: list
+every shape of a given size, then ask a computer which ones tile the plane, which
+ones don't, and which ones are odd.
+
+Result in one sentence: **among all 873 shapes made of 8 kites, the hat is the
+only one that passes both tests. The turtle, a 10-kite member of the hat's family,
+passes them too.** Exact numbers are in [RESULTS.md](RESULTS.md).
+
+## The idea in plain language (for the narrator)
+
+**1. The grid.** Take a honeycomb of regular hexagons. Draw a line from the centre
+of each hexagon to the midpoint of each of its six sides. Every hexagon is now cut
+into six identical *kites*, each with two long sides and two short ones. This is
+the "kite grid" (mathematicians call it the [3.4.6.4] Laves tiling).
+
+**2. The shapes.** A *polykite* is any shape made by gluing kites edge to edge on
+that grid, like Lego bricks on a baseplate. With 1 kite there is 1 shape. With 8
+kites there are 873 different shapes, counting a shape and its mirror image as the
+same. The hat is one of those 873. David Smith, the hobbyist who found it, was
+playing with exactly these shapes.
+
+**3. The puzzle the computer solves.** For each shape, the computer is given a
+jigsaw puzzle: here is a region of the grid; place copies of the shape (turned any
+way, flipped if you like) so every kite in the region is covered exactly once, with
+no overlaps. That is a yes/no logic puzzle. We hand it to a *SAT solver*, a
+program that is very good at this kind of huge true/false puzzle.
+
+**4. Three questions per shape.**
+
+* **Can it cover a disc?** Can copies cover every kite within some radius of a
+  point, with no gaps and no overlaps? If even a small disc is impossible, the
+  shape can't tile the plane. Done: it's a **non-tiler**.
+* **Can it tile a doughnut?** We ask the solver to tile a small *torus*: a
+  parallelogram of the grid whose left edge is glued to its right edge and whose
+  top is glued to its bottom, like an old video game where walking off one side
+  brings you back on the other. If the shape tiles a torus, you can stamp that
+  parallelogram out forever in two directions. That's a **periodic** tiling, a
+  pattern that repeats like wallpaper. We try every parallelogram up to a size
+  limit (the "cap").
+* **How many rings?** For non-tilers we also compute the **Heesch number**: how
+  many complete rings ("coronas") of copies can be built around one copy before
+  you get stuck. Most shapes manage 0 or 1. A shape that tiles never gets stuck.
+
+**5. The interesting ones.** A shape is a **candidate** if it can cover every disc
+we tried, *but* no torus up to the cap works. It looks like it tiles, yet no
+repeating pattern turns up. That is the computer's way of saying "look at this
+one more closely".
+
+## The honest caveat (please keep this in the film)
+
+* **"Candidate" means only "no periodic tiling was found up to the cap."** The
+  computer checks finitely many discs and finitely many tori. A shape might tile
+  periodically with a repeating block bigger than the cap. A shape might also
+  cover every disc we tried and still fail on a bigger one.
+* **The search proves nothing about aperiodicity.** The hat is an aperiodic
+  monotile because of a *mathematical proof* in the 2023 paper. The proof groups
+  hats into "metatiles" that can be built up into bigger and bigger copies of
+  themselves (a substitution), which shows tilings exist and that none can
+  repeat. They also gave a second proof. The computer search was the clue that
+  pointed at the hat. The proof is what settled it.
+* Nothing found by this tool should ever be called a new aperiodic monotile. At
+  most it is "a shape for which our search found no periodic tiling up to cap X".
+* Everything here is restricted to placements **on the kite grid**. A shape that
+  "doesn't tile" here could, in principle, tile with copies placed off the grid.
+  (Joseph Myers' published tables use the same convention.)
+
+## How it was checked
+
+* **Grid geometry** is exact. Points are stored as Eisenstein integers `a + b·ω`
+  (ω a sixth root of unity), so there is no rounding anywhere in the combinatorics.
+  Tests check that every kite has side lengths² = 3, 1, 1, 3 and area √3, that six
+  kites make a regular hexagon, and that rotations and reflections map kites to kites.
+* **Shape counts** for n = 1..10 match OEIS A057786 exactly:
+  1, 2, 4, 10, 27, 85, 262, 873, 2917, 10011. (Watch out: the list 1, 2, 4, 10, 25,
+  70, 196, 574, 1712, 5223, which sometimes gets quoted for polykites, is **not**
+  A057786, and it disagrees from n = 5 on.)
+* **The hat** is built from Kaplan's coordinates, and so is its tiling. We take a
+  169-hat patch generated by an independent port of Kaplan's substitution
+  (`hat_tiling.py`). Every hat in it lands exactly on 8 grid kites. All of them
+  match our hat shape, none overlap, and the mirrored ones are exactly the ones the
+  substitution labels as reflected.
+* **Every answer the solver gives is re-checked** by plain code. Disc covers are
+  checked for no overlaps and full coverage. Torus tilings are unrolled onto the
+  plane and checked there. Corona structures are checked for overlaps, holes and
+  full surrounding.
+* **Tiler / non-tiler counts match Joseph Myers' independent tables**
+  (polyomino.org.uk, "polyform tiling") for every n up to 10. See RESULTS.md.
+
+## Method details (for the curious)
+
+* Kites are integer triples `(i, j, k)`. `(i, j)` is the hexagon centre on the lattice
+  spanned by U = 2 + 2ω and V = −2 + 4ω, and `k = 0..5` says which of its 6 kites.
+  The symmetries are translations by the hexagon lattice, rotations by 60° and one
+  reflection, giving the 12 orientations.
+* Shapes are enumerated by adding one kite at a time, keeping the shapes in a
+  canonical form (the smallest of their 12 orientations), which removes duplicates.
+* **Disc cover (SAT):** one variable per placement that touches the disc. Each disc
+  kite needs at least one covering placement. Every kite, inside or outside the disc,
+  allows at most one. Solver: CaDiCaL through `python-sat`.
+* **Torus (SAT):** the period lattice runs over every sublattice of the hexagon
+  lattice up to the index cap, in Hermite normal form, with lattices that are
+  rotations or reflections of each other tried only once. Each torus kite must be
+  covered exactly once. A placement that overlaps its own translate is thrown out.
+  The cap is given as *tiles per fundamental domain* (default 12).
+* **Heesch (SAT):** each placement gets a level 1..k. The central tile is fixed.
+  Kites touching level-l tiles must be covered by level ≤ l+1, and every level-l
+  tile must touch level l−1. After each solution, any patch whose rings enclose a
+  hole is ruled out with a new clause and the solver runs again, as in Kaplan's
+  method. Holes are forbidden in *every* corona, including the outermost (Kaplan's
+  H_c). These Heesch numbers have not been compared with a published polykite
+  table; the corona structures themselves are verified.
+
+## Files
+
+| file | what |
+|---|---|
+| `polykite.py` | kite grid, symmetries, enumeration (`python3 polykite.py 10` prints the counts vs OEIS) |
+| `tiler.py` | SAT tests: `cover`, `periodic`/`torus`, `heesch` |
+| `search.py` | classifies every polykite up to `--nmax` → `results.json`, `candidates/*.png` |
+| `validate.py` | hat / turtle / kite / hexagon validation → `validation.json` |
+| `report.py` | writes `RESULTS.md` from `results.json` and `validation.json` |
+| `test_monotile.py` | tests (`python3 test_monotile.py`) |
+
+Setup: `pip install --break-system-packages python-sat shapely matplotlib`.
+The hat-substitution cross-check test reads `hat_tiling.py` from the path in the
+`HAT_ENGINE` environment variable.

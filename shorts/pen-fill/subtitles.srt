@@ -1,0 +1,24 @@
+1
+00:00:00,000 --> 00:00:04,127
+One shape. Start with a single tile, and keep going.
+
+2
+00:00:04,527 --> 00:00:08,968
+Every tile is the same hat. The pink ones are just flipped over.
+
+3
+00:00:09,318 --> 00:00:17,024
+It covers the whole floor, with no gaps and no overlaps. But the pattern never repeats, however far you go.
+
+4
+00:00:17,374 --> 00:00:25,890
+Count them. For every flipped hat, there are about six point eight five normal ones: the golden ratio, to the fourth power.
+
+5
+00:00:26,240 --> 00:00:31,386
+It was found in 2023 by David Smith, an amateur from Yorkshire.
+
+6
+00:00:31,736 --> 00:00:34,087
+So why can it never repeat?
+

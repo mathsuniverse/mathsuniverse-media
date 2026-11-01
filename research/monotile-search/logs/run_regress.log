@@ -1,1 +1,1 @@
-+ python3 sieve.py tri --nmax 10 --verify all --dovetail 24:8 --shape-time 120
++ python3 sieve.py hex --nmax 8 --verify sample --sample 400 --dovetail 24:8 --shape-time 120

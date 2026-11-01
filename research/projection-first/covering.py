@@ -147,7 +147,8 @@ def run_cover(P, RC, kmax, rhos, decorated_list=(False, True), log=print):
             occ[cid] += 1
             ksz[cid] = len(sub)
 
-        esu(P, allowed, kmax, emit)
+        if kmax > 0:
+            esu(P, allowed, kmax, emit)
         best = {}
         for cid, cov in cover.items():
             k = ksz[cid]
@@ -165,8 +166,10 @@ def run_cover(P, RC, kmax, rhos, decorated_list=(False, True), log=print):
             winners = [cid for cid, cov in cover.items() if ksz[cid] == k0 and len(cov) == len(interior)]
             res["n_covering_classes_at_min_k"] = len(winners)
             res["covering_examples"] = [describe(P, cid) for cid in winners[:3]]
-        out[f"exhaustive_{tag}"] = res
-        log(P.name, tag, "exhaustive", json.dumps({k: v for k, v in res.items() if k != "covering_examples"}))
+        if kmax > 0:
+            out[f"exhaustive_{tag}"] = res
+        if kmax > 0:
+          log(P.name, tag, "exhaustive", json.dumps({k: v for k, v in res.items() if k != "covering_examples"}))
         # ---- round clusters around vertices
         rr = []
         from scipy.spatial import cKDTree
@@ -265,12 +268,14 @@ if __name__ == "__main__":
     RP, RC, kmax = float(sys.argv[2]), float(sys.argv[3]), int(sys.argv[4])
     rhos = [float(x) for x in sys.argv[5].split(",")]
     P = Patch(name, RP)
-    out = run_cover(P, RC, kmax, rhos, log=lambda *a: print(*a, flush=True))
+    decs = (False, True) if len(sys.argv) < 7 else tuple(x == "dec" for x in sys.argv[6].split(","))
+    suffix = "" if len(sys.argv) < 8 else sys.argv[7]
+    out = run_cover(P, RC, kmax, rhos, decorated_list=decs, log=lambda *a: print(*a, flush=True))
     for tag in ("plain", "decorated"):
         rr = out.get(f"round_{tag}", [])
         if rr and "chosen" in rr[-1]:
-            render_cover(P, rr[-1]["chosen"], f"cover_{name}_{tag}.png",
+            render_cover(P, rr[-1]["chosen"], f"cover_{name}{suffix}_{tag}.png",
                          f"{name}: {tag} round cluster rho={rr[-1]['rho']} "
                          f"({rr[-1]['best_size']} tiles), {rr[-1]['greedy_copies']} copies")
             rr[-1]["chosen"] = len(rr[-1]["chosen"])
-    json.dump(out, open(f"results/cover_{name}.json", "w"), indent=1, default=str)
+    json.dump(out, open(f"results/cover_{name}{suffix}.json", "w"), indent=1, default=str)

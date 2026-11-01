@@ -29,6 +29,51 @@
   "verify_time": 0.0,
   "wall_time": 0.0
  },
+ "10": {
+  "class_merge_time": 0.1,
+  "counts": {
+   "PERIODIC": 341,
+   "STUCK": 107
+  },
+  "enum_time_total": 0.1,
+  "free": 448,
+  "max_fail_R": 5,
+  "max_tiles_needed": 8,
+  "n": 10,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 435.4,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 448,
+  "verified": 448,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 64 tiles": 6,
+   "PERIODIC: lifted to disc R=4, 65 tiles": 4,
+   "PERIODIC: lifted to disc R=4, 66 tiles": 23,
+   "PERIODIC: lifted to disc R=4, 67 tiles": 31,
+   "PERIODIC: lifted to disc R=4, 68 tiles": 43,
+   "PERIODIC: lifted to disc R=4, 69 tiles": 55,
+   "PERIODIC: lifted to disc R=4, 70 tiles": 77,
+   "PERIODIC: lifted to disc R=4, 71 tiles": 52,
+   "PERIODIC: lifted to disc R=4, 72 tiles": 34,
+   "PERIODIC: lifted to disc R=4, 73 tiles": 8,
+   "PERIODIC: lifted to disc R=4, 74 tiles": 6,
+   "PERIODIC: lifted to disc R=4, 75 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 76 tiles": 1,
+   "STUCK: backtracking": 24,
+   "STUCK: glucose4 pairwise encoding": 83
+  },
+  "verify_mode": "all",
+  "verify_time": 194.0,
+  "wall_time": 629.4
+ },
  "2": {
   "class_merge_time": 0.0,
   "counts": {
@@ -224,5 +269,90 @@
   "verify_mode": "all",
   "verify_time": 1.1,
   "wall_time": 1.6
+ },
+ "8": {
+  "class_merge_time": 0.0,
+  "counts": {
+   "PERIODIC": 66
+  },
+  "enum_time_total": 0.1,
+  "free": 66,
+  "max_fail_R": null,
+  "max_tiles_needed": 3,
+  "n": 8,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 2.4,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 66,
+  "verified": 66,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 80 tiles": 3,
+   "PERIODIC: lifted to disc R=4, 81 tiles": 12,
+   "PERIODIC: lifted to disc R=4, 82 tiles": 6,
+   "PERIODIC: lifted to disc R=4, 83 tiles": 8,
+   "PERIODIC: lifted to disc R=4, 84 tiles": 13,
+   "PERIODIC: lifted to disc R=4, 85 tiles": 6,
+   "PERIODIC: lifted to disc R=4, 86 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 87 tiles": 3,
+   "PERIODIC: lifted to disc R=4, 88 tiles": 6,
+   "PERIODIC: lifted to disc R=4, 89 tiles": 4,
+   "PERIODIC: lifted to disc R=4, 90 tiles": 3
+  },
+  "verify_mode": "all",
+  "verify_time": 1.6,
+  "wall_time": 4.0
+ },
+ "9": {
+  "class_merge_time": 0.1,
+  "counts": {
+   "PERIODIC": 139,
+   "STUCK": 21
+  },
+  "enum_time_total": 0.1,
+  "free": 160,
+  "max_fail_R": 3,
+  "max_tiles_needed": 8,
+  "n": 9,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 56.6,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 160,
+  "verified": 160,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 70 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 72 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 73 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 74 tiles": 10,
+   "PERIODIC: lifted to disc R=4, 75 tiles": 15,
+   "PERIODIC: lifted to disc R=4, 76 tiles": 25,
+   "PERIODIC: lifted to disc R=4, 77 tiles": 22,
+   "PERIODIC: lifted to disc R=4, 78 tiles": 24,
+   "PERIODIC: lifted to disc R=4, 79 tiles": 12,
+   "PERIODIC: lifted to disc R=4, 80 tiles": 21,
+   "PERIODIC: lifted to disc R=4, 81 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 82 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 84 tiles": 2,
+   "STUCK: backtracking": 7,
+   "STUCK: glucose4 pairwise encoding": 14
+  },
+  "verify_mode": "all",
+  "verify_time": 23.8,
+  "wall_time": 80.4
  }
 }

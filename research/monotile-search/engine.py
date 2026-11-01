@@ -634,38 +634,43 @@ def classify(g, cells, tcap=12, rcap=6, kmax=0, hbudget=60, quick_R=1.5, tmin=0,
     if rcap not in rs and (rmin is None or rcap > rmin):
         rs.append(rcap)
     rs.sort()
-    # Interleave the two searches (dovetailing inside one budget): disc radius r_k, then
-    # tori with tiles in (t_{k-1}, t_k], k = 1..K.  The outcome does not depend on the order
-    # (a shape that tiles covers every disc); the recorded failing radius is the smallest
-    # failing radius in the list and the recorded torus is the first in lattice order.
-    K = max(len(rs), 1)
-    t_steps = sorted({max(tmin + 1, round(tmin + (tcap - tmin) * (k + 1) / K)) for k in range(K)})
-    t_steps[-1] = tcap
+    # Order of the searches (the outcome does not depend on it: a shape that tiles covers
+    # every disc, and a shape with a torus tiling tiles).  Disc covers are the expensive
+    # part (SAT on hundreds of cells), tori are cheap, so: small discs (r <= 3) first,
+    # which kill most non-tilers; then every torus up to tcap; then the larger discs.
+    # The recorded failing radius is the smallest failing radius in the list, and the
+    # recorded torus is the first in lattice order, exactly as with any other order.
     best = rmin
-    t_prev = tmin
     rec['cls'] = None
     deadline = time.time() + time_limit if time_limit else None
-    for k in range(max(len(rs), len(t_steps))):
-        if k < len(rs):
-            if cover(sh, rs[k]):
-                best = rs[k]
+    small = [r for r in rs if r <= 3]
+    large = [r for r in rs if r > 3]
+    t_prev = tmin
+
+    def discs(lst):
+        nonlocal best
+        for r in lst:
+            if cover(sh, r):
+                best = r
             else:
-                rec.update(cls='STUCK', fail_R=rs[k], max_cover_R=best)
-                break
-        if k < len(t_steps) and t_steps[k] > t_prev:
+                rec.update(cls='STUCK', fail_R=r, max_cover_R=best)
+                return True
+        return False
+    if not discs(small):
+        if tcap > tmin:
             try:
-                per = periodic(sh, t_steps[k], t_prev, deadline)
+                per = periodic(sh, tcap, tmin, deadline)
             except Deadline as d:
                 rec['torus_time_limit_hit'] = True
                 t_prev = d.done_tiles
-                t_steps = t_steps[:k]       # no further torus stages
                 per = None
             else:
-                t_prev = t_steps[k]
+                t_prev = tcap
             if per is not None:
                 lat, tiles = per
                 rec.update(cls='PERIODIC', lattice=list(lat), tiles_per_domain=tiles)
-                break
+        if rec['cls'] is None:
+            discs(large)
     if rec['cls'] is None:
         rec.update(cls='OPEN', max_cover_R=best)
     rec['tori_complete_upto'] = t_prev if rec['cls'] != 'PERIODIC' else None

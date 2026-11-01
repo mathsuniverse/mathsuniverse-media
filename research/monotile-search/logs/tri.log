@@ -15,3 +15,6 @@ tri n=4: 3 free (3 sym)  {'PERIODIC': 3}  stages [{'tcap': 12, 'rcap': 6, 'open_
 tri n=5: 4 free (4 sym)  {'PERIODIC': 4}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 4 fails 0  0.1s
 tri n=6: 12 free (12 sym)  {'PERIODIC': 12}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 12 fails 0  0.2s
 tri n=7: 24 free (24 sym)  {'PERIODIC': 23, 'STUCK': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.6}]  verified 24 fails 0  1.6s
+tri n=8: 66 free (66 sym)  {'PERIODIC': 66}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 2.4}]  verified 66 fails 0  4.0s
+tri n=9: 160 free (160 sym)  {'PERIODIC': 139, 'STUCK': 21}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 56.6}]  verified 160 fails 0  80.4s
+tri n=10: 448 free (448 sym)  {'PERIODIC': 341, 'STUCK': 107}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 435.4}]  verified 448 fails 0  629.4s

@@ -103,3 +103,16 @@ copies of a single tile. A shape found that way comes with steps 2–4 already o
 - Aperiodic monotiles: Socolar–Taylor 2010 (needs markings or a disconnected tile); the hat family Tile(a,b) and the
   Spectre (2023). Every known clean aperiodic monotile is in this one family.
 - Each aperiodic monotile admits uncountably many tilings, all locally indistinguishable.
+
+## 8. Rational vs irrational (Razvan, 1 Nov: "aperiodic = irrational, periodic = rational")
+
+- Theorem (standard): in a periodic tiling every tile-type frequency is rational (count in a fundamental
+  domain / its size). Hence if a tile forces an irrational frequency in every tiling, it is aperiodic.
+- Checked numerically on our own patches (1 Nov 2026):
+  hat, unreflected:reflected = 6.682 (169), 6.864 (1,156), 6.8504 (7,921), 6.8543 (54,289) → φ⁴ = 6.8541;
+  Penrose P2, kites:darts = 1.660, 1.650, 1.633, 1.627 (deflation depth 5–8) → φ = 1.6180.
+- The converse is false: e.g. the chair tiling (inflation 2) is non-periodic with rational frequencies.
+- Exact version for cut-and-project sets: a slice of a lattice at rational slope is periodic, at irrational slope
+  quasiperiodic (1D: Sturmian words; Fibonacci word slope 1/φ; Penrose = slice of Z⁵).
+- Use in the search: for any surviving candidate, measure tile-type and orientation frequencies on large patches;
+  convergence to a quadratic irrational (φ, √2, √3, ...) is evidence of an inflation hierarchy with a Pisot factor.

@@ -1,0 +1,224 @@
+{
+ "AB": [
+  {
+   "R": 10,
+   "tiles": 382,
+   "counts": {
+    "rhomb": 224,
+    "square": 158
+   },
+   "ratio_label": "rhombs/squares",
+   "ratio": 1.4177215189873418,
+   "target": 1.4142135623730951,
+   "rel_err": 0.0024804999100419955,
+   "grid_margin": 0.008392358702270397,
+   "bad_edges": 0,
+   "position_collisions": 0,
+   "tile_area": 316.3919189857876,
+   "disc_area": 314.1592653589793,
+   "window": {
+    "vertices": 423,
+    "outside_window": 0,
+    "window_vertices": 8,
+    "window_area": 4.82842712474619
+   }
+  },
+  {
+   "R": 20,
+   "tiles": 1520,
+   "counts": {
+    "rhomb": 884,
+    "square": 636
+   },
+   "ratio_label": "rhombs/squares",
+   "ratio": 1.389937106918239,
+   "target": 1.4142135623730951,
+   "rel_err": 0.017166046275301997,
+   "grid_margin": 0.0023968369488862606,
+   "bad_edges": 0,
+   "position_collisions": 0,
+   "tile_area": 1261.082394568887,
+   "disc_area": 1256.6370614359173,
+   "window": {
+    "vertices": 1611,
+    "outside_window": 0,
+    "window_vertices": 8,
+    "window_area": 4.82842712474619
+   }
+  },
+  {
+   "R": 40,
+   "tiles": 6076,
+   "counts": {
+    "rhomb": 3556,
+    "square": 2520
+   },
+   "ratio_label": "rhombs/squares",
+   "ratio": 1.4111111111111112,
+   "target": 1.4142135623730951,
+   "rel_err": 0.002193764325649606,
+   "grid_margin": 0.000849779196610001,
+   "bad_edges": 0,
+   "position_collisions": 0,
+   "tile_area": 5034.471713899635,
+   "disc_area": 5026.548245743669,
+   "window": {
+    "vertices": 6241,
+    "outside_window": 0,
+    "window_vertices": 8,
+    "window_area": 4.82842712474619
+   }
+  },
+  {
+   "R": 80,
+   "tiles": 24284,
+   "counts": {
+    "rhomb": 14212,
+    "square": 10072
+   },
+   "ratio_label": "rhombs/squares",
+   "ratio": 1.4110405083399524,
+   "target": 1.4142135623730951,
+   "rel_err": 0.0022436880239065406,
+   "grid_margin": 0.0002296126492780104,
+   "bad_edges": 0,
+   "position_collisions": 0,
+   "tile_area": 20121.401574217954,
+   "disc_area": 20106.192982974677
+  },
+  {
+   "R": 160,
+   "tiles": 97084,
+   "counts": {
+    "rhomb": 56872,
+    "square": 40212
+   },
+   "ratio_label": "rhombs/squares",
+   "ratio": 1.4143041878046354,
+   "target": 1.4142135623730951,
+   "rel_err": 6.408185719007422e-05,
+   "grid_margin": 0.00022961264927445768,
+   "bad_edges": 0,
+   "position_collisions": 0,
+   "tile_area": 80426.57685967349,
+   "disc_area": 80424.77193189871
+  }
+ ],
+ "P3": [
+  {
+   "R": 10,
+   "tiles": 386,
+   "counts": {
+    "thick": 241,
+    "thin": 145
+   },
+   "ratio_label": "thick/thin",
+   "ratio": 1.6620689655172414,
+   "target": 1.618033988749895,
+   "rel_err": 0.027215112336032087,
+   "grid_margin": 0.004860098853073591,
+   "bad_edges": 0,
+   "position_collisions": 0,
+   "tile_area": 314.43348200953835,
+   "disc_area": 314.1592653589793,
+   "window": {
+    "vertices": 430,
+    "outside_window": 0,
+    "index_counts": {
+     "3": 159,
+     "1": 62,
+     "4": 58,
+     "2": 151
+    }
+   }
+  },
+  {
+   "R": 20,
+   "tiles": 1548,
+   "counts": {
+    "thick": 948,
+    "thin": 600
+   },
+   "ratio_label": "thick/thin",
+   "ratio": 1.58,
+   "target": 1.618033988749895,
+   "rel_err": 0.023506297775166128,
+   "grid_margin": 0.0029608940559420205,
+   "bad_edges": 0,
+   "position_collisions": 0,
+   "tile_area": 1254.2727288232943,
+   "disc_area": 1256.6370614359173,
+   "window": {
+    "vertices": 1632,
+    "outside_window": 0,
+    "index_counts": {
+     "2": 578,
+     "1": 232,
+     "3": 603,
+     "4": 219
+    }
+   }
+  },
+  {
+   "R": 40,
+   "tiles": 6180,
+   "counts": {
+    "thick": 3822,
+    "thin": 2358
+   },
+   "ratio_label": "thick/thin",
+   "ratio": 1.6208651399491094,
+   "target": 1.618033988749895,
+   "rel_err": 0.0017497476684045917,
+   "grid_margin": 0.001173773116221355,
+   "bad_edges": 0,
+   "position_collisions": 0,
+   "tile_area": 5020.935630186031,
+   "disc_area": 5026.548245743669,
+   "window": {
+    "vertices": 6358,
+    "outside_window": 0,
+    "index_counts": {
+     "2": 2307,
+     "1": 871,
+     "3": 2298,
+     "4": 882
+    }
+   }
+  },
+  {
+   "R": 80,
+   "tiles": 24761,
+   "counts": {
+    "thick": 15297,
+    "thin": 9464
+   },
+   "ratio_label": "thick/thin",
+   "ratio": 1.6163355874894336,
+   "target": 1.618033988749895,
+   "rel_err": 0.0010496697055007338,
+   "grid_margin": 0.0011737731162178022,
+   "bad_edges": 0,
+   "position_collisions": 0,
+   "tile_area": 20111.111157462932,
+   "disc_area": 20106.192982974677
+  },
+  {
+   "R": 160,
+   "tiles": 99017,
+   "counts": {
+    "thick": 61201,
+    "thin": 37816
+   },
+   "ratio_label": "thick/thin",
+   "ratio": 1.6183890416754814,
+   "target": 1.618033988749895,
+   "rel_err": 0.00021943477581752143,
+   "grid_margin": 0.00016489988755807872,
+   "bad_edges": 0,
+   "position_collisions": 0,
+   "tile_area": 80433.29695438282,
+   "disc_area": 80424.77193189871
+  }
+ ]
+}

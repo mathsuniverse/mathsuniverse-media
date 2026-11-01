@@ -13,3 +13,4 @@ square n=4: 5 free (5 sym)  {'PERIODIC': 5}  stages [{'tcap': 12, 'rcap': 6, 'op
 square n=5: 12 free (12 sym)  {'PERIODIC': 12}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 12 fails 0  0.2s
 square n=6: 35 free (35 sym)  {'PERIODIC': 35}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.3}]  verified 35 fails 0  0.4s
 square n=7: 108 free (108 sym)  {'PERIODIC': 104, 'STUCK': 4}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 3.0}]  verified 108 fails 0  27.0s
+square n=8: 369 free (369 sym)  {'PERIODIC': 343, 'STUCK': 26}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 60.4}]  verified 369 fails 0  902.7s

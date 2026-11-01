@@ -71,6 +71,85 @@
   "verify_time": 6.8,
   "wall_time": 18.1
  },
+ "11": {
+  "class_merge_time": 0.4,
+  "counts": {
+   "PERIODIC": 46,
+   "STUCK": 1538
+  },
+  "enum_time_total": 1.1,
+  "free": 1584,
+  "max_fail_R": 5,
+  "max_tiles_needed": 8,
+  "n": 11,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 56.6,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 1584,
+  "verified": 400,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 59 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 60 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 61 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 62 tiles": 4,
+   "PERIODIC: lifted to disc R=4, 63 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 64 tiles": 2,
+   "STUCK: backtracking": 370,
+   "STUCK: glucose4 pairwise encoding": 19
+  },
+  "verify_mode": "sample",
+  "verify_time": 14.5,
+  "wall_time": 71.1
+ },
+ "12": {
+  "class_merge_time": 1.2,
+  "counts": {
+   "PERIODIC": 930,
+   "STUCK": 3161
+  },
+  "enum_time_total": 1.1,
+  "free": 4091,
+  "max_fail_R": 4,
+  "max_tiles_needed": 8,
+  "n": 12,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 146.8,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 4091,
+  "verified": 400,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 55 tiles": 3,
+   "PERIODIC: lifted to disc R=4, 56 tiles": 5,
+   "PERIODIC: lifted to disc R=4, 57 tiles": 17,
+   "PERIODIC: lifted to disc R=4, 58 tiles": 16,
+   "PERIODIC: lifted to disc R=4, 59 tiles": 23,
+   "PERIODIC: lifted to disc R=4, 60 tiles": 19,
+   "PERIODIC: lifted to disc R=4, 61 tiles": 8,
+   "PERIODIC: lifted to disc R=4, 62 tiles": 4,
+   "PERIODIC: lifted to disc R=4, 63 tiles": 2,
+   "STUCK: backtracking": 301,
+   "STUCK: glucose4 pairwise encoding": 2
+  },
+  "verify_mode": "sample",
+  "verify_time": 7.8,
+  "wall_time": 154.6
+ },
  "2": {
   "class_merge_time": 0.0,
   "counts": {

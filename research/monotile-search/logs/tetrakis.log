@@ -20,3 +20,5 @@ tetrakis n=7: 42 free (42 sym)  {'STUCK': 33, 'PERIODIC': 9}  stages [{'tcap': 1
 tetrakis n=8: 112 free (112 sym)  {'PERIODIC': 79, 'STUCK': 33}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.9}]  verified 112 fails 0  1.6s
 tetrakis n=9: 252 free (252 sym)  {'STUCK': 227, 'PERIODIC': 25}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 1, 'seconds': 6.1}, {'tcap': 24, 'rcap': 8.0, 'retested': 1, 'open_after': 0, 'seconds': 1.4}]  verified 252 fails 0  14.4s
 tetrakis n=10: 650 free (650 sym)  {'PERIODIC': 219, 'STUCK': 431}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 11.3}]  verified 400 fails 0  18.1s
+tetrakis n=11: 1584 free (1584 sym)  {'STUCK': 1538, 'PERIODIC': 46}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 56.6}]  verified 400 fails 0  71.1s
+tetrakis n=12: 4091 free (4091 sym)  {'PERIODIC': 930, 'STUCK': 3161}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 146.8}]  verified 400 fails 0  154.6s

@@ -1,0 +1,13 @@
+drafter [4.6.12]*: 12 cell type(s) per lattice cell, 12 point symmetries (mod translations), 0 partial congruences
+  drafter n=2: 3  (0.0s)
+  drafter n=3: 3  (0.0s)
+  drafter n=4: 9  (0.0s)
+  drafter n=5: 14  (0.0s)
+  drafter n=6: 38  (0.0s)
+  drafter n=7: 74  (0.0s)
+  drafter n=8: 185  (0.0s)
+  drafter n=9: 414  (0.1s)
+  drafter n=10: 1026  (0.2s)
+  drafter n=11: 2440  (0.6s)
+  drafter n=12: 6077  (1.5s)
+  drafter n=13: 14926  (4.8s)

@@ -118,3 +118,9 @@ so it is not a tiling by one tile.
 
 About 45 CPU-minutes on one worker (merge search AB 4 min, P3 7 min; covering runs about 30 min; the rest is small).
 Patches: discs up to R = 160 for frequencies, R = 13 for partition SAT, R = 38 for coverings.
+
+## Novelty check (1 Nov 2026, 22:45)
+Not new. Ammann–Beenker (Ammann 1970s; Beenker 1982) and Gähler's shield tiling (1988) are classical.
+The octagon covering is Ben-Abraham & Gähler, "Covering cluster description of octagonal MnSiAl quasicrystals",
+Phys. Rev. B 60 (1999), now verified. Dodecagonal single-cluster coverings exist too (arXiv 1208.1845, ship tiling, 2012).
+Our greedy covers re-confirm these; they include no forcing rules.

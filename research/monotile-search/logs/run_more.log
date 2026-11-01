@@ -1,1 +1,2 @@
 + python3 sieve.py floret --nmin 8 --nmax 9 --verify sample --sample 400 --dovetail 24:8,48:12 --shape-time 90
++ python3 sieve.py tetrakis --nmin 13 --nmax 14 --verify sample --sample 400 --dovetail 24:8,48:12 --shape-time 90

@@ -8,3 +8,4 @@ floret [3^4.6]*: 6 cell type(s) per lattice cell, 6 point symmetries (mod transl
   floret n=8: 3875  (0.3s)
   floret n=9: 14561  (1.8s)
 floret n=8: 3875 free (3875 sym)  {'PERIODIC': 106, 'STUCK': 3769}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 40.4}]  verified 400 fails 0  42.7s
+floret n=9: 14561 free (14561 sym)  {'PERIODIC': 1288, 'STUCK': 13273}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 97.7}]  verified 400 fails 0  99.7s

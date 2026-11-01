@@ -1,0 +1,15 @@
+tetrakis [4.8^2]*: 4 cell type(s) per lattice cell, 8 point symmetries (mod translations), 0 partial congruences
+  tetrakis n=2: 2  (0.0s)
+  tetrakis n=3: 2  (0.0s)
+  tetrakis n=4: 6  (0.0s)
+  tetrakis n=5: 8  (0.0s)
+  tetrakis n=6: 22  (0.0s)
+  tetrakis n=7: 42  (0.0s)
+  tetrakis n=8: 112  (0.0s)
+  tetrakis n=9: 252  (0.0s)
+  tetrakis n=10: 650  (0.1s)
+  tetrakis n=11: 1584  (0.3s)
+  tetrakis n=12: 4091  (0.7s)
+  tetrakis n=13: 10369  (2.4s)
+  tetrakis n=14: 26938  (6.3s)
+tetrakis n=13: 10369 free (10369 sym)  {'STUCK': 10122, 'PERIODIC': 247}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 274.9}]  verified 400 fails 0  288.1s

@@ -87,6 +87,10 @@ def main():
         L += [f'### {nm} {g.laves} ({g.cellname}s)', '']
         if g.notes:
             L += [g.notes + '.', '']
+        if g.chiral:
+            L += ['The floret grid is chiral (symmetry group p6): a mirror image of a polyform lies on the mirror '
+                  'grid, never on this one (no off-group congruent copies were found), so placements use the 6 '
+                  'rotations only. This is the on-grid convention used throughout (as in Myers\' tables).', '']
         L += ['Geometry: ' + GEOM[nm] + '.', '']
         L += ['| n | free (OEIS ' + OEIS[nm] + ') | STUCK | PERIODIC | OPEN at 12/R6 | OPEN after dovetail | '
               'most tiles per period needed | largest failing R | certificates re-checked | wall time |',

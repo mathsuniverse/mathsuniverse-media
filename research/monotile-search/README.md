@@ -124,6 +124,13 @@ one more closely".
 | `validate.py` | hat / turtle / kite / hexagon validation → `validation.json` |
 | `report.py` | writes `RESULTS.md` from `results.json` and `validation.json` |
 | `test_monotile.py` | tests (`python3 test_monotile.py`) |
+| `grids.py` | stage 2: eleven periodic grids (square, hex, tri, kite, drafter, rhomb, tetrakis, triakis, Cairo, prismatic, floret) with exact Q(sqrt3) geometry and symmetry groups |
+| `engine.py` | stage 2: grid-agnostic enumeration and STUCK / PERIODIC / OPEN test (disc cover, torus, Heesch) |
+| `verify.py` | stage 2: independent certificate re-checks (exact congruence + lifted torus; exact-cover backtracking or a second SAT encoding) |
+| `sieve.py` | stage 2: runs one grid with dovetailing → `results/<grid>.json`, `open/*.png` |
+| `fingerprint.py` | orientation / handedness frequencies on the largest SAT-covered disc, compared with metallic means |
+| `regress.py`, `report_grids.py`, `test_engine.py` | regression vs stage 1 and Myers, the stage-2 part of RESULTS.md, tests |
+| `run_*.sh` | the exact command lines used for the stage-2 runs (logs in `logs/`) |
 
 Setup: `pip install --break-system-packages python-sat shapely matplotlib`.
 The hat-substitution cross-check test reads `hat_tiling.py` from the path in the

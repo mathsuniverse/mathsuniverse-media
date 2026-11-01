@@ -1,0 +1,20 @@
+triakis [3.12^2]*: 6 cell type(s) per lattice cell, 12 point symmetries (mod translations), 0 partial congruences
+  triakis n=2: 2  (0.0s)
+  triakis n=3: 2  (0.0s)
+  triakis n=4: 4  (0.0s)
+  triakis n=5: 4  (0.0s)
+  triakis n=6: 10  (0.0s)
+  triakis n=7: 13  (0.0s)
+  triakis n=8: 29  (0.0s)
+  triakis n=9: 47  (0.0s)
+  triakis n=10: 100  (0.0s)
+triakis n=1: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 1 fails 0  0.1s
+triakis n=2: 2 free (2 sym)  {'STUCK': 1, 'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 2 fails 0  0.0s
+triakis n=3: 2 free (2 sym)  {'PERIODIC': 2}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 2 fails 0  0.0s
+triakis n=4: 4 free (4 sym)  {'PERIODIC': 2, 'STUCK': 2}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 4 fails 0  0.1s
+triakis n=5: 4 free (4 sym)  {'STUCK': 4}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 4 fails 0  0.4s
+triakis n=6: 10 free (10 sym)  {'PERIODIC': 7, 'STUCK': 3}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 10 fails 0  0.2s
+triakis n=7: 13 free (13 sym)  {'PERIODIC': 3, 'STUCK': 10}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.2}]  verified 13 fails 0  0.9s
+triakis n=8: 29 free (29 sym)  {'STUCK': 27, 'PERIODIC': 2}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 1.6}]  verified 29 fails 0  3.0s
+triakis n=9: 47 free (47 sym)  {'PERIODIC': 21, 'STUCK': 26}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 1.1}]  verified 47 fails 0  2.6s
+triakis n=10: 100 free (100 sym)  {'STUCK': 95, 'PERIODIC': 5}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 8.5}]  verified 100 fails 0  22.0s

@@ -1,0 +1,20 @@
+drafter [4.6.12]*: 12 cell type(s) per lattice cell, 12 point symmetries (mod translations), 0 partial congruences
+  drafter n=2: 3  (0.0s)
+  drafter n=3: 3  (0.0s)
+  drafter n=4: 9  (0.0s)
+  drafter n=5: 14  (0.0s)
+  drafter n=6: 38  (0.0s)
+  drafter n=7: 74  (0.0s)
+  drafter n=8: 185  (0.0s)
+  drafter n=9: 414  (0.1s)
+  drafter n=10: 1026  (0.3s)
+drafter n=1: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 1 fails 0  0.2s
+drafter n=2: 3 free (3 sym)  {'PERIODIC': 3}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 3 fails 0  0.2s
+drafter n=3: 3 free (3 sym)  {'PERIODIC': 2, 'STUCK': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 3 fails 0  0.2s
+drafter n=4: 9 free (9 sym)  {'PERIODIC': 5, 'STUCK': 4}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 9 fails 0  0.2s
+drafter n=5: 14 free (14 sym)  {'STUCK': 14}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.2}]  verified 14 fails 0  0.5s
+drafter n=6: 38 free (38 sym)  {'PERIODIC': 27, 'STUCK': 11}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.4}]  verified 38 fails 0  1.6s
+drafter n=7: 74 free (74 sym)  {'STUCK': 72, 'PERIODIC': 2}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.9}]  verified 74 fails 0  2.0s
+drafter n=8: 185 free (185 sym)  {'STUCK': 153, 'PERIODIC': 32}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 1.1}]  verified 185 fails 0  2.7s
+drafter n=9: 414 free (414 sym)  {'STUCK': 399, 'PERIODIC': 15}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 2.8}]  verified 400 fails 0  5.1s
+drafter n=10: 1026 free (1026 sym)  {'STUCK': 1019, 'PERIODIC': 7}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 6.8}]  verified 400 fails 0  9.6s

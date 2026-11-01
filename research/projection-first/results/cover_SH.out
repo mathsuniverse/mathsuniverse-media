@@ -13,3 +13,5 @@ SH decorated round {"rho": 4.0, "classes": 191, "best_fraction": 0.5799, "best_s
 SH decorated round {"rho": 4.5, "classes": 226, "best_fraction": 0.6782, "best_size": 80}
 SH decorated round {"rho": 5.0, "classes": 268, "best_fraction": 0.7531, "best_size": 102}
 SH decorated round {"rho": 5.5, "classes": 297, "best_fraction": 0.7832, "best_size": 122}
+SH decorated round {"rho": 6.0, "classes": 352, "best_fraction": 0.8358, "best_size": 148}
+SH decorated round {"rho": 7.0, "classes": 424, "best_fraction": 0.8793, "best_size": 193}

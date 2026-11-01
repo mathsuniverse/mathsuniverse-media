@@ -1,0 +1,15 @@
+rhomb [3.6.3.6]*: 3 cell type(s) per lattice cell, 12 point symmetries (mod translations), 0 partial congruences
+  rhomb n=2: 1  (0.0s)
+  rhomb n=3: 3  (0.0s)
+  rhomb n=4: 4  (0.0s)
+  rhomb n=5: 12  (0.0s)
+  rhomb n=6: 27  (0.0s)
+  rhomb n=7: 78  (0.0s)
+  rhomb n=8: 208  (0.0s)
+rhomb n=1: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 1 fails 0  0.1s
+rhomb n=2: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 1 fails 0  0.0s
+rhomb n=3: 3 free (3 sym)  {'PERIODIC': 3}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 3 fails 0  0.1s
+rhomb n=4: 4 free (4 sym)  {'PERIODIC': 1, 'STUCK': 3}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.2}]  verified 4 fails 0  0.4s
+rhomb n=5: 12 free (12 sym)  {'PERIODIC': 5, 'STUCK': 7}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.4}]  verified 12 fails 0  1.1s
+rhomb n=6: 27 free (27 sym)  {'PERIODIC': 17, 'STUCK': 10}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 1.0}]  verified 27 fails 0  2.2s
+rhomb n=7: 78 free (78 sym)  {'PERIODIC': 16, 'STUCK': 62}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 31.2}]  verified 78 fails 0  52.1s

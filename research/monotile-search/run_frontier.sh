@@ -3,7 +3,7 @@
 cd "$(dirname "$0")"
 NT=${1:-12}
 set -x
-python3 sieve.py tetrakis --nmax $NT --verify sample --sample 400 --dovetail "24:8,48:12" --shape-time 90 > logs/tetrakis.log 2>&1
+# moved to run_rest.sh: python3 sieve.py tetrakis --nmax $NT --verify sample --sample 400 --dovetail "24:8,48:12" --shape-time 90 > logs/tetrakis.log 2>&1
 python3 sieve.py drafter --nmax 10 --verify sample --sample 400 --dovetail "24:8,48:12" --shape-time 90 > logs/drafter.log 2>&1
 python3 sieve.py floret --nmax 7 --verify sample --sample 400 --dovetail "24:8,48:12" --shape-time 90 > logs/floret.log 2>&1
 python3 sieve.py triakis --nmax 10 --verify sample --sample 400 --dovetail "24:8,48:12" --shape-time 90 > logs/triakis.log 2>&1

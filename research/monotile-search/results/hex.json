@@ -180,7 +180,7 @@
    {
     "open_after": 0,
     "rcap": 6,
-    "seconds": 109.3,
+    "seconds": 136.1,
     "tcap": 12
    }
   ],
@@ -207,7 +207,7 @@
    "STUCK: glucose4 pairwise encoding": 3
   },
   "verify_mode": "sample",
-  "verify_time": 17.0,
-  "wall_time": 126.3
+  "verify_time": 18.9,
+  "wall_time": 155.1
  }
 }

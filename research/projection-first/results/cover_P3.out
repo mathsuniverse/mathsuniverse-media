@@ -1,0 +1,15 @@
+P3 plain exhaustive {"classes_per_k": {"1": 2, "2": 4, "3": 16, "4": 58}, "best_cover_fraction_per_k": {"1": 0.6171, "2": 0.8408, "3": 0.9446, "4": 1.0}, "seconds": 2.0, "min_k_full_cover": 4, "n_covering_classes_at_min_k": 2}
+P3 plain round {"rho": 1.0, "classes": 8, "best_fraction": 0.9446, "best_size": 5}
+P3 plain round {"rho": 1.5, "classes": 12, "best_fraction": 0.8685, "best_size": 7}
+P3 plain round {"rho": 2.0, "classes": 21, "best_fraction": 0.8454, "best_size": 15}
+P3 plain round {"rho": 2.5, "classes": 24, "best_fraction": 0.9273, "best_size": 25}
+P3 plain round {"rho": 3.0, "classes": 36, "best_fraction": 0.9539, "best_size": 35}
+P3 plain round {"rho": 3.5, "classes": 42, "best_fraction": 0.9873, "best_size": 49}
+P3 plain round {"rho": 4.0, "classes": 50, "best_fraction": 1.0, "best_size": 61, "greedy_copies": 34, "overlap_factor": 2.392}
+P3 decorated exhaustive {"classes_per_k": {"1": 11, "2": 24, "3": 75, "4": 235}, "best_cover_fraction_per_k": {"1": 0.1373, "2": 0.218, "3": 0.3195, "4": 0.4106}, "seconds": 46.2, "min_k_full_cover": null}
+P3 decorated round {"rho": 1.0, "classes": 23, "best_fraction": 0.3829, "best_size": 4}
+P3 decorated round {"rho": 1.5, "classes": 29, "best_fraction": 0.5317, "best_size": 10}
+P3 decorated round {"rho": 2.0, "classes": 39, "best_fraction": 0.6978, "best_size": 15}
+P3 decorated round {"rho": 2.5, "classes": 52, "best_fraction": 0.8051, "best_size": 24}
+P3 decorated round {"rho": 3.0, "classes": 57, "best_fraction": 0.8835, "best_size": 35}
+P3 decorated round {"rho": 3.5, "classes": 73, "best_fraction": 0.8408, "best_size": 47}

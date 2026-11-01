@@ -221,3 +221,18 @@ this question; a new field needs new combinatorics (route 4b, structure first).
 **What the searches answer so far.** Kite grid, n ≤ 10: 13,212 shapes; the only open ones are the hat and the turtle
 (golden). So no small polykite monotile exists for any other field. Silver / √3 / bronze remain open; the next test is
 structure-first: search small substitutions with these sibling inflations and ask whether one shape realises them.
+
+## 14. One axis at a time: Beatty partitions vs Frobenius semigroups
+
+- Scope: a tiling is a (generalised) cut-and-project set iff it has pure point order (Baake–Lenz–Moody).
+  Rational slope gives a periodic tiling, irrational slope a quasiperiodic one. Pinwheel (not Pisot) is not a model set;
+  the chair and Socolar–Taylor use a 2-adic internal space.
+- Reduction to 1D: de Bruijn's pentagrid makes Penrose the dual of 5 line families; along each family the tile
+  sequence is Sturmian (Fibonacci word, slope 1/φ: Conway worms).
+- Irrational slope: Beatty sequences ⌊nα⌋, ⌊nβ⌋ with 1/α + 1/β = 1 partition N exactly (Rayleigh).
+  Golden: 1,3,4,6,8,9,11,12… and 2,5,7,10,13… (Wythoff).
+- Rational slope a/b: Christoffel words and the semigroup ⟨a,b⟩; Frobenius number ab − a − b;
+  Sylvester: n is representable iff ab − a − b − n is not. Example ⟨3,5⟩: gaps 1,2,4,7.
+- A 2D tiling = several 1D slope problems that must agree where line families cross.
+- Field fingerprint test: read the 1D tile sequence along ribbons and fit its Sturmian slope. A silver candidate must
+  show a slope in Q(√2).

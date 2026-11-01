@@ -1,0 +1,14 @@
+floret [3^4.6]*: 6 cell type(s) per lattice cell, 6 point symmetries (mod translations) [chiral], 0 partial congruences
+  floret n=2: 3  (0.0s)
+  floret n=3: 8  (0.0s)
+  floret n=4: 25  (0.0s)
+  floret n=5: 80  (0.0s)
+  floret n=6: 291  (0.0s)
+  floret n=7: 1036  (0.1s)
+floret n=1: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 1 fails 0  0.1s
+floret n=2: 3 free (3 sym)  {'PERIODIC': 2, 'STUCK': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 3 fails 0  0.1s
+floret n=3: 8 free (8 sym)  {'PERIODIC': 8}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.2}]  verified 8 fails 0  0.3s
+floret n=4: 25 free (25 sym)  {'STUCK': 13, 'PERIODIC': 12}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.4}]  verified 25 fails 0  0.9s
+floret n=5: 80 free (80 sym)  {'STUCK': 80}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 1.1}]  verified 80 fails 0  1.7s
+floret n=6: 291 free (291 sym)  {'PERIODIC': 102, 'STUCK': 189}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 3.9}]  verified 291 fails 0  6.7s
+floret n=7: 1036 free (1036 sym)  {'PERIODIC': 163, 'STUCK': 873}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 14.3}]  verified 400 fails 0  19.2s

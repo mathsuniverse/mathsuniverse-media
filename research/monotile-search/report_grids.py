@@ -11,7 +11,27 @@ ORDER = ['kite', 'square', 'hex', 'tri', 'drafter', 'floret', 'cairo', 'prismati
 OEIS = {'square': 'A000105', 'hex': 'A000228', 'tri': 'A000577', 'kite': 'A057786', 'drafter': 'A197462',
         'rhomb': 'A197459', 'tetrakis': 'A197465', 'triakis': 'A057784', 'cairo': 'A159866',
         'prismatic': 'A197156', 'floret': 'A197159'}
-FRONTIER = ['drafter', 'floret', 'cairo', 'prismatic', 'rhomb', 'tetrakis', 'triakis']
+FRONTIER = ['tetrakis', 'drafter', 'floret', 'triakis', 'rhomb', 'cairo', 'prismatic']
+# OEIS terms (fetched 1 Nov 2026 from oeis.org; tetrakis, drafter, floret, prismatic pages read
+# directly, the others from test_engine.py)
+OEIS_TERMS = {
+    'tetrakis': [1, 2, 2, 6, 8, 22, 42, 112, 252, 650, 1584, 4091, 10369, 26938, 69651, 182116],
+    'drafter': [1, 3, 3, 9, 14, 38, 74, 185, 414, 1026, 2440, 6077, 14926, 37454, 93749, 237035],
+    'floret': [1, 3, 8, 25, 80, 291, 1036, 3875, 14561, 55624],
+    'prismatic': [1, 3, 5, 20, 56, 225, 819, 3333, 13336],
+    'rhomb': [1, 1, 3, 4, 12, 27, 78, 208, 635, 1859],
+    'triakis': [1, 2, 2, 4, 4, 10, 13, 29, 47, 100, 181],
+    'cairo': [1, 2, 5, 17, 55, 206, 781, 3099],
+}
+GEOM = {
+    'tetrakis': '45 deg (p4m; cell angles 45-45-90; edges in 4 directions, 0/45/90/135 deg)',
+    'cairo': '90/120 deg (p4g; angles 120,120,90,120,90; no 45 deg edges)',
+    'prismatic': '60/90 deg (cmm; angles 90,90,120,120,120 (house))',
+    'drafter': '30/60 deg (p6m; 30-60-90 triangles; 12 edge directions)',
+    'floret': '60 deg (p6, chiral; angles 60,120,120,120,120)',
+    'triakis': '30/60 deg (p6m; 30-30-120 triangles)',
+    'rhomb': '60 deg (p6m; 60-120 rhombs)',
+}
 
 
 def main():
@@ -67,6 +87,7 @@ def main():
         L += [f'### {nm} {g.laves} ({g.cellname}s)', '']
         if g.notes:
             L += [g.notes + '.', '']
+        L += ['Geometry: ' + GEOM[nm] + '.', '']
         L += ['| n | free (OEIS ' + OEIS[nm] + ') | STUCK | PERIODIC | OPEN at 12/R6 | OPEN after dovetail | '
               'most tiles per period needed | largest failing R | certificates re-checked | wall time |',
               '|---|---|---|---|---|---|---|---|---|---|']
@@ -77,13 +98,38 @@ def main():
             last = st[-1]
             caps = f"{c.get('OPEN', 0)} (caps {last['tcap']}/R{last['rcap']:g})"
             ver = f"{r['verified']} ({r['verify_mode']}), {len(r['verify_failures'])} failed"
-            L.append(f"| {n} | {r['free']} | {c.get('STUCK', 0)} | {c.get('PERIODIC', 0)} | {o0} | {caps} | "
+            tt = OEIS_TERMS.get(nm, [])
+            oe = (' (=)' if r['free'] == tt[int(n) - 1] else f' (OEIS {tt[int(n) - 1]}: MISMATCH)') if int(n) <= len(tt) else ''
+            L.append(f"| {n} | {r['free']}{oe} | {c.get('STUCK', 0)} | {c.get('PERIODIC', 0)} | {o0} | {caps} | "
                      f"{r['max_tiles_needed']} | {r['max_fail_R']} | {ver} | {r['wall_time']}s |")
         L.append('')
         for n, r in sorted(res.items(), key=lambda x: int(x[0])):
             for oid in r['open_ids']:
                 L += [f'**{oid}** ({n} {g.cellname}s): OPEN after the caps above.', '',
                       f'![{oid}](open/{oid}.png)', '']
+    fpd = os.path.join(HERE, 'results', 'fingerprints')
+    if os.path.isdir(fpd):
+        L += ['## Frequency fingerprints (weak evidence)', '',
+              'Largest SAT-covered disc per shape; orientation classes counted over all tiles and over tiles '
+              'wholly inside radius R-2. Ratio = majority : minority handedness (non-mirror vs mirror forms). '
+              'Targets: phi=1.618, phi^2=2.618, phi^4=6.854, silver=2.414, silver^2=5.828, bronze=3.303, '
+              'bronze^2=10.908. SAT covers are not hierarchical (the solver returns *some* cover), so a ratio '
+              'here is weak evidence at best; for the hat, substitution patches give 6.854 (FORMULATION.md 8).', '',
+              '| grid | shape | R | tiles (inner) | majority : minority, all | inner | nearest target (inner) |',
+              '|---|---|---|---|---|---|---|']
+        for fn in sorted(os.listdir(fpd)):
+            d = json.load(open(os.path.join(fpd, fn)))
+            for p in d['patches']:
+                if not p.get('all'):
+                    L.append(f"| {d['grid']} | {fn[len(d['grid']) + 1:-5]} | {p['R']:g} | not covered | | | |")
+                    continue
+                a, i = p['all'], p['inner']
+                near = ', '.join(f"{k} ({e * 100:.1f}%)" for k, e in i.get('nearest', []))
+                L.append(f"| {d['grid']} | {fn[len(d['grid']) + 1:-5]} | {p['R']:g} | {a['tiles']} ({i['tiles']}) | "
+                         f"{a.get('majority_to_minority_handedness', '-')} | {i.get('majority_to_minority_handedness', '-')} | {near} |")
+            if d.get('achiral'):
+                L.append(f"| {d['grid']} | (shape is achiral: handedness ratio undefined) | | | | | |")
+        L.append('')
     text = open(os.path.join(HERE, 'RESULTS.md')).read()
     if MARK in text:
         text = text[:text.index(MARK)]

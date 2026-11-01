@@ -56,22 +56,31 @@ def in_dodecagon(w, r, rot0):
 
 
 def generate(R, rscale=1.0, rot0=0.0, c=0.1234 + 0.0567j, M=None):
+    """Vectorised: loop over (a, b, c3) and solve for the few d allowed by the window
+    (z^15 = z^3 = i in the internal star, so the window bounds d to an interval of length 2r)."""
     r = rscale / (2 * math.sin(math.pi / 12))
     if M is None:
         M = int(R * 1.2 + 6)
-    rng = range(-M, M + 1)
+    g = np.arange(-M, M + 1)
+    A, B, C = np.meshgrid(g, g, g, indexing="ij")
+    A, B, C = A.ravel(), B.ravel(), C.ravel()
+    q0 = A * PERP[0] + B * PERP[1] + C * PERP[2] - c
+    keep = np.abs(q0.real) <= r
+    A, B, C, q0 = A[keep], B[keep], C[keep], q0[keep]
     pts = {}
     margin = 1.0
-    X = np.array(list(itertools.product(rng, repeat=4)))
-    P = X @ PHYS
-    Q = X @ PERP - c
-    keep = np.abs(P) <= R + 2
-    X, P, Q = X[keep], P[keep], Q[keep]
-    for x, p, q in zip(X, P, Q):
-        d = in_dodecagon(q, r, rot0)
-        if d <= 0:
-            pts[tuple(int(v) for v in x)] = p
-        margin = min(margin, abs(d))
+    # PERP[3] = z^15 = i
+    lo = np.ceil(-q0.imag - r).astype(int)
+    for off in range(0, int(2 * r) + 2):
+        D = lo + off
+        q = q0 + D * PERP[3]
+        p = A * PHYS[0] + B * PHYS[1] + C * PHYS[2] + D * PHYS[3]
+        sel = np.abs(p) <= R + 2
+        for a, b, cc, d, qq, pp in zip(A[sel], B[sel], C[sel], D[sel], q[sel], p[sel]):
+            dd = in_dodecagon(qq, r, rot0)
+            margin = min(margin, abs(dd))
+            if dd <= 0:
+                pts[(int(a), int(b), int(cc), int(d))] = pp
     return pts, margin
 
 

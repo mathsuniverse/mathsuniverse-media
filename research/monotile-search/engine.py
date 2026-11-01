@@ -636,15 +636,15 @@ def classify(g, cells, tcap=12, rcap=6, kmax=0, hbudget=60, quick_R=1.5, tmin=0,
     rs.sort()
     # Order of the searches (the outcome does not depend on it: a shape that tiles covers
     # every disc, and a shape with a torus tiling tiles).  Disc covers are the expensive
-    # part (SAT on hundreds of cells), tori are cheap, so: small discs (r <= 3) first,
+    # part (SAT on hundreds of cells), tori are cheap, so: small discs (r <= 2) first,
     # which kill most non-tilers; then every torus up to tcap; then the larger discs.
     # The recorded failing radius is the smallest failing radius in the list, and the
     # recorded torus is the first in lattice order, exactly as with any other order.
     best = rmin
     rec['cls'] = None
     deadline = time.time() + time_limit if time_limit else None
-    small = [r for r in rs if r <= 3]
-    large = [r for r in rs if r > 3]
+    small = [r for r in rs if r <= 2]
+    large = [r for r in rs if r > 2]
     t_prev = tmin
 
     def discs(lst):

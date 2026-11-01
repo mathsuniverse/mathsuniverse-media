@@ -35,3 +35,9 @@ Playlists: Patterns of Nature, Symmetry in Nature & Mirrors
 Related video: TeV9BpOTRIQ (5 Shapes That Refuse to Tile Your Floor), once public; else mhHGxDVe1Fc.
 
 Pinned comment (draft): Next step on the ladder is 7921 hats. Can you guess which number squared? 👇 Tile your own: symmetryengine.space
+
+## Uploaded 1 Nov 2026 (approved by Razvan 23:36)
+- rx05Je58KHI, scheduled Sat 14 Nov 17:00 London. Title: "One tile that never repeats, and the Fibonacci secret hiding inside 🤯 #shorts".
+  Playlists: Patterns of Nature, Symmetry in Nature & Mirrors. Not made for kids. Tags as above (plus channel defaults).
+- Related video: mhHGxDVe1Fc for now (TeV9BpOTRIQ is not selectable until it is public); the pin task switches it to TeV9BpOTRIQ.
+- Pinned comment task trig_01Std6qjcN1vb4TWKbEUauC8, Sat 14 Nov 17:03.

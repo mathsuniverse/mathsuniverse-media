@@ -1,0 +1,82 @@
+[
+ {
+  "R": 20,
+  "vertices": 1953,
+  "counts": {
+   "poly6": 192,
+   "triangle": 1053,
+   "square": 346
+  },
+  "shield_angle_classes": {
+   "(90, 90, 90, 150, 150, 150)": 192
+  },
+  "crossing_edges": 0,
+  "window_margin": 0.0012264609863097409,
+  "square/shield": 1.8020833333333333,
+  "target square/shield (sqrt3)": 1.7320508075688772,
+  "triangle/shield": 5.484375,
+  "target triangle/shield (2+2sqrt3)": 5.464101615137754,
+  "triangle/square": 3.0433526011560694,
+  "target triangle/square (2+2/sqrt3)": 3.1547005383792515
+ },
+ {
+  "R": 40,
+  "vertices": 6349,
+  "counts": {
+   "triangle": 4246,
+   "square": 1359,
+   "poly6": 775
+  },
+  "shield_angle_classes": {
+   "(90, 90, 90, 150, 150, 150)": 775
+  },
+  "crossing_edges": 0,
+  "window_margin": 0.0001487099844952322,
+  "square/shield": 1.7535483870967743,
+  "target square/shield (sqrt3)": 1.7320508075688772,
+  "triangle/shield": 5.478709677419355,
+  "target triangle/shield (2+2sqrt3)": 5.464101615137754,
+  "triangle/square": 3.124356144223694,
+  "target triangle/square (2+2/sqrt3)": 3.1547005383792515
+ },
+ {
+  "R": 70,
+  "vertices": 17676,
+  "counts": {
+   "poly6": 2377,
+   "square": 4154,
+   "triangle": 13028
+  },
+  "shield_angle_classes": {
+   "(90, 90, 90, 150, 150, 150)": 2377
+  },
+  "crossing_edges": "not checked",
+  "window_margin": 0.00014870998447691353,
+  "square/shield": 1.7475809844341608,
+  "target square/shield (sqrt3)": 1.7320508075688772,
+  "triangle/shield": 5.480858224652924,
+  "target triangle/shield (2+2sqrt3)": 5.464101615137754,
+  "triangle/square": 3.136254212806933,
+  "target triangle/square (2+2/sqrt3)": 3.1547005383792515
+ },
+ {
+  "R": 100,
+  "vertices": 34642,
+  "counts": {
+   "triangle": 26596,
+   "square": 8443,
+   "poly6": 4852
+  },
+  "shield_angle_classes": {
+   "(90, 90, 90, 150, 150, 150)": 4852
+  },
+  "crossing_edges": "not checked",
+  "window_margin": 0.00014870998446803174,
+  "square/shield": 1.7401071723000825,
+  "target square/shield (sqrt3)": 1.7320508075688772,
+  "triangle/shield": 5.481450948062655,
+  "target triangle/shield (2+2sqrt3)": 5.464101615137754,
+  "triangle/square": 3.150065142721781,
+  "target triangle/square (2+2/sqrt3)": 3.1547005383792515
+ }
+]

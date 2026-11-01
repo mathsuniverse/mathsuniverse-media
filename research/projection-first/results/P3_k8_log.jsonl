@@ -1,0 +1,1 @@
+{"system": "P3", "R": 3.0, "alive_in": 14334, "alive_out": 0, "stats": {"UNSAT-count": 3834, "UNSAT-uncoverable": 10341, "UNSAT": 159}, "placement_seconds": 0.8, "total_seconds": 2.8}

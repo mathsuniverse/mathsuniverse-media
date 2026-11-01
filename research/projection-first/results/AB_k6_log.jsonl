@@ -1,2 +1,0 @@
-{"system": "AB", "R": 3.0, "alive_in": 798, "alive_out": 2, "stats": {"UNSAT-count": 190, "UNSAT-uncoverable": 572, "UNSAT": 34, "SAT": 2}, "placement_seconds": 0.1, "total_seconds": 0.2}
-{"system": "AB", "R": 4.5, "alive_in": 2, "alive_out": 0, "stats": {"UNSAT": 2}, "placement_seconds": 0.0, "total_seconds": 0.1}

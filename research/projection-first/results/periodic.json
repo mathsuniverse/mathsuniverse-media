@@ -1,0 +1,494 @@
+{
+ "SQ": {
+  "census_k<=6": {
+   "1": {
+    "BN": 1
+   },
+   "2": {
+    "BN": 1
+   },
+   "3": {
+    "BN": 2
+   },
+   "4": {
+    "BN": 5
+   }
+  },
+  "partition_survivors": [
+   {
+    "id": 0,
+    "k": 1,
+    "comp": [
+     1,
+     0
+    ],
+    "Rpass": 8.0,
+    "Rfail": null,
+    "periodic_test": "BN",
+    "word": [
+     0,
+     1,
+     2,
+     3
+    ],
+    "history": [
+     [
+      3.0,
+      "SAT",
+      60
+     ],
+     [
+      5.0,
+      "SAT",
+      124
+     ],
+     [
+      8.0,
+      "SAT",
+      276
+     ]
+    ]
+   },
+   {
+    "id": 1,
+    "k": 2,
+    "comp": [
+     2,
+     0
+    ],
+    "Rpass": 8.0,
+    "Rfail": null,
+    "periodic_test": "BN",
+    "word": [
+     0,
+     1,
+     1,
+     2,
+     3,
+     3
+    ],
+    "history": [
+     [
+      3.0,
+      "SAT",
+      104
+     ],
+     [
+      5.0,
+      "SAT",
+      224
+     ],
+     [
+      8.0,
+      "SAT",
+      516
+     ]
+    ]
+   },
+   {
+    "id": 2,
+    "k": 3,
+    "comp": [
+     3,
+     0
+    ],
+    "Rpass": 8.0,
+    "Rfail": null,
+    "periodic_test": "BN",
+    "word": [
+     0,
+     1,
+     0,
+     1,
+     2,
+     2,
+     3,
+     3
+    ],
+    "history": [
+     [
+      3.0,
+      "SAT",
+      184
+     ],
+     [
+      5.0,
+      "SAT",
+      412
+     ],
+     [
+      8.0,
+      "SAT",
+      980
+     ]
+    ]
+   },
+   {
+    "id": 3,
+    "k": 4,
+    "comp": [
+     4,
+     0
+    ],
+    "Rpass": 8.0,
+    "Rfail": null,
+    "periodic_test": "BN",
+    "word": [
+     0,
+     1,
+     0,
+     0,
+     1,
+     2,
+     2,
+     2,
+     3,
+     3
+    ],
+    "history": [
+     [
+      3.0,
+      "SAT",
+      312
+     ],
+     [
+      5.0,
+      "SAT",
+      744
+     ],
+     [
+      8.0,
+      "SAT",
+      1832
+     ]
+    ]
+   },
+   {
+    "id": 4,
+    "k": 4,
+    "comp": [
+     4,
+     0
+    ],
+    "Rpass": 8.0,
+    "Rfail": null,
+    "periodic_test": "BN",
+    "word": [
+     0,
+     0,
+     1,
+     1,
+     2,
+     2,
+     3,
+     3
+    ],
+    "history": [
+     [
+      3.0,
+      "SAT",
+      45
+     ],
+     [
+      5.0,
+      "SAT",
+      101
+     ],
+     [
+      8.0,
+      "SAT",
+      241
+     ]
+    ]
+   },
+   {
+    "id": 5,
+    "k": 4,
+    "comp": [
+     4,
+     0
+    ],
+    "Rpass": 8.0,
+    "Rfail": null,
+    "periodic_test": "BN",
+    "word": [
+     0,
+     1,
+     0,
+     1,
+     2,
+     1,
+     2,
+     3,
+     3,
+     3
+    ],
+    "history": [
+     [
+      3.0,
+      "SAT",
+      160
+     ],
+     [
+      5.0,
+      "SAT",
+      376
+     ],
+     [
+      8.0,
+      "SAT",
+      928
+     ]
+    ]
+   },
+   {
+    "id": 6,
+    "k": 4,
+    "comp": [
+     4,
+     0
+    ],
+    "Rpass": 8.0,
+    "Rfail": null,
+    "periodic_test": "BN",
+    "word": [
+     0,
+     1,
+     0,
+     1,
+     1,
+     2,
+     3,
+     2,
+     3,
+     3
+    ],
+    "history": [
+     [
+      3.0,
+      "SAT",
+      160
+     ],
+     [
+      5.0,
+      "SAT",
+      376
+     ],
+     [
+      8.0,
+      "SAT",
+      928
+     ]
+    ]
+   },
+   {
+    "id": 7,
+    "k": 3,
+    "comp": [
+     3,
+     0
+    ],
+    "Rpass": 8.0,
+    "Rfail": null,
+    "periodic_test": "BN",
+    "word": [
+     0,
+     1,
+     1,
+     1,
+     2,
+     3,
+     3,
+     3
+    ],
+    "history": [
+     [
+      3.0,
+      "SAT",
+      88
+     ],
+     [
+      5.0,
+      "SAT",
+      200
+     ],
+     [
+      8.0,
+      "SAT",
+      480
+     ]
+    ]
+   },
+   {
+    "id": 8,
+    "k": 4,
+    "comp": [
+     4,
+     0
+    ],
+    "Rpass": 8.0,
+    "Rfail": null,
+    "periodic_test": "BN",
+    "word": [
+     0,
+     1,
+     1,
+     1,
+     1,
+     2,
+     3,
+     3,
+     3,
+     3
+    ],
+    "history": [
+     [
+      3.0,
+      "SAT",
+      72
+     ],
+     [
+      5.0,
+      "SAT",
+      176
+     ],
+     [
+      8.0,
+      "SAT",
+      444
+     ]
+    ]
+   }
+  ]
+ },
+ "AB": {
+  "census_k<=6": {
+   "1": {
+    "BN": 2
+   },
+   "2": {
+    "BN": 3
+   },
+   "3": {
+    "BN": 7,
+    "not-caught": 4,
+    "Conway": 1
+   },
+   "4": {
+    "not-caught": 27,
+    "BN": 10,
+    "Conway": 2
+   },
+   "5": {
+    "not-caught": 130,
+    "BN": 25,
+    "non-simple": 1,
+    "Conway": 1
+   },
+   "6": {
+    "not-caught": 558,
+    "BN": 14,
+    "Conway": 5,
+    "non-simple": 8
+   }
+  },
+  "partition_survivors": [
+   {
+    "id": 1477,
+    "k": 2,
+    "comp": [
+     1,
+     1
+    ],
+    "Rpass": 3.0,
+    "Rfail": 4.5,
+    "periodic_test": "BN",
+    "word": [
+     0,
+     1,
+     2,
+     4,
+     6,
+     5
+    ],
+    "history": [
+     [
+      3.0,
+      "SAT",
+      98
+     ],
+     [
+      4.5,
+      "UNSAT",
+      182
+     ]
+    ]
+   },
+   {
+    "id": 3554,
+    "k": 5,
+    "comp": [
+     2,
+     3
+    ],
+    "Rpass": 3.0,
+    "Rfail": 4.5,
+    "periodic_test": "BN",
+    "word": [
+     0,
+     2,
+     1,
+     3,
+     4,
+     5,
+     6,
+     7
+    ],
+    "history": [
+     [
+      3.0,
+      "SAT",
+      54
+     ],
+     [
+      4.5,
+      "UNSAT",
+      102
+     ]
+    ]
+   }
+  ]
+ },
+ "P3": {
+  "census_k<=6": {
+   "1": {
+    "BN": 2
+   },
+   "2": {
+    "BN": 4
+   },
+   "3": {
+    "BN": 9,
+    "not-caught": 7
+   },
+   "4": {
+    "not-caught": 39,
+    "BN": 15,
+    "Conway": 1
+   },
+   "5": {
+    "not-caught": 182,
+    "BN": 24,
+    "non-simple": 1,
+    "Conway": 1
+   },
+   "6": {
+    "not-caught": 725,
+    "BN": 24,
+    "Conway": 3,
+    "non-simple": 7
+   }
+  },
+  "partition_survivors": []
+ }
+}

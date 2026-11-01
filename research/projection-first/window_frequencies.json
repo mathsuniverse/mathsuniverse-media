@@ -1,0 +1,34 @@
+{
+ "AB": {
+  "window": "regular octagon, area 4.828427124746",
+  "acceptance_area_sum": {
+   "rhomb": 2.82842712474619,
+   "rhomb_orientations": 4,
+   "square": 2.0,
+   "square_orientations": 2
+  },
+  "rhomb/square": 1.414213562373095,
+  "sqrt2": 1.4142135623730951,
+  "abs_err": 2.220446049250313e-16
+ },
+ "SH": {
+  "window": "regular dodecagon, circumradius 1, area 3.000000000000",
+  "acceptance_area_sum": {
+   "poly6": 0.4641016151377526,
+   "poly6_orientations": 4,
+   "square": 0.8038475772933664,
+   "square_orientations": 3,
+   "triangle": 2.535898384862243,
+   "triangle_orientations": 4
+  },
+  "square/shield": 1.732050807568881,
+  "triangle/shield": 5.464101615137772,
+  "triangle/square": 3.154700538379255,
+  "square/shield closed form": "(0 + 1*sqrt3)/1",
+  "square/shield residual": 3.774758283725532e-15,
+  "triangle/shield closed form": "(2 + 2*sqrt3)/1",
+  "triangle/shield residual": 1.7763568394002505e-14,
+  "triangle/square closed form": "(6 + 2*sqrt3)/3",
+  "triangle/square residual": 3.9968028886505635e-15
+ }
+}

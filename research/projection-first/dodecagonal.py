@@ -187,10 +187,60 @@ def tiling(R, **kw):
     return pts, nbrs, tiles, margin
 
 
+def render(pts, tiles, path, R, title):
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from matplotlib.patches import Polygon
+    col = {"square": "#e8a33d", "triangle": "#3d7fe8", "poly6": "#5fb35f", "rhomb30": "#c04040"}
+    fig, ax = plt.subplots(figsize=(8, 8))
+    for f, typ, cen in tiles:
+        P = np.array([[pts[v].real, pts[v].imag] for v in f])
+        ax.add_patch(Polygon(P, closed=True, fc=col.get(typ, "#999"), ec="k", lw=0.3))
+    ax.set_aspect("equal")
+    ax.set_xlim(-R, R)
+    ax.set_ylim(-R, R)
+    ax.axis("off")
+    ax.set_title(title)
+    fig.savefig(path, dpi=130, bbox_inches="tight")
+    plt.close(fig)
+
+
 if __name__ == "__main__":
+    import json
     import sys
-    for rs in [float(x) for x in sys.argv[1:]] or [1.0]:
-        for rot0 in (0.0, math.pi / 12):
-            pts, nbrs, tiles, margin = tiling(10, rscale=rs, rot0=rot0)
-            print(rs, round(rot0, 3), len(pts), Counter(t[1] for t in tiles),
-                  "cross", crossings(pts, nbrs, 10), "margin", margin)
+    if len(sys.argv) > 1 and sys.argv[1] == "scan":
+        for rs in [float(x) for x in sys.argv[2:]]:
+            for rot0 in (0.0, math.pi / 12):
+                pts, nbrs, tiles, margin = tiling(10, rscale=rs, rot0=rot0)
+                print(rs, round(rot0, 3), len(pts), Counter(t[1] for t in tiles),
+                      "cross", crossings(pts, nbrs, 10), "margin", margin)
+        sys.exit()
+    # validation of the shield tiling: window = regular dodecagon, circumradius 1, vertex at angle 0
+    rs = 2 * math.sin(math.pi / 12)
+    rows = []
+    s3 = math.sqrt(3)
+    for R in (20, 40, 70, 100):
+        pts, nbrs, tiles, margin = tiling(R, rscale=rs)
+        C = Counter(t[1] for t in tiles)
+        shield_angles = Counter()
+        for f, typ, cen in tiles:
+            if typ == "poly6":
+                P = [pts[v] for v in f]
+                a = []
+                for i in range(6):
+                    u, w = P[i] - P[i - 1], P[(i + 1) % 6] - P[i]
+                    a.append(round(180 - math.degrees(abs(np.angle(w / u)))))
+                shield_angles[tuple(sorted(a))] += 1
+        row = {"R": R, "vertices": len(pts), "counts": dict(C),
+               "shield_angle_classes": {str(k): v for k, v in shield_angles.items()},
+               "crossing_edges": crossings(pts, nbrs, R) if R <= 40 else "not checked",
+               "window_margin": margin,
+               "square/shield": C["square"] / C["poly6"], "target square/shield (sqrt3)": s3,
+               "triangle/shield": C["triangle"] / C["poly6"], "target triangle/shield (2+2sqrt3)": 2 + 2 * s3,
+               "triangle/square": C["triangle"] / C["square"], "target triangle/square (2+2/sqrt3)": 2 + 2 / s3}
+        print(json.dumps(row), flush=True)
+        rows.append(row)
+        if R == 20:
+            render(pts, tiles, "SH_patch_R20.png", 20, f"12-fold shield tiling (Z^4, dodecagon window), R=20")
+    json.dump(rows, open("validation_12fold.json", "w"), indent=1)

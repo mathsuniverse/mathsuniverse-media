@@ -1,2 +1,13 @@
 AB plain exhaustive {"classes_per_k": {"1": 2, "2": 3, "3": 12, "4": 41}, "best_cover_fraction_per_k": {"1": 0.5788, "2": 1.0, "3": 1.0, "4": 1.0}, "seconds": 1.6, "min_k_full_cover": 2, "n_covering_classes_at_min_k": 1}
 AB plain round {"rho": 1.0, "classes": 6, "best_fraction": 1.0, "best_size": 4, "greedy_copies": 300, "overlap_factor": 1.4}
+AB decorated exhaustive {"classes_per_k": {"1": 13, "2": 28, "3": 91, "4": 277}, "best_cover_fraction_per_k": {"1": 0.2287, "2": 0.3256, "3": 0.3641, "4": 0.4364}, "seconds": 31.6, "min_k_full_cover": null}
+AB decorated round {"rho": 1.0, "classes": 23, "best_fraction": 0.3501, "best_size": 4}
+AB decorated round {"rho": 1.5, "classes": 27, "best_fraction": 0.5858, "best_size": 8}
+AB decorated round {"rho": 2.0, "classes": 45, "best_fraction": 0.5123, "best_size": 16}
+AB decorated round {"rho": 2.5, "classes": 45, "best_fraction": 0.6009, "best_size": 20}
+AB decorated round {"rho": 3.0, "classes": 63, "best_fraction": 0.6581, "best_size": 37}
+AB decorated round {"rho": 3.5, "classes": 76, "best_fraction": 0.7118, "best_size": 47}
+AB decorated round {"rho": 4.0, "classes": 88, "best_fraction": 0.7818, "best_size": 63}
+AB decorated round {"rho": 4.5, "classes": 104, "best_fraction": 0.8518, "best_size": 81}
+AB decorated round {"rho": 5.0, "classes": 117, "best_fraction": 0.895, "best_size": 92}
+AB decorated round {"rho": 5.5, "classes": 129, "best_fraction": 0.958, "best_size": 114}

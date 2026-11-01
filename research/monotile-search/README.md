@@ -128,3 +128,9 @@ one more closely".
 Setup: `pip install --break-system-packages python-sat shapely matplotlib`.
 The hat-substitution cross-check test reads `hat_tiling.py` from the path in the
 `HAT_ENGINE` environment variable.
+
+## Running on Modal (parallel)
+One-off: `pip install modal` then `modal setup` (log in in the browser yourself).
+From this folder: `modal run modal_sieve.py --grid kite --nmin 6 --nmax 6` (smoke test, must give 85 free: 71 PERIODIC, 14 STUCK),
+then e.g. `modal run modal_sieve.py --grid kite --nmin 11 --nmax 11`. Results: results/modal/. Core logic: parallel_core.py
+(tested locally: kite n=6 matches the serial sieve exactly).

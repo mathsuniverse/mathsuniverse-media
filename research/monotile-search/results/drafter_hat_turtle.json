@@ -1,0 +1,18 @@
+{
+ "hat": {
+  "cls": "OPEN",
+  "n": 16,
+  "n_forms": 12,
+  "max_cover_R": 8,
+  "tori_complete_upto": 24,
+  "time": 3.951
+ },
+ "turtle": {
+  "cls": "OPEN",
+  "n": 20,
+  "n_forms": 12,
+  "max_cover_R": 8,
+  "tori_complete_upto": 24,
+  "time": 9.247
+ }
+}

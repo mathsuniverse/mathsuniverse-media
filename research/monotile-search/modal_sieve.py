@@ -24,7 +24,7 @@ sys.path.insert(0, HERE)
 
 image = (
     modal.Image.debian_slim(python_version="3.11")
-    .pip_install("python-sat==1.8.dev16")
+    .pip_install("python-sat==1.9.dev17")
     .add_local_dir(HERE, "/root/ms", ignore=["results/**", "logs/**", "open/**", "heesch/**",
                                               "candidates/**", "__pycache__/**", "*.png"])
 )

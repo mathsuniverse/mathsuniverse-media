@@ -1,0 +1,7 @@
+hex [3^6]: 1 cell type(s) per lattice cell, 12 point symmetries (mod translations), 0 partial congruences
+  hex n=2: 1  (0.0s)
+  hex n=3: 3  (0.0s)
+  hex n=4: 7  (0.0s)
+  hex n=5: 22  (0.0s)
+  hex n=6: 82  (0.0s)
+  hex n=7: 333  (0.1s)

@@ -181,7 +181,7 @@ All grids pass exact checks: prototile areas add up to the lattice cell (exactly
 | grid | sieved up to n | shapes classified | STUCK | PERIODIC | OPEN after dovetail (caps) |
 |---|---|---|---|---|---|
 | tetrakis | 14 | 44079 | 41007 | 3072 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
-| drafter | 13 | 25210 | 24289 | 921 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
+| drafter | 14 | 62664 | 61176 | 1488 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
 | floret | 9 | 19880 | 18198 | 1682 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
 | triakis | 10 | 212 | 168 | 44 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
 | rhomb | 8 | 334 | 258 | 76 | 0 (stage 0: torus <= 12 tiles, R <= 6; survivors re-tested at 24/R8, then 48/R12 if still OPEN) |
@@ -238,8 +238,9 @@ Geometry: 30/60 deg (p6m; 30-60-90 triangles; 12 edge directions).
 | 11 | 2440 (=) | 2440 | 0 | 1 | 0 (caps 24/R8) | None | 8 | 400 (sample), 0 failed | 14.1s |
 | 12 | 6077 (=) | 5253 | 824 | 0 | 0 (caps 12/R6) | 12 | 4 | 400 (sample), 0 failed | 39.6s |
 | 13 | 14926 (=) | 14923 | 3 | 2 | 0 (caps 24/R8) | 12 | 8 | 402 (sample), 0 failed | 84.2s |
+| 14 | 37454 (=) | 36887 | 567 | 1 | 0 (caps 24/R8) | 6 | 8 | 401 (sample), 0 failed | 388.5s |
 
-Settled only by dovetailing (would have been false OPEN at caps 12/R6): drafter11_01850 STUCK (covers R=6, fails R=8); drafter13_10457 STUCK (covers R=6, fails R=8); drafter13_14384 STUCK (covers R=6, fails R=8).
+Settled only by dovetailing (would have been false OPEN at caps 12/R6): drafter11_01850 STUCK (covers R=6, fails R=8); drafter13_10457 STUCK (covers R=6, fails R=8); drafter13_14384 STUCK (covers R=6, fails R=8); drafter14_28955 STUCK (covers R=6, fails R=8).
 
 ### floret [3^4.6]* (floret pentagons)
 
@@ -351,4 +352,17 @@ Largest SAT-covered disc per shape; orientation classes counted over all tiles a
 | tetrakis | tetrakis9_00144_periodic_control | 10 | 272 (131) | 1.176 | 1.2586 | sqrt2 (11.0%), phi (22.2%) |
 | tetrakis | tetrakis9_00144_periodic_control | 16 | 668 (436) | 1.3114 | 1.4494 | sqrt2 (2.5%), phi (10.4%) |
 | tetrakis | tetrakis9_00144_periodic_control | 20 | 1026 (730) | 1.2304 | 1.2054 | sqrt2 (14.8%), phi (25.5%) |
+
+Reading: on discs of radius 20 to 30, the hat and the turtle settle between 6.7 and 6.94 (inner tiles), within about 1 to 2% of phi^4 = 6.854 and 16 to 19% away from silver^2 = 5.828. The SAT covers do pick up the golden signature. The periodic control (tetrakis9_00144, which tiles with 20 tiles per period) wanders between 1.08 and 1.45 and came within 2.5% of sqrt2 at R = 16. So a near miss on one disc means nothing. Only a ratio that stays stable as the discs grow counts, and even then it is weak evidence. No frontier shape survived the sieve, so there are no OPEN survivors to fingerprint.
+
+## Limits of this run (1 Nov 2026, about 2 h on 2 CPUs)
+
+* Polyhex regression stops at n = 6. Some polyhex non-tilers need a hard UNSAT disc proof (one 6-hex shape takes 78 s at R = 3), so n = 7 (333 shapes) was stopped unfinished and n = 8 was not run.
+* Drafter n = 15 (93,749 shapes) was started and stopped for time. n = 14 took 6.5 min.
+* Square n <= 8 and tri n <= 10 were run before the search order was changed (small discs, then tori, then large discs). Their wall times are from the old order. The outcome does not depend on the order (see engine.classify), and the kite rerun with the new order reproduced the stage-1 results shape for shape.
+* Every placement is on the grid. Copies that are congruent but sit off the grid are not considered, which is Myers' convention.
+
+## Next step: structure first (recommendation)
+
+Blind enumeration finds nothing new up to these sizes on any frontier grid, as expected: the hat needs 8 kites (16 drafters). The kite grid already has 12 orientations by n = 8, while the tetrakis grid has only 8 orientations per shape and no 45 deg rotation symmetry. A silver hierarchy would need its supertiles to appear in 8 directions, so on the tetrakis grid it would have to come from mirrors and 90 deg turns of tiles whose *edges* use the 45 deg directions. The most promising route is therefore structure-first on the **tetrakis grid**. Take the Ammann-Beenker substitution (square + 45 deg rhomb, inflation 1+sqrt2), approximate its clusters on the grid (as the hat's H/T/P/F metatiles approximate a golden hierarchy on the kite grid), and use SAT to solve for one polyabolo whose copies fill each cluster. For bronze, the analogous host is the **drafter grid**, which contains the golden hat family and has the 30/60 deg directions of the hexagonal bronze-mean tiling.
 

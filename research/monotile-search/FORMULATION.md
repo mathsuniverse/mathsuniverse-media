@@ -128,3 +128,22 @@ All known metallic-mean quasicrystal tilings use several prototiles. The only cl
 silver (or bronze)? If so, the hat is the n = 1 member of a family of metallic monotiles.
 Search plan: 45° grids (tetrakis square) for silver, hexagonal grids for bronze; structure-first: try to force
 copies of one tile into the clusters of the known silver/bronze substitutions; signature: frequency ratios → λ_n powers.
+
+## 10. Conjecture (Razvan, 1 Nov): "all aperiodic orders relate to the metallic family"
+
+**True core: crystallographic restriction.** A rotation by θ has characteristic polynomial x² − 2cos θ·x + 1.
+A lattice symmetry needs integer trace 2cos θ, so only orders 1, 2, 3, 4, 6 are possible in periodic patterns.
+Other orders force an irrational trace from Q(cos 2π/n): 5/10-fold → 1/φ (golden: Penrose); 8-fold → √2
+(silver 1+√2: Ammann–Beenker); 12-fold → √3 (inflation 2+√3); 7-fold → cubic. So for non-crystallographic
+symmetry the rotation's characteristic equation fixes the irrational (the slope of the cut-and-project slice).
+
+**False as stated (counterexamples):** chair tiling (aperiodic, inflation 2, rational frequencies, only 4-fold);
+pinwheel tiling (Conway–Radin, inflation √5, not Pisot, infinitely many orientations); 12-fold tilings (2+√3, root of
+x²−4x+1, not metallic). Kenyon (1996): every complex Perron number is the expansion factor of some self-similar
+plane tiling, a class far larger than the metallic means.
+
+**Refined conjecture to test:** metallic means are roots of x² − n x − 1; their siblings are roots of
+x² − n x + 1 (n ≥ 3), e.g. φ² (n = 3: the hat's inflation) and 2+√3 (n = 4). Together these are all quadratic
+Pisot units. Conjecture: every aperiodic monotile whose tilings have pure point diffraction has a Pisot inflation
+factor; in the quadratic case it is a metallic mean or a sibling. The Pisot part is supported by Solomyak's theory
+of pure point spectrum for self-similar tilings; the monotile restriction is open. Next members to look for: silver, bronze.

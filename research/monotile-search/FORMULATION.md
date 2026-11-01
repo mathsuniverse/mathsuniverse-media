@@ -116,3 +116,15 @@ copies of a single tile. A shape found that way comes with steps 2–4 already o
   quasiperiodic (1D: Sturmian words; Fibonacci word slope 1/φ; Penrose = slice of Z⁵).
 - Use in the search: for any surviving candidate, measure tile-type and orientation frequencies on large patches;
   convergence to a quadratic irrational (φ, √2, √3, ...) is evidence of an inflation hierarchy with a Pisot factor.
+
+## 9. Target: metallic-mean monotiles (Razvan, 1 Nov)
+
+Metallic means λ_n are the positive roots of x² = n·x + 1, all Pisot units:
+- n = 1, golden φ = 1.618: Penrose (1974), 5-fold; also the hat family's hierarchy (inflation φ², mirror ratio φ⁴).
+- n = 2, silver 1+√2 = 2.414: Ammann–Beenker (squares + 45° rhombs), 8-fold.
+- n = 3, bronze (3+√13)/2 = 3.303: bronze-mean hexagonal quasicrystal (Dotera, Bekku, Ziherl, Nature Materials 16, 987–992, 2017).
+All known metallic-mean quasicrystal tilings use several prototiles. The only clean aperiodic monotiles
+(hat family, Spectre) are golden. Open question for us: does a single tile exist whose forced hierarchy is
+silver (or bronze)? If so, the hat is the n = 1 member of a family of metallic monotiles.
+Search plan: 45° grids (tetrakis square) for silver, hexagonal grids for bronze; structure-first: try to force
+copies of one tile into the clusters of the known silver/bronze substitutions; signature: frequency ratios → λ_n powers.

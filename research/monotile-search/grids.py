@@ -208,7 +208,9 @@ class Grid:
         self.cent_f = [pf(c) for c in self.cent]
         self.acent_f = [_area_centroid_f([pf(v) for v in p]) for p in self.protos]
         if unit is None:
-            unit = min(math.hypot(*pf(self.a1)), math.hypot(*pf(self.a2)))
+            # length unit for disc radii: chosen so that a unit disc holds as many cells as on
+            # the kite grid, where the unit is the hexagon spacing 2*sqrt3 (stage-1 convention)
+            unit = math.sqrt(self.det / self.m * 12 / R3F)
         self.unit = unit
         self._build_adjacency()
         self._build_symmetries()

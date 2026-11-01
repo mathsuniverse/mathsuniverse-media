@@ -1,0 +1,16 @@
+square [4^4]: 1 cell type(s) per lattice cell, 8 point symmetries (mod translations), 0 partial congruences
+  square n=2: 1  (0.0s)
+  square n=3: 2  (0.0s)
+  square n=4: 5  (0.0s)
+  square n=5: 12  (0.0s)
+  square n=6: 35  (0.0s)
+  square n=7: 108  (0.0s)
+  square n=8: 369  (0.0s)
+  square n=9: 1285  (0.2s)
+square n=1: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 1 fails 0  0.0s
+square n=2: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 1 fails 0  0.0s
+square n=3: 2 free (2 sym)  {'PERIODIC': 2}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 2 fails 0  0.0s
+square n=4: 5 free (5 sym)  {'PERIODIC': 5}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 5 fails 0  0.0s
+square n=5: 12 free (12 sym)  {'PERIODIC': 12}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 12 fails 0  0.2s
+square n=6: 35 free (35 sym)  {'PERIODIC': 35}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.3}]  verified 35 fails 0  0.6s
+square n=7: 108 free (108 sym)  {'PERIODIC': 104, 'STUCK': 4}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 2.9}]  verified 108 fails 0  30.3s

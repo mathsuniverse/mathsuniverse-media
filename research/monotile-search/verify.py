@@ -27,10 +27,23 @@ def exact_congruent(g, P, Qc):
         return False
     p0v = g.cell_vertices(P[0])
     p0c = G.centre(p0v)
+    qcf = sorted(G.pf(G.centre(g.cell_vertices(d))) for d in Qc)
+    pcf = [G.pf(G.centre(g.cell_vertices(c))) for c in P]
+
+    def near(x, y):
+        # binary-search-free float membership test (cheap pre-filter only)
+        return any(abs(x - a) < 1e-6 and abs(y - b) < 1e-6 for a, b in qcf)
     for k, f, L in G.CANDIDATE_L:
+        Lf = [[float(L[0][0]), float(L[0][1])], [float(L[1][0]), float(L[1][1])]]
         lc = G.lin(L, p0c)
+        lcf = G.pf(lc)
         for d in Qc:
-            s = G.psub(G.centre(g.cell_vertices(d)), lc)
+            dc = G.centre(g.cell_vertices(d))
+            dcf = G.pf(dc)
+            sx, sy = dcf[0] - lcf[0], dcf[1] - lcf[1]
+            if not all(near(Lf[0][0] * x + Lf[0][1] * y + sx, Lf[1][0] * x + Lf[1][1] * y + sy) for x, y in pcf):
+                continue
+            s = G.psub(dc, lc)
             ok = True
             for c in P:
                 img = frozenset(G.padd(G.lin(L, v), s) for v in g.cell_vertices(c))

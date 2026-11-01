@@ -23,7 +23,7 @@
   "verified": 1,
   "verify_failures": [],
   "verify_methods": {
-   "PERIODIC: lifted to disc R=4, 80 tiles": 1
+   "PERIODIC: lifted to disc R=4, 540 tiles": 1
   },
   "verify_mode": "all",
   "verify_time": 0.0,
@@ -53,7 +53,7 @@
   "verified": 1,
   "verify_failures": [],
   "verify_methods": {
-   "PERIODIC: lifted to disc R=4, 44 tiles": 1
+   "PERIODIC: lifted to disc R=4, 284 tiles": 1
   },
   "verify_mode": "all",
   "verify_time": 0.0,
@@ -83,8 +83,8 @@
   "verified": 2,
   "verify_failures": [],
   "verify_methods": {
-   "PERIODIC: lifted to disc R=4, 32 tiles": 1,
-   "PERIODIC: lifted to disc R=4, 36 tiles": 1
+   "PERIODIC: lifted to disc R=4, 195 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 200 tiles": 1
   },
   "verify_mode": "all",
   "verify_time": 0.0,
@@ -114,9 +114,10 @@
   "verified": 5,
   "verify_failures": [],
   "verify_methods": {
-   "PERIODIC: lifted to disc R=4, 24 tiles": 1,
-   "PERIODIC: lifted to disc R=4, 27 tiles": 3,
-   "PERIODIC: lifted to disc R=4, 28 tiles": 1
+   "PERIODIC: lifted to disc R=4, 148 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 150 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 153 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 156 tiles": 1
   },
   "verify_mode": "all",
   "verify_time": 0.0,
@@ -146,14 +147,15 @@
   "verified": 12,
   "verify_failures": [],
   "verify_methods": {
-   "PERIODIC: lifted to disc R=4, 20 tiles": 1,
-   "PERIODIC: lifted to disc R=4, 21 tiles": 1,
-   "PERIODIC: lifted to disc R=4, 22 tiles": 8,
-   "PERIODIC: lifted to disc R=4, 23 tiles": 1,
-   "PERIODIC: lifted to disc R=4, 24 tiles": 1
+   "PERIODIC: lifted to disc R=4, 120 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 124 tiles": 3,
+   "PERIODIC: lifted to disc R=4, 125 tiles": 5,
+   "PERIODIC: lifted to disc R=4, 126 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 127 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 132 tiles": 1
   },
   "verify_mode": "all",
-  "verify_time": 0.1,
+  "verify_time": 0.2,
   "wall_time": 0.2
  },
  "6": {
@@ -172,7 +174,7 @@
    {
     "open_after": 0,
     "rcap": 6,
-    "seconds": 0.1,
+    "seconds": 0.3,
     "tcap": 12
    }
   ],
@@ -180,13 +182,59 @@
   "verified": 35,
   "verify_failures": [],
   "verify_methods": {
-   "PERIODIC: lifted to disc R=4, 19 tiles": 6,
-   "PERIODIC: lifted to disc R=4, 20 tiles": 14,
-   "PERIODIC: lifted to disc R=4, 21 tiles": 11,
-   "PERIODIC: lifted to disc R=4, 22 tiles": 4
+   "PERIODIC: lifted to disc R=4, 105 tiles": 3,
+   "PERIODIC: lifted to disc R=4, 106 tiles": 3,
+   "PERIODIC: lifted to disc R=4, 107 tiles": 6,
+   "PERIODIC: lifted to disc R=4, 108 tiles": 9,
+   "PERIODIC: lifted to disc R=4, 109 tiles": 4,
+   "PERIODIC: lifted to disc R=4, 110 tiles": 6,
+   "PERIODIC: lifted to disc R=4, 111 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 112 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 113 tiles": 1
   },
   "verify_mode": "all",
-  "verify_time": 0.4,
-  "wall_time": 0.5
+  "verify_time": 0.3,
+  "wall_time": 0.6
+ },
+ "7": {
+  "class_merge_time": 0.0,
+  "counts": {
+   "PERIODIC": 104,
+   "STUCK": 4
+  },
+  "enum_time_total": 0.2,
+  "free": 108,
+  "max_fail_R": 3,
+  "max_tiles_needed": 4,
+  "n": 7,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 2.9,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 108,
+  "verified": 108,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 90 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 91 tiles": 6,
+   "PERIODIC: lifted to disc R=4, 92 tiles": 12,
+   "PERIODIC: lifted to disc R=4, 93 tiles": 19,
+   "PERIODIC: lifted to disc R=4, 94 tiles": 20,
+   "PERIODIC: lifted to disc R=4, 95 tiles": 20,
+   "PERIODIC: lifted to disc R=4, 96 tiles": 12,
+   "PERIODIC: lifted to disc R=4, 97 tiles": 5,
+   "PERIODIC: lifted to disc R=4, 98 tiles": 7,
+   "PERIODIC: lifted to disc R=4, 99 tiles": 1,
+   "STUCK: backtracking": 4
+  },
+  "verify_mode": "all",
+  "verify_time": 27.4,
+  "wall_time": 30.3
  }
 }

@@ -36,10 +36,14 @@ def _init(name, cfg):
     _W['cfg'] = cfg
 
 
-def _classify(cells):
+def _classify(arg):
     c = _W['cfg']
+    if isinstance(arg, dict):          # dovetail: per-shape completed torus budget
+        cells, tmin = arg['cells'], arg['tmin']
+    else:
+        cells, tmin = arg, c.get('tmin', 0)
     return E.classify(_W['g'], [tuple(x) for x in cells], tcap=c['tcap'], rcap=c['rcap'], kmax=c['kmax'],
-                      tmin=c.get('tmin', 0), rmin=c.get('rmin'))
+                      tmin=tmin, rmin=c.get('rmin'), time_limit=c.get('time_limit'))
 
 
 def _verify(rec):
@@ -129,6 +133,8 @@ def main():
     ap.add_argument('--sample', type=int, default=300)
     ap.add_argument('--dovetail', default='24:8,48:12')
     ap.add_argument('--draw-R', type=float, default=6)
+    ap.add_argument('--shape-time', type=float, default=300,
+                    help='per-shape wall-clock limit for the torus search in dovetail stages')
     a = ap.parse_args()
     g = G.get(a.grid)
     print(g.describe(), flush=True)
@@ -163,9 +169,10 @@ def main():
             if not open_idx:
                 break
             ts = time.time()
-            cfg2 = dict(tcap=tc, rcap=rc, kmax=a.kmax, tmin=prev_t, rmin=prev_r)
+            cfg2 = dict(tcap=tc, rcap=rc, kmax=a.kmax, tmin=prev_t, rmin=prev_r, time_limit=a.shape_time)
             with Pool(a.workers, initializer=_init, initargs=(a.grid, cfg2)) as pool:
-                new = pool.map(_classify, [recs[k]['cells'] for k in open_idx], chunksize=1)
+                new = pool.map(_classify, [dict(cells=recs[k]['cells'], tmin=recs[k].get('tori_complete_upto') or prev_t)
+                                           for k in open_idx], chunksize=1)
             for k, r in zip(open_idx, new):
                 r['id'] = recs[k]['id']
                 r['stage'] = si

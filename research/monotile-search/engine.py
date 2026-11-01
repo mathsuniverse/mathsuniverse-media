@@ -380,12 +380,21 @@ def torus(sh, lat, return_patch=False):
     return True, [pls[keys[v - 1]] for v in range(1, len(keys) + 1) if v in pos]
 
 
-def periodic(sh, max_tiles, min_tiles=0):
+class Deadline(Exception):
+    def __init__(self, done_tiles):
+        self.done_tiles = done_tiles
+
+
+def periodic(sh, max_tiles, min_tiles=0, deadline=None):
     """First torus (by increasing index) with <= max_tiles tiles per domain that P tiles.
-    Tori with <= min_tiles tiles are skipped (already tested in an earlier stage)."""
+    Tori with <= min_tiles tiles are skipped (already tested in an earlier stage).
+    If the wall-clock deadline passes, raises Deadline(t): every torus with <= t tiles
+    was searched."""
     g = sh.g
     n = sh.n
     max_index = (max_tiles * n) // g.m
+    last_complete = min_tiles
+    cur = None
     for lat in all_lattices(g, max_index):
         N = lat[0] * lat[2]
         if (g.m * N) % n:
@@ -393,6 +402,11 @@ def periodic(sh, max_tiles, min_tiles=0):
         tiles = g.m * N // n
         if tiles <= min_tiles:
             continue
+        if cur is not None and tiles > cur:
+            last_complete = cur
+        cur = tiles
+        if deadline is not None and time.time() > deadline:
+            raise Deadline(last_complete)
         if torus(sh, lat):
             return lat, tiles
     return None
@@ -609,7 +623,7 @@ def heesch(sh, kmax=5, time_budget=None):
 RADII = (1.5, 2, 3, 4, 5, 6, 8, 10, 12, 15)
 
 
-def classify(g, cells, tcap=12, rcap=6, kmax=0, hbudget=60, quick_R=1.5, tmin=0, rmin=None):
+def classify(g, cells, tcap=12, rcap=6, kmax=0, hbudget=60, quick_R=1.5, tmin=0, rmin=None, time_limit=None):
     """Three-outcome test.  Returns a record with cls in {'STUCK', 'PERIODIC', 'OPEN'}.
     tmin / rmin: tori with <= tmin tiles and radii <= rmin were already tested (dovetail
     stage), so only the new part of the budget is searched."""
@@ -619,21 +633,42 @@ def classify(g, cells, tcap=12, rcap=6, kmax=0, hbudget=60, quick_R=1.5, tmin=0,
     rs = [r for r in RADII if r <= rcap and (rmin is None or r > rmin)]
     if rcap not in rs and (rmin is None or rcap > rmin):
         rs.append(rcap)
-    done = False
-    if rmin is None and not cover(sh, quick_R):
-        rec.update(cls='STUCK', fail_R=quick_R, max_cover_R=None)
-        done = True
-    if not done:
-        per = periodic(sh, tcap, tmin)
-        if per is not None:
-            lat, tiles = per
-            rec.update(cls='PERIODIC', lattice=list(lat), tiles_per_domain=tiles)
-        else:
-            best, fail = max_cover_radius(sh, rs)
-            if fail is not None:
-                rec.update(cls='STUCK', fail_R=fail, max_cover_R=best if best else (rmin or quick_R))
+    rs.sort()
+    # Interleave the two searches (dovetailing inside one budget): disc radius r_k, then
+    # tori with tiles in (t_{k-1}, t_k], k = 1..K.  The outcome does not depend on the order
+    # (a shape that tiles covers every disc); the recorded failing radius is the smallest
+    # failing radius in the list and the recorded torus is the first in lattice order.
+    K = max(len(rs), 1)
+    t_steps = sorted({max(tmin + 1, round(tmin + (tcap - tmin) * (k + 1) / K)) for k in range(K)})
+    t_steps[-1] = tcap
+    best = rmin
+    t_prev = tmin
+    rec['cls'] = None
+    deadline = time.time() + time_limit if time_limit else None
+    for k in range(max(len(rs), len(t_steps))):
+        if k < len(rs):
+            if cover(sh, rs[k]):
+                best = rs[k]
             else:
-                rec.update(cls='OPEN', max_cover_R=best if best else rmin)
+                rec.update(cls='STUCK', fail_R=rs[k], max_cover_R=best)
+                break
+        if k < len(t_steps) and t_steps[k] > t_prev:
+            try:
+                per = periodic(sh, t_steps[k], t_prev, deadline)
+            except Deadline as d:
+                rec['torus_time_limit_hit'] = True
+                t_prev = d.done_tiles
+                t_steps = t_steps[:k]       # no further torus stages
+                per = None
+            else:
+                t_prev = t_steps[k]
+            if per is not None:
+                lat, tiles = per
+                rec.update(cls='PERIODIC', lattice=list(lat), tiles_per_domain=tiles)
+                break
+    if rec['cls'] is None:
+        rec.update(cls='OPEN', max_cover_R=best)
+    rec['tori_complete_upto'] = t_prev if rec['cls'] != 'PERIODIC' else None
     if rec['cls'] == 'STUCK' and kmax > 0:
         th = time.time()
         k, _, capped = heesch(sh, kmax, time_budget=hbudget)

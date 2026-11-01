@@ -1,0 +1,12 @@
+prismatic [3^3.4^2]*: 2 cell type(s) per lattice cell, 4 point symmetries (mod translations), 0 partial congruences
+  prismatic n=2: 3  (0.0s)
+  prismatic n=3: 5  (0.0s)
+  prismatic n=4: 20  (0.0s)
+  prismatic n=5: 56  (0.0s)
+  prismatic n=6: 225  (0.0s)
+prismatic n=1: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 1 fails 0  0.1s
+prismatic n=2: 3 free (3 sym)  {'PERIODIC': 3}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 3 fails 0  0.0s
+prismatic n=3: 5 free (5 sym)  {'PERIODIC': 5}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 5 fails 0  0.1s
+prismatic n=4: 20 free (20 sym)  {'PERIODIC': 19, 'STUCK': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 20 fails 0  0.2s
+prismatic n=5: 56 free (56 sym)  {'PERIODIC': 50, 'STUCK': 6}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.4}]  verified 56 fails 0  1.0s
+prismatic n=6: 225 free (225 sym)  {'PERIODIC': 194, 'STUCK': 31}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 2.2}]  verified 225 fails 0  4.7s

@@ -57,130 +57,6 @@
  "n_forms": 12,
  "patches": [
   {
-   "R": 4.0,
-   "all": {
-    "tiles": 44,
-    "orientations_used": 10,
-    "orientation_counts": [
-     9,
-     7,
-     6,
-     6,
-     5,
-     4,
-     3,
-     2,
-     1,
-     1
-    ],
-    "non_mirror": 7,
-    "mirror": 37,
-    "majority_to_minority_handedness": 5.2857,
-    "nearest": [
-     [
-      "silver^2",
-      0.0931
-     ],
-     [
-      "phi^4",
-      0.2288
-     ]
-    ],
-    "max_to_min_orientation": 9.0
-   },
-   "inner": {
-    "tiles": 4,
-    "orientations_used": 4,
-    "orientation_counts": [
-     1,
-     1,
-     1,
-     1
-    ],
-    "non_mirror": 1,
-    "mirror": 3,
-    "majority_to_minority_handedness": 3.0,
-    "nearest": [
-     [
-      "bronze",
-      0.0917
-     ],
-     [
-      "phi^2",
-      0.1459
-     ]
-    ],
-    "max_to_min_orientation": 1.0
-   },
-   "cells_in_disc": 342,
-   "seconds": 0.1
-  },
-  {
-   "R": 6.0,
-   "all": {
-    "tiles": 95,
-    "orientations_used": 11,
-    "orientation_counts": [
-     17,
-     16,
-     15,
-     14,
-     10,
-     9,
-     5,
-     3,
-     3,
-     2,
-     1
-    ],
-    "non_mirror": 14,
-    "mirror": 81,
-    "majority_to_minority_handedness": 5.7857,
-    "nearest": [
-     [
-      "silver^2",
-      0.0073
-     ],
-     [
-      "phi^4",
-      0.1559
-     ]
-    ],
-    "max_to_min_orientation": 17.0
-   },
-   "inner": {
-    "tiles": 25,
-    "orientations_used": 9,
-    "orientation_counts": [
-     6,
-     5,
-     4,
-     3,
-     2,
-     2,
-     1,
-     1,
-     1
-    ],
-    "non_mirror": 3,
-    "mirror": 22,
-    "majority_to_minority_handedness": 7.3333,
-    "nearest": [
-     [
-      "phi^4",
-      0.0699
-     ],
-     [
-      "silver^2",
-      0.2582
-     ]
-    ],
-    "max_to_min_orientation": 6.0
-   },
-   "cells_in_disc": 786,
-   "seconds": 0.1
-  },
-  {
    "R": 8.0,
    "all": {
     "tiles": 158,
@@ -249,75 +125,6 @@
    "seconds": 0.4
   },
   {
-   "R": 10.0,
-   "all": {
-    "tiles": 242,
-    "orientations_used": 12,
-    "orientation_counts": [
-     43,
-     38,
-     34,
-     33,
-     32,
-     29,
-     10,
-     8,
-     5,
-     4,
-     3,
-     3
-    ],
-    "non_mirror": 33,
-    "mirror": 209,
-    "majority_to_minority_handedness": 6.3333,
-    "nearest": [
-     [
-      "phi^4",
-      0.076
-     ],
-     [
-      "silver^2",
-      0.0866
-     ]
-    ],
-    "max_to_min_orientation": 14.3333
-   },
-   "inner": {
-    "tiles": 122,
-    "orientations_used": 12,
-    "orientation_counts": [
-     22,
-     21,
-     18,
-     16,
-     15,
-     14,
-     5,
-     4,
-     3,
-     2,
-     1,
-     1
-    ],
-    "non_mirror": 16,
-    "mirror": 106,
-    "majority_to_minority_handedness": 6.625,
-    "nearest": [
-     [
-      "phi^4",
-      0.0334
-     ],
-     [
-      "silver^2",
-      0.1367
-     ]
-    ],
-    "max_to_min_orientation": 22.0
-   },
-   "cells_in_disc": 2178,
-   "seconds": 0.5
-  },
-  {
    "R": 12.0,
    "all": {
     "tiles": 340,
@@ -384,7 +191,283 @@
     "max_to_min_orientation": 16.5
    },
    "cells_in_disc": 3132,
-   "seconds": 0.7
+   "seconds": 0.9
+  },
+  {
+   "R": 16.0,
+   "all": {
+    "tiles": 599,
+    "orientations_used": 12,
+    "orientation_counts": [
+     95,
+     93,
+     91,
+     82,
+     81,
+     78,
+     15,
+     15,
+     15,
+     12,
+     11,
+     11
+    ],
+    "non_mirror": 520,
+    "mirror": 79,
+    "majority_to_minority_handedness": 6.5823,
+    "nearest": [
+     [
+      "phi^4",
+      0.0397
+     ],
+     [
+      "silver^2",
+      0.1293
+     ]
+    ],
+    "max_to_min_orientation": 8.6364
+   },
+   "inner": {
+    "tiles": 393,
+    "orientations_used": 12,
+    "orientation_counts": [
+     63,
+     61,
+     60,
+     59,
+     52,
+     48,
+     12,
+     10,
+     9,
+     9,
+     5,
+     5
+    ],
+    "non_mirror": 343,
+    "mirror": 50,
+    "majority_to_minority_handedness": 6.86,
+    "nearest": [
+     [
+      "phi^4",
+      0.0009
+     ],
+     [
+      "silver^2",
+      0.177
+     ]
+    ],
+    "max_to_min_orientation": 12.6
+   },
+   "cells_in_disc": 5562,
+   "seconds": 6.6
+  },
+  {
+   "R": 20.0,
+   "all": {
+    "tiles": 915,
+    "orientations_used": 12,
+    "orientation_counts": [
+     147,
+     140,
+     137,
+     128,
+     125,
+     119,
+     26,
+     22,
+     20,
+     18,
+     17,
+     16
+    ],
+    "non_mirror": 119,
+    "mirror": 796,
+    "majority_to_minority_handedness": 6.6891,
+    "nearest": [
+     [
+      "phi^4",
+      0.0241
+     ],
+     [
+      "silver^2",
+      0.1477
+     ]
+    ],
+    "max_to_min_orientation": 9.1875
+   },
+   "inner": {
+    "tiles": 654,
+    "orientations_used": 12,
+    "orientation_counts": [
+     108,
+     102,
+     102,
+     89,
+     88,
+     82,
+     18,
+     17,
+     15,
+     12,
+     12,
+     9
+    ],
+    "non_mirror": 83,
+    "mirror": 571,
+    "majority_to_minority_handedness": 6.8795,
+    "nearest": [
+     [
+      "phi^4",
+      0.0037
+     ],
+     [
+      "silver^2",
+      0.1803
+     ]
+    ],
+    "max_to_min_orientation": 12.0
+   },
+   "cells_in_disc": 8694,
+   "seconds": 10.2
+  },
+  {
+   "R": 25.0,
+   "all": {
+    "tiles": 1422,
+    "orientations_used": 12,
+    "orientation_counts": [
+     232,
+     218,
+     213,
+     197,
+     194,
+     185,
+     40,
+     33,
+     33,
+     28,
+     27,
+     22
+    ],
+    "non_mirror": 1239,
+    "mirror": 183,
+    "majority_to_minority_handedness": 6.7705,
+    "nearest": [
+     [
+      "phi^4",
+      0.0122
+     ],
+     [
+      "silver^2",
+      0.1616
+     ]
+    ],
+    "max_to_min_orientation": 10.5455
+   },
+   "inner": {
+    "tiles": 1100,
+    "orientations_used": 12,
+    "orientation_counts": [
+     176,
+     176,
+     164,
+     156,
+     143,
+     142,
+     30,
+     30,
+     26,
+     24,
+     17,
+     16
+    ],
+    "non_mirror": 957,
+    "mirror": 143,
+    "majority_to_minority_handedness": 6.6923,
+    "nearest": [
+     [
+      "phi^4",
+      0.0236
+     ],
+     [
+      "silver^2",
+      0.1482
+     ]
+    ],
+    "max_to_min_orientation": 11.0
+   },
+   "cells_in_disc": 13626,
+   "seconds": 30.8
+  },
+  {
+   "R": 30.0,
+   "all": {
+    "tiles": 2025,
+    "orientations_used": 12,
+    "orientation_counts": [
+     313,
+     310,
+     306,
+     290,
+     281,
+     267,
+     50,
+     49,
+     47,
+     43,
+     39,
+     30
+    ],
+    "non_mirror": 1767,
+    "mirror": 258,
+    "majority_to_minority_handedness": 6.8488,
+    "nearest": [
+     [
+      "phi^4",
+      0.0008
+     ],
+     [
+      "silver^2",
+      0.1751
+     ]
+    ],
+    "max_to_min_orientation": 10.4333
+   },
+   "inner": {
+    "tiles": 1643,
+    "orientations_used": 12,
+    "orientation_counts": [
+     262,
+     247,
+     239,
+     234,
+     234,
+     220,
+     41,
+     37,
+     35,
+     35,
+     31,
+     28
+    ],
+    "non_mirror": 1436,
+    "mirror": 207,
+    "majority_to_minority_handedness": 6.9372,
+    "nearest": [
+     [
+      "phi^4",
+      0.0121
+     ],
+     [
+      "silver^2",
+      0.1902
+     ]
+    ],
+    "max_to_min_orientation": 9.3571
+   },
+   "cells_in_disc": 19578,
+   "seconds": 106.4
   }
  ]
 }

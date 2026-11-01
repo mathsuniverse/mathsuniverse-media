@@ -4,3 +4,5 @@ Terminated
 + python3 sieve.py floret --nmax 7 --verify sample --sample 400 --dovetail 24:8,48:12 --shape-time 90
 + python3 sieve.py triakis --nmax 10 --verify sample --sample 400 --dovetail 24:8,48:12 --shape-time 90
 + python3 sieve.py rhomb --nmax 8 --verify sample --sample 400 --dovetail 24:8,48:12 --shape-time 90
++ python3 sieve.py cairo --nmax 6 --verify sample --sample 400 --dovetail 24:8,48:12 --shape-time 90
++ python3 sieve.py prismatic --nmax 6 --verify sample --sample 400 --dovetail 24:8,48:12 --shape-time 90

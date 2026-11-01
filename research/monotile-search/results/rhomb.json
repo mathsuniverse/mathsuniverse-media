@@ -240,5 +240,45 @@
   "verify_mode": "sample",
   "verify_time": 20.8,
   "wall_time": 52.1
+ },
+ "8": {
+  "class_merge_time": 0.1,
+  "counts": {
+   "PERIODIC": 32,
+   "STUCK": 176
+  },
+  "enum_time_total": 0.1,
+  "free": 208,
+  "max_fail_R": 5,
+  "max_tiles_needed": 6,
+  "n": 8,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 155.9,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 208,
+  "verified": 208,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 79 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 80 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 81 tiles": 6,
+   "PERIODIC: lifted to disc R=4, 82 tiles": 8,
+   "PERIODIC: lifted to disc R=4, 83 tiles": 5,
+   "PERIODIC: lifted to disc R=4, 84 tiles": 3,
+   "PERIODIC: lifted to disc R=4, 85 tiles": 4,
+   "PERIODIC: lifted to disc R=4, 86 tiles": 3,
+   "STUCK: backtracking": 113,
+   "STUCK: glucose4 pairwise encoding": 63
+  },
+  "verify_mode": "sample",
+  "verify_time": 80.5,
+  "wall_time": 236.4
  }
 }

@@ -1,0 +1,12 @@
+cairo [3^2.4.3.4]*: 4 cell type(s) per lattice cell, 8 point symmetries (mod translations), 0 partial congruences
+  cairo n=2: 2  (0.0s)
+  cairo n=3: 5  (0.0s)
+  cairo n=4: 17  (0.0s)
+  cairo n=5: 55  (0.0s)
+  cairo n=6: 206  (0.0s)
+cairo n=1: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 1 fails 0  0.2s
+cairo n=2: 2 free (2 sym)  {'PERIODIC': 2}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 2 fails 0  0.0s
+cairo n=3: 5 free (5 sym)  {'PERIODIC': 5}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 5 fails 0  0.2s
+cairo n=4: 17 free (17 sym)  {'PERIODIC': 17}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.2}]  verified 17 fails 0  0.6s
+cairo n=5: 55 free (55 sym)  {'PERIODIC': 50, 'STUCK': 5}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.6}]  verified 55 fails 0  2.0s
+cairo n=6: 206 free (206 sym)  {'PERIODIC': 143, 'STUCK': 63}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 1.8}]  verified 206 fails 0  4.9s

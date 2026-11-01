@@ -107,6 +107,19 @@ def main():
             for oid in r['open_ids']:
                 L += [f'**{oid}** ({n} {g.cellname}s): OPEN after the caps above.', '',
                       f'![{oid}](open/{oid}.png)', '']
+    L += ['## Which grids host 45 deg and which 60 deg geometry', '',
+          '* **45 deg (square symmetry):** only **tetrakis** [4.8^2]* has 45 deg corners and edges in the four '
+          'directions 0/45/90/135 deg, i.e. the eight edge directions of the Ammann-Beenker (silver) tiling. '
+          'Its symmetry group is p4m, so on-grid copies use 8 orientations (rotations by 90 deg, mirrors); a '
+          '45 deg rotation is *not* a grid symmetry. Axis edges have integer length and diagonal edges length '
+          'k*sqrt2/2, so lengths live in Z[sqrt2]/2, the ring of the silver mean. The square grid (polyominoes) '
+          'has 90 deg only.',
+          '* **90/120 deg, 4-fold:** Cairo (p4g) and prismatic pentagonal (cmm) mix right angles with 120 deg '
+          'corners; neither has 45 deg edges.',
+          '* **60 deg (hexagonal):** tri, hex, rhomb, kite, triakis, floret (p6, chiral) and drafter. The drafter '
+          'grid is the finest: 30-60-90 triangles, 12 edge directions, edge lengths 1, sqrt3, 2 (in the kite '
+          'frame), and every polykite (hat, turtle) is a polydrafter of twice the size. Lengths live in Z[sqrt3]; '
+          'the golden hat family and the hexagonal bronze-mean tiling are both hexagonal-orientation tilings.', '']
     fpd = os.path.join(HERE, 'results', 'fingerprints')
     if os.path.isdir(fpd):
         L += ['## Frequency fingerprints (weak evidence)', '',

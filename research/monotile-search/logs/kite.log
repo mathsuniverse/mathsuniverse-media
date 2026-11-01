@@ -1,0 +1,22 @@
+kite [3.4.6.4]*: 6 cell type(s) per lattice cell, 12 point symmetries (mod translations), 0 partial congruences
+  kite n=2: 2  (0.0s)
+  kite n=3: 4  (0.0s)
+  kite n=4: 10  (0.0s)
+  kite n=5: 27  (0.0s)
+  kite n=6: 85  (0.0s)
+  kite n=7: 262  (0.1s)
+  kite n=8: 873  (0.3s)
+  kite n=9: 2917  (0.6s)
+  kite n=10: 10011  (2.5s)
+kite n=1: 1 free (1 sym)  {'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 1 fails 0  0.1s
+kite n=2: 2 free (2 sym)  {'PERIODIC': 1, 'STUCK': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 2 fails 0  0.0s
+kite n=3: 4 free (4 sym)  {'PERIODIC': 4}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.0}]  verified 4 fails 0  0.1s
+kite n=4: 10 free (10 sym)  {'STUCK': 5, 'PERIODIC': 5}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.1}]  verified 10 fails 0  0.2s
+kite n=5: 27 free (27 sym)  {'STUCK': 26, 'PERIODIC': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.2}]  verified 27 fails 0  0.8s
+kite n=6: 85 free (85 sym)  {'PERIODIC': 71, 'STUCK': 14}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 0.5}]  verified 85 fails 0  1.2s
+kite n=7: 262 free (262 sym)  {'PERIODIC': 55, 'STUCK': 207}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 2.1}]  verified 262 fails 0  6.0s
+kite n=8: 873 free (873 sym)  {'PERIODIC': 39, 'STUCK': 833, 'OPEN': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 1, 'seconds': 10.1}, {'tcap': 24, 'rcap': 8.0, 'retested': 1, 'open_after': 1, 'seconds': 2.6}]  verified 400 fails 0  18.7s
+   OPEN kite8_00131 [[0, 0, 0], [0, 0, 1], [0, 0, 2], [0, 0, 5], [0, 1, 4], [0, 1, 5], [1, 0, 2], [1, 0, 3]]
+kite n=9: 2917 free (2917 sym)  {'PERIODIC': 755, 'STUCK': 2162}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 25.3}]  verified 400 fails 0  29.3s
+kite n=10: 10011 free (10011 sym)  {'STUCK': 9996, 'PERIODIC': 14, 'OPEN': 1}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 1, 'seconds': 123.2}, {'tcap': 24, 'rcap': 8.0, 'retested': 1, 'open_after': 1, 'seconds': 4.6}]  verified 400 fails 0  131.7s
+   OPEN kite10_03927 [[0, 0, 0], [0, 0, 1], [0, 1, 0], [0, 1, 3], [0, 1, 4], [0, 1, 5], [1, 0, 1], [1, 0, 2], [1, 1, 3], [1, 1, 4]]

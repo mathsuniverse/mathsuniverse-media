@@ -1,2 +1,4 @@
 + python3 sieve.py tetrakis --nmax 12 --verify sample --sample 400 --dovetail 24:8,48:12 --shape-time 90
 + python3 sieve.py drafter --nmin 11 --nmax 13 --verify sample --sample 400 --dovetail 24:8,48:12 --shape-time 90
++ python3 sieve.py kite --nmax 10 --verify sample --sample 400 --dovetail 24:8 --shape-time 240
++ python3 sieve.py hex --nmax 8 --verify sample --sample 400 --dovetail 24:8 --shape-time 120

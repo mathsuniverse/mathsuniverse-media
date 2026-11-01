@@ -4,7 +4,7 @@
   "counts": {
    "PERIODIC": 1
   },
-  "enum_time_total": 0.3,
+  "enum_time_total": 0.4,
   "free": 1,
   "max_fail_R": null,
   "max_tiles_needed": 1,
@@ -34,7 +34,7 @@
   "counts": {
    "PERIODIC": 1
   },
-  "enum_time_total": 0.3,
+  "enum_time_total": 0.4,
   "free": 1,
   "max_fail_R": null,
   "max_tiles_needed": 1,
@@ -64,7 +64,7 @@
   "counts": {
    "PERIODIC": 3
   },
-  "enum_time_total": 0.3,
+  "enum_time_total": 0.4,
   "free": 3,
   "max_fail_R": null,
   "max_tiles_needed": 1,
@@ -96,7 +96,7 @@
   "counts": {
    "PERIODIC": 7
   },
-  "enum_time_total": 0.3,
+  "enum_time_total": 0.4,
   "free": 7,
   "max_fail_R": null,
   "max_tiles_needed": 2,
@@ -107,7 +107,7 @@
    {
     "open_after": 0,
     "rcap": 6,
-    "seconds": 0.4,
+    "seconds": 0.2,
     "tcap": 12
    }
   ],
@@ -124,14 +124,14 @@
   },
   "verify_mode": "sample",
   "verify_time": 0.1,
-  "wall_time": 0.4
+  "wall_time": 0.2
  },
  "5": {
   "class_merge_time": 0.0,
   "counts": {
    "PERIODIC": 22
   },
-  "enum_time_total": 0.3,
+  "enum_time_total": 0.4,
   "free": 22,
   "max_fail_R": null,
   "max_tiles_needed": 2,
@@ -142,7 +142,7 @@
    {
     "open_after": 0,
     "rcap": 6,
-    "seconds": 2.2,
+    "seconds": 0.6,
     "tcap": 12
    }
   ],
@@ -161,7 +161,7 @@
   },
   "verify_mode": "sample",
   "verify_time": 0.2,
-  "wall_time": 2.5
+  "wall_time": 0.7
  },
  "6": {
   "class_merge_time": 0.0,

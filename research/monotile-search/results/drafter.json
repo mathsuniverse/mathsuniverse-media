@@ -64,6 +64,122 @@
   "verify_time": 2.8,
   "wall_time": 9.6
  },
+ "11": {
+  "class_merge_time": 2.9,
+  "counts": {
+   "STUCK": 2440
+  },
+  "enum_time_total": 7.3,
+  "free": 2440,
+  "max_fail_R": 8,
+  "max_tiles_needed": null,
+  "n": 11,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 1,
+    "rcap": 6,
+    "seconds": 12.3,
+    "tcap": 12
+   },
+   {
+    "open_after": 0,
+    "rcap": 8.0,
+    "retested": 1,
+    "seconds": 0.2,
+    "tcap": 24
+   }
+  ],
+  "sym_classes": 2440,
+  "verified": 400,
+  "verify_failures": [],
+  "verify_methods": {
+   "STUCK: backtracking": 400
+  },
+  "verify_mode": "sample",
+  "verify_time": 1.5,
+  "wall_time": 14.1
+ },
+ "12": {
+  "class_merge_time": 7.9,
+  "counts": {
+   "PERIODIC": 824,
+   "STUCK": 5253
+  },
+  "enum_time_total": 7.3,
+  "free": 6077,
+  "max_fail_R": 4,
+  "max_tiles_needed": 12,
+  "n": 12,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6,
+    "seconds": 37.4,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 6077,
+  "verified": 400,
+  "verify_failures": [],
+  "verify_methods": {
+   "PERIODIC: lifted to disc R=4, 54 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 55 tiles": 2,
+   "PERIODIC: lifted to disc R=4, 56 tiles": 4,
+   "PERIODIC: lifted to disc R=4, 57 tiles": 17,
+   "PERIODIC: lifted to disc R=4, 58 tiles": 20,
+   "PERIODIC: lifted to disc R=4, 59 tiles": 8,
+   "PERIODIC: lifted to disc R=4, 60 tiles": 10,
+   "PERIODIC: lifted to disc R=4, 61 tiles": 1,
+   "PERIODIC: lifted to disc R=4, 62 tiles": 1,
+   "STUCK: backtracking": 335
+  },
+  "verify_mode": "sample",
+  "verify_time": 2.3,
+  "wall_time": 39.6
+ },
+ "13": {
+  "class_merge_time": 18.1,
+  "counts": {
+   "PERIODIC": 3,
+   "STUCK": 14923
+  },
+  "enum_time_total": 7.3,
+  "free": 14926,
+  "max_fail_R": 8,
+  "max_tiles_needed": 12,
+  "n": 13,
+  "open_ids": [],
+  "shapes_with_extra_congruent_placements": 0,
+  "stages": [
+   {
+    "open_after": 2,
+    "rcap": 6,
+    "seconds": 80.6,
+    "tcap": 12
+   },
+   {
+    "open_after": 0,
+    "rcap": 8.0,
+    "retested": 2,
+    "seconds": 0.5,
+    "tcap": 24
+   }
+  ],
+  "sym_classes": 14926,
+  "verified": 402,
+  "verify_failures": [],
+  "verify_methods": {
+   "STUCK: backtracking": 400,
+   "STUCK: glucose4 pairwise encoding": 2
+  },
+  "verify_mode": "sample",
+  "verify_time": 3.2,
+  "wall_time": 84.2
+ },
  "2": {
   "class_merge_time": 0.0,
   "counts": {

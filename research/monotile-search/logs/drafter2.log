@@ -11,3 +11,6 @@ drafter [4.6.12]*: 12 cell type(s) per lattice cell, 12 point symmetries (mod tr
   drafter n=11: 2440  (0.6s)
   drafter n=12: 6077  (1.5s)
   drafter n=13: 14926  (4.8s)
+drafter n=11: 2440 free (2440 sym)  {'STUCK': 2440}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 1, 'seconds': 12.3}, {'tcap': 24, 'rcap': 8.0, 'retested': 1, 'open_after': 0, 'seconds': 0.2}]  verified 400 fails 0  14.1s
+drafter n=12: 6077 free (6077 sym)  {'PERIODIC': 824, 'STUCK': 5253}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 0, 'seconds': 37.4}]  verified 400 fails 0  39.6s
+drafter n=13: 14926 free (14926 sym)  {'STUCK': 14923, 'PERIODIC': 3}  stages [{'tcap': 12, 'rcap': 6, 'open_after': 2, 'seconds': 80.6}, {'tcap': 24, 'rcap': 8.0, 'retested': 2, 'open_after': 0, 'seconds': 0.5}]  verified 402 fails 0  84.2s

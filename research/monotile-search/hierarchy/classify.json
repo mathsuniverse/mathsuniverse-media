@@ -1,0 +1,42 @@
+{
+ "L1_P/F_2hats_0": {
+  "cls": "STUCK",
+  "tiles_per_domain": null,
+  "lattice": null,
+  "fail_R": 2,
+  "max_cover_R": 1.5,
+  "torus_time_limit_hit": null
+ },
+ "L1_H_4hats_0": {
+  "cls": "STUCK",
+  "tiles_per_domain": null,
+  "lattice": null,
+  "fail_R": 3,
+  "max_cover_R": 2,
+  "torus_time_limit_hit": null
+ },
+ "L2_P_14hats_0": {
+  "cls": "STUCK",
+  "tiles_per_domain": null,
+  "lattice": null,
+  "fail_R": 3,
+  "max_cover_R": 2,
+  "torus_time_limit_hit": null
+ },
+ "L2_F_16hats_0": {
+  "cls": "STUCK",
+  "tiles_per_domain": null,
+  "lattice": null,
+  "fail_R": 6,
+  "max_cover_R": 5,
+  "torus_time_limit_hit": true
+ },
+ "L2_H_25hats_0": {
+  "cls": "STUCK",
+  "tiles_per_domain": null,
+  "lattice": null,
+  "fail_R": 3,
+  "max_cover_R": 2,
+  "torus_time_limit_hit": null
+ }
+}

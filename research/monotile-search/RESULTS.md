@@ -390,3 +390,10 @@ Blind enumeration finds nothing new up to these sizes on any frontier grid, as e
   Longest period: one 16-triangle shape, periodic only with 12 tiles per block (lattice [24, 10, 2]; near_block12.png). Others ≤ 8.
   Latest failures: one 26-triangle shape stuck only at R = 6, nine at R = 5. Heesch numbers of all ten: 0-2 (near_heesch.json),
   so they are ordinary non-tilers that happen to cover a disc, not high-Heesch curiosities. No hierarchy signal yet.
+
+## Hierarchy test: do clusters of hats tile on their own? (2 Nov 2026, 02:45-03:10, Razvan's idea)
+Clusters cut from our level-4 hat patch (1,156 hats) and mapped exactly onto the kite grid (hierarchy/clusters.py; every hat = 8 whole kites):
+level 1: H = 4 hats (32 kites), P and F = 2 hats (16 kites, congruent), T = 1 hat; level 2: H = 25, P = 14, F = 16, T = 4 hats.
+Each cluster tested alone as a single tile (hierarchy/classify.json): every one is STUCK. P/F (2 hats) fails at R=2, H (4 hats) at R=3,
+level-2 P and H at R=3, level-2 F covers up to R=5 and fails at R=6. None can tile the plane by itself.
+So the hierarchy above the hat is always a multi-tile system; the single tile lives only at level 0. Consistent with Lemma C.

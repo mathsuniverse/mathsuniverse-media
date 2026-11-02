@@ -1,0 +1,72 @@
+{
+ "17": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 48879,
+   "PERIODIC": 964,
+   "OPEN": 0,
+   "dup": 157
+  },
+  "open": []
+ },
+ "18": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 46867,
+   "PERIODIC": 3031,
+   "OPEN": 0,
+   "dup": 102
+  },
+  "open": []
+ },
+ "19": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 49907,
+   "PERIODIC": 44,
+   "OPEN": 0,
+   "dup": 49
+  },
+  "open": []
+ },
+ "20": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 47352,
+   "PERIODIC": 2618,
+   "OPEN": 0,
+   "dup": 30
+  },
+  "open": []
+ },
+ "21": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 49978,
+   "PERIODIC": 13,
+   "OPEN": 0,
+   "dup": 9
+  },
+  "open": []
+ },
+ "22": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 49311,
+   "PERIODIC": 683,
+   "OPEN": 0,
+   "dup": 6
+  },
+  "open": []
+ },
+ "23": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 49981,
+   "PERIODIC": 16,
+   "OPEN": 0,
+   "dup": 3
+  },
+  "open": []
+ }
+}

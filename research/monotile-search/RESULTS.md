@@ -379,3 +379,9 @@ Blind enumeration finds nothing new up to these sizes on any frontier grid, as e
 - n=16: 182,116 shapes (= A197465), STUCK 169,022, PERIODIC 13,094 (≤ 12 tiles per block), OPEN 0. 373.0 s.
 - All 251,767 certificates re-checked by verify.py: 0 failures. 4 containers were preempted by Modal and retried automatically.
 - The 45° grid is the only grid with Ammann–Beenker edge directions; it has no aperiodic monotile up to 16 cells.
+
+## Modal guided random search (2 Nov 2026, 00:28–00:36, Razvan's Modal account)
+- Control, kite n=8, 2,000 draws: 1 distinct OPEN shape = the hat (found by 4 workers). PERIODIC 100, STUCK 1,464.
+- Tetrakis (45° grid), 50,000 random draws per size, n = 17..23 (n = 24 still running at 00:36): 0 OPEN.
+  PERIODIC: 964, 3,031, 44, 2,618, 13, 683, 16 for n = 17..23 (odd sizes rarely tile at all).
+- The tracebacks in the log were Modal preemptions (the job is interrupted and restarted with the same input); counts are complete.

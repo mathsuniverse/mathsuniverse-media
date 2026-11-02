@@ -23,3 +23,7 @@ modal_families.py runs all of them.
   screen timeout 1,181 · OPEN 56. Full re-test of the 56: 37 STUCK directly; 19 timed out (the full test searched tori before large
   discs); a disc-only check shows all 19 jam at radius 5 (one at 6). Result: 0 of 56 survive. No candidate at 12 edges.
 - Lesson: discs first. families.disc_first() covers discs up to R (cheap, catches jams) before the periodic search; screen R <= 5.
+- Optimised 14-edge run (Razvan 16:50): asymmetric outlines only (the hat has no symmetry; removes ~10%); hat signature tested
+  ends first: Tile(1,0) and Tile(0,1) must be real shapes (non-degenerate), cover discs to R=3 and tile periodically, else the
+  family is skipped; only then Tile(1,1), (1,2), (2,1) are tested discs-first. 10-edge sample: 52 of 60 families skipped
+  instantly (degenerate end), 8 tested; median seconds, one outlier 256 s (capped at 150 s on Modal). Chunks of 60.

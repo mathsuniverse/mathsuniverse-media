@@ -119,3 +119,40 @@ if __name__ == '__main__':
     for m in range(4, int(sys.argv[1]) + 1 if len(sys.argv) > 1 else 9):
         t = time.time(); F = families(m)
         print('edges', m, 'families', len(F), round(time.time() - t, 1), 's', flush=True)
+
+
+def asymmetric(seq):
+    """True if the outline has no rotation or mirror symmetry (the hat has none)."""
+    m = len(seq); c = canon(seq); n_same = 0
+    for refl in (False, True):
+        s = [(-x) % 8 for x in reversed(seq)] if refl else list(seq)
+        for r in (0, 2, 4, 6):
+            s2 = [(x + r) % 8 for x in s]
+            for k in range(m):
+                if tuple(s2[k:] + s2[:k]) == tuple(seq): n_same += 1
+    return n_same == 1
+
+
+def test_family_hat(seq, inner=((1, 1), (1, 2), (2, 1)), tcap=8, rcap=5):
+    """The hat signature, cheapest checks first: both ends Tile(1,0), Tile(0,1) must be real shapes that tile PERIODICALLY;
+    only then are the shapes in between tested. Families failing the ends are skipped (marked 'ends')."""
+    import grids as G, engine as E_
+    g = G.get('tetrakis'); res = {}
+    for a, b in ((1, 0), (0, 1)):
+        P = polygon(seq, a, b)
+        if P is None: return {'ends': f'Tile({a},{b}) degenerate'}
+        cs = cells(P)
+        if not cs or not E_.is_connected(g, cs): return {'ends': f'Tile({a},{b}) degenerate'}
+        sh = E_.Shape(g, cs)
+        if not all(E_.cover(sh, R) for R in (1.5, 2, 3)):     # an end that jams quickly cannot be a periodic end
+            return {'ends': f'Tile({a},{b}) STUCK'}
+        if not E_.periodic(sh, tcap):                          # ends must repeat
+            return {'ends': f'Tile({a},{b}) no small period'}
+        v = 'PERIODIC'
+        res[(a, b)] = v
+    for a, b in inner:
+        P = polygon(seq, a, b)
+        if P is None: res[(a, b)] = 'not simple'; continue
+        cs = cells(P)
+        res[(a, b)] = disc_first(g, cs, rcap, tcap) if cs and E_.is_connected(g, cs) else 'degenerate'
+    return res

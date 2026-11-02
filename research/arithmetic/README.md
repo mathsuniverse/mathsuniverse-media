@@ -12,3 +12,6 @@
 - inverse_general.py (ideas 1-3): k copies per tile, free anchor offsets, labels type or type + neighbours; lazy connectivity cuts;
   every connected candidate sieved inside the search. Local test on Kari 14: L=3 -> 83 connected candidates, all PERIODIC;
   L=4, 2 copies -> 4, all PERIODIC; none OPEN. modal_loose.py: 4 tile sets x 8 (L, copies) x 2 label schemes = 64 jobs.
+- modal_loose.py results (2 Nov 12:15-12:35, 64 jobs): 568 connected shapes fitted a layout and all 568 tile PERIODICALLY
+  (sieve); 0 OPEN, 0 stuck; 19,065 disconnected candidates cut. Neighbour labels and L = 6 mostly hit the time limit (one SAT call
+  can overrun the in-search clock). Type labels at L = 3-5 completed for all four tile sets.

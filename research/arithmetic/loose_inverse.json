@@ -1,0 +1,761 @@
+[
+ {
+  "set": "kari14",
+  "L": 3,
+  "k": 1,
+  "labels": "type",
+  "info": {
+   "L": 3,
+   "k": 1,
+   "size": 9,
+   "labels": "type",
+   "n_labels": 14,
+   "unknown": 44,
+   "patch": 400,
+   "aux": 39374,
+   "cuts": 3299,
+   "periodic": 121,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 4,
+  "k": 1,
+  "labels": "type",
+  "info": {
+   "L": 4,
+   "k": 1,
+   "size": 16,
+   "labels": "type",
+   "n_labels": 14,
+   "unknown": 68,
+   "patch": 784,
+   "aux": 109650,
+   "cuts": 1175,
+   "periodic": 38,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 3,
+  "k": 1,
+  "labels": "type",
+  "info": {
+   "L": 3,
+   "k": 1,
+   "size": 9,
+   "labels": "type",
+   "n_labels": 15,
+   "unknown": 44,
+   "patch": 400,
+   "aux": 45054,
+   "cuts": 2403,
+   "periodic": 116,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 4,
+  "k": 1,
+  "labels": "type",
+  "info": {
+   "L": 4,
+   "k": 1,
+   "size": 16,
+   "labels": "type",
+   "n_labels": 15,
+   "unknown": 68,
+   "patch": 784,
+   "aux": 125920,
+   "cuts": 1886,
+   "periodic": 21,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 3,
+  "k": 1,
+  "labels": "neighbours",
+  "info": {
+   "L": 3,
+   "k": 1,
+   "size": 9,
+   "labels": "neighbours",
+   "n_labels": 128,
+   "unknown": 44,
+   "patch": 400,
+   "aux": 136732,
+   "cuts": 7,
+   "periodic": 1,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 4,
+  "k": 1,
+  "labels": "type",
+  "info": {
+   "L": 4,
+   "k": 1,
+   "size": 16,
+   "labels": "type",
+   "n_labels": 25,
+   "unknown": 68,
+   "patch": 784,
+   "aux": 165376,
+   "cuts": 29,
+   "periodic": 0,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 3,
+  "k": 1,
+  "labels": "type",
+  "info": {
+   "L": 3,
+   "k": 1,
+   "size": 9,
+   "labels": "type",
+   "n_labels": 25,
+   "unknown": 44,
+   "patch": 400,
+   "aux": 58820,
+   "cuts": 351,
+   "periodic": 16,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 4,
+  "k": 1,
+  "labels": "type",
+  "info": {
+   "L": 4,
+   "k": 1,
+   "size": 16,
+   "labels": "type",
+   "n_labels": 17,
+   "unknown": 68,
+   "patch": 784,
+   "aux": 123008,
+   "cuts": 3075,
+   "periodic": 48,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 4,
+  "k": 2,
+  "labels": "type",
+  "info": {
+   "L": 4,
+   "k": 2,
+   "size": 8,
+   "labels": "type",
+   "n_labels": 17,
+   "unknown": 44,
+   "patch": 900,
+   "aux": 163840,
+   "cuts": 219,
+   "periodic": 10,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 4,
+  "k": 2,
+  "labels": "type",
+  "info": {
+   "L": 4,
+   "k": 2,
+   "size": 8,
+   "labels": "type",
+   "n_labels": 14,
+   "unknown": 44,
+   "patch": 900,
+   "aux": 144688,
+   "cuts": 275,
+   "periodic": 28,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 3,
+  "k": 1,
+  "labels": "type",
+  "info": {
+   "L": 3,
+   "k": 1,
+   "size": 9,
+   "labels": "type",
+   "n_labels": 17,
+   "unknown": 44,
+   "patch": 400,
+   "aux": 43614,
+   "cuts": 3241,
+   "periodic": 121,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 4,
+  "k": 4,
+  "labels": "type",
+  "info": {
+   "L": 4,
+   "k": 4,
+   "size": 4,
+   "labels": "type",
+   "n_labels": 17,
+   "unknown": 24,
+   "patch": 1024,
+   "aux": 184736,
+   "cuts": 78,
+   "periodic": 19,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 5,
+  "k": 1,
+  "labels": "type",
+  "info": {
+   "L": 5,
+   "k": 1,
+   "size": 25,
+   "labels": "type",
+   "n_labels": 14,
+   "unknown": 88,
+   "patch": 2601,
+   "aux": 242950,
+   "cuts": 1210,
+   "periodic": 0,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 4,
+  "k": 4,
+  "labels": "type",
+  "info": {
+   "L": 4,
+   "k": 4,
+   "size": 4,
+   "labels": "type",
+   "n_labels": 15,
+   "unknown": 24,
+   "patch": 1024,
+   "aux": 182736,
+   "cuts": 89,
+   "periodic": 19,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 4,
+  "k": 2,
+  "labels": "type",
+  "info": {
+   "L": 4,
+   "k": 2,
+   "size": 8,
+   "labels": "type",
+   "n_labels": 15,
+   "unknown": 44,
+   "patch": 900,
+   "aux": 165392,
+   "cuts": 174,
+   "periodic": 10,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 5,
+  "k": 1,
+  "labels": "type",
+  "info": {
+   "L": 5,
+   "k": 1,
+   "size": 25,
+   "labels": "type",
+   "n_labels": 15,
+   "unknown": 88,
+   "patch": 2601,
+   "aux": 263494,
+   "cuts": 1519,
+   "periodic": 0,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 4,
+  "k": 2,
+  "labels": "type",
+  "info": {
+   "L": 4,
+   "k": 2,
+   "size": 8,
+   "labels": "type",
+   "n_labels": 25,
+   "unknown": 44,
+   "patch": 900,
+   "aux": 221184,
+   "cuts": 9,
+   "periodic": 0,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 5,
+  "k": 1,
+  "labels": "type",
+  "info": {
+   "L": 5,
+   "k": 1,
+   "size": 25,
+   "labels": "type",
+   "n_labels": 17,
+   "unknown": 88,
+   "patch": 2601,
+   "aux": 298980,
+   "cuts": 25,
+   "periodic": 0,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 4,
+  "k": 4,
+  "labels": "type",
+  "info": {
+   "L": 4,
+   "k": 4,
+   "size": 4,
+   "labels": "type",
+   "n_labels": 25,
+   "unknown": 24,
+   "patch": 1024,
+   "aux": 250880,
+   "cuts": 1,
+   "periodic": 0,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 4,
+  "k": 1,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 4,
+  "k": 4,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 4,
+  "k": 2,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 4,
+  "k": 4,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 6,
+  "k": 2,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 5,
+  "k": 1,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 6,
+  "k": 3,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 6,
+  "k": 4,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 6,
+  "k": 4,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 6,
+  "k": 2,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 3,
+  "k": 1,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 4,
+  "k": 2,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 4,
+  "k": 1,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "kari14",
+  "L": 6,
+  "k": 3,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 4,
+  "k": 4,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 5,
+  "k": 1,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 6,
+  "k": 3,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 6,
+  "k": 2,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 6,
+  "k": 2,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 6,
+  "k": 4,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 6,
+  "k": 3,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 3,
+  "k": 1,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 4,
+  "k": 1,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 4,
+  "k": 2,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3_x1/2",
+  "L": 6,
+  "k": 4,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 4,
+  "k": 4,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 5,
+  "k": 1,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 6,
+  "k": 2,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 6,
+  "k": 3,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 6,
+  "k": 4,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 6,
+  "k": 4,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 6,
+  "k": 3,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "x3/2_x1/2",
+  "L": 6,
+  "k": 2,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 3,
+  "k": 1,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 4,
+  "k": 1,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 4,
+  "k": 2,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 4,
+  "k": 4,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 5,
+  "k": 1,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 5,
+  "k": 1,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 6,
+  "k": 2,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 6,
+  "k": 2,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 6,
+  "k": 4,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 6,
+  "k": 3,
+  "labels": "type",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 6,
+  "k": 3,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ },
+ {
+  "set": "silver25",
+  "L": 6,
+  "k": 4,
+  "labels": "neighbours",
+  "info": "killed at time limit",
+  "found": []
+ }
+]

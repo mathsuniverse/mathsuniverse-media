@@ -141,3 +141,4 @@ Comments: no channel comment on KHqBvjPWvF8, L3X0ClYLdgU, Fyy457oZZak; Jt_K2IZLx
   End-screen click rate 0.0%. Retention graph: not enough data. Related-video link from Shorts: no visible traffic (0% other features).
   Shorts: A6-mM5vas2Q 46 views lifetime (11 in last 48 h; Shorts feed 45.5%, browse 27.3%, search 27.3%);
   mJdtaUa3dfs 18 views lifetime (all in last 48 h; Shorts feed 61%, search 22%).
+- 2 Nov 12:40: added approved search line to mhHGxDVe1Fc description ('Symmetry breaking explained: ...'), saved, verified after reload (3,921 chars).

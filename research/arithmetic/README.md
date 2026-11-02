@@ -7,3 +7,8 @@
   (the all-zero rows; this is why Eigen-Navarro-Prasad need x0 >= 1 or Culik's extra tile). Our SAT screen catches it.
 - Inverse single-shape search on Kari's 14 tiles: no non-trivial polyomino at L = 3, 4.
 - modal_arith.py: every pair x both intervals x L = 3..5: screen for small periods, then the inverse search.
+- Modal arith sweep (11:35-12:00): 108 jobs; 27 tile sets skipped as periodic (zero-row cheats); the rest: no single shape
+  (L = 3..5, one copy per tile, orientation per type). 22 (pair, interval) sets pass the small-period screen (14 to 42 tiles).
+- inverse_general.py (ideas 1-3): k copies per tile, free anchor offsets, labels type or type + neighbours; lazy connectivity cuts;
+  every connected candidate sieved inside the search. Local test on Kari 14: L=3 -> 83 connected candidates, all PERIODIC;
+  L=4, 2 copies -> 4, all PERIODIC; none OPEN. modal_loose.py: 4 tile sets x 8 (L, copies) x 2 label schemes = 64 jobs.

@@ -366,3 +366,10 @@ Reading: on discs of radius 20 to 30, the hat and the turtle settle between 6.7 
 
 Blind enumeration finds nothing new up to these sizes on any frontier grid, as expected: the hat needs 8 kites (16 drafters). The kite grid already has 12 orientations by n = 8, while the tetrakis grid has only 8 orientations per shape and no 45 deg rotation symmetry. A silver hierarchy would need its supertiles to appear in 8 directions, so on the tetrakis grid it would have to come from mirrors and 90 deg turns of tiles whose *edges* use the 45 deg directions. The most promising route is therefore structure-first on the **tetrakis grid**. Take the Ammann-Beenker substitution (square + 45 deg rhomb, inflation 1+sqrt2), approximate its clusters on the grid (as the hat's H/T/P/F metatiles approximate a golden hierarchy on the kite grid), and use SAT to solve for one polyabolo whose copies fill each cluster. For bronze, the analogous host is the **drafter grid**, which contains the golden hat family and has the 30/60 deg directions of the hexagonal bronze-mean tiling.
 
+
+## Modal run, kite n = 11 (2 Nov 2026, 00:03, Razvan's Modal account, 129.6 s)
+- 34,561 free 11-kites (matches OEIS A057786). STUCK 34,559, PERIODIC 2, OPEN 0. Every certificate re-checked by verify.py: 0 failures.
+- Both tilers repeat with 6 tiles per block: kite11_00059, kite11_07825.
+- STUCK by disc radius: 1.5: 30,678 · 2: 3,220 · 3: 631 · 4: 29 · 5: 1. Slowest shape 0.92 s.
+- Smoke test n = 6 on Modal: 85 = 71 PERIODIC + 14 STUCK, identical to the serial run.
+- So no aperiodic monotile with 11 kites (the hat has 8, the turtle 10). Files: results/modal/.

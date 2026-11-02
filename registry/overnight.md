@@ -135,3 +135,9 @@ Comments: no channel comment on KHqBvjPWvF8, L3X0ClYLdgU, Fyy457oZZak; Jt_K2IZLx
 - 1 Nov 19:55: countdown Short "5 Shapes That Refuse to Tile Your Floor" uploaded TeV9BpOTRIQ, scheduled Wed 11 Nov 17:00; pin task set. Razvan: keep countdowns to ~1/week, mix formats. Long tiling video approved to script.
 - 1 Nov 23:50: pen-fill Short rx05Je58KHI scheduled Sat 14 Nov 17:00 (2 playlists, related mhHGxDVe1Fc, pin task trig_01Std6qjcN1vb4TWKbEUauC8). tmp-upload-long03 now holds pen-fill.mp4 (30 MB); emptied next push.
 - 2 Nov 07:25: W6OmHFcJ8D0 (light and a gear / nephroid) public since ~07:00; board page loads; approved comment posted and pinned, verified 'Pinned by @mathsuniversespace' after reload (task trig_018wyiJ7YybwGJY4wNBcDDG4).
+- 2 Nov 12:25 · 24 h check, symmetry long mhHGxDVe1Fc (Premiere 1 Nov 12:00): 8 views, 2 engaged views, watch time 0.2 h,
+  average view duration 4:56 (52% of 9:34; benchmark 2:50 = 30%), subscribers —, likes 100%. 33 impressions, CTR 3.0%.
+  Traffic: YouTube search 75% (terms: "śniadanie symetrystów" 66.7%, "bigbang reaction" 33.3%), channel pages 12.5%, suggested 12.5%.
+  End-screen click rate 0.0%. Retention graph: not enough data. Related-video link from Shorts: no visible traffic (0% other features).
+  Shorts: A6-mM5vas2Q 46 views lifetime (11 in last 48 h; Shorts feed 45.5%, browse 27.3%, search 27.3%);
+  mJdtaUa3dfs 18 views lifetime (all in last 48 h; Shorts feed 61%, search 22%).

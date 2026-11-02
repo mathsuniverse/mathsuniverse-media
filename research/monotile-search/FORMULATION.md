@@ -236,3 +236,14 @@ structure-first: search small substitutions with these sibling inflations and as
 - A 2D tiling = several 1D slope problems that must agree where line families cross.
 - Field fingerprint test: read the 1D tile sequence along ribbons and fit its Sturmian slope. A silver candidate must
   show a slope in Q(√2).
+
+## 15. Hierarchy first (Razvan, 2 Nov 02:17: "Penrose kites are level 0 of a higher hierarchy; find that structure")
+Hat metatile substitution, read from our hat code (rows = new cluster, columns = H, T, P, F inside it):
+  H' = 3H + 1T + 3P + 3F,  T' = 1H,  P' = 2H + 1P + 2F,  F' = 2H + 1P + 3F.  Perron eigenvalue φ⁴ = 6.854.
+  Hats per level-1 cluster (H, T, P, F) = (4, 1, 2, 2); H-cluster ladder 4, 25, 169, 1156, 7921 = F(2k+1)².
+Silver programme: (1) a recipe matrix with Perron eigenvalue a power of 1+√2 (e.g. x² − 6x + 1 factor);
+(2) one shape S whose copies fill every level-1 cluster type, with the clusters composing consistently level after level.
+Step (2) is the hard, geometric part (the hat's clusters change shape between levels and only converge in the limit).
+Lemma A forces the √2 into cluster counts/orientations, never into a mix of two fixed piece types.
+Data step run first: near misses (periodic only with ≥ 8 tiles per block, or stuck only at disc radius ≥ 4) on the
+45° grid, the closest periodic relatives of an aperiodic tile, to look for clusters that repeat at two scales.

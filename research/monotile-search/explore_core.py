@@ -28,11 +28,11 @@ def random_shape(g, n, rng):
     return shape
 
 
-def explore_chunk(grid, n, seed, count, tcap=12, rcap=6.0, tcap2=24, rcap2=8.0, shape_time=120):
+def explore_chunk(grid, n, seed, count, tcap=12, rcap=6.0, tcap2=24, rcap2=8.0, shape_time=120, near_tiles=8, near_R=4):
     import engine as E, grids as G
     g = G.get(grid)
     rng = random.Random(seed)
-    seen, counts, opens = set(), {'STUCK': 0, 'PERIODIC': 0, 'OPEN': 0, 'dup': 0}, []
+    seen, counts, opens, near = set(), {'STUCK': 0, 'PERIODIC': 0, 'OPEN': 0, 'dup': 0}, [], []
     for _ in range(count):
         cells = random_shape(g, n, rng)
         key = E.canonical(g, cells)
@@ -46,12 +46,15 @@ def explore_chunk(grid, n, seed, count, tcap=12, rcap=6.0, tcap2=24, rcap2=8.0, 
         counts[r['cls']] += 1
         if r['cls'] == 'OPEN':
             opens.append(r)
-    return counts, opens
+        elif (r['cls'] == 'PERIODIC' and r['tiles_per_domain'] >= near_tiles) or \
+             (r['cls'] == 'STUCK' and (r.get('fail_R') or 0) >= near_R):
+            near.append(r)                         # near misses: long periods or late failures
+    return counts, opens, near
 
 
 if __name__ == '__main__':      # local smoke test
     import sys, json, time
     grid, n, k = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
-    t = time.time(); c, o = explore_chunk(grid, n, 1, k)
-    print(json.dumps(c), len(o), round(time.time() - t, 1), 's')
+    t = time.time(); c, o, nr = explore_chunk(grid, n, 1, k)
+    print(json.dumps(c), len(o), 'near', len(nr), round(time.time() - t, 1), 's')
     for r in o: print('OPEN', r['cells'])

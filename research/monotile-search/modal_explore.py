@@ -45,8 +45,10 @@ def main(grid: str = "tetrakis", nmin: int = 17, nmax: int = 17, samples: int = 
         calls = max(1, samples // per_call)
         args = [(grid, n, seed * 1_000_003 + n * 10_007 + i, per_call) for i in range(calls)]
         tot = {"STUCK": 0, "PERIODIC": 0, "OPEN": 0, "dup": 0}
-        opens = {}
-        for counts, op in chunk.starmap(args):
+        opens, near = {}, {}
+        for counts, op, nr in chunk.starmap(args):
+            for r in nr:
+                near[json.dumps(sorted(map(tuple, r["cells"])))] = r
             for k, v in counts.items():
                 tot[k] += v
             for r in op:
@@ -57,9 +59,10 @@ def main(grid: str = "tetrakis", nmin: int = 17, nmax: int = 17, samples: int = 
         prev["samples"] += calls * per_call
         known = {json.dumps(sorted(map(tuple, r["cells"]))) for r in prev["open"]}
         prev["open"] += [r for k, r in opens.items() if k not in known]
+        prev["near"] = prev.get("near", []) + list(near.values())
         res[str(n)] = prev
         json.dump(res, open(path, "w"), indent=1)
-        print(f"{grid} n={n}: {calls * per_call} drawn  {tot}", flush=True)
+        print(f"{grid} n={n}: {calls * per_call} drawn  {tot}  near misses {len(near)}", flush=True)
         for r in opens.values():
             print("   OPEN", r["cells"], flush=True)
     print("Done. Results in", path)

@@ -15,8 +15,8 @@ import silver_wang as SW
 g = G.get('square'); OPS = g.op_tabs
 
 
-def run(L=4, n=18, r=None, limit=20, time_note=True):
-    grid = SW.wang_sat(SW.T2, n, n)
+def run(L=4, n=18, r=None, limit=20, time_note=True, tiles=None):
+    grid = SW.wang_sat(tiles or SW.T2, n, n)
     r = r or L * 0.75 + 1.5
     U = [(i, j, 0) for i in range(-L - 3, L + 4) for j in range(-L - 3, L + 4) if math.hypot(i + .5, j + .5) <= r]
     xu = {u: k + 1 for k, u in enumerate(U)}; pool = IDPool(start_from=len(U) + 1); cl = []

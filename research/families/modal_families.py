@@ -28,11 +28,16 @@ def test_chunk(chunk):
     return out
 
 
+@app.function(cpu=1.0, memory=4096, timeout=1800)
+def enumerate_families(mmax):
+    sys.path.insert(0, "/root/ms")
+    import families as Fm
+    return [list(f) for m in range(4, mmax + 1, 2) for f in Fm.families(m)]
+
+
 @app.local_entrypoint()
 def main(mmax: int = 12, per: int = 15):
-    sys.path.insert(0, HERE)
-    import families as Fm
-    F = [list(f) for m in range(4, mmax + 1, 2) for f in Fm.families(m)]
+    F = enumerate_families.remote(mmax)          # enumeration runs on Modal too, so nothing extra is needed on the PC
     chunks = [F[i:i + per] for i in range(0, len(F), per)]
     print(len(F), 'families in', len(chunks), 'jobs', flush=True)
     res, hits, hat = [], 0, 0

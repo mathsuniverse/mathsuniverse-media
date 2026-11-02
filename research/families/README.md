@@ -14,3 +14,8 @@ modal_families.py runs all of them.
   5 ratios; every family in its own child process with a 150 s cap. Local check: 1.1 s per family.
 - 14:57 run, first two "HAT-LIKE" flags ([0,1,3,2,4,6,5,7] and its mirror-type twin [0,1,7,6,5,3,4,2], Tile(1,2), 52 cells): FALSE ALARMS.
   Full test (torus <= 12, disc R <= 6): both STUCK at radius 5. The screen only went to R = 4. Every screen OPEN must be re-tested.
+- Hat features check (Razvan 15:29): we lacked (1) straight double edges (the hat has one) and (2) enough edges (hat = 14 counting it).
+  families.py now allows straight continuations (option, max count incl. wrap-around) and slices the enumeration by the first two turns
+  (verified: slices reproduce the whole set at 10 edges, 988 = 988). Counts with at most one straight pair: 8 edges 114, 10: 988;
+  12: ~16-17k before the wrap fix. 14 edges expected ~10^5.
+- modal_families14.py: enumerate (49 slices) -> quick screen -> full re-test of every OPEN, one command; --m 16 for the next size.

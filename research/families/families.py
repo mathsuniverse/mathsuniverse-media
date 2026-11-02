@@ -14,24 +14,29 @@ from shapely.geometry import Polygon, Point
 DIRS = [(1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0), (-1, -1), (0, -1), (1, -1)]
 
 
-def sequences(m):
+def sequences(m, straight=False, first=None, max_straight=99):
     """Turn sequences of m edges (turns in {±1,±2,±3}·45°, total +8 = one full counter-clockwise turn), closing for all (a, b)."""
     out = []
-    def rec(seq, d, ax, dg):
+    def rec(seq, d, ax, dg, ns=0):
         k = len(seq)
         rem = m - k
         if rem == 0:
-            if ax == (0, 0) and dg == (0, 0) and (seq[0] - d) % 8 not in (0, 4):
+            if ax == (0, 0) and dg == (0, 0) and (seq[0] - d) % 8 != 4 and (straight or seq[0] != d):
                 out.append(tuple(seq))
             return
         # prune: remaining edges must be able to cancel both sums
         if abs(ax[0]) + abs(ax[1]) > rem or max(abs(dg[0]), abs(dg[1])) > rem: return
-        for t in (1, 2, 3, -1, -2, -3):
+        turns = (0, 1, 2, 3, -1, -2, -3) if straight else (1, 2, 3, -1, -2, -3)
+        for t in turns:
             nd = (d + t) % 8 if seq else 0
-            if seq and (nd - seq[-1]) % 8 in (0, 4): continue
+            if seq and (nd - seq[-1]) % 8 == 4: continue                 # no U-turn
+            if seq and not straight and nd == seq[-1]: continue
+            sflag = 1 if (seq and nd == seq[-1]) else 0
+            if ns + sflag > max_straight: continue
+            if first is not None and 1 <= len(seq) <= len(first) and t != first[len(seq) - 1]: continue   # split for parallel runs
             v = DIRS[nd]
-            if nd % 2 == 0: rec(seq + [nd], nd, (ax[0] + v[0], ax[1] + v[1]), dg)
-            else: rec(seq + [nd], nd, ax, (dg[0] + v[0], dg[1] + v[1]))
+            if nd % 2 == 0: rec(seq + [nd], nd, (ax[0] + v[0], ax[1] + v[1]), dg, ns + sflag)
+            else: rec(seq + [nd], nd, ax, (dg[0] + v[0], dg[1] + v[1]), ns + sflag)
             if not seq: break
     rec([], 0, (0, 0), (0, 0))
     return out
@@ -73,9 +78,11 @@ def cells(P):
     return out
 
 
-def families(m):
+def families(m, straight=False, first=None, max_straight=99):
     seen = set(); out = []
-    for s in sequences(m):
+    for s in sequences(m, straight, first, max_straight):
+        if straight and s[0] == s[-1] and max_straight < 99:
+            if sum(1 for i in range(len(s)) if s[i] == s[i - 1]) > max_straight: continue   # count the wrap-around too
         c = canon(s)
         if c in seen: continue
         seen.add(c)

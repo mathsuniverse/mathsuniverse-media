@@ -373,3 +373,9 @@ Blind enumeration finds nothing new up to these sizes on any frontier grid, as e
 - STUCK by disc radius: 1.5: 30,678 · 2: 3,220 · 3: 631 · 4: 29 · 5: 1. Slowest shape 0.92 s.
 - Smoke test n = 6 on Modal: 85 = 71 PERIODIC + 14 STUCK, identical to the serial run.
 - So no aperiodic monotile with 11 kites (the hat has 8, the turtle 10). Files: results/modal/.
+
+## Modal run, tetrakis (45° grid) n = 15, 16 (2 Nov 2026, 00:21, Razvan's Modal account)
+- n=15: 69,651 shapes (= OEIS A197465), STUCK 69,494, PERIODIC 157 (≤ 8 tiles per block), OPEN 0. 252.8 s.
+- n=16: 182,116 shapes (= A197465), STUCK 169,022, PERIODIC 13,094 (≤ 12 tiles per block), OPEN 0. 373.0 s.
+- All 251,767 certificates re-checked by verify.py: 0 failures. 4 containers were preempted by Modal and retried automatically.
+- The 45° grid is the only grid with Ammann–Beenker edge directions; it has no aperiodic monotile up to 16 cells.

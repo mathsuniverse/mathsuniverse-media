@@ -1,0 +1,44 @@
+{
+ "15": {
+  "counts": {
+   "PERIODIC": 157,
+   "STUCK": 69494
+  },
+  "free": 69651,
+  "n": 15,
+  "open_ids": [],
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6.0,
+    "seconds": 60.4,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 69651,
+  "verified": 69651,
+  "verify_failures": [],
+  "wall_time": 252.8
+ },
+ "16": {
+  "counts": {
+   "PERIODIC": 13094,
+   "STUCK": 169022
+  },
+  "free": 182116,
+  "n": 16,
+  "open_ids": [],
+  "stages": [
+   {
+    "open_after": 0,
+    "rcap": 6.0,
+    "seconds": 138.0,
+    "tcap": 12
+   }
+  ],
+  "sym_classes": 182116,
+  "verified": 182116,
+  "verify_failures": [],
+  "wall_time": 373.0
+ }
+}

@@ -261,3 +261,11 @@ matching rules in their outline (the hat's T cluster is a single hat; its H, P, 
 Next build: the silver tiles WITH matching rules (Ammann's A5 set: arrowed edges, with the square marked) turned into
 jigsaw pieces on the 45° grid (arrow = asymmetric bump), then a SAT search for one shape S that dissects every jigsaw piece,
 then the sieve on S. Needs the exact A5 / Socolar arrow data from a primary source before coding.
+
+## 17. Matching-rule sources (checked 2 Nov, 03:05)
+- Ammann–Beenker: edge arrows alone allow periodic tilings (Katz); Ammann's A5 needs extra vertex arrows (Wikipedia summary).
+  Porrier & Fernique, "Ammann Bars for Octagonal Tilings" (arXiv 2205.13973): AB tilings have no weak local rules, and Socolar's
+  bars extend outside the tiles. So a silver jigsaw needs decorations that reach past tile edges; it can't be coded from memory.
+- Same paper: "Cyrenaic" octagonal-type tilings with slope from √3 have proven Ammann-bar local rules, 36 decorated prototiles,
+  computed by their SageMath code (Appendix B). That is a concrete, checkable source for the √3 target.
+Plan: √3 first (rules are available as code), silver after reading Socolar (1989) for the exact bar geometry.

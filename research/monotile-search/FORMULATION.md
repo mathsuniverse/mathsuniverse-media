@@ -269,3 +269,14 @@ then the sieve on S. Needs the exact A5 / Socolar arrow data from a primary sour
 - Same paper: "Cyrenaic" octagonal-type tilings with slope from √3 have proven Ammann-bar local rules, 36 decorated prototiles,
   computed by their SageMath code (Appendix B). That is a concrete, checkable source for the √3 target.
 Plan: √3 first (rules are available as code), silver after reading Socolar (1989) for the exact bar geometry.
+
+## 18. Clustering = adding generators (Razvan, 2 Nov 03:04)
+With edge generators e_k at equal angles (e_{k+n} = −e_k), the neighbours sum to a multiple of the middle one:
+e_{k−1} + e_{k+1} = 2cos(θ)·e_k. So inflation (multiplication by λ) is pure addition of generators, an integer matrix:
+- silver, 45° star (4 gens): (1+√2)·e_k = e_{k−1} + e_k + e_{k+1}; M = I + S + S⁻¹, eigenvalues 2.414 (×2), −0.414 (×2).
+- golden, 36° star (5 gens): φ·e_k = e_{k−1} + e_{k+1}; M = S + S⁻¹, eigenvalues 1.618 (×2), −0.618 (×2), −2 (rational part).
+- 12-fold, 30° star (6 gens): (2+√3)·e_k = e_{k−1} + 2e_k + e_{k+1}; eigenvalues 3.732 (×2), 0.268 (×2), 2 (×2, rational part).
+(computed with numpy.) The large eigenvalue stretches physical space; its Galois conjugate (|·| < 1) shrinks the internal
+space: the Pisot condition is exactly what keeps the window finite. Every available inflation is an integer polynomial in
+S + S⁻¹, so λ ∈ Z[2cos(π/n)]: the finite-generator symmetry picture from section 3, now with a concrete integer matrix.
+A hierarchy-first search fixes M first; the cluster counts then follow from M acting on the generators.

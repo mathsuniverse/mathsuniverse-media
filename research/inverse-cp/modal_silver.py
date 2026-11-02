@@ -20,24 +20,43 @@ STARS = [(1, 1, 4, 3), (1, 1, 5, 2), (1, 2, 5, 1), (1, 2, 6, 2), (1, 3, 4, 1), (
          (4, 3, 1, 1), (4, 5, 2, 1)]
 
 
-@app.function(cpu=1.0, memory=8192, timeout=1500, retries=0, max_containers=40)
-def run(star, scheme, r, rz, limit_s):
+def _child(star, scheme, r, rz, q):
     sys.path.insert(0, "/root/ms")
     import silver as S, silver_run as SR, engine as E_
     B = S.star(*star)
     if not S.valid(B):
-        return dict(star=star, scheme=scheme, note="not a valid shape change")
+        q.put(dict(star=star, scheme=scheme, note="not a valid shape change")); return
     V, T, polys = S.build(rz + 6, B)
     lab = None if scheme == "type" else SR.nbr_labels(T, 1)
-    sols, msg = S.solve(T, polys, B, r=r, Rz=rz, labels=lab, limit=10, time_limit=limit_s)
-    return dict(star=star, scheme=scheme, msg=msg,
-                solutions=[dict(size=len(s), connected=E_.is_connected(S.g, s), cells=[list(c) for c in s],
-                                orient={str(k): v for k, v in o.items()}) for s, o in sols])
+    sols, msg = S.solve(T, polys, B, r=r, Rz=rz, labels=lab, limit=10)
+    q.put(dict(star=star, scheme=scheme, msg=msg,
+               solutions=[dict(size=len(s), connected=E_.is_connected(S.g, s), cells=[list(c) for c in s],
+                               orient={str(k): v for k, v in o.items()}) for s, o in sols]))
+
+
+@app.function(cpu=2.0, memory=8192, timeout=1500, retries=0, max_containers=40)
+def run(star, scheme, r, rz, limit_s):
+    # the SAT solver blocks its process completely, so it runs in a child process that we can kill on time;
+    # this process stays free to answer Modal's heartbeat
+    import multiprocessing as mp
+    q = mp.Queue()
+    p = mp.Process(target=_child, args=(star, scheme, r, rz, q))
+    p.start()
+    import time, queue
+    end = time.time() + limit_s
+    while time.time() < end:
+        try:
+            res = q.get(timeout=5); p.join(10); return res
+        except queue.Empty:
+            if not p.is_alive():
+                return dict(star=star, scheme=scheme, msg="child crashed", solutions=[])
+    p.kill(); p.join()
+    return dict(star=star, scheme=scheme, msg=f"TIMEOUT after {limit_s / 60:.0f} min", solutions=[])
 
 
 @app.local_entrypoint()
 def main(r: float = 5.0, rz: float = 11.0, schemes: str = "type,type+neighbours", minutes: int = 12):
-    minutes = min(minutes, 13)      # a solve longer than ~15 min starves Modal's 900 s heartbeat and the job is killed
+    minutes = min(minutes, 22)      # the solver runs in a child process, so the worker stays alive; function timeout is 25 min
     jobs = [(st, sc, r, rz, minutes * 60) for st in STARS for sc in schemes.split(",")]
     out = []
     path = os.path.join(HERE, "results", f"silver_inverse_{schemes.replace(',', '_').replace('+', '')}_r{r:g}.json")

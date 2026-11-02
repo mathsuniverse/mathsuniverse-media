@@ -11,3 +11,12 @@ neighbours and fall apart). The hard data is the labelled point pattern; the sha
 
 Silver plan: build silver labelled point patterns (Ammann–Beenker-type projection, deformed onto the 45° grid with a rational
 density; orientation label read from where the point falls in the window), then run the same solver.
+
+## Silver run 1 (07:40-07:50)
+silver.py: Ammann–Beenker vertices (window method) deformed onto the 45° grid with edge star (a,0),(b,b),(0,c),(-d,d).
+Valid shape change checked (same orientation signs as E). Rational density: tile frequencies rhombs (2-√2)/4, squares (√2-1)/2,
+so the mean tile area is rational iff 2ac + 4bd = (a+c)(b+d). Star (3,1,3,6): 1,380 tiles, no overlaps, mean area 10.489 (theory 10.5
+= 42 grid triangles). 18 such stars with entries <= 7.
+Solver (unknown shape within radius 5-6 + one orientation per label, every cell covered once):
+- labels = tile type (6), star (3,1,3,6), r = 5 and r = 6: no solution.
+- labels = tile type + the 4 neighbours' types: running (slower). modal_silver.py sweeps all 18 stars x both label schemes.

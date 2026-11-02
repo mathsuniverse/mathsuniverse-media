@@ -27,3 +27,9 @@ modal_families.py runs all of them.
   ends first: Tile(1,0) and Tile(0,1) must be real shapes (non-degenerate), cover discs to R=3 and tile periodically, else the
   family is skipped; only then Tile(1,1), (1,2), (2,1) are tested discs-first. 10-edge sample: 52 of 60 families skipped
   instantly (degenerate end), 8 tested; median seconds, one outlier 256 s (capped at 150 s on Modal). Chunks of 60.
+
+## 14-edge run (2 Nov 2026)
+154,980 asymmetric outlines (14 edges, one straight double edge). Hat-signature screen, ends first:
+- 144,512 fail the ends test (an end is degenerate, jams, or has no small period). Logged as a ValueError by a label bug, since fixed.
+- 8,853 have both ends periodic. In-between shapes Tile(1,1), Tile(1,2), Tile(2,1): 7,884 families all STUCK, 969 all PERIODIC, **0 OPEN**.
+- 1,615 timed out (90 s cap); re-test with modal_timeouts14.py (10 min cap).

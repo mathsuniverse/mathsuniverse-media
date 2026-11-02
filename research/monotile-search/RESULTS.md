@@ -382,6 +382,6 @@ Blind enumeration finds nothing new up to these sizes on any frontier grid, as e
 
 ## Modal guided random search (2 Nov 2026, 00:28–00:36, Razvan's Modal account)
 - Control, kite n=8, 2,000 draws: 1 distinct OPEN shape = the hat (found by 4 workers). PERIODIC 100, STUCK 1,464.
-- Tetrakis (45° grid), 50,000 random draws per size, n = 17..23 (n = 24 still running at 00:36): 0 OPEN.
-  PERIODIC: 964, 3,031, 44, 2,618, 13, 683, 16 for n = 17..23 (odd sizes rarely tile at all).
+- Tetrakis (45° grid), 50,000 random draws per size, n = 17..24 (400,000 draws): 0 OPEN.
+  PERIODIC: 964, 3,031, 44, 2,618, 13, 683, 16, 1,826 for n = 17..24 (odd sizes rarely tile at all).
 - The tracebacks in the log were Modal preemptions (the job is interrupted and restarted with the same input); counts are complete.

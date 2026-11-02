@@ -68,5 +68,15 @@
    "dup": 3
   },
   "open": []
+ },
+ "24": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 48171,
+   "PERIODIC": 1826,
+   "OPEN": 0,
+   "dup": 3
+  },
+  "open": []
  }
 }

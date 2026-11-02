@@ -386,3 +386,7 @@ Blind enumeration finds nothing new up to these sizes on any frontier grid, as e
   PERIODIC: 964, 3,031, 44, 2,618, 13, 683, 16, 1,826 for n = 17..24 (odd sizes rarely tile at all).
 - The tracebacks in the log were Modal preemptions (the job is interrupted and restarted with the same input); counts are complete.
 - Even sizes n = 26..36 (step 2), 50,000 draws each (300,000), 0 OPEN. PERIODIC: 350, 326, 232, 323, 60, 155 for n = 26..36. Total tetrakis random draws: 700,000, no OPEN.
+- Near misses (tetrakis, even n = 16..30, seed 1; n = 18..30 re-drew the earlier samples, so counts in explore/tetrakis.json double-count those sizes): 155 shapes.
+  Longest period: one 16-triangle shape, periodic only with 12 tiles per block (lattice [24, 10, 2]; near_block12.png). Others ≤ 8.
+  Latest failures: one 26-triangle shape stuck only at R = 6, nine at R = 5. Heesch numbers of all ten: 0-2 (near_heesch.json),
+  so they are ordinary non-tilers that happen to cover a disc, not high-Heesch curiosities. No hierarchy signal yet.

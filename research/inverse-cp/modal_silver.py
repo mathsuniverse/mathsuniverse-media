@@ -40,7 +40,7 @@ def main(r: float = 5.0, rz: float = 11.0, schemes: str = "type,type+neighbours"
     minutes = min(minutes, 13)      # a solve longer than ~15 min starves Modal's 900 s heartbeat and the job is killed
     jobs = [(st, sc, r, rz, minutes * 60) for st in STARS for sc in schemes.split(",")]
     out = []
-    path = os.path.join(HERE, "results", "silver_inverse.json")
+    path = os.path.join(HERE, "results", f"silver_inverse_{schemes.replace(',', '_').replace('+', '')}_r{r:g}.json")
     os.makedirs(os.path.dirname(path), exist_ok=True)
     for res in run.starmap(jobs, order_outputs=False):
         out.append(res)

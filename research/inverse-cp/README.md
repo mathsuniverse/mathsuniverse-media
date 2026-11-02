@@ -20,3 +20,8 @@ so the mean tile area is rational iff 2ac + 4bd = (a+c)(b+d). Star (3,1,3,6): 1,
 Solver (unknown shape within radius 5-6 + one orientation per label, every cell covered once):
 - labels = tile type (6), star (3,1,3,6), r = 5 and r = 6: no solution.
 - labels = tile type + the 4 neighbours' types: running (slower). modal_silver.py sweeps all 18 stars x both label schemes.
+
+## Silver run 2 on Modal (2 Nov 09:20-09:35, Razvan's account)
+- labels = tile type: all 18 rational-density stars -> no shape (exact UNSAT, ~1,400-1,800 patch cells, 320 unknown cells, 6 labels).
+- labels = tile type + 4 neighbour types (120 classes): (4,1,4,6) none, (3,1,2,7) none; remaining 16 running.
+- Note: each run rewrites results/silver_inverse.json; the type-only results above are from the terminal log. To fix: one file per scheme.

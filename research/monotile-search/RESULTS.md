@@ -385,3 +385,4 @@ Blind enumeration finds nothing new up to these sizes on any frontier grid, as e
 - Tetrakis (45° grid), 50,000 random draws per size, n = 17..24 (400,000 draws): 0 OPEN.
   PERIODIC: 964, 3,031, 44, 2,618, 13, 683, 16, 1,826 for n = 17..24 (odd sizes rarely tile at all).
 - The tracebacks in the log were Modal preemptions (the job is interrupted and restarted with the same input); counts are complete.
+- Even sizes n = 26..36 (step 2), 50,000 draws each (300,000), 0 OPEN. PERIODIC: 350, 326, 232, 323, 60, 155 for n = 26..36. Total tetrakis random draws: 700,000, no OPEN.

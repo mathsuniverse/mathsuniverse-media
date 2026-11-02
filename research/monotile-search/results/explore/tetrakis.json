@@ -78,5 +78,65 @@
    "dup": 3
   },
   "open": []
+ },
+ "26": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 49650,
+   "PERIODIC": 350,
+   "OPEN": 0,
+   "dup": 0
+  },
+  "open": []
+ },
+ "28": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 49674,
+   "PERIODIC": 326,
+   "OPEN": 0,
+   "dup": 0
+  },
+  "open": []
+ },
+ "30": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 49768,
+   "PERIODIC": 232,
+   "OPEN": 0,
+   "dup": 0
+  },
+  "open": []
+ },
+ "32": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 49676,
+   "PERIODIC": 323,
+   "OPEN": 0,
+   "dup": 1
+  },
+  "open": []
+ },
+ "34": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 49940,
+   "PERIODIC": 60,
+   "OPEN": 0,
+   "dup": 0
+  },
+  "open": []
+ },
+ "36": {
+  "samples": 50000,
+  "counts": {
+   "STUCK": 49845,
+   "PERIODIC": 155,
+   "OPEN": 0,
+   "dup": 0
+  },
+  "open": []
  }
 }

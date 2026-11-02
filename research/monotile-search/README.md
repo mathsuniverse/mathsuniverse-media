@@ -141,3 +141,10 @@ One-off: `pip install modal` then `modal setup` (log in in the browser yourself)
 From this folder: `modal run modal_sieve.py --grid kite --nmin 6 --nmax 6` (smoke test, must give 85 free: 71 PERIODIC, 14 STUCK),
 then e.g. `modal run modal_sieve.py --grid kite --nmin 11 --nmax 11`. Results: results/modal/. Core logic: parallel_core.py
 (tested locally: kite n=6 matches the serial sieve exactly).
+
+## Guided random search on Modal (beyond exhaustive reach)
+`py -m modal run modal_explore.py --grid kite --nmin 8 --nmax 8 --samples 2000` (control: finds the hat; locally 400 draws found it)
+`py -m modal run modal_explore.py --grid tetrakis --nmin 17 --nmax 24 --samples 50000` (45° grid, silver directions)
+Core: explore_core.py (random growth with a branchiness bias, then engine.classify + one dovetail stage). Results: results/explore/.
+Why not "invert the silver rule": a 2D product of the silver word deformed onto the square grid is made of rectangles,
+and any shape that fills a rectangle tiles periodically, so that construction can never give an aperiodic monotile.

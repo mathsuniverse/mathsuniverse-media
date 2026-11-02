@@ -7,3 +7,8 @@ families.py enumerates them (turn sequences, closure pruning, canonical up to cy
 edges 4: 2, 6: 12, 8: 50, 10: 336, 12: 3,674 families (odd edge counts cannot close).
 Each family is sieved at (a,b) = (1,0), (0,1), (1,1), (1,2), (2,1), (2,3), (3,2). HAT-LIKE = both ends PERIODIC and an interior shape OPEN.
 modal_families.py runs all of them.
+- First Modal attempt (14:10-14:50): only 15 families finished in 40 min; workers starved Modal's heartbeat (in-process SAT) and
+  the ends Tile(1,0)/(0,1) were often wrongly "not simple" (zero-length edges kept as duplicate vertices). First 15: all PERIODIC
+  in between; the regular-octagon family is PERIODIC at both ends and STUCK in between.
+- Fix: zero-length edges dropped; screening budget torus <= 8 tiles, disc R <= 4 (OPEN shapes get the full test later);
+  5 ratios; every family in its own child process with a 150 s cap. Local check: 1.1 s per family.

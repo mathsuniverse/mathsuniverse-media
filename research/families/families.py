@@ -54,8 +54,12 @@ def polygon(seq, a, b):
     pts = [(0, 0)]; x = y = 0
     for k in seq:
         L = a if k % 2 == 0 else b
-        x += DIRS[k][0] * L; y += DIRS[k][1] * L; pts.append((x, y))
-    P = Polygon(pts[:-1])
+        if L == 0: continue                         # an end of the family: that edge class collapses
+        x += DIRS[k][0] * L; y += DIRS[k][1] * L
+        if (x, y) != pts[-1]: pts.append((x, y))
+    if pts[-1] == pts[0]: pts = pts[:-1]
+    if len(pts) < 3: return None
+    P = Polygon(pts)
     return P if P.is_valid and P.area > 0 else None
 
 
@@ -81,7 +85,7 @@ def families(m):
     return out
 
 
-def test_family(seq, ratios=((1, 0), (0, 1), (1, 1), (1, 2), (2, 1), (2, 3), (3, 2)), tcap=12, rcap=6):
+def test_family(seq, ratios=((1, 0), (0, 1), (1, 1), (1, 2), (2, 1)), tcap=8, rcap=4):
     import grids as G, engine as E_
     g = G.get('tetrakis'); res = {}
     for a, b in ratios:

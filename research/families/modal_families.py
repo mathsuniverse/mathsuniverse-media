@@ -13,18 +13,31 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 image = (modal.Image.debian_slim(python_version="3.11").pip_install("python-sat==1.9.dev17", "shapely")
          .add_local_dir(HERE, "/root/ms", ignore=["results/**", "logs/**", "open/**", "__pycache__/**", "*.png"]))
 app = modal.App("families", image=image)
-RATIOS = ((1, 0), (0, 1), (1, 1), (1, 2), (2, 1), (2, 3), (3, 2))
+RATIOS = ((1, 0), (0, 1), (1, 1), (1, 2), (2, 1))
+
+
+def _one(f, q):
+    sys.path.insert(0, "/root/ms")
+    import families as Fm
+    try:
+        r = Fm.test_family(tuple(f), RATIOS)
+        q.put({f'{a},{b}': v for (a, b), v in r.items()})
+    except Exception as e:
+        q.put({'error': repr(e)})
 
 
 @app.function(cpu=1.0, memory=4096, timeout=3000, retries=1, max_containers=100)
-def test_chunk(chunk):
-    sys.path.insert(0, "/root/ms")
-    import families as Fm
+def test_chunk(chunk, per_family_s=150):
+    # every family runs in its own child process, so a long solve cannot starve Modal's heartbeat; slow families time out
+    import multiprocessing as mp, queue
     out = []
     for f in chunk:
-        try: r = Fm.test_family(tuple(f), RATIOS)
-        except Exception as e: r = {'error': repr(e)}
-        out.append((f, {f'{a},{b}': v for (a, b), v in r.items()} if 'error' not in r else r))
+        q = mp.Queue(); p = mp.Process(target=_one, args=(f, q)); p.start()
+        try:
+            r = q.get(timeout=per_family_s); p.join(5)
+        except queue.Empty:
+            p.kill(); p.join(); r = {'timeout': f'over {per_family_s}s'}
+        out.append((f, r))
     return out
 
 
@@ -36,13 +49,13 @@ def enumerate_families(mmax):
 
 
 @app.local_entrypoint()
-def main(mmax: int = 12, per: int = 15):
+def main(mmax: int = 12, per: int = 10):
     F = enumerate_families.remote(mmax)          # enumeration runs on Modal too, so nothing extra is needed on the PC
     chunks = [F[i:i + per] for i in range(0, len(F), per)]
     print(len(F), 'families in', len(chunks), 'jobs', flush=True)
     res, hits, hat = [], 0, 0
     path = os.path.join(HERE, "results", "families.json"); os.makedirs(os.path.dirname(path), exist_ok=True)
-    for part in test_chunk.map(chunks, order_outputs=False):
+    for part in test_chunk.map(chunks, order_outputs=False):        # each job saves when it returns
         for f, r in part:
             res.append(dict(seq=f, result=r))
             vals = list(r.values())

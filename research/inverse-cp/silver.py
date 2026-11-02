@@ -87,7 +87,7 @@ def build(R, B):
     return V, T, polys
 
 
-def solve(T, polys, B, r=5.0, Rz=12.0, limit=20, labels=None):
+def solve(T, polys, B, r=5.0, Rz=12.0, limit=20, labels=None, time_limit=None):
     pos = [p[0] for p in polys]
     lab = labels or [t[0] for t in T]
     L = sorted(set(lab), key=str)
@@ -124,13 +124,23 @@ def solve(T, polys, B, r=5.0, Rz=12.0, limit=20, labels=None):
         cl.append(lits)
         if len(lits) > 1: cl.extend(CardEnc.atmost(lits, 1, vpool=pool, encoding=EncType.seqcounter).clauses)
     sols = []
+    import threading
     with Solver(name='cd15', bootstrap_with=cl) as s:
-        while len(sols) < limit and s.solve():
+        timer = None
+        if time_limit:
+            timer = threading.Timer(time_limit, s.interrupt); timer.start()
+        while len(sols) < limit:
+            ok = s.solve_limited(expect_interrupt=True) if time_limit else s.solve()
+            if ok is None:
+                if timer: timer.cancel()
+                return sols, 'TIMEOUT after %ds (%d solutions so far)' % (time_limit, len(sols))
+            if not ok: break
             m = set(l for l in s.get_model() if l > 0)
             S = sorted(u for u in U if xu[u] in m)
             orient = {l: o for (l, o), v in y.items() if v in m}
             sols.append((S, orient))
             s.add_clause([-xu[u] for u in S] + [xu[u] for u in U if xu[u] not in m])
+        if timer: timer.cancel()
     return sols, f'{len(Z)} patch cells, {nU} unknown cells, {len(L)} labels'
 
 

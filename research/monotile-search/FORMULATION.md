@@ -314,3 +314,18 @@ finite tile sets; the uncountable freedom is in the tilings (one per x), not in 
 Open link to our targets: can a silver number appear not as a multiplier but as the slope the rows are forced into?
 Next: literature check (Kari 1996 "A small aperiodic set of Wang tiles"; Culik 1996; Eigen–Navarro–Prasad; Durand–Gamard–Grandjean),
 then a small implementation that builds the Wang tiles for a given (q_i, I) and tests them with our torus/disc SAT.
+
+### 21b. Literature check (2 Nov, 10:55)
+- Kari (1996, Discrete Math 160): the construction is stated for any positive rational q = n/m (a Mealy machine on balanced
+  representations, |states| = n + m − 1); aperiodicity: a vertical period forces a product of multipliers equal to 1. He uses 2 and 2/3 (14 tiles).
+- Eigen, Navarro, Prasad (MSRI Publ. 54, 2007): K-C set = 13 tiles for f(x) = 2x on [1/3,1), x/3 on [1,2). Section 6 generalises to any
+  piecewise multiplicative bijection g of an interval with positive rational multipliers q_i: Thm 17 (every two-sided orbit gives a tiling),
+  Thm 19 (aperiodic if x0 ≥ 1 and the q_i are multiplicatively independent), Thm 20 (relaxes x0 ≥ 1). No measure theory used.
+  Open there: whether every valid tiling comes from an orbit of g.
+  => our section-21 statement is essentially their Theorems 17/19. New ground would be measure-theoretic (frequencies, invariant
+     measures, entropy of the tilings) or the open converse.
+- Labbé, "Metallic mean Wang tiles II" (Forum Math. Sigma 13, 2025, open access): for EVERY n ≥ 1 an aperiodic set of (n+3)² Wang tiles
+  whose dynamics is a rotation by the n-th metallic mean β (x² − nx − 1) on the 2-torus, self-similar with inflation β; n = 1 is
+  Ammann's 16-tile set. So Razvan's metallic-family conjecture holds for Wang tiles: silver (n = 2) has a 25-tile aperiodic Wang set.
+  Consequence for our search: Wang tiles are squares with edge labels, so the jigsaw step on the square grid is direct.
+  New silver pipeline: Labbé T_2 (25 tiles) -> keyed jigsaw pieces -> inverse/single-shape search.

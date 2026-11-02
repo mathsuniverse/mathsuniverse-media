@@ -25,3 +25,5 @@ Solver (unknown shape within radius 5-6 + one orientation per label, every cell 
 - labels = tile type: all 18 rational-density stars -> no shape (exact UNSAT, ~1,400-1,800 patch cells, 320 unknown cells, 6 labels).
 - labels = tile type + 4 neighbour types (120 classes): (4,1,4,6) none, (3,1,2,7) none; remaining 16 running.
 - Note: each run rewrites results/silver_inverse.json; the type-only results above are from the terminal log. To fix: one file per scheme.
+- Neighbour labels, all 18 stars (Modal, 10:35-10:52, 15-min cap): proved no shape for (4,1,4,6) and (3,1,2,7); the other 16 hit the
+  15-minute cap (undecided; the printout says "none" but the message says TIMEOUT).

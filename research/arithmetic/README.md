@@ -20,3 +20,10 @@
   its family cut; no further candidate within 150 s (the cut makes the remaining search much harder).
 - Window labels for silver (inverse-cp/silver_window.py): star (3,1,3,6), 8 sectors: no shape (7.8 s); 8 sectors x 2 rings: no shape (70 s).
 - modal_both.py: 16 CEGAR jobs (4 tile sets x 4 sizes) + 16 window jobs (4 stars x 4 window splits), 20 min each.
+- modal_both.py results (12:56-13:28):
+  A (CEGAR) completed = space exhausted: every connected fitting shape repeats; number of repeat families cut in brackets:
+    Kari 14: L3 (2), L4x2 (14), L5 (0 = no fitting connected shape at all); x3/2&x1/2: L4x2 (5), L5 (0); x3&x1/2: L3 (28), L4x2 (9), L5 (0).
+    Timeouts: Kari L4; x3/2 L3, L4; x3 L4; all four silver-25 jobs.
+  B (silver window labels) proven none: (4,1,4,6) all four splits; (3,1,3,6) 8x1, 8x2; (2,1,4,5) 8x1. Others timed out.
+  Conclusion: in these frameworks the layout never forces the shape; all fitting shapes fall into a handful of repeat families.
+  Next: interpolating families (hat-style Tile(a,b)) on the 45-degree grid, axis edges length 1 vs diagonal edges length √2.

@@ -1,0 +1,537 @@
+[
+ {
+  "job": [
+   "B",
+   [
+    4,
+    1,
+    4,
+    6
+   ],
+   8,
+   1,
+   false
+  ],
+  "info": "1232 patch cells, 320 unknown cells, 8 labels",
+  "found": [],
+  "shapes": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    4,
+    1,
+    4,
+    6
+   ],
+   8,
+   2,
+   false
+  ],
+  "info": "1232 patch cells, 320 unknown cells, 16 labels",
+  "found": [],
+  "shapes": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    3,
+    1,
+    3,
+    6
+   ],
+   8,
+   1,
+   false
+  ],
+  "info": "1356 patch cells, 320 unknown cells, 8 labels",
+  "found": [],
+  "shapes": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    4,
+    1,
+    4,
+    6
+   ],
+   8,
+   2,
+   true
+  ],
+  "info": "1232 patch cells, 320 unknown cells, 49 labels",
+  "found": [],
+  "shapes": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    4,
+    1,
+    4,
+    6
+   ],
+   16,
+   2,
+   false
+  ],
+  "info": "1232 patch cells, 320 unknown cells, 32 labels",
+  "found": [],
+  "shapes": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    2,
+    1,
+    4,
+    5
+   ],
+   8,
+   1,
+   false
+  ],
+  "info": "1320 patch cells, 320 unknown cells, 8 labels",
+  "found": [],
+  "shapes": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    3,
+    1,
+    3,
+    6
+   ],
+   8,
+   2,
+   false
+  ],
+  "info": "1356 patch cells, 320 unknown cells, 16 labels",
+  "found": [],
+  "shapes": []
+ },
+ {
+  "job": [
+   "A",
+   "kari14",
+   3,
+   1
+  ],
+  "info": {
+   "L": 3,
+   "k": 1,
+   "size": 9,
+   "labels": "type",
+   "n_labels": 13,
+   "unknown": 44,
+   "patch": 196,
+   "aux": 30694,
+   "periodic_cuts": 2,
+   "cuts": 111,
+   "periodic": 2,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "x3/2_x1/2",
+   4,
+   2
+  ],
+  "info": {
+   "L": 4,
+   "k": 2,
+   "size": 8,
+   "labels": "type",
+   "n_labels": 17,
+   "unknown": 44,
+   "patch": 900,
+   "aux": 163840,
+   "periodic_cuts": 5,
+   "cuts": 205,
+   "periodic": 5,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "x3_x1/2",
+   3,
+   1
+  ],
+  "info": {
+   "L": 3,
+   "k": 1,
+   "size": 9,
+   "labels": "type",
+   "n_labels": 15,
+   "unknown": 44,
+   "patch": 196,
+   "aux": 33964,
+   "periodic_cuts": 28,
+   "cuts": 924,
+   "periodic": 28,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "x3/2_x1/2",
+   5,
+   1
+  ],
+  "info": {
+   "L": 5,
+   "k": 1,
+   "size": 25,
+   "labels": "type",
+   "n_labels": 17,
+   "unknown": 88,
+   "patch": 2601,
+   "aux": 298980,
+   "periodic_cuts": 0,
+   "cuts": 285,
+   "periodic": 0,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "x3_x1/2",
+   5,
+   1
+  ],
+  "info": {
+   "L": 5,
+   "k": 1,
+   "size": 25,
+   "labels": "type",
+   "n_labels": 15,
+   "unknown": 88,
+   "patch": 2601,
+   "aux": 263494,
+   "periodic_cuts": 0,
+   "cuts": 1814,
+   "periodic": 0,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "kari14",
+   5,
+   1
+  ],
+  "info": {
+   "L": 5,
+   "k": 1,
+   "size": 25,
+   "labels": "type",
+   "n_labels": 14,
+   "unknown": 88,
+   "patch": 2601,
+   "aux": 242950,
+   "periodic_cuts": 0,
+   "cuts": 1217,
+   "periodic": 0,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "x3_x1/2",
+   4,
+   2
+  ],
+  "info": {
+   "L": 4,
+   "k": 2,
+   "size": 8,
+   "labels": "type",
+   "n_labels": 15,
+   "unknown": 44,
+   "patch": 900,
+   "aux": 165392,
+   "periodic_cuts": 9,
+   "cuts": 299,
+   "periodic": 9,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "kari14",
+   4,
+   2
+  ],
+  "info": {
+   "L": 4,
+   "k": 2,
+   "size": 8,
+   "labels": "type",
+   "n_labels": 14,
+   "unknown": 44,
+   "patch": 900,
+   "aux": 144688,
+   "periodic_cuts": 14,
+   "cuts": 331,
+   "periodic": 14,
+   "stuck": 0,
+   "open": 0
+  },
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "kari14",
+   4,
+   1
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "x3_x1/2",
+   4,
+   1
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "x3/2_x1/2",
+   4,
+   1
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "silver25",
+   3,
+   1
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "silver25",
+   4,
+   1
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "silver25",
+   4,
+   2
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "silver25",
+   5,
+   1
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    3,
+    1,
+    3,
+    6
+   ],
+   16,
+   2,
+   false
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    3,
+    1,
+    3,
+    6
+   ],
+   8,
+   2,
+   true
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    2,
+    1,
+    4,
+    5
+   ],
+   8,
+   2,
+   false
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    2,
+    1,
+    4,
+    5
+   ],
+   16,
+   2,
+   false
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    2,
+    1,
+    4,
+    5
+   ],
+   8,
+   2,
+   true
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    1,
+    1,
+    4,
+    3
+   ],
+   8,
+   1,
+   false
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    1,
+    1,
+    4,
+    3
+   ],
+   8,
+   2,
+   false
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    1,
+    1,
+    4,
+    3
+   ],
+   16,
+   2,
+   false
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "B",
+   [
+    1,
+    1,
+    4,
+    3
+   ],
+   8,
+   2,
+   true
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ },
+ {
+  "job": [
+   "A",
+   "x3/2_x1/2",
+   3,
+   1
+  ],
+  "info": "TIMEOUT after 20 min",
+  "found": []
+ }
+]

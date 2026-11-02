@@ -32,7 +32,7 @@ def _one(f, ratios, tcap, rcap, q):
     import families as Fm
     try:
         r = Fm.test_family_hat(tuple(f), tcap=tcap, rcap=rcap) if ratios is None else Fm.test_family(tuple(f), ratios, tcap=tcap, rcap=rcap)
-        q.put({f'{a},{b}': v for (a, b), v in r.items()})
+        q.put({(k if isinstance(k, str) else f'{k[0]},{k[1]}'): v for k, v in r.items()})
     except Exception as e:
         q.put({'error': repr(e)})
 
@@ -76,7 +76,7 @@ def main(m: int = 14, max_straight: int = 1, per: int = 60, asym: bool = True):
             for k, v in r.items():
                 if v == 'OPEN' and ',' in k: todo.append((f, int(k.split(',')[0]), int(k.split(',')[1])))
         if len(res) % 3000 < per:
-            ends_ok = sum(1 for x in res if 'ends' not in x['result'])
+            ends_ok = sum(1 for x in res if '1,0' in x['result'])
             print(f'  screened {len(res)}/{len(F)}  both ends periodic: {ends_ok}  OPEN shapes so far {len(todo)}', flush=True)
             json.dump(res, open(os.path.join(HERE, "results", "families14_screen.json"), "w"))
     json.dump(res, open(os.path.join(HERE, "results", "families14_screen.json"), "w"))

@@ -4,3 +4,5 @@
 - inverse_wang.py: one unknown polyomino S per Wang tile (anchor L*(i,j)), orientation chosen per tile type, |S| = L².
   Trivial answers (shapes tiling by L·Z² alone) excluded. Control without that exclusion: solver finds them at once (5 shown, L=3).
   Result: L = 3 (reach 3.75) and L = 4 (reach 4.5): NO non-trivial shape. modal_wang.py sweeps L = 3..7, two reaches.
+- Modal sweep (11:10-11:22): proven no non-trivial shape for L=3 (reach 3.75, 4.8), L=4 (4.5, 5.9), L=5 (5.25), L=6 (6.0, 8.1);
+  TIMEOUT (undecided) for L=5 reach 6.95 and L=7 both reaches. No FOUND.

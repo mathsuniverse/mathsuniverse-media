@@ -290,3 +290,12 @@ three-term recurrence with trace μ⁴ + μ⁻⁴. So the counting side of the h
 Caveat from the data: the Spectre's field Q(√15) contains no metallic mean (n² + 4 = 15k² has no solution); its inflation 4+√15 is a
 sibling unit (x² − 8x + 1). Both known monotiles have sibling (norm +1) area inflations; metallic squares are siblings, but siblings
 are the wider family. The geometric side (one shape realising the ladder) is the open part.
+
+## 20. Inverse cut-and-project works on the hat; grids × fields (2 Nov, 07:35)
+Control result (research/inverse-cp): from the hat tiling's positions and orientations alone, a SAT solver over unknown cells
+returns the hat as the unique connected solution (4 solutions at radius 6, 8 at radius 9; the rest are disconnected).
+So the search moves from shapes to labelled point patterns (windows split into orientation pieces).
+Razvan (07:29): "there must be another solution involving silver, and one involving their interaction". Data pattern:
+hat = hexagonal grid field Q(√−3) with inflation field Q(√5); Spectre = field Q(√−3, √−5), real part Q(√15) = √3·√5: an interaction
+of the grid's √3 with the golden √5. Square/45° grid analogues: Q(i, √2) grid with √5 (hat-like) or √10 = √2·√5 (Spectre-like).
+Targets for the silver run: inflation fields Q(√2) (pure silver), Q(√10) (silver-golden interaction).

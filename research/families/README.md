@@ -12,3 +12,5 @@ modal_families.py runs all of them.
   in between; the regular-octagon family is PERIODIC at both ends and STUCK in between.
 - Fix: zero-length edges dropped; screening budget torus <= 8 tiles, disc R <= 4 (OPEN shapes get the full test later);
   5 ratios; every family in its own child process with a 150 s cap. Local check: 1.1 s per family.
+- 14:57 run, first two "HAT-LIKE" flags ([0,1,3,2,4,6,5,7] and its mirror-type twin [0,1,7,6,5,3,4,2], Tile(1,2), 52 cells): FALSE ALARMS.
+  Full test (torus <= 12, disc R <= 6): both STUCK at radius 5. The screen only went to R = 4. Every screen OPEN must be re-tested.

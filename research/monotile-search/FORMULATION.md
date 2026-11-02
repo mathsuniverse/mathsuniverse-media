@@ -280,3 +280,13 @@ e_{k−1} + e_{k+1} = 2cos(θ)·e_k. So inflation (multiplication by λ) is pure
 space: the Pisot condition is exactly what keeps the window finite. Every available inflation is an integer polynomial in
 S + S⁻¹, so λ ∈ Z[2cos(π/n)]: the finite-generator symmetry picture from section 3, now with a concrete integer matrix.
 A hierarchy-first search fixes M first; the cluster counts then follow from M acting on the generators.
+
+## 19. The ladder as linear terms in φ, and the metallic generalisation (Razvan, 2 Nov 07:18)
+φ² = φ + 1 gives φ^(2n) = F(2n−1) + F(2n)·φ (1+φ, 2+3φ, 5+8φ, 13+21φ). The hat's H-cluster ladder 4, 25, 169, 1156, 7921 = F(2k+1)²
+obeys a(k+1) = 7·a(k) − a(k−1) − 2, with 7 = φ⁴ + φ⁻⁴ (checked). Silver analogue: odd Pell numbers squared 1, 25, 841, 28561, 970225
+obey x(k+1) = 34·x(k) − x(k−1) − 8, ratio → (1+√2)⁴ = 33.97, with 34 = (1+√2)⁴ + (1+√2)⁻⁴ (checked). Every metallic mean μ (μ² = nμ + 1)
+gives the same arithmetic: μ^(2k) is linear in μ with generalised-Fibonacci coefficients, and squares of alternate terms satisfy a
+three-term recurrence with trace μ⁴ + μ⁻⁴. So the counting side of the hat replicates in every metallic family.
+Caveat from the data: the Spectre's field Q(√15) contains no metallic mean (n² + 4 = 15k² has no solution); its inflation 4+√15 is a
+sibling unit (x² − 8x + 1). Both known monotiles have sibling (norm +1) area inflations; metallic squares are siblings, but siblings
+are the wider family. The geometric side (one shape realising the ladder) is the open part.

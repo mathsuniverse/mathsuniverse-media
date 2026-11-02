@@ -22,3 +22,14 @@ Caveat: the hat is not an exact dissection of its metatiles (hats cross cluster 
 is stricter than needed; the honest target is a shape whose tilings are forced to be combinatorially Cyrenaic.
 Plan: (1) extract the edge-label version of the 36 tiles and check, with SAT, that labels alone still force non-repetition;
 (2) integer deformation + bump jigsaw; (3) shape search against (1)-(2) with the slope test as a filter.
+
+## Steps 1-2 done (2 Nov, 07:15-07:45)
+- Step 1 (labels.py): bars as edge labels. Distinct labels per edge direction: 6, 1, 15, 6. Tiles with 4 edge labels: exactly 36 types,
+  the paper's 36 again, now in purely combinatorial form (bar continuity = equal labels on a shared edge).
+- Step 2 (jigsaw.py): deformed onto the 45° grid with e0=(7,0), e1=(0,5), e2=(4,-4), e3=(4,4) (same orientation signs as E, so
+  a valid shape change); labels become teeth on edge slots. 36 jigsaw pieces of 78-140 tetrakis cells (pieces.json).
+  First attempt (teeth = label code only) FAILED: pieces could slide half an edge ("brick" offset) and tile periodically with period
+  lattice (5,4,3). Fix: an alignment key on every edge (tooth on the first slot, none on the last). After the fix:
+- tilesat.py: plain parallelograms tile periodically at period area 20; the 36 keyed jigsaw pieces have NO periodic tiling with period
+  area up to 40 (all lattices, 115 s). They tile the real Cyrenaic patch by construction (disc SAT for R >= 6 ran out of memory here;
+  move it to Modal). Larger periods still to test (Modal).

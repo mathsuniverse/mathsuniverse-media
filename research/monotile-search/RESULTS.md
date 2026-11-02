@@ -403,3 +403,7 @@ Over ALL coverings of a disc, the range of the minority-handedness share (whole 
 - hat: R=5 0.059..0.188, R=6 0.091..0.200, R=7 0.094..0.146, R=8 0.091..0.146: never near 1/2, closing on 1/(1+φ⁴) = 0.127. Forced.
 - periodic control kite11_00059: R=6 0.16..0.48, R=7 0.21..0.49: can be nearly balanced. Not forced.
 Runner for all near misses: modal_slope.py (results/slope/).
+- Seed-2 guided run finished (tetrakis even n=16..36, 550,000 new draws): 0 OPEN. Near misses now 343.
+- Slope test on all 343 near misses (Modal, 2 Nov ~06:50): 323 cannot cover a radius-5 disc (late-stuck shapes jam before),
+  1 achiral (skipped; likely the 12-block shape), 19 measured, all periodic with 8-tile blocks. Every one can reach a minority
+  share of 0.33-0.5 at R = 7, i.e. not forced (hat stays at 0.09-0.15). Tightest: an 18-triangle shape at 0.15..0.33. No slope signal.

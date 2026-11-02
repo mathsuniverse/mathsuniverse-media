@@ -48,7 +48,7 @@ def _guarded(f, ratios, tcap, rcap, limit):
 
 @app.function(cpu=1.0, memory=4096, timeout=3600, retries=1, max_containers=100)
 def screen(chunk):
-    return [(f, _guarded(f, None, 8, 5, 150)) for f in chunk]      # hat signature: ends first
+    return [(f, _guarded(f, None, 6, 5, 90)) for f in chunk]       # hat signature: ends first; torus <= 6 tiles, 90 s cap
 
 
 @app.function(cpu=2.0, memory=8192, timeout=1500, retries=1, max_containers=100)

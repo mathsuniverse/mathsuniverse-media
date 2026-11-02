@@ -26,7 +26,7 @@ def nbr_labels(grid):
     return lab
 
 
-def run(tiles, L=4, k=1, n=14, r=None, labels='type', limit=10, sieve=True, time_limit=None):
+def run(tiles, L=4, k=1, n=14, r=None, labels='type', limit=10, sieve=True, time_limit=None, cegar=False, tcap=16):
     assert (L * L) % k == 0
     size = L * L // k
     grid = SW.wang_sat(tiles, n, n)
@@ -76,6 +76,44 @@ def run(tiles, L=4, k=1, n=14, r=None, labels='type', limit=10, sieve=True, time
             for dj in range(-2 * L, 2 * L + 1):
                 Tt = [(a + di, b + dj, 0) for a, b, _ in S]
                 if all(t in Uset for t in Tt): s.add_clause([-xu[t] for t in Tt])
+    def cut_periodic(solver, S, sh, lat):
+        # every shape that tiles this same torus in this same arrangement is excluded (not only S itself)
+        ok, sol = E_.torus(sh, lat, return_patch=True)
+        a_, b_, c_ = lat
+        maps = []
+        for fi, (ti, tj) in sol:
+            for o in range(len(OPS)):
+                TS = E_.transform(g, S, OPS[o])
+                if G.normalise(TS) == sh.forms[fi]:
+                    mi = min(c[0] for c in TS); mj = min(c[1] for c in TS); maps.append((o, ti - mi, tj - mj)); break
+        lits = {}
+        for o, dx, dy in maps:
+            for u in U:
+                a = img_all[(o, u)]
+                z = E_._reduce(a[0] + dx, a[1] + dy, lat)
+                lits.setdefault(z, []).append(xu[u])
+        cells = {(i, j) for i in range(a_) for j in range(c_)}
+        big = []
+        for z in cells:
+            lz = lits.get(z, [])
+            if not lz: return                      # some cell can never be covered: no shape tiles this arrangement
+            nz = pool.id(('n', len(stats_cuts), z)); big.append(nz)
+            for l in set(lz): solver.add_clause([-nz, -l])
+            tz = pool.id(('t', len(stats_cuts), z)); big.append(tz); ors = []
+            cnt = {}
+            for l in lz: cnt[l] = cnt.get(l, 0) + 1
+            for l, m_ in cnt.items():
+                if m_ >= 2:
+                    ors.append(l)
+            ul = sorted(cnt)
+            for i1 in range(len(ul)):
+                for i2 in range(i1 + 1, len(ul)):
+                    q = pool.id(('q', len(stats_cuts), z, ul[i1], ul[i2])); ors.append(q)
+                    solver.add_clause([-q, ul[i1]]); solver.add_clause([-q, ul[i2]])
+            solver.add_clause([-tz] + ors)
+        solver.add_clause(big); stats_cuts.append(lat)
+    stats_cuts = []
+    img_all = {(o, u): E_.transform(g, [u], OPS[o])[0] for o in range(len(OPS)) for u in U}
     import time as _t
     t_end = _t.time() + (time_limit or 1e9)
     with Solver(name='cd15', bootstrap_with=cl) as s:
@@ -93,18 +131,22 @@ def run(tiles, L=4, k=1, n=14, r=None, labels='type', limit=10, sieve=True, time
                 s.add_clause([-xu[c] for c in comp] + [xu[b] for b in bound]); stats['cuts'] += 1; continue
             if not sieve:
                 sols.append(S); block(S); continue
-            r_ = E_.classify(g, S, tcap=16, rcap=8)
+            if cegar:
+                sh = E_.Shape(g, S); per = E_.periodic(sh, tcap)
+                if per:
+                    stats['periodic'] += 1; cut_periodic(s, S, sh, per[0]); block(S); continue
+            r_ = E_.classify(g, S, tcap=tcap, rcap=8)
             stats[r_['cls'].lower()] += 1
             if r_['cls'] == 'OPEN': sols.append(S)
             block(S)
-    return sols, dict(L=L, k=k, size=size, labels=labels, n_labels=len(L_), unknown=len(U), patch=len(Z), aux=len(aux), **stats)
+    return sols, dict(L=L, k=k, size=size, labels=labels, n_labels=len(L_), unknown=len(U), patch=len(Z), aux=len(aux), periodic_cuts=len(stats_cuts), **stats)
 
 
 if __name__ == '__main__':
     import kari as K, time
     T = K.tiles_for(K.KARI)
-    for L, k in ((3, 1), (4, 2), (4, 1)):
-        t = time.time(); sols, info = run(T, L=L, k=k, n=12, limit=3, time_limit=240)
+    for L, k in ((3, 1), (4, 2)):
+        t = time.time(); sols, info = run(T, L=L, k=k, n=12, limit=3, time_limit=240, cegar=True)
         print(info, 'solutions', len(sols), round(time.time() - t, 1), 's', flush=True)
         for S in sols:
             con = E_.is_connected(g, S)

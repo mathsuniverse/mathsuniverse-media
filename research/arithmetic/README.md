@@ -15,3 +15,8 @@
 - modal_loose.py results (2 Nov 12:15-12:35, 64 jobs): 568 connected shapes fitted a layout and all 568 tile PERIODICALLY
   (sieve); 0 OPEN, 0 stuck; 19,065 disconnected candidates cut. Neighbour labels and L = 6 mostly hit the time limit (one SAT call
   can overrun the in-search clock). Type labels at L = 3-5 completed for all four tile sets.
+- CEGAR ("can't repeat" built in, inverse_general.py cegar=True): when a fitting shape tiles a small torus, the whole family of shapes
+  that would tile that same torus arrangement is cut (not just the one shape). Local test (Kari, L=3): first periodic shape found and
+  its family cut; no further candidate within 150 s (the cut makes the remaining search much harder).
+- Window labels for silver (inverse-cp/silver_window.py): star (3,1,3,6), 8 sectors: no shape (7.8 s); 8 sectors x 2 rings: no shape (70 s).
+- modal_both.py: 16 CEGAR jobs (4 tile sets x 4 sizes) + 16 window jobs (4 stars x 4 window splits), 20 min each.

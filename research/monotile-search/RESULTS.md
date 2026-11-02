@@ -397,3 +397,9 @@ level 1: H = 4 hats (32 kites), P and F = 2 hats (16 kites, congruent), T = 1 ha
 Each cluster tested alone as a single tile (hierarchy/classify.json): every one is STUCK. P/F (2 hats) fails at R=2, H (4 hats) at R=3,
 level-2 P and H at R=3, level-2 F covers up to R=5 and fails at R=6. None can tile the plane by itself.
 So the hierarchy above the hat is always a multi-tile system; the single tile lives only at level 0. Consistent with Lemma C.
+
+## Forced-slope test (slope.py, 2 Nov 2026 ~07:00, Razvan: "are you searching for slopes?")
+Over ALL coverings of a disc, the range of the minority-handedness share (whole tilings can be mirrored, so only the minority counts):
+- hat: R=5 0.059..0.188, R=6 0.091..0.200, R=7 0.094..0.146, R=8 0.091..0.146: never near 1/2, closing on 1/(1+φ⁴) = 0.127. Forced.
+- periodic control kite11_00059: R=6 0.16..0.48, R=7 0.21..0.49: can be nearly balanced. Not forced.
+Runner for all near misses: modal_slope.py (results/slope/).

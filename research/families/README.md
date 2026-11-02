@@ -19,3 +19,7 @@ modal_families.py runs all of them.
   (verified: slices reproduce the whole set at 10 edges, 988 = 988). Counts with at most one straight pair: 8 edges 114, 10: 988;
   12: ~16-17k before the wrap fix. 14 edges expected ~10^5.
 - modal_families14.py: enumerate (49 slices) -> quick screen -> full re-test of every OPEN, one command; --m 16 for the next size.
+- 12-edge run complete (4,074 families, 20,355 shapes screened): PERIODIC 5,960 · STUCK 4,555 · degenerate/not simple 3,894 ·
+  screen timeout 1,181 · OPEN 56. Full re-test of the 56: 37 STUCK directly; 19 timed out (the full test searched tori before large
+  discs); a disc-only check shows all 19 jam at radius 5 (one at 6). Result: 0 of 56 survive. No candidate at 12 edges.
+- Lesson: discs first. families.disc_first() covers discs up to R (cheap, catches jams) before the periodic search; screen R <= 5.

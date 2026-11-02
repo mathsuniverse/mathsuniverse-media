@@ -92,7 +92,16 @@ def families(m, straight=False, first=None, max_straight=99):
     return out
 
 
-def test_family(seq, ratios=((1, 0), (0, 1), (1, 1), (1, 2), (2, 1)), tcap=8, rcap=4):
+def disc_first(g, cs, rmax=5, tcap=8):
+    """Discs first (cheap, catches jams), then the periodic search: the recheck showed tori-first wastes the time limit."""
+    import engine as E_
+    sh = E_.Shape(g, cs)
+    for R in [r for r in (1.5, 2, 3, 4, 5, 6, 7, 8) if r <= rmax]:
+        if not E_.cover(sh, R): return 'STUCK'
+    return 'PERIODIC' if E_.periodic(sh, tcap) else 'OPEN'
+
+
+def test_family(seq, ratios=((1, 0), (0, 1), (1, 1), (1, 2), (2, 1)), tcap=8, rcap=5):
     import grids as G, engine as E_
     g = G.get('tetrakis'); res = {}
     for a, b in ratios:
@@ -101,7 +110,7 @@ def test_family(seq, ratios=((1, 0), (0, 1), (1, 1), (1, 2), (2, 1)), tcap=8, rc
         P = P.simplify(0)
         cs = cells(P)
         if not cs or not E_.is_connected(g, cs): res[(a, b)] = 'degenerate'; continue
-        res[(a, b)] = E_.classify(g, cs, tcap=tcap, rcap=rcap)['cls']
+        res[(a, b)] = disc_first(g, cs, rcap, tcap)
     return res
 
 

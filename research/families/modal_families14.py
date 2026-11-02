@@ -47,7 +47,7 @@ def _guarded(f, ratios, tcap, rcap, limit):
 
 @app.function(cpu=1.0, memory=4096, timeout=3600, retries=1, max_containers=100)
 def screen(chunk):
-    return [(f, _guarded(f, RATIOS, 8, 4, 150)) for f in chunk]
+    return [(f, _guarded(f, RATIOS, 8, 5, 150)) for f in chunk]
 
 
 @app.function(cpu=2.0, memory=8192, timeout=1500, retries=1, max_containers=100)

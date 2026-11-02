@@ -1,7 +1,7 @@
 """Silver inverse cut-and-project on Modal: sweep edge stars with rational density and two label schemes.
 
     py -m modal run modal_silver.py                 # all stars below, labels = tile type and tile type + neighbours
-    py -m modal run modal_silver.py --schemes type --minutes 10   # fast pass, each job capped at 10 minutes
+    py -m modal run modal_silver.py --schemes type --minutes 10   # fast pass, each job capped at 10 minutes (max 13)
 
 For each star (a,b,c,d) with 2ac + 4bd = (a+c)(b+d) (so one tile copy per silver tile has a whole-number area), the solver
 looks for ONE shape S and one orientation per label that covers the deformed Ammann–Beenker patch exactly.
@@ -36,7 +36,8 @@ def run(star, scheme, r, rz, limit_s):
 
 
 @app.local_entrypoint()
-def main(r: float = 5.0, rz: float = 11.0, schemes: str = "type,type+neighbours", minutes: int = 20):
+def main(r: float = 5.0, rz: float = 11.0, schemes: str = "type,type+neighbours", minutes: int = 12):
+    minutes = min(minutes, 13)      # a solve longer than ~15 min starves Modal's 900 s heartbeat and the job is killed
     jobs = [(st, sc, r, rz, minutes * 60) for st in STARS for sc in schemes.split(",")]
     out = []
     path = os.path.join(HERE, "results", "silver_inverse.json")

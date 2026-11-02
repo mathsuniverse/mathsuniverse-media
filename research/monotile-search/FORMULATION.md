@@ -247,3 +247,17 @@ Step (2) is the hard, geometric part (the hat's clusters change shape between le
 Lemma A forces the √2 into cluster counts/orientations, never into a mix of two fixed piece types.
 Data step run first: near misses (periodic only with ≥ 8 tiles per block, or stuck only at disc radius ≥ 4) on the
 45° grid, the closest periodic relatives of an aperiodic tile, to look for clusters that repeat at two scales.
+
+## 16. Building the hierarchy search: what the clusters must look like (2 Nov, 02:40)
+Natural construction tried first: deform the silver (Ammann–Beenker) tiling onto the 45° grid. Its edge star can be any
+e0=(a,0), e1=(b,b), e2=(0,c), e3=(−d,d) with a,b,c,d positive integers (all six dets ab, ac, ad, bc, 2bd, cd > 0), so the
+deformed tiling stays valid and every tile becomes a lattice parallelogram with an integer area (the area ratio √2 that
+blocked dissection disappears). Then look for one shape S that dissects every tile type.
+Lemma C (kills it): if any union of copies of S tiles the plane periodically, so does S (cut every copy the same way).
+Every parallelogram tiles periodically, and so does any tile whose opposite edges are translates (bumped edges included).
+So no exact dissection of a deformed silver tiling, bumped or not, can give an aperiodic monotile.
+Consequence: every cluster type at every level must be unable to tile on its own periodically, so clusters must carry
+matching rules in their outline (the hat's T cluster is a single hat; its H, P, F clusters interlock).
+Next build: the silver tiles WITH matching rules (Ammann's A5 set: arrowed edges, with the square marked) turned into
+jigsaw pieces on the 45° grid (arrow = asymmetric bump), then a SAT search for one shape S that dissects every jigsaw piece,
+then the sieve on S. Needs the exact A5 / Socolar arrow data from a primary source before coding.

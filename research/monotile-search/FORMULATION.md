@@ -299,3 +299,18 @@ Razvan (07:29): "there must be another solution involving silver, and one involv
 hat = hexagonal grid field Q(√−3) with inflation field Q(√5); Spectre = field Q(√−3, √−5), real part Q(√15) = √3·√5: an interaction
 of the grid's √3 with the golden √5. Square/45° grid analogues: Q(i, √2) grid with √5 (hat-like) or √10 = √2·√5 (Spectre-like).
 Targets for the silver run: inflation fields Q(√2) (pure silver), Q(√10) (silver-golden interaction).
+
+## 21. The arithmetic route (Kari–Culik type), general statement (Razvan, 2 Nov 10:46: "if it works for 2 and 2/3 it can work with many others; prove an existence theorem")
+Kari's construction (1996; Culik's 13 Wang tiles): a row of tiles encodes the balanced (Beatty) representation of a real x
+(row sums ⌊(n+1)x⌋ − ⌊nx⌋); the tiles map the row of x to the row of f(x), with f(x) = 2x on [1/2, 1) and (2/3)x on [1, 2].
+A periodic tiling forces f^k(x) = x for some x, i.e. 2^a·(2/3)^b = 1, impossible. Existence: every x gives a valid stack of rows.
+Statement to prove (and to check against Kari, Durand et al. for what is already known):
+  Let q_1..q_k be positive rationals and I a compact interval; f(x) = q_i·x on pieces I_i covering I with f(I) ⊆ I.
+  If no product q_{i1}···q_{im} along a cycle equals 1, then the Kari construction gives a finite Wang tile set that
+  (i) tiles the plane (every x ∈ I yields one tiling: continuum many tilings) and (ii) admits no periodic tiling
+  (row averages are frequencies of the row's tiles, so a vertical period would give a periodic orbit of f).
+Counting fact: a finite tile set can only realise rational multipliers (finite carry states), and there are countably many
+finite tile sets; the uncountable freedom is in the tilings (one per x), not in the tile sets.
+Open link to our targets: can a silver number appear not as a multiplier but as the slope the rows are forced into?
+Next: literature check (Kari 1996 "A small aperiodic set of Wang tiles"; Culik 1996; Eigen–Navarro–Prasad; Durand–Gamard–Grandjean),
+then a small implementation that builds the Wang tiles for a given (q_i, I) and tests them with our torus/disc SAT.

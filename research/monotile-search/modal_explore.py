@@ -3,6 +3,7 @@
 Run from this folder (same setup as modal_sieve.py):
     py -m modal run modal_explore.py --grid kite --nmin 8 --nmax 8 --samples 2000        # control: must find the hat
     py -m modal run modal_explore.py --grid tetrakis --nmin 17 --nmax 24 --samples 50000  # the silver-direction grid
+    py -m modal run modal_explore.py --grid tetrakis --nmin 26 --nmax 36 --step 2 --samples 50000   # even sizes only
 
 Each worker draws random shapes of size n (growth with a random bias toward branchy outlines), tests each with the
 three-outcome sieve (STUCK / PERIODIC / OPEN) and re-tests survivors with a bigger budget. Only OPEN shapes come back;
@@ -35,12 +36,12 @@ def chunk(grid, n, seed, count):
 
 @app.local_entrypoint()
 def main(grid: str = "tetrakis", nmin: int = 17, nmax: int = 17, samples: int = 20000, per_call: int = 250,
-         seed: int = 1):
+         seed: int = 1, step: int = 1):
     out_dir = os.path.join(HERE, "results", "explore")
     os.makedirs(out_dir, exist_ok=True)
     path = os.path.join(out_dir, f"{grid}.json")
     res = json.load(open(path)) if os.path.exists(path) else {}
-    for n in range(nmin, nmax + 1):
+    for n in range(nmin, nmax + 1, step):
         calls = max(1, samples // per_call)
         args = [(grid, n, seed * 1_000_003 + n * 10_007 + i, per_call) for i in range(calls)]
         tot = {"STUCK": 0, "PERIODIC": 0, "OPEN": 0, "dup": 0}

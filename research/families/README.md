@@ -33,3 +33,6 @@ modal_families.py runs all of them.
 - 144,512 fail the ends test (an end is degenerate, jams, or has no small period). Logged as a ValueError by a label bug, since fixed.
 - 8,853 have both ends periodic. In-between shapes Tile(1,1), Tile(1,2), Tile(2,1): 7,884 families all STUCK, 969 all PERIODIC, **0 OPEN**.
 - 1,615 timed out (90 s cap); re-test with modal_timeouts14.py (10 min cap).
+- Timeout re-test (10 min cap): 1,255 resolved — 1,202 middle all STUCK, 51 all PERIODIC, 2 flagged OPEN at R<=6:
+  (0,1,0,1,0,3,2,4,5,4,5,7,4,6) and (0,1,0,1,0,6,4,7,5,4,5,4,2,3), Tile(1,2), 100 cells. Both cover R=6 but jam at R=7 (STUCK, Heesch-type near-misses).
+  360 still time out.

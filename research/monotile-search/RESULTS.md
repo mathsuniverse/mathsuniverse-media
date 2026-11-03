@@ -468,3 +468,10 @@ Periodic share by threshold k: k = 1: 24.1 % (6,235 shapes), k = 2: 3.5 % (5,973
 Free-placement engine (free.py, Z[zeta8] / Z[zeta12] exact): first version works for the square control (cover + torus),
 but edge-to-edge candidate generation does not terminate for tiles with 45-degree corners (the module is dense) -> needs a
 backtracking design (in progress).
+
+## Spectre rule: mirrors forbidden (3 Nov 2026)
+Every stored shape that tiles periodically WITH mirrors (53,471: kite 13,420, tetrakis 13,251, silverkite 26,204 incl.
+families, drafter 491, silverdrafter 105) re-tested with rotations only: 33,900 still PERIODIC, 19,164 STUCK (need mirrors to
+tile at all), 407 achiral (unchanged), **0 OPEN**. Control: hat without mirrors -> STUCK (correct: hat tilings need mirrored hats).
+Note: Tile(1,1) itself (the Spectre's polygon) is not a polyform on any grid, so grid searches cannot contain the Spectre case;
+the free-placement engine is needed for that.

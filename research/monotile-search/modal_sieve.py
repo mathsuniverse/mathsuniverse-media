@@ -37,7 +37,7 @@ def _core():
     return parallel_core
 
 
-@app.function(cpu=2.0, memory=8192, timeout=3 * 3600)
+@app.function(cpu=2.0, memory=32768, timeout=3 * 3600)
 def enumerate_reps(grid: str, n: int):
     return _core().enumerate_reps(grid, n)
 

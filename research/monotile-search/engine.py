@@ -98,7 +98,7 @@ def _extra_Ls(g):
     """Candidate linear parts (rotation by 30k, optional reflection) that are not linear
     parts of grid symmetries."""
     have = {lab[:2] for lab, _, _ in g.ops}
-    return [(k, f, L) for k, f, L in G.CANDIDATE_L if (k, f) not in have]
+    return [(k, f, L) for k, f, L in g.cands if (k, f) not in have]
 
 
 def congruent_forms(g, cells, exact=True):

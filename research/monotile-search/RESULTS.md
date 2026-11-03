@@ -407,3 +407,23 @@ Runner for all near misses: modal_slope.py (results/slope/).
 - Slope test on all 343 near misses (Modal, 2 Nov ~06:50): 323 cannot cover a radius-5 disc (late-stuck shapes jam before),
   1 achiral (skipped; likely the 12-block shape), 19 measured, all periodic with 8-tile blocks. Every one can reach a minority
   share of 0.33-0.5 at R = 7, i.e. not forced (hat stays at 0.09-0.15). Tightest: an 18-triangle shape at 0.15..0.33. No slope signal.
+
+## Silver kite grid (added 3 Nov 2026)
+
+Grid `silverkite`: the [4.8.8] truncated square tiling with every regular octagon cut from its centre to the edge midpoints
+into 8 **silver kites** (angles 45-90-135-90; sides 1+sqrt2 and 1, ratio = the silver mean) and every square cut into 4 unit
+squares. The 8-fold analogue of the hat's kite grid (hexagon -> 6 kites with angles 60-90-120-90, side ratio sqrt3).
+Exact arithmetic in Q(sqrt2); point group p4m (8), plus off-group 45-degree turns inside an octagon (handled as congruent copies).
+Every on-grid tiling uses exactly 2 kites per square, so only shapes with kites = 2 x squares (n = 3, 6, 9, 12, ...) can tile.
+
+| n | free | STUCK | PERIODIC | OPEN |
+|---|---|---|---|---|
+| 1 | 2 | 2 | 0 | 0 |
+| 2 | 4 | 4 | 0 | 0 |
+| 3 | 9 | 6 | 3 | 0 |
+| 4 | 27 | 27 | 0 | 0 |
+| 5 | 71 | 71 | 0 | 0 |
+| 6 | 226 | 178 | 48 | 0 |
+| 7 | 685 | 685 | 0 | 0 |
+| 8 | 2258 | 2258 | 0 | 0 |
+| 9 | 7351 | 7331 | 20 | 0 |

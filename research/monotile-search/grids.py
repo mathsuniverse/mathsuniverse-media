@@ -46,56 +46,66 @@ R3F = math.sqrt(3.0)
 # ---------------------------------------------------------------- Q(sqrt3)
 
 class Q:
-    """a + b*sqrt(3), a and b rational (exact)."""
-    __slots__ = ('a', 'b')
+    """a + b*sqrt(d), a and b rational (exact); d = 3 by default, d = 2 on the 8-fold (silver) grids.
+    A rational (b = 0) combines with either field; mixing sqrt2 and sqrt3 parts is an error."""
+    __slots__ = ('a', 'b', 'd')
 
-    def __init__(self, a=0, b=0):
+    def __init__(self, a=0, b=0, d=3):
         self.a = a if isinstance(a, Fr) else Fr(a)
         self.b = b if isinstance(b, Fr) else Fr(b)
+        self.d = d
+
+    def _dd(self, o):
+        if self.b == 0:
+            return o.d
+        if o.b == 0 or o.d == self.d:
+            return self.d
+        raise ValueError('mixing sqrt%d and sqrt%d' % (self.d, o.d))
 
     def __add__(self, o):
         o = _q(o)
-        return Q(self.a + o.a, self.b + o.b)
+        return Q(self.a + o.a, self.b + o.b, self._dd(o))
     __radd__ = __add__
 
     def __sub__(self, o):
         o = _q(o)
-        return Q(self.a - o.a, self.b - o.b)
+        return Q(self.a - o.a, self.b - o.b, self._dd(o))
 
     def __rsub__(self, o):
         return _q(o) - self
 
     def __neg__(self):
-        return Q(-self.a, -self.b)
+        return Q(-self.a, -self.b, self.d)
 
     def __mul__(self, o):
         o = _q(o)
-        return Q(self.a * o.a + 3 * self.b * o.b, self.a * o.b + self.b * o.a)
+        d = self._dd(o)
+        return Q(self.a * o.a + d * self.b * o.b, self.a * o.b + self.b * o.a, d)
     __rmul__ = __mul__
 
     def inv(self):
-        d = self.a * self.a - 3 * self.b * self.b
-        assert d != 0
-        return Q(self.a / d, -self.b / d)
+        n = self.a * self.a - self.d * self.b * self.b
+        assert n != 0
+        return Q(self.a / n, -self.b / n, self.d)
 
     def __truediv__(self, o):
         return self * _q(o).inv()
 
     def __eq__(self, o):
         o = _q(o)
-        return self.a == o.a and self.b == o.b
+        return self.a == o.a and self.b == o.b and (self.b == 0 or self.d == o.d)
 
     def __hash__(self):
-        return hash((self.a, self.b))
+        return hash((self.a, self.b, self.d if self.b else 0))
 
     def __float__(self):
-        return float(self.a) + float(self.b) * R3F
+        return float(self.a) + float(self.b) * math.sqrt(self.d)
 
     def is_int(self):
         return self.b == 0 and self.a.denominator == 1
 
     def __repr__(self):
-        return f'({self.a}+{self.b}r3)'
+        return f'({self.a}+{self.b}r{self.d})'
 
 
 def _q(x):
@@ -103,6 +113,7 @@ def _q(x):
 
 
 S3 = Q(0, 1)
+S2 = Q(0, 1, 2)
 HALF = Q(Fr(1, 2))
 
 
@@ -179,6 +190,17 @@ def matmul(A, B):
 # all 24 candidate linear parts: rotation k*30 deg, optionally after reflection in x-axis
 CANDIDATE_L = [(k, f, matmul(rot(k), REFL) if f else rot(k)) for f in (0, 1) for k in range(12)]
 
+# 8-fold: rotation by 45 deg * k (exact in Q(sqrt2)), optionally after reflection; label k counts 45-degree steps
+_C8 = [Q(1), S2 * Fr(1, 2), Q(0), S2 * Fr(-1, 2), Q(-1), S2 * Fr(-1, 2), Q(0), S2 * Fr(1, 2)]
+_S8 = [_C8[(k - 2) % 8] for k in range(8)]
+
+
+def rot8(k):
+    return ((_C8[k % 8], -_S8[k % 8]), (_S8[k % 8], _C8[k % 8]))
+
+
+CANDIDATE_L8 = [(k, f, matmul(rot8(k), REFL) if f else rot8(k)) for f in (0, 1) for k in range(8)]
+
 
 def eis(a, b):
     """Eisenstein integer a + b*w (w = e^{i pi/3}) as an exact Cartesian point."""
@@ -188,8 +210,9 @@ def eis(a, b):
 # ---------------------------------------------------------------- the grid
 
 class Grid:
-    def __init__(self, name, basis, protos, laves='', cellname='cell', unit=None, notes=''):
+    def __init__(self, name, basis, protos, laves='', cellname='cell', unit=None, notes='', cands=None):
         self.name = name
+        self.cands = cands or CANDIDATE_L
         self.laves = laves
         self.cellname = cellname
         self.notes = notes
@@ -317,7 +340,7 @@ class Grid:
         self.ops = []        # full symmetries: (label, M, table list)
         self.partial = []    # partial congruences: (label, M, table dict, domain frozenset)
         seen_full = set()
-        for k, f, L in CANDIDATE_L:
+        for k, f, L in self.cands:
             M = self._lattice_matrix(L)
             if M is None:
                 continue
@@ -514,7 +537,31 @@ def make_floret():
     raise RuntimeError('floret construction failed')
 
 
+def make_silverkite():
+    """[4.8.8] truncated square tiling with every octagon cut (centre to edge midpoints) into 8 silver kites
+    (angles 45, 90, 135, 90; sides 1+sqrt2 and 1) and every square cut into 4 unit squares.
+    Edge length of the octagon = 2, apothem a = 1+sqrt2; lattice spacing 2a."""
+    a = Q(1, 1, 2)
+    one = Q(1)
+    O = (Q(0), Q(0))
+    V = [(one, a), (-one, a), (-a, one), (-a, -one), (-one, -a), (one, -a), (a, -one), (a, one)]   # octagon vertices, ccw from 67.5 deg
+    # edge midpoints, ccw starting at 90 deg: midpoint k sits between V[k-1] and V[k]
+    Mi = [((V[k - 1][0] + V[k][0]) * Fr(1, 2), (V[k - 1][1] + V[k][1]) * Fr(1, 2)) for k in range(8)]
+    protos = [[O, Mi[k], V[k], Mi[(k + 1) % 8]] for k in range(8)]
+    C = (a, a)                                  # centre of the diamond square between four octagons
+    r = Q(0, 1, 2)                               # its half-diagonal sqrt2
+    Dv = [(C[0] + r, C[1]), (C[0], C[1] + r), (C[0] - r, C[1]), (C[0], C[1] - r)]
+    Dm = [((Dv[k][0] + Dv[(k + 1) % 4][0]) * Fr(1, 2), (Dv[k][1] + Dv[(k + 1) % 4][1]) * Fr(1, 2)) for k in range(4)]
+    for k in range(4):
+        protos.append([C, Dm[k - 1], Dv[k], Dm[k]])
+    L = a * 2
+    return Grid('silverkite', ((L, Q(0)), (Q(0), L)), protos, '[4.8.8] split', 'silver kite / square',
+                notes='octagon -> 8 silver kites (sides 1+sqrt2, 1), square -> 4 unit squares; 8-fold partial congruences',
+                cands=CANDIDATE_L8)
+
+
 GRIDS = {
+    'silverkite': make_silverkite,
     'square': make_square, 'hex': make_hex, 'tri': make_tri, 'kite': make_kite,
     'drafter': make_drafter, 'rhomb': make_rhomb, 'tetrakis': make_tetrakis,
     'triakis': make_triakis, 'cairo': make_cairo, 'prismatic': make_prismatic, 'floret': make_floret,
@@ -583,7 +630,7 @@ def check_symmetries(g, W=2):
     table predicts, vertex by vertex (re-derives the affine map from the table)."""
     for lab, M, tab in g.ops:
         k, f, _ = lab
-        L = matmul(rot(k), REFL) if f else rot(k)
+        L = next(L for k2, f2, L in g.cands if (k2, f2) == (k, f))
         # recover s from type 0
         s = psub(g.cell_centre(tab[0]), lin(L, g.cent[0]))
         for i in range(-W, W + 1):

@@ -33,7 +33,7 @@ def exact_congruent(g, P, Qc):
     def near(x, y):
         # binary-search-free float membership test (cheap pre-filter only)
         return any(abs(x - a) < 1e-6 and abs(y - b) < 1e-6 for a, b in qcf)
-    for k, f, L in G.CANDIDATE_L:
+    for k, f, L in g.cands:
         Lf = [[float(L[0][0]), float(L[0][1])], [float(L[1][0]), float(L[1][1])]]
         lc = G.lin(L, p0c)
         lcf = G.pf(lc)

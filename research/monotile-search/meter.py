@@ -6,12 +6,17 @@ from grids import normalise
 
 
 def handed(g, cells):
-    """normalised forms reachable without reflection."""
-    out = set()
-    for (k, f, _), M, tab in g.ops:
-        if f == 0:
-            out.add(normalise(E.transform(g, cells, (M, tab))))
-    return out
+    """normalised forms reachable without reflection (grid rotations, plus off-group turns such as
+    45 degrees inside an octagon on the silver kite grid)."""
+    rots = [(M, tab) for (k, f, _), M, tab in g.ops if f == 0]
+    base = [list(cells)]
+    saved = g.cands
+    try:
+        g.cands = [c for c in saved if c[1] == 0]
+        base += [list(h) for h in E.congruent_forms(g, cells)]
+    finally:
+        g.cands = saved
+    return {normalise(E.transform(g, b, op)) for b in base for op in rots}
 
 
 def ratio(g, cells, R, inner=None):

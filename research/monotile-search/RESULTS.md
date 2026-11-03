@@ -436,3 +436,8 @@ Every on-grid tiling uses exactly 2 kites per square, so only shapes with kites 
 | drafter | 15 | 93,749 | 93,711 | 38 | 0 |
 | drafter | 16 | 237,035 | 236,581 | 453 | 1 = the hat (drafter16_06068 = hat's 8 kites) |
 All certificates re-checked, 0 failures. Meter control on Modal: hat ratios 6.594, 6.786, 6.730 (R 12/18/24) -> golden phi^4.
+| 12 | 285,181 | 277,508 | 7,673 | 0 |
+| 15 (balanced only: 10 kites + 5 squares) | 2,437,889 symmetry classes | 2,430,182 | 7,707 | 0 |
+n=12 and n=15 on Modal, all certificates re-checked (0 failures). n=15 count reproduced independently (local run, same 2,437,889).
+Sizes not divisible by 3 (and unbalanced shapes) cannot tile this grid at all. **Conclusion: no aperiodic monotile on the
+silver kite grid with area up to 5 x (1+sqrt2)^2.**

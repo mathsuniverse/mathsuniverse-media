@@ -237,14 +237,31 @@ def placements_hitting(forms, region):
     return pl
 
 
-class Shape:
-    """A polyform with its placement forms precomputed."""
+def rotation_forms(g, cells):
+    """Normalised forms reachable WITHOUT reflection: grid rotations, plus off-group turns (e.g. 45 deg inside an octagon)."""
+    rots = [(M, tab) for (k, f, _), M, tab in g.ops if f == 0]
+    base = [list(cells)]
+    saved = g.cands
+    try:
+        g.cands = [c for c in saved if c[1] == 0]
+        base += [list(h) for h in congruent_forms(g, cells)]
+    finally:
+        g.cands = saved
+    return {normalise(transform(g, b, op)) for b in base for op in rots}
 
-    def __init__(self, g, cells):
+
+class Shape:
+    """A polyform with its placement forms precomputed. chiral=True: mirror images are not allowed (Spectre rule)."""
+
+    def __init__(self, g, cells, chiral=False):
         self.g = g
         self.cells = tuple(sorted(tuple(c) for c in cells))
         self.n = len(self.cells)
         fs = all_forms(g, self.cells)
+        if chiral:
+            keep = rotation_forms(g, self.cells)
+            fs = [(f, tag) for f, tag in fs if f in keep]
+            self.achiral = len(keep) == len(all_forms(g, self.cells))
         self.forms = [f for f, _ in fs]
         self.n_cong = sum(1 for _, tag in fs if tag == 'cong')
 
@@ -623,12 +640,12 @@ def heesch(sh, kmax=5, time_budget=None):
 RADII = (1.5, 2, 3, 4, 5, 6, 8, 10, 12, 15)
 
 
-def classify(g, cells, tcap=12, rcap=6, kmax=0, hbudget=60, quick_R=1.5, tmin=0, rmin=None, time_limit=None):
+def classify(g, cells, tcap=12, rcap=6, kmax=0, hbudget=60, quick_R=1.5, tmin=0, rmin=None, time_limit=None, chiral=False):
     """Three-outcome test.  Returns a record with cls in {'STUCK', 'PERIODIC', 'OPEN'}.
     tmin / rmin: tori with <= tmin tiles and radii <= rmin were already tested (dovetail
     stage), so only the new part of the budget is searched."""
     t0 = time.time()
-    sh = Shape(g, cells)
+    sh = Shape(g, cells, chiral=chiral)
     rec = {'cells': [list(c) for c in sh.cells], 'n': sh.n, 'n_forms': len(sh.forms), 'n_cong_forms': sh.n_cong}
     rs = [r for r in RADII if r <= rcap and (rmin is None or r > rmin)]
     if rcap not in rs and (rmin is None or rcap > rmin):

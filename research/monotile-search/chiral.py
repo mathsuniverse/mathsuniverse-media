@@ -8,6 +8,32 @@ import gzip, json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
+def stream_records(path, want=b'PERIODIC'):
+    """Records of a big gzipped JSON array, read piece by piece (silverkite15 has 2.4 million); only those containing
+    `want` are parsed. Records are flat objects (no nested {}), so braces mark their ends."""
+    buf = b''
+    with gzip.open(path, 'rb') as f:
+        while True:
+            chunk = f.read(1 << 22)
+            if not chunk:
+                break
+            buf += chunk
+            start = 0
+            while True:
+                a = buf.find(b'{', start)
+                if a < 0:
+                    buf = b''; break
+                b = buf.find(b'}', a)
+                if b < 0:
+                    buf = buf[a:]; break
+                rec = buf[a:b + 1]
+                if want in rec:
+                    yield json.loads(rec)
+                start = b + 1
+            else:
+                pass
+
+
 def load_periodic():
     """(grid, cells) for every PERIODIC shape in the stored results (local sieves, Modal sieves, silver families)."""
     out = []
@@ -23,7 +49,7 @@ def load_periodic():
         for fn in sorted(os.listdir(M)):
             if fn.endswith('_shapes.json.gz'):
                 grid = fn[:-len('_shapes.json.gz')].rstrip('0123456789')
-                for r in json.load(gzip.open(os.path.join(M, fn), 'rt')):
+                for r in stream_records(os.path.join(M, fn)):
                     if r.get('cls') == 'PERIODIC':
                         out.append((grid, r['cells']))
     for fn in ('silver_families12.json', 'silver_families14.json'):

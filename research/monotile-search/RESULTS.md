@@ -463,3 +463,8 @@ Targeted random search (ab_explore.py / modal_target.py): control on kites n = 8
 12-edge outlines (11,426 families) x edge lengths {1, 2, 1+sqrt2, 2+sqrt2, 2+2sqrt2} x 23 start vertices -> 14,296 distinct
 balanced grid shapes (12 to 78 cells). All settled: 12,562 STUCK, 1,734 PERIODIC, **0 OPEN**.
 Periodic share by threshold k: k = 1: 24.1 % (6,235 shapes), k = 2: 3.5 % (5,973), k = 4: 1.1 % (2,088). Latest jams at R = 5.
+14-edge outlines (156,274 families) -> 188,577 distinct balanced grid shapes (12 to ~90 cells); all settled
+(last progress line 188,017: 178,848 STUCK, 9,169 PERIODIC), **0 OPEN** (Razvan, 14:17).
+Free-placement engine (free.py, Z[zeta8] / Z[zeta12] exact): first version works for the square control (cover + torus),
+but edge-to-edge candidate generation does not terminate for tiles with 45-degree corners (the module is dense) -> needs a
+backtracking design (in progress).

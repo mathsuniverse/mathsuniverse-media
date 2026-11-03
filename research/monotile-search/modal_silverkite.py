@@ -19,12 +19,14 @@ app = modal.App("silverkite", image=image)
 
 
 @app.function(cpu=4.0, memory=65536, timeout=6 * 3600)
-def enumerate_balanced(n: int):
+def enumerate_balanced(n: int, merge: bool = False):
     sys.path.insert(0, "/root/ms")
     import capped, engine as E, grids as G
     g = G.get('silverkite')
     level = capped.enumerate_capped(g, n)
-    reps = [rep for rep, _ in E.free_classes(g, level)]
+    # merging 45-degree copies costs ~2 ms per shape on one machine (over an hour at n=15) and merged nothing
+    # up to n=9, so by default every symmetry class is tested; a rare duplicate is just tested twice.
+    reps = [rep for rep, _ in E.free_classes(g, level)] if merge else level
     return [[list(c) for c in rep] for rep in reps], len(level)
 
 
@@ -43,11 +45,11 @@ def verify(grid, recs):
 
 
 @app.local_entrypoint()
-def main(n: int = 15, chunk: int = 40):
+def main(n: int = 15, chunk: int = 40, merge: bool = False):
     import parallel_core as P
     fns = {"classify": classify, "verify": verify}
     mapper = lambda f, args: list(fns[f].starmap(args))  # noqa: E731
-    reps, n_sym = enumerate_balanced.remote(n)
+    reps, n_sym = enumerate_balanced.remote(n, merge)
     print(f"silverkite n={n}: {len(reps)} balanced shapes ({2 * (n // 3)} kites + {n // 3} squares), testing ...", flush=True)
     summary, recs = P.run_sieve("silverkite", n, reps, n_sym, mapper, chunk=chunk)
     summary['note'] = 'balanced shapes only (kites = 2 x squares); all others cannot tile the grid'

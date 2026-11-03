@@ -24,29 +24,28 @@ from shapely.geometry import Polygon
 # ---------------------------------------------------------------- the module Z[zeta_N]
 
 class Ring:
+    # z^4 in the basis 1, z, z^2, z^3 (minimal polynomial of the primitive N-th root of unity, degree 4)
+    Z4 = {8: (-1, 0, 0, 0),            # x^4 + 1
+          10: (-1, 1, -1, 1),          # x^4 - x^3 + x^2 - x + 1
+          12: (-1, 0, 1, 0)}           # x^4 - x^2 + 1
+
     def __init__(self, N):
-        assert N in (8, 12)
+        assert N in self.Z4
         self.N = N
-        # z^k for k = 0..N-1 in the basis 1, z, z^2, z^3
-        if N == 8:                      # z^4 = -1
-            base = [(1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)]
-            self.pow = base + [tuple(-c for c in b) for b in base]
-        else:                           # z^4 = z^2 - 1  (minimal polynomial x^4 - x^2 + 1)
-            p = [(1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)]
-            for k in range(4, 12):
-                a = self.mulz(p[k - 1])
-                p.append(a)
-            self.pow = p
+        p = [(1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)]
+        for k in range(4, N):
+            p.append(self.mulz(p[k - 1]))
+        self.pow = p
         self.cs = [(math.cos(2 * math.pi * k / N), math.sin(2 * math.pi * k / N)) for k in range(4)]
         # rotation by z^r and conjugation as integer matrices acting on coefficient vectors
         self.rot = [self._mat(lambda k, r=r: self.pow[(k + r) % N]) for r in range(N)]
         self.conj = self._mat(lambda k: self.pow[(-k) % N])
 
     def mulz(self, a):
-        """a * z for a in the basis (N = 12 rule z^4 = z^2 - 1)."""
+        """a * z:  a0 z + a1 z^2 + a2 z^3 + a3 z^4, with z^4 from the minimal polynomial."""
         a0, a1, a2, a3 = a
-        # a0 z + a1 z^2 + a2 z^3 + a3 z^4,  z^4 = z^2 - 1
-        return (-a3, a0, a1 + a3, a2)
+        c = self.Z4[self.N]
+        return (a3 * c[0], a0 + a3 * c[1], a1 + a3 * c[2], a2 + a3 * c[3])
 
     def _mat(self, img):
         cols = [img(k) for k in range(4)]                  # image of basis vector z^k

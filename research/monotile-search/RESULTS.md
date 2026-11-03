@@ -483,3 +483,6 @@ Controls: square, 45-rhombus, hexagon, triangle, 120-rhombus PERIODIC; regular o
 **Tile(1,1)** (12-fold): with mirrors PERIODIC (2 tiles per repeat, p1 = (0,5,3,-1), p2 = (2,-1,-1,-1)); without mirrors covers a
 48-tile patch and no repeat among 11,931 lattices -> OPEN. Reproduces the Spectre phenomenon (Kaplan: Tile(1,1) "tiles
 periodically if you allow reflections").
+**Silver Tile(1,1) family, 12 edges (free engine, 3 Nov):** 11,426 equilateral 8-direction outlines. With / without mirrors:
+STUCK/STUCK 9,698; PERIODIC/PERIODIC 1,172; PERIODIC/STUCK 511 (need mirrors); UNDECIDED/PERIODIC 23 (tile anyway);
+UNDECIDED/STUCK 22 (mirror patch search hit the node limit; re-tested locally with 20x budget). **0 OPEN.**

@@ -458,3 +458,8 @@ Again only balanced shapes (large = 2 x small triangles) can tile; area of a bal
 `ab` grid ([4.8.8] edge 3, Ammann-Beenker filled): 400 random balanced shapes each at n = 7, 14, 21: all STUCK at R = 1.5
 (rigid grid, 2 placement forms per shape). Abandoned (see FORMULATION 22 addendum).
 Targeted random search (ab_explore.py / modal_target.py): control on kites n = 8 finds the hat (1 OPEN in 568 distinct shapes).
+
+## Silver kite families, complete (3 Nov 2026)
+12-edge outlines (11,426 families) x edge lengths {1, 2, 1+sqrt2, 2+sqrt2, 2+2sqrt2} x 23 start vertices -> 14,296 distinct
+balanced grid shapes (12 to 78 cells). All settled: 12,562 STUCK, 1,734 PERIODIC, **0 OPEN**.
+Periodic share by threshold k: k = 1: 24.1 % (6,235 shapes), k = 2: 3.5 % (5,973), k = 4: 1.1 % (2,088). Latest jams at R = 5.

@@ -486,3 +486,10 @@ periodically if you allow reflections").
 **Silver Tile(1,1) family, 12 edges (free engine, 3 Nov):** 11,426 equilateral 8-direction outlines. With / without mirrors:
 STUCK/STUCK 9,698; PERIODIC/PERIODIC 1,172; PERIODIC/STUCK 511 (need mirrors); UNDECIDED/PERIODIC 23 (tile anyway);
 UNDECIDED/STUCK 22 (mirror patch search hit the node limit; re-tested locally with 20x budget). **0 OPEN.**
+**Silver Tile(1,1) family, 14 edges (free engine, 3 Nov, complete):** 156,274 outlines. With / without mirrors:
+STUCK/STUCK 145,398; PERIODIC/PERIODIC 7,114; PERIODIC/STUCK 3,471; OPEN/STUCK 158; UNDECIDED/STUCK 86; UNDECIDED/PERIODIC 40;
+OPEN/OPEN 3; UNDECIDED/UNDECIDED 3; PERIODIC/UNDECIDED 1. All OPEN were budget-limited (first-round repeat search).
+Deep tests: A [0,0,3,4,3,4,7,6,5,4,7,0,1,2] PERIODIC (4 tiles, 12-edge vector); C [0,0,2,3,4,6,4,6,4,6,7,2,0,2] PERIODIC (6 tiles);
+B [0,0,2,3,6,4,3,4,6,7,4,7,0,2] no repeat up to 10-edge/12-tile (complete), 12-edge/16-tile running.
+Both-ways candidates (deep test on Modal): [0,0,2,1,7,1,3,4,2,5,6,4,6,5], [0,1,7,1,0,3,3,5,4,2,4,6,7,5], [0,0,1,2,1,2,1,4,5,6,5,4,6,5],
+[0,1,0,1,0,3,4,5,4,3,5,4,7,7], [0,1,0,2,1,2,1,4,5,6,5,4,6,5], [0,1,2,0,1,4,2,3,4,6,5,7,6,5].

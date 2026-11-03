@@ -17,9 +17,11 @@ image = (modal.Image.debian_slim(python_version="3.11").pip_install("python-sat=
                                                    "candidates/**", "__pycache__/**", "*.png"]))
 app = modal.App("monotile-meter", image=image)
 PHI, SIL = (1 + 5 ** .5) / 2, 1 + 2 ** .5
-TARGETS = {'golden phi^2': PHI ** 2, 'golden phi^4': PHI ** 4, 'golden phi^6': PHI ** 6,
-           'silver d': SIL, 'silver d^2': SIL ** 2, 'silver d^3': SIL ** 3, 'silver d^4': SIL ** 4,
-           'sqrt3 2+r3': 2 + 3 ** .5, 'sqrt3 (2+r3)^2': (2 + 3 ** .5) ** 2, 'mirror-balanced 1': 1.0}
+TARGETS = {f't={t} ({nm})': (t + (t * t - 4) ** .5) / 2 for t, nm in
+           [(3, 'phi^2, Penrose'), (4, '2+sqrt3, 12-fold'), (5, 'sqrt21'), (6, 'silver^2'), (7, 'phi^4, hat'),
+            (8, '4+sqrt15, Spectre'), (9, 'sqrt77'), (10, '5+2sqrt6'), (11, 'bronze^2'), (14, '(2+sqrt3)^2'),
+            (18, 'phi^6'), (34, 'silver^4')]}
+TARGETS.update({'silver d': SIL, 'golden phi': PHI, 'mirror-balanced 1': 1.0})
 HAT = [[0, 0, 0], [0, 0, 1], [0, 0, 2], [0, 0, 5], [0, 1, 4], [0, 1, 5], [1, 0, 2], [1, 0, 3]]
 
 

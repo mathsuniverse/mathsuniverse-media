@@ -544,3 +544,51 @@ def periodic4(S, max_tiles=12, max_edges=8, budget=600, node_limit=20000):
         elif r:
             return dict(tiles=k, p1=a, p2=b), n, len(pairs), und
     return False, len(pairs), len(pairs), und
+
+
+# ---------------------------------------------------------------- periods read off a large patch
+
+def patch_periods(S, R=6, max_tiles=48, top=300, node_limit=60000, budget=1800, patch=None):
+    """Candidate period vectors = translations that recur between same-orientation tiles in a big patch; lattices from
+    pairs of the most frequent ones (cell <= max_tiles tiles), tested exactly with torus_dfs. Returns (result, tested)."""
+    from collections import Counter
+    R_ = S.ring
+    if patch is None:
+        ok = S.cover(R * S.diam / 2, node_limit=3000000, time_limit=3600)
+        if not ok:
+            return ('no patch', 0)
+        patch = S.patch
+    by_o = {}
+    for oi, t in patch:
+        by_o.setdefault(oi, []).append(t)
+    cnt = Counter()
+    for oi, ts in by_o.items():
+        for a in ts:
+            for b in ts:
+                if a != b:
+                    v = R_.sub(b, a)
+                    if v > tuple(-x for x in v):          # count v and -v once
+                        cnt[v] += 1
+    vecs = [v for v, _ in cnt.most_common(top)]
+    fl = {v: R_.f(v) for v in vecs}
+    seen, cand = set(), []
+    for i, a in enumerate(vecs):
+        for b in vecs[i + 1:]:
+            (x1, y1), (x2, y2) = fl[a], fl[b]
+            D = abs(x1 * y2 - x2 * y1)
+            k = D / S.tile.area
+            if D < 1e-9 or abs(k - round(k)) > 1e-7 or not 1 <= round(k) <= max_tiles:
+                continue
+            h = _hnf2(a, b)
+            if h in seen:
+                continue
+            seen.add(h)
+            cand.append((round(k), -(cnt[a] + cnt[b]), a, b))
+    cand.sort()
+    t0 = time.time()
+    for n, (k, _, a, b) in enumerate(cand):
+        if time.time() - t0 > budget:
+            return (None, n)
+        if torus_dfs(S, a, b, node_limit):
+            return (dict(tiles=k, p1=a, p2=b), n + 1)
+    return (False, len(cand))

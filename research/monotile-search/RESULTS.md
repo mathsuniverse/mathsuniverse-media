@@ -493,3 +493,8 @@ Deep tests: A [0,0,3,4,3,4,7,6,5,4,7,0,1,2] PERIODIC (4 tiles, 12-edge vector); 
 B [0,0,2,3,6,4,3,4,6,7,4,7,0,2] no repeat up to 10-edge/12-tile (complete), 12-edge/16-tile running.
 Both-ways candidates (deep test on Modal): [0,0,2,1,7,1,3,4,2,5,6,4,6,5], [0,1,7,1,0,3,3,5,4,2,4,6,7,5], [0,0,1,2,1,2,1,4,5,6,5,4,6,5],
 [0,1,0,1,0,3,4,5,4,3,5,4,7,7], [0,1,0,2,1,2,1,4,5,6,5,4,6,5], [0,1,2,0,1,4,2,3,4,6,5,7,6,5].
+**Decisive test (3 Nov, 21:30): periods read off the shape's own patch** (free2.patch_periods: recurring same-orientation
+translations in a radius-5 patch -> lattices -> exact torus check). Control A found on the first lattice.
+All 43 deep-test survivors (OPEN after every lattice up to 12-edge vectors / 16 tiles) are PERIODIC: 39 with 4 tiles per repeat,
+4 with 12; repeat vectors 14-16 edges long. Shape B: PERIODIC, 4 tiles, vector (7,0,7,0) (14 edges).
+Conclusion: no aperiodic silver Tile(1,1)-type tile among the 12- and 14-edge equilateral 8-direction families.

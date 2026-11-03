@@ -498,3 +498,9 @@ translations in a radius-5 patch -> lattices -> exact torus check). Control A fo
 All 43 deep-test survivors (OPEN after every lattice up to 12-edge vectors / 16 tiles) are PERIODIC: 39 with 4 tiles per repeat,
 4 with 12; repeat vectors 14-16 edges long. Shape B: PERIODIC, 4 tiles, vector (7,0,7,0) (14 edges).
 Conclusion: no aperiodic silver Tile(1,1)-type tile among the 12- and 14-edge equilateral 8-direction families.
+
+## Hat route, general (3 Nov, 23:30)
+free.Tile takes exact edge lengths in Z[zeta_N] (sqrt3 = z + 1/z in Z[zeta12], phi = 1 + z + 1/z in Z[zeta10], sqrt2 = z + 1/z
+in Z[zeta8]). Control: the hat as a free Tile(1, sqrt3) (12-fold, 14 edges) -> with mirrors OPEN (patch R4, no repeat),
+without mirrors STUCK (R1.5): correct. modal_hatroute.py runs Tile(a,b)-type families for N = 8, 10, 12 with b/a in
+{sqrt2, 1+sqrt2, phi, sqrt3, 2+sqrt3}, both assignments; the 12:14:r3 run contains the hat and the turtle as controls.

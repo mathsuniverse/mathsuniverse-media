@@ -31,14 +31,14 @@ def test_one(seq, Rs=(1.5, 2, 3), node_limit=20000, max_edges=10, max_tiles=12, 
     return out
 
 
-def classify_general(seq, N):
+def classify_general(seq, N, lens=None):
     """Decisive classification of an equal-edge outline in N directions, with and without mirrors:
     patches (radius 1.5, 2, 3), then repeats read off the tile's own patch, then all short repeat patterns,
     then a radius-4 patch and its recurring translations. OPEN only if every check fails to find a repeat."""
     out = {}
     for mir in (True, False):
         try:
-            S = F2.Search(list(seq), N, mir)
+            S = F2.Search(list(seq), N, mir, lens)
         except AssertionError:
             return {'error': 'not simple'}
         res = None

@@ -51,6 +51,13 @@ class Ring:
         cols = [img(k) for k in range(4)]                  # image of basis vector z^k
         return tuple(tuple(cols[k][i] for k in range(4)) for i in range(4))
 
+    def unit_sum(self, ks):
+        """sum of z^k for k in ks, as a module element (e.g. [1, -1] -> 2cos(2pi/N))."""
+        out = (0, 0, 0, 0)
+        for k in ks:
+            out = self.add(out, self.pow[k % self.N])
+        return out
+
     @staticmethod
     def apply(M, a):
         return tuple(sum(M[i][k] * a[k] for k in range(4)) for i in range(4))
@@ -75,12 +82,15 @@ class Ring:
 # ---------------------------------------------------------------- tiles and placements
 
 class Tile:
-    def __init__(self, ring, dirs):
+    def __init__(self, ring, dirs, lens=None):
+        """dirs: edge directions (multiples of 360/N); lens: edge lengths as elements of Z[zeta_N] (default all 1),
+        e.g. sqrt3 = z + z^-1 in Z[zeta_12], phi = 1 + z + z^-1 in Z[zeta_10], sqrt2 = z + z^-1 in Z[zeta_8]."""
         self.R = ring
         self.dirs = tuple(d % ring.N for d in dirs)
+        self.lens = tuple(lens) if lens else tuple((1, 0, 0, 0) for _ in self.dirs)
         v = [(0, 0, 0, 0)]
-        for d in self.dirs:
-            v.append(ring.add(v[-1], ring.pow[d]))
+        for d, L in zip(self.dirs, self.lens):
+            v.append(ring.add(v[-1], ring.apply(ring.rot[d], L)))
         assert v[-1] == (0, 0, 0, 0), 'outline does not close'
         self.verts = v[:-1]
         self.m = len(self.verts)

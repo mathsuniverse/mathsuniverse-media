@@ -18,10 +18,10 @@ import free as F
 
 
 class Search:
-    def __init__(self, dirs, N, mirror=True):
+    def __init__(self, dirs, N, mirror=True, lens=None):
         self.ring = R = F.Ring(N)
         self.N = N
-        self.tile = T = F.Tile(R, dirs)
+        self.tile = T = F.Tile(R, dirs, lens)
         self.mirror = mirror
         m = T.m
         # corner angles in units of 360/N (interior angle at vertex j between edge j-1 and edge j)

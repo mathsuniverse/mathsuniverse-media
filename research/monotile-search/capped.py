@@ -6,7 +6,7 @@ import engine as E
 
 
 def kinds(g, cells):
-    k = sum(1 for c in cells if c[2] < 8)
+    k = sum(1 for c in cells if c[2] < g.nbig)
     return k, len(cells) - k
 
 
@@ -23,7 +23,7 @@ def enumerate_capped(g, N, verbose=True):
                     if nb in s or nb in tried:
                         continue
                     tried.add(nb)
-                    if (nb[2] < 8 and k0 + 1 > K) or (nb[2] >= 8 and s0 + 1 > S):
+                    if (nb[2] < g.nbig and k0 + 1 > K) or (nb[2] >= g.nbig and s0 + 1 > S):
                         continue
                     new.add(E.canonical(g, p + (nb,)))
         level = sorted(new)
@@ -34,7 +34,7 @@ def enumerate_capped(g, N, verbose=True):
 
 if __name__ == '__main__':
     import sys, grids as G
-    g = G.get('silverkite')
+    g = G.get(sys.argv[2] if len(sys.argv) > 2 else 'silverkite')
     N = int(sys.argv[1])
     out = enumerate_capped(g, N)
     print(N, 'with', 2 * (N // 3), 'kites +', N // 3, 'squares:', len(out), 'symmetry classes')

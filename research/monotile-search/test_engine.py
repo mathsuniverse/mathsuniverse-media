@@ -21,7 +21,7 @@ OEIS = {
     'prismatic': ('A197156', [1, 3, 5, 20, 56, 225, 819, 3333]),
     'floret': ('A197159', [1, 3, 8, 25, 80, 291, 1036, 3875]),
 }
-POINT_GROUP = {'silverkite': 8, 'square': 8, 'hex': 12, 'tri': 12, 'kite': 12, 'drafter': 12, 'rhomb': 12, 'tetrakis': 8,
+POINT_GROUP = {'silverkite': 8, 'silverdrafter': 8, 'square': 8, 'hex': 12, 'tri': 12, 'kite': 12, 'drafter': 12, 'rhomb': 12, 'tetrakis': 8,
                'triakis': 12, 'cairo': 8, 'prismatic': 4, 'floret': 6}
 
 
@@ -57,7 +57,7 @@ def test_no_off_group_congruent_copies_small_n():
             for p in lv[n]:
                 sym = {f for f, _ in E.sym_forms(g, p)}
                 for h in E.congruent_forms(g, p):
-                    if name == 'silverkite':
+                    if name in ('silverkite', 'silverdrafter'):
                         continue   # 45-degree turns inside an octagon are real off-group copies here (by design)
                     assert h in sym or E.canonical(g, h) == p, (name, p)
 

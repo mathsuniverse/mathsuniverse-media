@@ -555,12 +555,43 @@ def make_silverkite():
     for k in range(4):
         protos.append([C, Dm[k - 1], Dv[k], Dm[k]])
     L = a * 2
-    return Grid('silverkite', ((L, Q(0)), (Q(0), L)), protos, '[4.8.8] split', 'silver kite / square',
-                notes='octagon -> 8 silver kites (sides 1+sqrt2, 1), square -> 4 unit squares; 8-fold partial congruences',
-                cands=CANDIDATE_L8)
+    g = Grid('silverkite', ((L, Q(0)), (Q(0), L)), protos, '[4.8.8] split', 'silver kite / square',
+             notes='octagon -> 8 silver kites (sides 1+sqrt2, 1), square -> 4 unit squares; 8-fold partial congruences',
+             cands=CANDIDATE_L8)
+    g.nbig = 8
+    return g
+
+
+def make_silverdrafter():
+    """The silver analogue of the drafter grid: every octagon of [4.8.8] cut from its centre to all vertices and edge
+    midpoints into 16 right triangles (legs 1+sqrt2 and 1, angle 22.5 deg at the centre), every square into 8 right
+    isosceles triangles. Silver kite k = triangles 2k and 2k+1; small square k = triangles 16+2k and 16+2k+1."""
+    a = Q(1, 1, 2)
+    one = Q(1)
+    O = (Q(0), Q(0))
+    V = [(one, a), (-one, a), (-a, one), (-a, -one), (-one, -a), (one, -a), (a, -one), (a, one)]
+    Mi = [((V[k - 1][0] + V[k][0]) * Fr(1, 2), (V[k - 1][1] + V[k][1]) * Fr(1, 2)) for k in range(8)]
+    protos = []
+    for k in range(8):            # kite k = [O, Mi[k], V[k], Mi[k+1]] -> two triangles
+        protos.append([O, Mi[k], V[k]])
+        protos.append([O, V[k], Mi[(k + 1) % 8]])
+    C = (a, a)
+    r = Q(0, 1, 2)
+    Dv = [(C[0] + r, C[1]), (C[0], C[1] + r), (C[0] - r, C[1]), (C[0], C[1] - r)]
+    Dm = [((Dv[k][0] + Dv[(k + 1) % 4][0]) * Fr(1, 2), (Dv[k][1] + Dv[(k + 1) % 4][1]) * Fr(1, 2)) for k in range(4)]
+    for k in range(4):            # small square k = [C, Dm[k-1], Dv[k], Dm[k]] -> two triangles
+        protos.append([C, Dm[k - 1], Dv[k]])
+        protos.append([C, Dv[k], Dm[k]])
+    L = a * 2
+    g = Grid('silverdrafter', ((L, Q(0)), (Q(0), L)), protos, '[4.8.8] split fine', 'silver drafter',
+             notes='octagon -> 16 right triangles (legs 1+sqrt2, 1), square -> 8 right isosceles triangles',
+             cands=CANDIDATE_L8)
+    g.nbig = 16
+    return g
 
 
 GRIDS = {
+    'silverdrafter': make_silverdrafter,
     'silverkite': make_silverkite,
     'square': make_square, 'hex': make_hex, 'tri': make_tri, 'kite': make_kite,
     'drafter': make_drafter, 'rhomb': make_rhomb, 'tetrakis': make_tetrakis,

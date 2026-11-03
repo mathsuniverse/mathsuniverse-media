@@ -441,3 +441,15 @@ All certificates re-checked, 0 failures. Meter control on Modal: hat ratios 6.59
 n=12 and n=15 on Modal, all certificates re-checked (0 failures). n=15 count reproduced independently (local run, same 2,437,889).
 Sizes not divisible by 3 (and unbalanced shapes) cannot tile this grid at all. **Conclusion: no aperiodic monotile on the
 silver kite grid with area up to 5 x (1+sqrt2)^2.**
+
+## Silver drafter grid (added 3 Nov 2026)
+Grid `silverdrafter`: each [4.8.8] octagon cut into 16 right triangles (legs 1+sqrt2 and 1; 22.5 deg at the centre),
+each square into 8 right isosceles triangles. Silver analogue of the drafter grid (silver kite k = triangles 2k, 2k+1).
+Again only balanced shapes (large = 2 x small triangles) can tile; area of a balanced n-shape = (n/3) x (1+sqrt2)^2 / 2.
+| n (balanced) | symmetry classes | STUCK | PERIODIC | OPEN |
+|---|---|---|---|---|
+| 3 | 2 | 1 | 1 | 0 |
+| 6 | 24 | 10 | 14 | 0 |
+| 9 | 267 | 267 | 0 | 0 |
+| 12 | 3,456 | 2,980 | 476 | 0 |
+(local, all certificates re-checked)

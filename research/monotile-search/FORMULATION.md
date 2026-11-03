@@ -329,3 +329,30 @@ then a small implementation that builds the Wang tiles for a given (q_i, I) and 
   Ammann's 16-tile set. So Razvan's metallic-family conjecture holds for Wang tiles: silver (n = 2) has a 25-tile aperiodic Wang set.
   Consequence for our search: Wang tiles are squares with edge labels, so the jigsaw step on the square grid is direct.
   New silver pipeline: Labbé T_2 (25 tiles) -> keyed jigsaw pieces -> inverse/single-shape search.
+
+## 22. The period threshold k (Razvan, 3 Nov 11:04: "a threshold in the ladder beyond which periodics stop and it enters aperiodic")
+
+Setting: a grid with m cells per lattice cell, cell types t with c_t cells each per lattice cell; a polyform with n cells, n_t of type t.
+
+**Proposition 1 (proved).** In any periodic tiling by grid placements of the shape, a fundamental domain holds N tiles with
+N·n_t = d·c_t for every type t (d = index of the period lattice). Hence the shape must be *balanced*, n_t / c_t = n / m for all t,
+and N is a multiple of k(n) = m / gcd(n, m). The same balance is needed for ANY tiling (periodic or not), by counting cells in
+large discs (densities are fixed by the grid).
+Proof: count cells of each type in one fundamental domain.
+
+**Proposition 2 (proved).** Silver kite grid (c = 8 kites, 4 squares; m = 12) and silver drafter grid (16, 8; m = 24): balanced
+sizes are n = 3q and k(n) = 4/gcd(q,4) resp. 8/gcd(q,8), always a power of 2. **k = 3 is impossible on both.** Same on tetrakis (m = 4).
+On the kite grid (m = 6) k = 3 exactly when n = 2 or 4 mod 6; on the drafter grid (m = 12) when n = 4 or 8 mod 12.
+
+**Observation (data, 21 grid/size pairs, kite 8-13, tetrakis 9-16, drafter 9-16).** Share of shapes tiling periodically:
+k = 1: 13 %, k = 2: 22 %, k = 3: 1.6 %, k = 4: 3.2 %, k = 6: 0.4 %, k = 12: 0.01 %. Sharp drop between k = 2 and k = 3.
+
+**Conjecture (period threshold).** Aperiodic polyform monotiles occur at sizes with k(n) >= 3, and the first ones at k = 3:
+periodic order needs at least 3 copies cooperating, which suppresses periodic tilers, while k is still small enough that
+tiling at all remains possible. Evidence: hat = 8 kites (k = 3), turtle = 10 kites (k = 3), hat = 16 drafters (k = 3); no
+aperiodic shape at any k = 1, 2 size or at k = 6, 12 sizes in our sieves. Caveats: all three hits belong to one family (the hat's);
+near-misses (shapes covering large discs before jamming) also occur at k = 2 and 12 (tetrakis14, drafter 11/13), so k is not the
+only factor; k is the minimum, not the actual, number of tiles per period, so "k = 1 => periodic" is NOT claimed.
+
+**Consequence for the silver search.** By Prop. 2 every silver grid searched so far only reaches k in {1, 2, 4, 8}: never the
+threshold size. Next: an exact Q(sqrt2) grid whose cell-type counts share a factor 3, so that k = 3 sizes exist.

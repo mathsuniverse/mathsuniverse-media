@@ -279,7 +279,10 @@ def torus(tile, p1, p2, mirror=True, cap_per_tile=300):
     seed = (0, 0, (0, 0, 0, 0))
     places = {seed}
     frontier = [seed]
-    while frontier:
+    kt = max(1, round(abs(det) / tile.area))
+    # every tile of a k-tile torus tiling is within k-1 edge steps of the seed (the tiles of one cell form a connected
+    # graph modulo the lattice), so k layers of edge attachments contain every placement such a tiling can use
+    for _ in range(kt):
         new = []
         for pl in frontier:
             for e in edges_of(tile.placed(*pl)):
@@ -288,8 +291,8 @@ def torus(tile, p1, p2, mirror=True, cap_per_tile=300):
                     if q not in places:
                         places.add(q); new.append(q)
         frontier = new
-        if len(places) > cap_per_tile * max(1, round(det / tile.area)):
-            return None                      # placements do not close up modulo this lattice: not a period lattice
+        if len(places) > cap_per_tile * kt:
+            return None                      # too many candidates: skip this lattice (reported as undecided)
     pl = sorted(places, key=lambda q: (q[0], q[1], q[2]))
     idx = {q: i + 1 for i, q in enumerate(pl)}
 
@@ -327,7 +330,7 @@ def torus(tile, p1, p2, mirror=True, cap_per_tile=300):
             others = [j for j in lst if j != idx[q]]
             clauses.append([-idx[q]] + others)
     # area: exactly k tiles per cell
-    k = round(det / tile.area)
+    k = round(abs(det) / tile.area)
     pool = IDPool(start_from=len(pl) + 1)
     clauses += CardEnc.equals(list(range(1, len(pl) + 1)), k, vpool=pool, encoding=EncType.seqcounter).clauses
     with Solver(name='cadical153', bootstrap_with=clauses) as s:

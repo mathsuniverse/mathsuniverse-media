@@ -475,3 +475,11 @@ families, drafter 491, silverdrafter 105) re-tested with rotations only: 33,900 
 tile at all), 407 achiral (unchanged), **0 OPEN**. Control: hat without mirrors -> STUCK (correct: hat tilings need mirrored hats).
 Note: Tile(1,1) itself (the Spectre's polygon) is not a polyform on any grid, so grid searches cannot contain the Spectre case;
 the free-placement engine is needed for that.
+
+## Free engine (no grid) and the Spectre calibration (3 Nov 2026)
+free.py / free2.py: exact Z[zeta8] / Z[zeta12] arithmetic, patch growth by backtracking (corner-angle pruning), periodic search
+by backtracking inside one repeat cell over lattices spanned by edge paths <= 10 edges, <= 12 tiles.
+Controls: square, 45-rhombus, hexagon, triangle, 120-rhombus PERIODIC; regular octagon STUCK.
+**Tile(1,1)** (12-fold): with mirrors PERIODIC (2 tiles per repeat, p1 = (0,5,3,-1), p2 = (2,-1,-1,-1)); without mirrors covers a
+48-tile patch and no repeat among 11,931 lattices -> OPEN. Reproduces the Spectre phenomenon (Kaplan: Tile(1,1) "tiles
+periodically if you allow reflections").

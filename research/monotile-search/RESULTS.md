@@ -427,3 +427,12 @@ Every on-grid tiling uses exactly 2 kites per square, so only shapes with kites 
 | 7 | 685 | 685 | 0 | 0 |
 | 8 | 2258 | 2258 | 0 | 0 |
 | 9 | 7351 | 7331 | 20 | 0 |
+
+## Hat's own grids, extended on Modal (3 Nov 2026)
+| grid | n | free | STUCK | PERIODIC | OPEN |
+|---|---|---|---|---|---|
+| kite | 12 | 120,815 | 109,788 | 11,027 | 0 |
+| kite | 13 | 424,468 | 422,148 | 2,320 | 0 |
+| drafter | 15 | 93,749 | 93,711 | 38 | 0 |
+| drafter | 16 | 237,035 | 236,581 | 453 | 1 = the hat (drafter16_06068 = hat's 8 kites) |
+All certificates re-checked, 0 failures. Meter control on Modal: hat ratios 6.594, 6.786, 6.730 (R 12/18/24) -> golden phi^4.

@@ -453,3 +453,8 @@ Again only balanced shapes (large = 2 x small triangles) can tile; area of a bal
 | 9 | 267 | 267 | 0 | 0 |
 | 12 | 3,456 | 2,980 | 476 | 0 |
 (local, all certificates re-checked)
+
+## AB grid and targeted search (3 Nov 2026)
+`ab` grid ([4.8.8] edge 3, Ammann-Beenker filled): 400 random balanced shapes each at n = 7, 14, 21: all STUCK at R = 1.5
+(rigid grid, 2 placement forms per shape). Abandoned (see FORMULATION 22 addendum).
+Targeted random search (ab_explore.py / modal_target.py): control on kites n = 8 finds the hat (1 OPEN in 568 distinct shapes).

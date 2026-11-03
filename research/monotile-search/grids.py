@@ -559,6 +559,7 @@ def make_silverkite():
              notes='octagon -> 8 silver kites (sides 1+sqrt2, 1), square -> 4 unit squares; 8-fold partial congruences',
              cands=CANDIDATE_L8)
     g.nbig = 8
+    g.kind = [0 if t < 8 else 1 for t in range(g.m)]
     return g
 
 
@@ -587,10 +588,25 @@ def make_silverdrafter():
              notes='octagon -> 16 right triangles (legs 1+sqrt2, 1), square -> 8 right isosceles triangles',
              cands=CANDIDATE_L8)
     g.nbig = 16
+    g.kind = [0 if t < 16 else 1 for t in range(g.m)]
+    return g
+
+
+def make_ab():
+    import os, pickle
+    pk = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ab_grid.pkl')
+    if os.path.exists(pk):
+        with open(pk, 'rb') as f:
+            return pickle.load(f)
+    import abgrid
+    g = abgrid.make_abgrid(3)
+    with open(pk, 'wb') as f:
+        pickle.dump(g, f)
     return g
 
 
 GRIDS = {
+    'ab': make_ab,
     'silverdrafter': make_silverdrafter,
     'silverkite': make_silverkite,
     'square': make_square, 'hex': make_hex, 'tri': make_tri, 'kite': make_kite,

@@ -356,3 +356,14 @@ only factor; k is the minimum, not the actual, number of tiles per period, so "k
 
 **Consequence for the silver search.** By Prop. 2 every silver grid searched so far only reaches k in {1, 2, 4, 8}: never the
 threshold size. Next: an exact Q(sqrt2) grid whose cell-type counts share a factor 3, so that k = 3 sizes exist.
+
+**Addendum (3 Nov, 11:45): symmetry vs frustration.** The smallest natural Q(sqrt2) grid where k = 3 exists was built
+(`ab`: [4.8.8] with edge 3, octagons filled with Ammann-Beenker squares and rhombi, 27 + 36 cells per lattice cell,
+k = 3 first at 21 cells = 9 squares + 12 rhombi). It is useless for monotiles: filling an octagon with rhombi destroys its
+symmetry (best filling found: 2 point symmetries), so a typical 21-cell shape has only 2 placement forms (itself and its
+mirror; the hat has 12 on the kite grid), and 400/400 random shapes jam at the first disc (R = 1.5). With only translated
+copies a single tile cannot tile aperiodically at all (Bhattacharya: periodic tiling conjecture holds in Z^2).
+So a monotile grid needs BOTH (a) rich placement symmetry and (b) a frustrated size (k >= 3).
+8-fold grids with full symmetry (silverkite, silverdrafter, tetrakis) only reach k in {1, 2, 4, 8}; the k = 3 silver grid has
+no symmetry. The kite/drafter grids have both (12 orientations, k = 3 at n = 8, 10, 16, 20): the hat's grid is a sweet spot.
+Silver's best available threshold is k = 4 on the symmetric grids: targeted search there (modal_target.py).

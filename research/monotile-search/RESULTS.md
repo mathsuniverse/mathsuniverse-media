@@ -531,3 +531,9 @@ the candidate set explodes), then patch_periods on the final patch.
 - The 5 still undecided are all 10-fold 10-edge equilateral shapes with mirrors (no mirrors: STUCK):
   [0,1,2,5,4,3,6,9,8,7] (R3), [0,1,3,2,4,5,8,9,7,6], [0,1,3,2,4,5,7,9,8,6], [0,1,3,5,6,4,7,9,8,2],
   [0,1,3,2,5,4,8,9,6,7] (all patch to R3, undecided at R4). No OPEN candidate.
+
+## Last 5 undecided 10-fold shapes, big patches (4 Nov, 20:29-23:50, modal_u5.py)
+- PERIODIC (2-tile cell): [0,1,3,2,4,5,8,9,7,6] (patch R5), [0,1,3,2,4,5,7,9,8,6] (R6), [0,1,3,5,6,4,7,9,8,2] (R4).
+- Patch stalls, undecided (probably no tiling): [0,1,2,5,4,3,6,9,8,7] (R2 ok, R3 not reached in 732k nodes / 75 min),
+  [0,1,3,2,5,4,8,9,6,7] (R3 ok, R4 not reached in 497k nodes). Labelled "NO REPEAT FOUND" by the script, but only 1-2
+  lattices could be tested on such small patches; the label is now "UNDECIDED (patch stalled)". Not hat-like.

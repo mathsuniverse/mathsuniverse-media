@@ -49,7 +49,9 @@ def one(i):
         if res:
             d.update(status='done', cls='PERIODIC', patch_R=best[0], **{k: list(v) if isinstance(v, tuple) else v for k, v in res.items()})
         else:
-            d.update(status='done', cls='UNDECIDED' if res is None else 'NO REPEAT FOUND', patch_R=best[0] if best else None,
+            stalled = hist[-1][1] is None and (best is None or best[0] < 5)
+            d.update(status='done', cls='UNDECIDED (patch stalled)' if (res is None or stalled) else 'NO REPEAT FOUND',
+                     patch_R=best[0] if best else None,
                      patch_tiles=len(best[1]) if best else 0, lattices_tested=n)
     d['seconds'] = round(time.time() - t0)
     _save(i, d)

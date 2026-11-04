@@ -517,3 +517,5 @@ without mirrors STUCK (R1.5): correct. modal_hatroute.py runs Tile(a,b)-type fam
 - **general 12:14 (86,814 equal-edge 12-direction outlines): exactly 1 PERIODIC/OPEN = Tile(1,1), the Spectre's polygon**
   (repeats with mirrors, 2 tiles; OPEN without). STUCK/STUCK 78,523, PERIODIC/PERIODIC 2,922, PERIODIC/STUCK 1,893,
   UNDECIDED/STUCK 2, not simple 3,473. Control passed; nothing else Spectre-like at this size.
+- hatroute 10:15 phi (Penrose kite proportions 1 : phi, 75,955 shapes): STUCK/STUCK 70,725, PERIODIC/STUCK 49, not simple 5,181.
+  0 OPEN, and not one tiles without mirrors.

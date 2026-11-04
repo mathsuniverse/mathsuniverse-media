@@ -19,6 +19,32 @@ from pysat.card import CardEnc, EncType
 from pysat.formula import IDPool
 from pysat.solvers import Solver
 from shapely.geometry import Polygon
+import shapely
+
+
+def _inter_area(pa, pb):
+    """Area of the intersection; on rare GEOS topology errors (nearly collinear overlapping edges) retry on a 1e-9 grid."""
+    try:
+        return pa.intersection(pb).area
+    except Exception:
+        return shapely.set_precision(pa, 1e-9).intersection(shapely.set_precision(pb, 1e-9)).area
+
+
+
+def _pinched(pts, eps=1e-9):
+    """True when a corner touches a non-adjacent edge (a pinched outline: not a disc, and it breaks GEOS)."""
+    import math as _m
+    m = len(pts)
+    for i, p in enumerate(pts):
+        for j in range(m):
+            if i == j or i == (j + 1) % m:
+                continue
+            a, b = pts[j], pts[(j + 1) % m]
+            dx, dy = b[0] - a[0], b[1] - a[1]
+            t = max(0.0, min(1.0, ((p[0] - a[0]) * dx + (p[1] - a[1]) * dy) / (dx * dx + dy * dy)))
+            if _m.hypot(p[0] - a[0] - t * dx, p[1] - a[1] - t * dy) < eps:
+                return True
+    return False
 
 
 # ---------------------------------------------------------------- the module Z[zeta_N]
@@ -96,6 +122,7 @@ class Tile:
         self.m = len(self.verts)
         P = Polygon([ring.f(x) for x in self.verts])
         assert P.is_valid and P.area > 0, 'not a simple counter-clockwise polygon'
+        assert not _pinched([ring.f(x) for x in self.verts]), 'not a simple polygon (pinched)'
         self.area = P.area
         self.diam = max(math.dist(ring.f(a), ring.f(b)) for a in self.verts for b in self.verts)
 
@@ -146,7 +173,7 @@ class Placements:
             if pa.distance(pb) > 1e-9:
                 self._ov[key] = False
             else:
-                self._ov[key] = pa.intersection(pb).area > 1e-7
+                self._ov[key] = _inter_area(pa, pb) > 1e-7
         return self._ov[key]
 
 

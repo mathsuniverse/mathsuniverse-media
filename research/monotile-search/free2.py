@@ -13,6 +13,15 @@ import math
 import time
 
 from shapely.geometry import Polygon
+import shapely
+
+
+def _inter_area(pa, pb):
+    """Area of the intersection; on rare GEOS topology errors (nearly collinear overlapping edges) retry on a 1e-9 grid."""
+    try:
+        return pa.intersection(pb).area
+    except Exception:
+        return shapely.set_precision(pa, 1e-9).intersection(shapely.set_precision(pb, 1e-9)).area
 
 import free as F
 
@@ -76,7 +85,7 @@ class Search:
         if v is None:
             pa = Polygon([R.f(x) for x in self.orients[A[0]][2]])
             pb = Polygon([R.f(R.add(x, key[2])) for x in self.orients[B[0]][2]])
-            v = (pa.distance(pb) < 1e-9) and pa.intersection(pb).area > 1e-7
+            v = (pa.distance(pb) < 1e-9) and _inter_area(pa, pb) > 1e-7
             self._ov[key] = v
         return v
 

@@ -78,7 +78,7 @@ def simple(seq, N, lens=None):
         v = R.pow[d] if lens is None else R.apply(R.rot[d], lens[i])
         x, y = R.f(v); pts.append((pts[-1][0] + x, pts[-1][1] + y))
     P = Polygon(pts[:-1])
-    return P.is_valid and P.area > 1e-9 and P.exterior.is_ccw
+    return P.is_valid and P.area > 1e-9 and P.exterior.is_ccw and not F._pinched(pts[:-1])
 
 
 def shapes(N, m, first=None, max_straight=1, max_turn=None):

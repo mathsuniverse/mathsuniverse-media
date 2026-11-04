@@ -175,6 +175,7 @@ def retest_all():
     """Collect every UNDECIDED / OPEN / timeout / error entry from all finished result files and re-test it deeply."""
     LOGJOB[0] = 'retest'
     vol.reload()
+    _log('retest: start, reading result files')
     items = []
     for fn in sorted(os.listdir('/vol')):
         if not fn.endswith('.json') or fn.startswith('outlines_') or fn.startswith('retest'):
@@ -184,8 +185,12 @@ def retest_all():
             N = int(parts[1])
         except Exception:
             continue
-        for r in json.load(open('/vol/' + fn)):
-            res = r['result']
+        try:
+            data = json.load(open('/vol/' + fn))
+        except Exception as e:                    # a file another job is writing right now
+            _log(f'retest: skipped {fn} ({type(e).__name__})'); continue
+        for r in data:
+            res = r.get('result', {})
             flag = ('timeout' in res) or ('error' in res and 'simple' not in res['error']) or \
                    any(res.get(k, {}).get('cls') in ('UNDECIDED', 'OPEN') for k in ('mirror', 'nomirror'))
             if flag:

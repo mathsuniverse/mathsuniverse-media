@@ -16,7 +16,7 @@ import time
 import free2 as F2
 
 
-def candidates(S, Rad):
+def candidates(S, Rad, cap=40000):
     R = S.ring
     m = S.tile.m
     lim = Rad + S.diam
@@ -31,6 +31,8 @@ def candidates(S, Rad):
 
     q = 0
     while q < len(pls):
+        if len(pls) > cap:
+            raise OverflowError(f'over {cap} candidate placements (dense module: use the DFS instead)')
         pl = pls[q]; q += 1
         vs = S.verts(pl)
         for k in range(m):
@@ -101,7 +103,11 @@ def sat_cover(S, Rad, time_limit=None):
     """True (patch in S.patch) / False (no patch: STUCK certificate) / None (solver timed out)."""
     from pysat.solvers import Cadical153
     t0 = time.time()
-    cnf, pls, nconf = build(S, Rad)
+    try:
+        cnf, pls, nconf = build(S, Rad)
+    except OverflowError as e:
+        S.sat_stats = dict(overflow=str(e))
+        return None
     S.sat_stats = dict(cands=len(pls), clauses=len(cnf.clauses), conflicts=nconf, build_s=round(time.time() - t0, 1))
     with Cadical153(bootstrap_with=cnf.clauses) as s:
         if time_limit:
@@ -125,8 +131,15 @@ def classify_sat(seq, N, lens=None, mirror=True, Rs=(2, 3, 4, 5, 6), time_limit=
     t0 = time.time()
     hist = []
     for Rr in Rs:
-        r = sat_cover(S, Rr * S.diam / 2, time_limit)
-        hist.append((Rr, r, S.sat_stats))
+        try:
+            r = S.cover(Rr * S.diam / 2, node_limit=1000000, time_limit=time_limit / 2, scan=None)
+        except Exception:
+            r = None
+        how = dict(by='dfs', nodes=S.nodes)
+        if r is None:
+            r = sat_cover(S, Rr * S.diam / 2, time_limit)
+            how = dict(by='sat', **S.sat_stats)
+        hist.append((Rr, r, how))
         if r is None:
             return dict(cls='UNDECIDED', at_R=Rr, hist=hist, seconds=round(time.time() - t0))
         if not r:

@@ -43,7 +43,7 @@ def one(item):
     for mir in ((True, False) if item.get('prev') in ('UNDECIDED/UNDECIDED', 'control') else (True,)):
         try:
             r = SP.classify_sat(seq, N, lens, mirror=mir, Rs=(2, 3, 4, 5, 6), time_limit=2400)
-            r['hist'] = [(h[0], h[1], h[2]) for h in r['hist']]
+            r['hist'] = [[h[0], h[1], h[2]] for h in r['hist']]
         except Exception as e:
             r = dict(cls='error', error=repr(e)[:300])
         res['mirror' if mir else 'nomirror'] = r

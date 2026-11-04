@@ -519,3 +519,15 @@ without mirrors STUCK (R1.5): correct. modal_hatroute.py runs Tile(a,b)-type fam
   UNDECIDED/STUCK 2, not simple 3,473. Control passed; nothing else Spectre-like at this size.
 - hatroute 10:15 phi (Penrose kite proportions 1 : phi, 75,955 shapes): STUCK/STUCK 70,725, PERIODIC/STUCK 49, not simple 5,181.
   0 OPEN, and not one tiles without mirrors.
+
+## SAT/full-scan retest of the 29 unresolved free shapes (4 Nov, 17:52-18:40, modal_sat_retest.py)
+Classifier (satpatch.classify_sat): DFS with a dead-end check on every open edge (scan=None) to R2..R6, SAT patch builder
+only when the DFS cannot decide (capped at 40,000 candidate placements: in 10-fold the module Z[zeta10] is dense and
+the candidate set explodes), then patch_periods on the final patch.
+- Control, the hat as free Tile(1, sqrt3): with mirrors patch to R6 and no period among 206 lattices (as expected);
+  without mirrors STUCK at R2. Pass.
+- 30 jobs (29 + control): PERIODIC 18 (cells of 2 or 4 tiles), STUCK 4, error 2 (pinched outlines: not simple
+  polygons, not tiles), UNDECIDED 5 + control.
+- The 5 still undecided are all 10-fold 10-edge equilateral shapes with mirrors (no mirrors: STUCK):
+  [0,1,2,5,4,3,6,9,8,7] (R3), [0,1,3,2,4,5,8,9,7,6], [0,1,3,2,4,5,7,9,8,6], [0,1,3,5,6,4,7,9,8,2],
+  [0,1,3,2,5,4,8,9,6,7] (all patch to R3, undecided at R4). No OPEN candidate.

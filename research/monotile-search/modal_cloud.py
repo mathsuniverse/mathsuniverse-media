@@ -30,14 +30,27 @@ def lam_value(R, name):
 
 
 @app.function(cpu=1.0, memory=4096, timeout=6 * 3600, retries=2, max_containers=100)
-def enum_slice(N, m, first):
+def enum_slice(N, m, first, max_turn, lam):
+    """Canonical outlines of this slice that are simple polygons: for the equal-edge job with unit edges, for the hat
+    route for each length assignment separately (returns (outline, assignment) pairs)."""
     sys.path.insert(0, "/root/ms")
-    import outlines as O
+    import outlines as O, free as F
+    R = F.Ring(N)
     seen, out = set(), []
-    for s in O.outlines(N, m, first=tuple(first)):
+    for s in O.outlines(N, m, first=tuple(first), max_turn=max_turn):
         c = O.canon(s, N)
-        if c not in seen:
-            seen.add(c); out.append(list(c))
+        if c in seen:
+            continue
+        seen.add(c)
+        if lam is None:
+            if O.simple(c, N):
+                out.append((list(c), None))
+        else:
+            L = lam_value(R, lam); one = (1, 0, 0, 0)
+            for sw in (False, True):
+                lens = [(L if (d % 2) != sw else one) for d in c]
+                if O.simple(c, N, lens):
+                    out.append((list(c), (lam, sw)))
     return out
 
 
@@ -55,16 +68,21 @@ def _one(seq, N, lens_spec, q):
         q.put({'error': repr(e)})
 
 
-@app.function(cpu=1.0, memory=4096, timeout=3600, retries=2, max_containers=100)
-def test(chunk, N, limit=1500):
-    import multiprocessing as mp, queue
+@app.function(cpu=1.0, memory=4096, timeout=6 * 3600, retries=2, max_containers=100)
+def test(chunk, N):
+    sys.path.insert(0, "/root/ms")
+    import free as F, free_families as FF
     out = []
     for seq, spec in chunk:
-        q = mp.Queue(); p = mp.Process(target=_one, args=(seq, N, spec, q)); p.start()
         try:
-            r = q.get(timeout=limit); p.join(5)
-        except queue.Empty:
-            p.kill(); p.join(); r = {'timeout': f'over {limit}s'}
+            lens = None
+            if spec:
+                lam, sw = spec
+                R = F.Ring(N); L = lam_value(R, lam); one = (1, 0, 0, 0)
+                lens = [(L if (d % 2) != sw else one) for d in seq]
+            r = FF.classify_general(tuple(seq), N, lens)
+        except Exception as e:
+            r = {'error': repr(e)}
         out.append(dict(seq=seq, lens=spec, result=r))
     return out
 
@@ -78,35 +96,36 @@ def _log(msg):
     vol.commit()
 
 
-def _outlines(N, m):
-    path = f'/vol/outlines_{N}_{m}.json'
+def _outlines(N, m, max_turn, lam):
+    tag = f'{N}_{m}_t{max_turn}' + (f'_{lam}' if lam else '')
+    path = f'/vol/outlines_{tag}.json'
     if os.path.exists(path):
         return json.load(open(path))
-    half = N // 2
-    turns = [0] + [t for a in range(1, half) for t in (a, -a)]
+    turns = [0] + [t for a in range(1, max_turn + 1) for t in (a, -a)]
     firsts = [(a, b, c) for a in turns for b in turns for c in turns]
     seen, S = set(), []
-    for part in enum_slice.starmap([(N, m, f) for f in firsts], order_outputs=False):
-        for s in part:
-            if tuple(s) not in seen:
-                seen.add(tuple(s)); S.append(s)
+    for part in enum_slice.starmap([(N, m, f, max_turn, lam) for f in firsts], order_outputs=False):
+        for s, spec in part:
+            k = (tuple(s), None if spec is None else spec[1])
+            if k not in seen:
+                seen.add(k); S.append((s, spec))
     json.dump(S, open(path, 'w')); vol.commit()
     return S
 
 
 @app.function(timeout=24 * 3600, volumes={"/vol": vol}, retries=0)
-def orchestrate(job, runs, per=3):
+def orchestrate(job, runs, per=10):
     from collections import Counter
     LOGJOB[0] = job
     _log(f'start {job} {runs}')
     for run in runs.split(','):
         parts = run.split(':')
         N, m = int(parts[0]), int(parts[1])
-        lam = parts[2] if len(parts) > 2 else None
-        S = _outlines(N, m)
-        jobs = [(s, None) for s in S] if not lam else [(s, (lam, sw)) for s in S for sw in (False, True)]
-        name = f'{job}_{N}_{m}' + (f'_{lam}' if lam else '')
-        _log(f'{name}: {len(S)} outlines, {len(jobs)} shapes to test')
+        lam = parts[2] if len(parts) > 2 and parts[2] else None
+        max_turn = int(parts[3]) if len(parts) > 3 else 3        # corners between 180 - 3*(360/N) and 180 + 3*(360/N) degrees
+        jobs = _outlines(N, m, max_turn, lam)
+        name = f'{job}_{N}_{m}_t{max_turn}' + (f'_{lam}' if lam else '')
+        _log(f'{name}: {len(jobs)} simple shapes to test')
         out, c, flagged = [], Counter(), []
         for part in test.starmap([(jobs[i:i + per], N) for i in range(0, len(jobs), per)], order_outputs=False):
             for r in part:
@@ -121,7 +140,7 @@ def orchestrate(job, runs, per=3):
                 if 'OPEN' in key or 'UNDECIDED' in key or key == 'timeout':
                     flagged.append(r)
                     _log(f'   {name} {key} {r["seq"]} lens={r["lens"]} {res}')
-            if len(out) % 600 < per:
+            if len(out) % 1000 < per:
                 json.dump(out, open(f'/vol/{name}.json', 'w'))
                 _log(f'  {name}: {len(out)}/{len(jobs)} {dict(c)}')
         json.dump(out, open(f'/vol/{name}.json', 'w'))

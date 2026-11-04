@@ -7,12 +7,13 @@ import free as F
 from shapely.geometry import Polygon
 
 
-def outlines(N, m, first=None, max_straight=1):
+def outlines(N, m, first=None, max_straight=1, max_turn=None):
     R = F.Ring(N)
     P = R.pow
     vf = [R.f(P[k]) for k in range(N)]
     half = N // 2
-    turns = [0] + [t for a in range(1, half) for t in (a, -a)]
+    mt = max_turn or (half - 1)
+    turns = [0] + [t for a in range(1, mt + 1) for t in (a, -a)]
     out = []
 
     def rec(seq, ev, od, tsum, ns):
@@ -22,7 +23,7 @@ def outlines(N, m, first=None, max_straight=1):
             last_turn = (seq[0] - seq[-1]) % N
             if last_turn > half:
                 last_turn -= N
-            if last_turn == half or last_turn == -half:
+            if abs(last_turn) > mt:
                 return
             if ev == (0, 0, 0, 0) and od == (0, 0, 0, 0) and tsum + last_turn == N:
                 if last_turn == 0 and ns + 1 > max_straight:
@@ -34,7 +35,7 @@ def outlines(N, m, first=None, max_straight=1):
         if math.hypot(*e) + math.hypot(*o) > rem + 1e-9:
             return
         # turning bound: the remaining turns (rem of them incl. closing) must reach N
-        if abs(N - tsum) > (rem + 1) * (half - 1):
+        if abs(N - tsum) > (rem + 1) * mt:
             return
         for t in turns:
             if k == 0:
@@ -70,18 +71,19 @@ def canon(seq, N):
     return best
 
 
-def simple(seq, N):
+def simple(seq, N, lens=None):
     R = F.Ring(N)
     pts = [(0.0, 0.0)]
-    for d in seq:
-        x, y = R.f(R.pow[d]); pts.append((pts[-1][0] + x, pts[-1][1] + y))
+    for i, d in enumerate(seq):
+        v = R.pow[d] if lens is None else R.apply(R.rot[d], lens[i])
+        x, y = R.f(v); pts.append((pts[-1][0] + x, pts[-1][1] + y))
     P = Polygon(pts[:-1])
     return P.is_valid and P.area > 1e-9 and P.exterior.is_ccw
 
 
-def shapes(N, m, first=None, max_straight=1):
+def shapes(N, m, first=None, max_straight=1, max_turn=None):
     seen, out = set(), []
-    for s in outlines(N, m, first, max_straight):
+    for s in outlines(N, m, first, max_straight, max_turn):
         c = canon(s, N)
         if c in seen:
             continue

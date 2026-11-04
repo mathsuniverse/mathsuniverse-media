@@ -26,7 +26,8 @@ vol = modal.Volume.from_name("monotile-results", create_if_missing=True)
 def lam_value(R, name):
     one = (1, 0, 0, 0)
     c = R.unit_sum([1, -1])
-    return {'r3': c, '2+r3': R.add((2, 0, 0, 0), c), 'phi': R.add(one, c), 'r2': c, '1+r2': R.add(one, c)}[name]
+    return {'r3': c, '2+r3': R.add((2, 0, 0, 0), c), 'phi': R.add(one, c), 'r2': c, '1+r2': R.add(one, c),
+            '2': (2, 0, 0, 0), '3': (3, 0, 0, 0), '1+r3': R.add(one, c), '2r3': R.add(c, c), '3+r3': R.add((3, 0, 0, 0), c)}[name]
 
 
 @app.function(cpu=1.0, memory=4096, timeout=6 * 3600, retries=2, max_containers=100)
@@ -153,8 +154,59 @@ def orchestrate(job, runs, per=10):
     _log(f'all done {job}')
 
 
+@app.function(cpu=1.0, memory=8192, timeout=6 * 3600, retries=2, max_containers=100)
+def deep_test(seq, N, spec):
+    sys.path.insert(0, "/root/ms")
+    import free as F, free_families as FF
+    lens = None
+    if spec:
+        lam, sw = spec
+        R = F.Ring(N); L = lam_value(R, lam); one = (1, 0, 0, 0)
+        lens = [(L if (d % 2) != sw else one) for d in seq]
+    try:
+        r = FF.classify_deep(tuple(seq), N, lens)
+    except Exception as e:
+        r = {'error': repr(e)}
+    return dict(seq=seq, lens=spec, N=N, result=r)
+
+
+@app.function(timeout=24 * 3600, volumes={"/vol": vol}, retries=0)
+def retest_all():
+    """Collect every UNDECIDED / OPEN / timeout / error entry from all finished result files and re-test it deeply."""
+    LOGJOB[0] = 'retest'
+    vol.reload()
+    items = []
+    for fn in sorted(os.listdir('/vol')):
+        if not fn.endswith('.json') or fn.startswith('outlines_') or fn.startswith('retest'):
+            continue
+        parts = fn[:-5].split('_')
+        try:
+            N = int(parts[1])
+        except Exception:
+            continue
+        for r in json.load(open('/vol/' + fn)):
+            res = r['result']
+            flag = ('timeout' in res) or ('error' in res and 'simple' not in res['error']) or \
+                   any(res.get(k, {}).get('cls') in ('UNDECIDED', 'OPEN') for k in ('mirror', 'nomirror'))
+            if flag:
+                items.append((r['seq'], N, r.get('lens')))
+    _log(f'retest: {len(items)} flagged shapes from all result files')
+    out = []
+    for r in deep_test.starmap(items, order_outputs=False):
+        out.append(r); res = r['result']
+        key = f"{res['mirror']['cls']}/{res['nomirror']['cls']}" if 'mirror' in res else str(res)[:60]
+        _log(f'   N={r["N"]} {key} {r["seq"]} lens={r["lens"]}')
+        json.dump(out, open('/vol/retest.json', 'w')); vol.commit()
+    _log('retest done')
+
+
 @app.local_entrypoint()
 def main(job: str = "general", runs: str = "10:10"):
+    if job == 'retest':
+        call = retest_all.spawn()
+        print(f'Started the deep re-test of all flagged shapes. Call id {call.object_id}.')
+        print('Progress: py -m modal volume get monotile-results progress_retest.txt . --force')
+        return
     call = orchestrate.spawn(job, runs)
     print(f'Started {job} in the cloud ({runs}). Call id {call.object_id}.')
     print(f'Your PC can now sleep. Progress: py -m modal volume get monotile-results progress_{job}.txt . --force')

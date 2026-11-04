@@ -513,3 +513,7 @@ without mirrors STUCK (R1.5): correct. modal_hatroute.py runs Tile(a,b)-type fam
 - **hatroute 12:14 sqrt3 (the hat's own family, free placement), 172,698 shapes: exactly 2 OPEN/STUCK = the hat and the
   turtle** (OPEN with mirrors, STUCK without); STUCK/STUCK 151,822, PERIODIC/PERIODIC 5,247, PERIODIC/STUCK 1,641,
   UNDECIDED/PERIODIC 1, not simple (self-touching) 13,985. Control passed, and nothing else in this family is aperiodic.
+- general 10:15 (42,144 shapes): STUCK/STUCK 38,359, PERIODIC/STUCK 216, PERIODIC/PERIODIC 2, not simple 3,567. 0 OPEN.
+- **general 12:14 (86,814 equal-edge 12-direction outlines): exactly 1 PERIODIC/OPEN = Tile(1,1), the Spectre's polygon**
+  (repeats with mirrors, 2 tiles; OPEN without). STUCK/STUCK 78,523, PERIODIC/PERIODIC 2,922, PERIODIC/STUCK 1,893,
+  UNDECIDED/STUCK 2, not simple 3,473. Control passed; nothing else Spectre-like at this size.

@@ -90,7 +90,7 @@ class Search:
         return v
 
     # -------------------------------------------------------------- the search
-    def cover(self, Rad, node_limit=200000, time_limit=None):
+    def cover(self, Rad, node_limit=200000, time_limit=None, scan=6):
         R = self.ring
         m = self.tile.m
         placed = []                 # list of (oi, t)
@@ -179,13 +179,14 @@ class Search:
             if not oe:
                 return True
             best = None
-            for e in oe[:6]:                 # most constrained of the nearest open edges
+            single = None
+            for e in (oe if scan is None else oe[:scan]):   # dead-end check + most constrained open edge
                 op = options(e)
                 if not op:
                     return False
                 if best is None or len(op) < len(best):
                     best = op
-                    if len(op) == 1:
+                    if len(op) == 1 and scan is not None:
                         break
             for pl in best:
                 do(pl)

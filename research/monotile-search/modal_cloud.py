@@ -123,8 +123,12 @@ def orchestrate(job, runs, per=10):
         N, m = int(parts[0]), int(parts[1])
         lam = parts[2] if len(parts) > 2 and parts[2] else None
         max_turn = int(parts[3]) if len(parts) > 3 else 3        # corners between 180 - 3*(360/N) and 180 + 3*(360/N) degrees
-        jobs = _outlines(N, m, max_turn, lam)
         name = f'{job}_{N}_{m}_t{max_turn}' + (f'_{lam}' if lam else '')
+        if os.path.exists(f'/vol/{name}.done'):
+            _log(f'{name}: already done, skipped'); continue
+        if N == 10 and m % 5:
+            _log(f'{name}: impossible (10-fold edge classes need multiples of 5 edges), skipped'); continue
+        jobs = _outlines(N, m, max_turn, lam)
         _log(f'{name}: {len(jobs)} simple shapes to test')
         out, c, flagged = [], Counter(), []
         for part in test.starmap([(jobs[i:i + per], N) for i in range(0, len(jobs), per)], order_outputs=False):
@@ -144,6 +148,7 @@ def orchestrate(job, runs, per=10):
                 json.dump(out, open(f'/vol/{name}.json', 'w'))
                 _log(f'  {name}: {len(out)}/{len(jobs)} {dict(c)}')
         json.dump(out, open(f'/vol/{name}.json', 'w'))
+        open(f'/vol/{name}.done', 'w').write(json.dumps(dict(c)))
         _log(f'{name} DONE {dict(c)}  (with mirrors / without)')
     _log(f'all done {job}')
 

@@ -504,3 +504,12 @@ free.Tile takes exact edge lengths in Z[zeta_N] (sqrt3 = z + 1/z in Z[zeta12], p
 in Z[zeta8]). Control: the hat as a free Tile(1, sqrt3) (12-fold, 14 edges) -> with mirrors OPEN (patch R4, no repeat),
 without mirrors STUCK (R1.5): correct. modal_hatroute.py runs Tile(a,b)-type families for N = 8, 10, 12 with b/a in
 {sqrt2, 1+sqrt2, phi, sqrt3, 2+sqrt3}, both assignments; the 12:14:r3 run contains the hat and the turtle as controls.
+
+## Cloud runs v2 (4 Nov, corners 90-270 deg, simple outlines only)
+- general 10:10 (94 shapes): STUCK/STUCK 61, PERIODIC/PERIODIC 14, PERIODIC/STUCK 13, UNDECIDED/STUCK 1, not simple 5. 0 OPEN.
+- general 12:12 (4,262): STUCK/STUCK 3,545, PERIODIC/PERIODIC 411, PERIODIC/STUCK 188, not simple 118. 0 OPEN.
+- 10-fold with the family rule: each edge class is a set of pentagon directions, which cancel only in full sets of 5,
+  so outlines need 10, 15, 20, ... edges (10:12 and 10:14 are empty).
+- **hatroute 12:14 sqrt3 (the hat's own family, free placement), 172,698 shapes: exactly 2 OPEN/STUCK = the hat and the
+  turtle** (OPEN with mirrors, STUCK without); STUCK/STUCK 151,822, PERIODIC/PERIODIC 5,247, PERIODIC/STUCK 1,641,
+  UNDECIDED/PERIODIC 1, not simple (self-touching) 13,985. Control passed, and nothing else in this family is aperiodic.

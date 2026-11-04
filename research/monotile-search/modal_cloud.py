@@ -5,7 +5,7 @@ Start (returns at once):
     py -m modal run --detach modal_cloud.py --job general  --runs "10:10,12:12,10:12,10:14,12:14,8:16"
     py -m modal run --detach modal_cloud.py --job hatroute --runs "12:14:r3,10:12:phi,10:14:phi,8:12:r2,8:14:r2,8:12:1+r2,8:14:1+r2,12:14:2+r3"
 Progress (any time):
-    py -m modal volume get monotile-results progress.txt . --force   then open progress.txt
+    py -m modal volume get monotile-results progress_general.txt . --force   (or progress_hatroute.txt), then open it
 Fetch all results into results\\cloud:
     py -m modal volume get monotile-results / results\\cloud --force
 
@@ -69,8 +69,11 @@ def test(chunk, N, limit=1500):
     return out
 
 
+LOGJOB = ['general']
+
+
 def _log(msg):
-    with open('/vol/progress.txt', 'a') as f:
+    with open(f'/vol/progress_{LOGJOB[0]}.txt', 'a') as f:
         f.write(time.strftime('%H:%M:%S ') + msg + '\n')
     vol.commit()
 
@@ -94,6 +97,7 @@ def _outlines(N, m):
 @app.function(timeout=24 * 3600, volumes={"/vol": vol}, retries=0)
 def orchestrate(job, runs, per=3):
     from collections import Counter
+    LOGJOB[0] = job
     _log(f'start {job} {runs}')
     for run in runs.split(','):
         parts = run.split(':')
@@ -129,4 +133,4 @@ def orchestrate(job, runs, per=3):
 def main(job: str = "general", runs: str = "10:10"):
     call = orchestrate.spawn(job, runs)
     print(f'Started {job} in the cloud ({runs}). Call id {call.object_id}.')
-    print('Your PC can now sleep. Progress: py -m modal volume get monotile-results progress.txt . --force')
+    print(f'Your PC can now sleep. Progress: py -m modal volume get monotile-results progress_{job}.txt . --force')

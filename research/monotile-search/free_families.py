@@ -43,7 +43,7 @@ def classify_general(seq, N, lens=None):
             return {'error': 'not simple'}
         res = None
         for R in (1.5, 2, 3):
-            r = S.cover(R * S.diam / 2, node_limit=30000)
+            r = S.cover(R * S.diam / 2, node_limit=30000, scan=None)
             if r is None:
                 res = dict(cls='UNDECIDED', at_R=R); break
             if not r:
@@ -54,7 +54,7 @@ def classify_general(seq, N, lens=None):
                 q = F2.periodic4(S, 12, 10, budget=300)
                 p = (q[0], q[1])
             if not p[0]:
-                r4 = S.cover(4 * S.diam / 2, node_limit=200000, time_limit=300)
+                r4 = S.cover(4 * S.diam / 2, node_limit=200000, time_limit=300, scan=None)
                 if r4:
                     p = F2.patch_periods(S, patch=S.patch, max_tiles=64, budget=300)
                 elif r4 is False:

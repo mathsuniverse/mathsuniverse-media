@@ -558,3 +558,6 @@ phi itself has not been run.
   - B [0,1,0,4,3,4,7,6,3,7,8,11,10,9] (corners 60-270): patches to R7 easily; patch_periods on the R7 patch finds a
     4-tile periodic cell (p1 = (1,0,-2,-1), p2 = (7,6,0,-3)) -> PERIODIC. The cloud screen called it OPEN because its
     R4 patch is too small to show the long period vector.
+  - UNDECIDED/STUCK flags [0,0,2,0,2,4,6,8,6,8,6,8,10,2] and [0,1,0,1,0,3,4,8,7,6,7,6,7,11]: R3 patch not reached in
+    40 min, but patch_periods on the R2 patch finds an exact 2-tile periodic cell for both -> PERIODIC.
+  - UNDECIDED/PERIODIC flags (4 so far): periodic without mirrors, hence periodic. Settled.

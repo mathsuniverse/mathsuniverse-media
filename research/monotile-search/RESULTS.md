@@ -537,3 +537,5 @@ the candidate set explodes), then patch_periods on the final patch.
 - Patch stalls, undecided (probably no tiling): [0,1,2,5,4,3,6,9,8,7] (R2 ok, R3 not reached in 732k nodes / 75 min),
   [0,1,3,2,5,4,8,9,6,7] (R3 ok, R4 not reached in 497k nodes). Labelled "NO REPEAT FOUND" by the script, but only 1-2
   lattices could be tested on such small patches; the label is now "UNDECIDED (patch stalled)". Not hat-like.
+- SAT on the 2 stalled shapes: candidate set exceeds 400,000 placements at their stall radius (R3 / R4) — the dense
+  Z[zeta10] module makes the SAT route impractical here; they stay UNDECIDED (patch stalled), probably no tiling.

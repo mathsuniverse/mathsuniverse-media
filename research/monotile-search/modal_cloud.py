@@ -38,7 +38,10 @@ def enum_slice(N, m, first, max_turn, lam):
     import outlines as O, free as F
     R = F.Ring(N)
     seen, out = set(), []
-    for s in O.outlines(N, m, first=tuple(first), max_turn=max_turn):
+    import math
+    # fast enumerator: self-touching prefixes cut at once, one turn sequence per cyclic class (validated equal to
+    # O.outlines on 10:10, 8:12, 12:12)
+    for s in O.outlines_fast(N, m, first=tuple(first), max_turn=max_turn, lam_f=math.hypot(*R.f(lam_value(R, lam))) if lam else None):
         c = O.canon(s, N)
         if c in seen:
             continue

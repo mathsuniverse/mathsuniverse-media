@@ -539,3 +539,12 @@ the candidate set explodes), then patch_periods on the final patch.
   lattices could be tested on such small patches; the label is now "UNDECIDED (patch stalled)". Not hat-like.
 - SAT on the 2 stalled shapes: candidate set exceeds 400,000 placements at their stall radius (R3 / R4) — the dense
   Z[zeta10] module makes the SAT route impractical here; they stay UNDECIDED (patch stalled), probably no tiling.
+
+## Fast outline enumeration (5 Nov, 06:00)
+outlines.outlines_fast: prefixes that touch/cross themselves are cut at once (for the hat route only when they do so
+under both length assignments), Galois-conjugate closure bound, and one turn sequence per cyclic class (FKM necklace
+rule). Identical simple-shape sets to outlines() on 10:10 (88), 8:12 (5,923) and 12:12 (4,138); the hat is produced in
+12:14 with lengths (1, sqrt3). About 8x faster; the overnight run of 4 Nov stalled in the old enumerator (10:15, corner
+limit 4) and was stopped.
+Label note: the hat-route ratio called "phi" in Z[zeta10] is 1 + (z + 1/z) = phi^2 = 2.618 (z + 1/z = phi); the ratio
+phi itself has not been run.

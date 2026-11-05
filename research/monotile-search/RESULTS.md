@@ -548,3 +548,13 @@ rule). Identical simple-shape sets to outlines() on 10:10 (88), 8:12 (5,923) and
 limit 4) and was stopped.
 Label note: the hat-route ratio called "phi" in Z[zeta10] is 1 + (z + 1/z) = phi^2 = 2.618 (z + 1/z = phi); the ratio
 phi itself has not been run.
+
+## night2 (5 Nov): sharper corners (corner limit 4) and 8:18
+- 10:15 t4: 796,058 simple shapes: STUCK/STUCK 794,137, PERIODIC/STUCK 1,912, PERIODIC/PERIODIC 9. 0 OPEN, 0 UNDECIDED.
+- 12:14 t4 (2,575,885 shapes, running): control Tile(1,1) = [0,0,2,5,3,6,4,7,9,6,8,11,1,10] came back
+  UNDECIDED/OPEN (no mirrors OPEN, as the Spectre must). Two hat-like flags (OPEN with mirrors, STUCK without):
+  - A [0,1,0,1,2,3,5,4,7,6,9,8,9,8] (corners 60-210): patches to R4, exhaustive search finds NO R5 patch -> cannot
+    tile (finite Heesch number), not a monotile.
+  - B [0,1,0,4,3,4,7,6,3,7,8,11,10,9] (corners 60-270): patches to R7 easily; patch_periods on the R7 patch finds a
+    4-tile periodic cell (p1 = (1,0,-2,-1), p2 = (7,6,0,-3)) -> PERIODIC. The cloud screen called it OPEN because its
+    R4 patch is too small to show the long period vector.

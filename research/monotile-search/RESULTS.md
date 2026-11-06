@@ -561,3 +561,11 @@ phi itself has not been run.
   - UNDECIDED/STUCK flags [0,0,2,0,2,4,6,8,6,8,6,8,10,2] and [0,1,0,1,0,3,4,8,7,6,7,6,7,11]: R3 patch not reached in
     40 min, but patch_periods on the R2 patch finds an exact 2-tile periodic cell for both -> PERIODIC.
   - UNDECIDED/PERIODIC flags (4 so far): periodic without mirrors, hence periodic. Settled.
+  - Flags at 2,057,000 / 2,575,885 (6 Nov 06:03): 8 UNDECIDED/PERIODIC (periodic), plus three even-direction shapes,
+    i.e. polyiamonds, settled exactly on the triangle grid (engine.classify, tcap 24, rcap 8):
+    - OPEN/STUCK [0,0,2,0,2,4,6,4,6,8,10,8,6,10] (20-iamond): STUCK with mirrors (no R8 cover, max R6), STUCK without
+      (fail R5) -> cannot tile.
+    - UNDECIDED/STUCK [0,0,2,0,10,2,4,6,4,6,8,6,8,10] (18-iamond): PERIODIC with mirrors, 12-tile torus cell
+      (lattice [18,6,6]); STUCK without (fail R3).
+    - UNDECIDED/STUCK [0,2,0,2,4,2,4,6,8,10,8,6,10,8] (16-iamond): PERIODIC with mirrors, 2-tile cell; STUCK without.
+    No new monotile among the 12:14 t4 flags so far. Consistent with Myers' polyiamond tables (no aperiodic polyiamond).

@@ -117,8 +117,22 @@ def _outlines(N, m, max_turn, lam):
     return S
 
 
-@app.function(timeout=24 * 3600, volumes={"/vol": vol}, retries=0)
+def _key(res):
+    if 'error' in res and 'simple' in res['error']:
+        return 'not simple'
+    if 'mirror' in res:
+        return f"{res['mirror']['cls']}/{res['nomirror']['cls']}"
+    return 'error' if 'error' in res else 'timeout'
+
+
+def _sk(seq, spec):
+    return (tuple(seq), None if spec is None else (spec[0], bool(spec[1])))
+
+
+@app.function(timeout=24 * 3600, volumes={"/vol": vol}, retries=0, memory=16384)
 def orchestrate(job, runs, per=10):
+    """Resumable: a run that was cut off (Modal's 24 h limit) keeps its partial /vol/<name>.json; starting the same job
+    again skips every shape already in it and continues with the rest."""
     from collections import Counter
     LOGJOB[0] = job
     _log(f'start {job} {runs}')
@@ -133,24 +147,31 @@ def orchestrate(job, runs, per=10):
         if N == 10 and m % 5:
             _log(f'{name}: impossible (10-fold edge classes need multiples of 5 edges), skipped'); continue
         jobs = _outlines(N, m, max_turn, lam)
-        _log(f'{name}: {len(jobs)} simple shapes to test')
+        total = len(jobs)
         out, c, flagged = [], Counter(), []
+        if os.path.exists(f'/vol/{name}.json'):
+            try:
+                out = json.load(open(f'/vol/{name}.json'))
+            except Exception as e:
+                _log(f'{name}: partial results unreadable ({type(e).__name__}), starting this run over'); out = []
+            done = set()
+            for r in out:
+                done.add(_sk(r['seq'], r.get('lens'))); c[_key(r['result'])] += 1
+            jobs = [j for j in jobs if _sk(j[0], j[1]) not in done]
+            _log(f'{name}: resuming, {len(out)} already tested {dict(c)}, {len(jobs)} left')
+        _log(f'{name}: {total} simple shapes to test')
         for part in test.starmap([(jobs[i:i + per], N) for i in range(0, len(jobs), per)], order_outputs=False):
             for r in part:
                 out.append(r); res = r['result']
-                if 'error' in res and 'simple' in res['error']:
-                    key = 'not simple'
-                elif 'mirror' in res:
-                    key = f"{res['mirror']['cls']}/{res['nomirror']['cls']}"
-                else:
-                    key = 'error' if 'error' in res else 'timeout'
+                key = _key(res)
                 c[key] += 1
                 if 'OPEN' in key or 'UNDECIDED' in key or key == 'timeout':
                     flagged.append(r)
                     _log(f'   {name} {key} {r["seq"]} lens={r["lens"]} {res}')
             if len(out) % 1000 < per:
-                json.dump(out, open(f'/vol/{name}.json', 'w'))
-                _log(f'  {name}: {len(out)}/{len(jobs)} {dict(c)}')
+                if len(out) % 10000 < per:          # the file is large (millions of entries): save every 10,000
+                    json.dump(out, open(f'/vol/{name}.json', 'w'))
+                _log(f'  {name}: {len(out)}/{total} {dict(c)}')
         json.dump(out, open(f'/vol/{name}.json', 'w'))
         open(f'/vol/{name}.done', 'w').write(json.dumps(dict(c)))
         _log(f'{name} DONE {dict(c)}  (with mirrors / without)')

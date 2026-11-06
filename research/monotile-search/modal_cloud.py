@@ -117,6 +117,13 @@ def _outlines(N, m, max_turn, lam):
     return S
 
 
+def _save(path, data):
+    """Write to a temp file and rename, so a job killed mid-save never leaves a half-written file."""
+    with open(path + '.tmp', 'w') as f:
+        json.dump(data, f)
+    os.replace(path + '.tmp', path)
+
+
 def _key(res):
     if 'error' in res and 'simple' in res['error']:
         return 'not simple'
@@ -170,9 +177,9 @@ def orchestrate(job, runs, per=10):
                     _log(f'   {name} {key} {r["seq"]} lens={r["lens"]} {res}')
             if len(out) % 1000 < per:
                 if len(out) % 10000 < per:          # the file is large (millions of entries): save every 10,000
-                    json.dump(out, open(f'/vol/{name}.json', 'w'))
+                    _save(f'/vol/{name}.json', out)
                 _log(f'  {name}: {len(out)}/{total} {dict(c)}')
-        json.dump(out, open(f'/vol/{name}.json', 'w'))
+        _save(f'/vol/{name}.json', out)
         open(f'/vol/{name}.done', 'w').write(json.dumps(dict(c)))
         _log(f'{name} DONE {dict(c)}  (with mirrors / without)')
     _log(f'all done {job}')

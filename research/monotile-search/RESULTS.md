@@ -569,3 +569,7 @@ phi itself has not been run.
       (lattice [18,6,6]); STUCK without (fail R3).
     - UNDECIDED/STUCK [0,2,0,2,4,2,4,6,8,10,8,6,10,8] (16-iamond): PERIODIC with mirrors, 2-tile cell; STUCK without.
     No new monotile among the 12:14 t4 flags so far. Consistent with Myers' polyiamond tables (no aperiodic polyiamond).
+  - 6 Nov: Modal's 24 h function limit stopped night2 at 2,058,000; the partial file was mid-write, so 12:14 t4 restarted
+    from 0 (now ~7-20k shapes/min after saving every 10,000 instead of every 1,000). Re-run reproduces every earlier flag
+    exactly. New at 2,17x,000: OPEN/PERIODIC [0,2,0,2,4,6,2,4,8,6,10,8,10,8]: periodic without mirrors (6-tile cell),
+    hence it tiles periodically -> not aperiodic.

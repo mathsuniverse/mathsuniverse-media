@@ -72,7 +72,7 @@ def _one(seq, N, lens_spec, q):
         q.put({'error': repr(e)})
 
 
-@app.function(cpu=1.0, memory=4096, timeout=6 * 3600, retries=2, max_containers=100)
+@app.function(cpu=1.0, memory=4096, timeout=6 * 3600, retries=2, max_containers=200)
 def test(chunk, N):
     sys.path.insert(0, "/root/ms")
     import free as F, free_families as FF
@@ -136,10 +136,15 @@ def _sk(seq, spec):
     return (tuple(seq), None if spec is None else (spec[0], bool(spec[1])))
 
 
-@app.function(timeout=24 * 3600, volumes={"/vol": vol}, retries=0, memory=16384)
-def orchestrate(job, runs, per=10):
-    """Resumable: a run that was cut off (Modal's 24 h limit) keeps its partial /vol/<name>.json; starting the same job
-    again skips every shape already in it and continues with the rest."""
+def _hk(seq, spec):
+    return hash((tuple(seq), None if spec is None else int(bool(spec[1]))))
+
+
+@app.function(timeout=24 * 3600, volumes={"/vol": vol}, retries=0, memory=32768, cpu=2.0)
+def orchestrate(job, runs, per=20, part_size=10000):
+    """Resumable. Results go to /vol/<name>_parts/part_NNNNNN.json, one new small file per 10,000 shapes (atomic writes,
+    never rewritten), so a run cut off by Modal's 24 h limit loses at most the last 10,000. Starting the same job again
+    reads every part (and an old single /vol/<name>.json if it is readable), skips those shapes and continues."""
     from collections import Counter
     LOGJOB[0] = job
     _log(f'start {job} {runs}')
@@ -155,31 +160,42 @@ def orchestrate(job, runs, per=10):
             _log(f'{name}: impossible (10-fold edge classes need multiples of 5 edges), skipped'); continue
         jobs = _outlines(N, m, max_turn, lam)
         total = len(jobs)
-        out, c, flagged = [], Counter(), []
+        pdir = f'/vol/{name}_parts'
+        os.makedirs(pdir, exist_ok=True)
+        c, done, n_done = Counter(), set(), 0
+        sources = [os.path.join(pdir, f) for f in sorted(os.listdir(pdir)) if f.endswith('.json')]
         if os.path.exists(f'/vol/{name}.json'):
+            sources.insert(0, f'/vol/{name}.json')
+        for src in sources:
             try:
-                out = json.load(open(f'/vol/{name}.json'))
+                data = json.load(open(src))
             except Exception as e:
-                _log(f'{name}: partial results unreadable ({type(e).__name__}), starting this run over'); out = []
-            done = set()
-            for r in out:
-                done.add(_sk(r['seq'], r.get('lens'))); c[_key(r['result'])] += 1
-            jobs = [j for j in jobs if _sk(j[0], j[1]) not in done]
-            _log(f'{name}: resuming, {len(out)} already tested {dict(c)}, {len(jobs)} left')
+                _log(f'{name}: {os.path.basename(src)} unreadable ({type(e).__name__}), its shapes will be re-tested'); continue
+            for r in data:
+                k = _hk(r['seq'], r.get('lens'))
+                if k not in done:
+                    done.add(k); c[_key(r['result'])] += 1
+            del data
+        n_done = len(done)
+        if n_done:
+            jobs = [j for j in jobs if _hk(j[0], j[1]) not in done]
+            _log(f'{name}: resuming, {n_done} already tested {dict(c)}, {len(jobs)} left')
+        del done
         _log(f'{name}: {total} simple shapes to test')
+        nxt = len([f for f in os.listdir(pdir) if f.endswith('.json')])
+        buf, tested = [], n_done
         for part in test.starmap([(jobs[i:i + per], N) for i in range(0, len(jobs), per)], order_outputs=False):
             for r in part:
-                out.append(r); res = r['result']
-                key = _key(res)
+                buf.append(r); tested += 1
+                key = _key(r['result'])
                 c[key] += 1
                 if 'OPEN' in key or 'UNDECIDED' in key or key == 'timeout':
-                    flagged.append(r)
-                    _log(f'   {name} {key} {r["seq"]} lens={r["lens"]} {res}')
-            if len(out) % 1000 < per:
-                if len(out) % 10000 < per:          # the file is large (millions of entries): save every 10,000
-                    _save(f'/vol/{name}.json', out)
-                _log(f'  {name}: {len(out)}/{total} {dict(c)}')
-        _save(f'/vol/{name}.json', out)
+                    _log(f'   {name} {key} {r["seq"]} lens={r["lens"]} {r["result"]}')
+            if len(buf) >= part_size:
+                _save(f'{pdir}/part_{nxt:06d}.json', buf); nxt += 1; buf = []
+                _log(f'  {name}: {tested}/{total} {dict(c)}')
+        if buf:
+            _save(f'{pdir}/part_{nxt:06d}.json', buf)
         open(f'/vol/{name}.done', 'w').write(json.dumps(dict(c)))
         _log(f'{name} DONE {dict(c)}  (with mirrors / without)')
     _log(f'all done {job}')

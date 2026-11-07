@@ -573,3 +573,16 @@ phi itself has not been run.
     from 0 (now ~7-20k shapes/min after saving every 10,000 instead of every 1,000). Re-run reproduces every earlier flag
     exactly. New at 2,17x,000: OPEN/PERIODIC [0,2,0,2,4,6,2,4,8,6,10,8,10,8]: periodic without mirrors (6-tile cell),
     hence it tiles periodically -> not aperiodic.
+  - 12:14 t4 DONE (2,575,885): STUCK/STUCK 2,495,725; PERIODIC/STUCK 39,463; PERIODIC/PERIODIC 40,679; OPEN/STUCK 4;
+    UNDECIDED/PERIODIC 8; UNDECIDED/STUCK 4; OPEN/PERIODIC 1; UNDECIDED/OPEN 1 (the control). Last new flag
+    OPEN/STUCK [0,2,0,2,4,2,6,4,8,10,6,8,10,8] is a 16-iamond: on the triangle grid STUCK with mirrors (fail R6, max
+    cover R5) and STUCK without (fail R4) -> cannot tile. **Every 12:14 t4 flag is settled: no new monotile.**
+- 8:18 t4 (26,214,943 shapes; cut off at ~3.0M by the 24 h limit, resumed 7 Nov 09:51). Flags so far:
+  - OPEN/STUCK [0,1,0,1,2,1,3,5,4,3,4,2,5,6,5,7,6,7] and [0,0,1,7,1,3,2,3,4,2,3,5,4,6,7,5,7,6]: PERIODIC, 4-tile cells.
+  - UNDECIDED/PERIODIC (2): periodic.
+  - UNDECIDED/STUCK, deep-checked locally (R3 cover not reached in 25 min, then a periodic cell found):
+    [0,0,1,0,1,2,4,5,4,5,4,3,4,3,6,7,0,7] PERIODIC, 2-tile cell (periodic4);
+    [0,1,0,1,0,1,0,2,3,4,5,4,5,4,6,5,4,7] PERIODIC, 2-tile cell (patch_periods);
+    [0,1,0,1,0,1,0,3,2,4,5,4,5,4,7,5,4,6] PERIODIC, 2-tile cell (patch_periods);
+    [0,1,0,1,0,1,0,3,2,4,7,5,4,5,4,5,4,6] PERIODIC, 2-tile cell (both methods).
+    [0,0,1,0,1,0,1,2,4,5,4,5,4,5,4,5,6,1]: R2 cover not reached in 25 min; longer cover + periodic search running.

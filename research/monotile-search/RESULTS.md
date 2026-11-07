@@ -585,4 +585,5 @@ phi itself has not been run.
     [0,1,0,1,0,1,0,2,3,4,5,4,5,4,6,5,4,7] PERIODIC, 2-tile cell (patch_periods);
     [0,1,0,1,0,1,0,3,2,4,5,4,5,4,7,5,4,6] PERIODIC, 2-tile cell (patch_periods);
     [0,1,0,1,0,1,0,3,2,4,7,5,4,5,4,5,4,6] PERIODIC, 2-tile cell (both methods).
-    [0,0,1,0,1,0,1,2,4,5,4,5,4,5,4,5,6,1]: R2 cover not reached in 25 min; longer cover + periodic search running.
+    [0,0,1,0,1,0,1,2,4,5,4,5,4,5,4,5,6,1]: R2 cover found in 15 min (R3, R4 follow), patch_periods finds a 2-tile cell
+      p1 = (1,0,-1,0), p2 = (4,7,4,0) -> PERIODIC. **All 9 8:18 flags so far are settled: no new monotile.**

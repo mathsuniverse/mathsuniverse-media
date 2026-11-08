@@ -145,3 +145,6 @@ Comments: no channel comment on KHqBvjPWvF8, L3X0ClYLdgU, Fyy457oZZak; Jt_K2IZLx
 - 2026-11-02 17:4x: Fourier Short TBsLYV3ujsk public; approved comment posted and pinned (Pinned by @mathsuniversespace, reload-verified).
 - 2026-11-03 07:5x: Moon corner-cube Short FWpfMMu2d28 public; approved comment posted and pinned (reload-verified).
 - 2026-11-04 07:0x: Galileo dice Short AnIy3vlXGE4 public; approved comment posted and pinned (reload-verified).
+- 2026-11-06/07: heart Short lJJGIOAu1x4 public, avatar "The Math Universe", related mhHGxDVe1Fc; approved comment inserted but the submit click was blocked by a permission check. NOT posted; asked Razvan.
+- 2026-11-07 17:03: antimatter Short pmPUhEBvgkI comment task fired; not attempted (submit question to Razvan still open). NOT posted.
+- 2026-11-08 17:03: hands Short Gf0E9mbTAt8 comment task fired; not attempted (same reason). NOT posted.

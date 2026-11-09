@@ -591,4 +591,4 @@ phi itself has not been run.
 - 9 Nov: last 8:18 flag n8_3 [0,1,0,1,0,1,0,3,4,5,2,4,5,4,5,4,7,6] is PERIODIC: R3 cover in 3588 s, 2-tile cell p1=(0,0,1,1), p2=(6,6,-2,0). All 8:18 flags now settled; no aperiodic 8:18 shape.
 
 ## 60-degree orientation group (9 Nov, parity.py, modal_parity.py)
-Controls pass (Tile(1,1), hat, turtle, Tile(1,2): OPEN with mirrors, STUCK without). Full 12:14 / 12:16 runs pending (Modal).
+Controls pass (Tile(1,1), hat, turtle, Tile(1,2): OPEN with mirrors, STUCK without). Full 12:14 / 12:16 runs: modal_cloud.py --job parity (fast cached outlines, resumable); modal_parity.py superseded (slow enumeration).

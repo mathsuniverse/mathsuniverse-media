@@ -140,3 +140,32 @@ Honest status: every conjecture is consistent with every known pattern, but the 
 only two members. The theory cannot be confirmed from the literature; it needs new members, which is what the
 search is for. Concrete prediction to test: a 12-direction quasiperiodic monotile cannot have s = 4; an 8-direction
 one cannot have s = 6 (silver).
+
+## 8. The operator (9 Nov): both inflations are elements of SL2(Z[w]), w = e^(i pi/3)
+
+Computed in window/sl2.py from the exact 4D matrices of section 6.
+- The hat inflation commutes with rotation by 60 degrees. The Spectre double step commutes with 60 degrees but NOT
+  with 30 degrees (nor with the mirror). So the 4D return module is a rank-2 module over the Eisenstein integers
+  Z[w] (hat: a-edges and b-edges; Spectre: even-direction and odd-direction edges, Z[z12] = Z[w] + Z[w] z12), and the
+  inflation is a 2x2 matrix over Z[w]:
+  - hat:        [[2-w, -2+2w], [-w, 1+w]]            trace 3, det 1
+  - Spectre^2:  [[4+3w, 4-5w], [1+4w, 4-3w]]         trace 8, det 1   (basis 1, z12)
+- Theorem (elementary, given the rank-2 structure): if T in GL2(Z[w]) has a real eigenvalue mu > 1 that is not
+  rational, its characteristic polynomial p over Q(w) equals its conjugate (otherwise p and conj(p) share the root mu
+  and mu would be rational). So trace s is a rational integer, det = +-1, and mu^2 - s mu + 1 = 0. This DERIVES H1
+  (quadratic unit inflation) instead of assuming it: lambda is the eigenvalue of a hyperbolic integer-trace 2x2 operator.
+- Limit-periodic class (Taylor-Socolar, Chair44): inflation 2, det 4: not unimodular. So H1' becomes: det T = +-1
+  (quasiperiodic) versus det T = 4 (limit-periodic).
+
+Consequences (testable predictions):
+- P1. The construction needs an imaginary quadratic subfield of the edge-direction field. Rank-4 direction fields:
+  Q(z5)=Q(z10) has none; Q(z8) has Q(i), Q(sqrt-2); Q(z12) has Q(w), Q(i). Prediction: no rank-4 quasiperiodic
+  monotile with 5- or 10-fold edge directions (its inflation would be multiplication inside Z[z5], i.e. mu in Q(sqrt5),
+  the Penrose class, which needs 2 tiles). Allowed: 8- and 12-fold. Consistent with every known case.
+- P2. Excluded traces = those where Q(sqrt(s^2-4)) is the tile's own real subfield (then T can be a scalar similarity,
+  the multi-tile class): 12-fold s = 4, 14, 52 ... (square-triangle, shield, Stampfli have 2+sqrt3);
+  8-fold s = 6, 34 ... (Ammann-Beenker has 1+sqrt2, s=6). Known monotiles: s = 3 (hat), 8 (Spectre). Open slots for
+  a new 12-fold monotile: s = 5, 6, 7, 9, 10, 11, 12, 13, 15, ...
+- P3. metallic link (Razvan): s = n^2+2 gives mu = (n-th metallic mean)^2: hat s=3 is golden^2. Spectre s=8 is not of
+  this form, so "metallic" is not the law; integer-trace SL2 is.
+Status: the SL2(Z[w]) structure is computed, not conjectured; P1-P3 are predictions.

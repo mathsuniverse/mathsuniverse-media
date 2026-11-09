@@ -169,3 +169,32 @@ Consequences (testable predictions):
 - P3. metallic link (Razvan): s = n^2+2 gives mu = (n-th metallic mean)^2: hat s=3 is golden^2. Spectre s=8 is not of
   this form, so "metallic" is not the law; integer-trace SL2 is.
 Status: the SL2(Z[w]) structure is computed, not conjectured; P1-P3 are predictions.
+
+## 9. The second invariant: the content g, and the table of slots (9 Nov), window/slots.py
+
+For T = [[a,b],[c,d]] in SL2(Z[w]) define the content g = gcd(b, c, a-d) in Z[w] (a PID). It is a conjugacy
+invariant, and since (a-d)^2 + 4bc = s^2 - 4, it satisfies g^2 | (s^2 - 4): finitely many values per trace.
+Conjugacy classes with given (s, g) correspond to ideal classes of the order Z[w][mu] of conductor g in the CM field
+Q(w, sqrt(s^2-4)) (Latimer-MacDuffee over Z[w]; class numbers not yet computed, so (s, g) may split further).
+Powers are not primitive: content(T^2) = s * content(T).
+
+Measured: hat g = 1 (norm 1); Spectre double step g = sqrt(-3) (norm 3). This is the extra parameter: the two known
+monotiles differ not only in s but in the conductor. The Spectre's sqrt(-3) is the prime that ramifies in
+Z[w] -> Z[z12], i.e. the 30-degree (odd-direction) edge family.
+
+Primitive slots for a 12-fold quasiperiodic monotile (g given by its norm; found by explicit search, entries |.|<=4):
+| s | mu | field | contents g (norm) | status |
+| 3 | 2.618 golden^2 | Q(sqrt5) | 1 | 1 = hat (slot full) |
+| 4 | 3.732 | Q(sqrt3) | 1, 3 | excluded (own field; square-triangle/shield class) |
+| 5 | 4.791 | Q(sqrt21) | 1, 3 | OPEN, smallest untaken |
+| 6 | 5.828 silver^2 | Q(sqrt2) | 1, 4 | OPEN for 12-fold (excluded for 8-fold) |
+| 7 | 6.854 | Q(sqrt5) | 1, 3 (9 = hat^2) | OPEN |
+| 8 | 7.873 | Q(sqrt15) | 1, 3 | 3 = Spectre; g = 1 is an OPEN sibling with the same lambda |
+| 9 | 8.888 | Q(sqrt77) | 1 | OPEN |
+| 10 | 9.899 | Q(sqrt6) | 1, 3, 4, 12 | OPEN |
+| 11-13 | | Q(sqrt13), Q(sqrt35), Q(sqrt165) | 1,3,9 / 1 / 1,3 | OPEN |
+Conjecture L (the law, as it now stands): every quasiperiodic monotile with 12-fold edge directions realises one
+primitive slot (s, g) with Q(sqrt(s^2-4)) not equal to Q(sqrt3); g = 1 gives hat-type (6-fold, two edge lengths)
+combinatorics, g divisible by sqrt(-3) gives Spectre-type (12-fold, even/odd edge families).
+Next: realise a slot as a substitution (which supertile boundary words have net edge vectors T(e)); first targets
+(5, sqrt-3) and (8, 1).

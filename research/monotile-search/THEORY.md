@@ -179,8 +179,8 @@ Q(w, sqrt(s^2-4)) (Latimer-MacDuffee over Z[w]; class numbers not yet computed, 
 Powers are not primitive: content(T^2) = s * content(T).
 
 Measured: hat g = 1 (norm 1); Spectre double step g = sqrt(-3) (norm 3). This is the extra parameter: the two known
-monotiles differ not only in s but in the conductor. The Spectre's sqrt(-3) is the prime that ramifies in
-Z[w] -> Z[z12], i.e. the 30-degree (odd-direction) edge family.
+monotiles differ not only in s but in the conductor. Why the Spectre (the 30-degree, even/odd-family tile) carries
+sqrt(-3) is not yet explained (note: sqrt(-3) does NOT ramify in Q(z12)/Q(w); only 2 does).
 
 Primitive slots for a 12-fold quasiperiodic monotile (g given by its norm; found by explicit search, entries |.|<=4):
 | s | mu | field | contents g (norm) | status |

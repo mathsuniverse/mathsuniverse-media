@@ -592,3 +592,5 @@ phi itself has not been run.
 
 ## 60-degree orientation group (9 Nov, parity.py, modal_parity.py)
 Controls pass (Tile(1,1), hat, turtle, Tile(1,2): OPEN with mirrors, STUCK without). Full 12:14 / 12:16 runs: modal_cloud.py --job parity (fast cached outlines, resumable); modal_parity.py superseded (slow enumeration).
+- 9 Nov 17:25, parity_12_14_t3 DONE (86,814 outlines, 60-degree group): STUCK/STUCK 79,518; PERIODIC/PERIODIC 2,790;
+  PERIODIC/STUCK 852; not simple 3,653; OPEN/STUCK 1 = Tile(1,1) (control passes). No new hat-type tile with 14 edges.

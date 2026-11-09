@@ -89,3 +89,22 @@ Observations (verified numerically):
   x^3 - 2x^2 - 1), so (s, s') is special to these cases, not a general fact.
 Status: H4 consistent with all available data, but only two monotiles have known windows - too few to call it a law.
 Revised conjecture H5: an aperiodic monotile (connected, quasiperiodic) has a fractal window, s' != s.
+
+## 6. Windows computed from scratch (9 Nov), code in window/
+Method: lift every tile to the 4D integer lattice (hat: generic Tile(a,b) lift, a-edges and b-edges counted
+separately, 0 inconsistencies over 2.26M vertices; Spectre: exact arithmetic in Z[zeta12]); fit the inflation as a
+4x4 matrix between consecutive levels; the hidden space is its contracting eigenspace; the windows are the attractor
+of the resulting graph-directed map system (hat 24 classes / 132 maps, Spectre 54 classes / 3354 maps).
+
+Exact inflation matrices on the 4D lattice (fit residual ~1e-12, integer):
+  hat (one step):       [[2,1,-2,-2],[-1,1,2,0],[0,1,1,-1],[-1,-1,1,2]]   char. poly (x^2 - 3x + 1)^2, eigenvalues phi^{+-2}
+  Spectre (double step): [[4,4,-3,5],[1,4,-4,3],[3,-5,7,-1],[4,-3,5,1]]    char. poly (x^2 - 8x + 1)^2, eigenvalues 4 +- sqrt15
+So s = 3 and s = 8 are read off directly (trace = 2s).
+
+Window boundary growth per inflation step (boxes at matched scales):
+  hat: F-windows exactly phi^2 = 2.618 (polygonal, dim 1); H, P, T windows: total ratio rising 3.3 -> 3.54,
+       fractal part (straight part removed) 3.75-3.8 -> consistent with 2+sqrt3 = 3.732 (dim 1.368).
+  Spectre: ratios 9.25-10.8 (mean 9.8), dims 1.08-1.15 -> consistent with 5+2sqrt6 = 9.899 (dim 1.111),
+       clearly above the polygonal value mu = 7.873.
+Both published values reproduced independently. The same pipeline applies to any candidate that comes with a
+hierarchy, and the PCA version (bounded spread of the 4D lift) applies to any large patch without one.

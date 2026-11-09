@@ -51,3 +51,19 @@ T3 Use H2 to aim the search: for 8 directions, target outlines whose supertile c
 Sources: Kaplan, hatviz (github.com/isohedral/hatviz); Smith-Myers-Kaplan-Goodman-Strauss, An aperiodic monotile
 (arXiv 2303.10798) and A chiral aperiodic monotile; Baake-Gaehler-Mazac-Sadun, Dynamics and topology of the Hat family
 (arXiv 2305.05639) and On the long-range order of the Spectre tilings (arXiv 2411.15503).
+
+## 4. A second invariant (Razvan's idea: lambda alone does not decide; another parameter or dimension does)
+Three candidates, with what is already known:
+- nu, the boundary unit. The Spectre's window (internal-space shape) has a fractal boundary of dimension
+  log(5+2sqrt6)/log(4+sqrt15) = 1.11098 (Baake et al.). 5+2sqrt6 is again a unit of norm +1 with nu + 1/nu = 10.
+  Boundary length grows by nu per inflation, area by mu^2; dim = log nu / log mu, with mu <= nu < mu^2.
+  Hat / CAP: hexagonal (polygonal) window, so nu = mu, dim 1. Penrose: polygonal, nu = mu.
+  So the pair (s, s') = (mu + 1/mu, nu + 1/nu): Penrose (3,3), hat (3,3), Spectre (8,10). Spectre is the only one
+  with s' != s. Conjecture H4: a monotile is classified by (s, s'), and a predicted s is realised only with
+  the right s'.
+- The ideal class of the return module. Spectre: return module is a NON-principal ideal in Z[xi, 4+sqrt15], field
+  Q(sqrt-3, sqrt-5) of class number 2. Hat: field Q(sqrt-3, sqrt5) (to be checked: class number 1?). A second,
+  discrete invariant that lambda does not see.
+- One more internal dimension. Both known monotiles have module rank 4 (internal space dim 2) and quadratic mu.
+  If the quadratic mu predicted for a case is impossible (e.g. silver for 8 directions, by H2), the tile may need
+  a cubic Pisot unit and a rank-6 module (internal dim 4). This is the "extra dimension" route.

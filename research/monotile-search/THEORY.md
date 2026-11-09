@@ -198,3 +198,16 @@ primitive slot (s, g) with Q(sqrt(s^2-4)) not equal to Q(sqrt3); g = 1 gives hat
 combinatorics, g divisible by sqrt(-3) gives Spectre-type (12-fold, even/odd edge families).
 Next: realise a slot as a substitution (which supertile boundary words have net edge vectors T(e)); first targets
 (5, sqrt-3) and (8, 1).
+
+## 10. The g = 1 (hat-type) slot as a search rule (9 Nov), parity.py
+Prediction from s8-9: hat-type monotiles have an operator over Z[w] that commutes with 60-degree rotation only, so their
+tilings use only the 60-degree orientation group (rotations by multiples of 60 degrees, and mirrors composed with them),
+which keeps the even- and odd-direction edge families apart. All earlier searches allowed all 12 rotations; a shape can
+be periodic with 30-degree turns and aperiodic without them. Controls, 60-degree group (radius 3, no repeat found = OPEN):
+| tile | all 12 rotations (mirror / no mirror) | 60-degree group (mirror / no mirror) |
+| Tile(1,1) | UNDECIDED (node limit; known periodic) / OPEN | OPEN / STUCK = hat signature |
+| Tile(1,sqrt3) hat | - | OPEN / STUCK |
+| Tile(sqrt3,1) turtle | - | OPEN / STUCK |
+| Tile(1,2) | - | OPEN / STUCK |
+So under the 60-degree group the behaviour does not depend on the lengths (supports H3), and Tile(1,1) moves from the
+Spectre class to the hat class, as the (s, g) table says. Search: modal_parity.py over all 12:14 and 12:16 outlines.

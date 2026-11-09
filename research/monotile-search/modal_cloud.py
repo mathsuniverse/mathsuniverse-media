@@ -42,7 +42,7 @@ def lam_value(R, name):
 
 
 @app.function(cpu=1.0, memory=4096, timeout=6 * 3600, retries=2, max_containers=100)
-def enum_slice(N, m, first, max_turn, lam):
+def enum_slice(N, m, first, max_turn, lam, tag=None):
     """Canonical outlines of this slice that are simple polygons: for the equal-edge job with unit edges, for the hat
     route for each length assignment separately (returns (outline, assignment) pairs)."""
     sys.path.insert(0, "/root/ms")
@@ -66,7 +66,7 @@ def enum_slice(N, m, first, max_turn, lam):
                 lens = [(L if (d % 2) != sw else one) for d in c]
                 if O.simple(c, N, lens):
                     out.append((list(c), (lam, sw)))
-    return out
+    return out if tag is None else (tag, out)
 
 
 def _one(seq, N, lens_spec, q):
@@ -118,9 +118,20 @@ def _outlines(N, m, max_turn, lam):
         return json.load(open(path))
     turns = [0] + [t for a in range(1, max_turn + 1) for t in (a, -a)]
     firsts = [(a, b, c) for a in turns for b in turns for c in turns]
+    # each slice is saved as soon as it returns, so a restarted job (pre-emption) only lists the missing slices
+    sdir = f'/vol/outlines_{tag}_slices'
+    os.makedirs(sdir, exist_ok=True)
+    fname = lambda f: os.path.join(sdir, '_'.join(str(x) for x in f) + '.json')
+    todo = [f for f in firsts if not os.path.exists(fname(f))]
+    _log(f'outlines {tag}: {len(firsts) - len(todo)}/{len(firsts)} slices already listed, {len(todo)} to go')
+    done_n = len(firsts) - len(todo)
+    for f, part in enum_slice.starmap([(N, m, f, max_turn, lam, f) for f in todo], order_outputs=False):
+        _save(fname(f), part); vol.commit(); done_n += 1
+        if done_n % 50 == 0:
+            _log(f'outlines {tag}: {done_n}/{len(firsts)} slices listed')
     seen, S = set(), []
-    for part in enum_slice.starmap([(N, m, f, max_turn, lam) for f in firsts], order_outputs=False):
-        for s, spec in part:
+    for f in firsts:
+        for s, spec in json.load(open(fname(f))):
             k = (tuple(s), None if spec is None else spec[1])
             if k not in seen:
                 seen.add(k); S.append((s, spec))

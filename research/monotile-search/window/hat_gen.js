@@ -1,3 +1,4 @@
+// Contains code from Craig S. Kaplan, hatviz (BSD 3-Clause, see LICENSE-hatviz).
 const cos=Math.cos, sin=Math.sin, PI=Math.PI;
 const r3 = 1.7320508075688772;
 const hr3 = 0.8660254037844386;

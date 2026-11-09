@@ -67,3 +67,25 @@ Three candidates, with what is already known:
 - One more internal dimension. Both known monotiles have module rank 4 (internal space dim 2) and quadratic mu.
   If the quadratic mu predicted for a case is impossible (e.g. silver for 8 directions, by H2), the tile may need
   a cubic Pisot unit and a rank-6 module (internal dim 4). This is the "extra dimension" route.
+
+## 5. Test of H4 (9 Nov) - with a correction
+Correction: the hat's window is NOT polygonal. Baake et al. (Diffraction of the Hat and Spectre tilings, arXiv
+2502.03268): the CAP/hat window is a hexagon whose subwindows have fractal boundary parts of dimension
+log(2+sqrt3) / (2 log phi) = 1.36838. So nu_hat = 2+sqrt3, s'_hat = 4.
+
+| tiling | tiles | mu (linear, orientation-preserving) | s | nu (boundary) | s' | boundary dim |
+| Penrose | 2 | phi^2 (2 steps) | 3 | = mu (polygonal) | 3 | 1 |
+| Ammann-Beenker | 2 | (1+sqrt2)^2 (2 steps) | 6 | = mu (polygonal) | 6 | 1 |
+| Hat (CAP) | 1 | phi^2 | 3 | 2+sqrt3 | 4 | 1.36838 |
+| Spectre (CASPr) | 1 | 4+sqrt15 | 8 | 5+2sqrt6 | 10 | 1.11098 |
+
+Observations (verified numerically):
+- In both monotiles s' != s: the window is fractal. In the polygonal-window (2-tile) cases s' = s.
+- Every unit is the square of a sum of two square roots, and sqrt3 appears in all four monotile units:
+  hat:     mu = ((1+sqrt5)/2)^2,        nu = ((1+sqrt3)/sqrt2)^2
+  Spectre: mu = ((sqrt3+sqrt5)/sqrt2)^2, nu = (sqrt2+sqrt3)^2
+- nu_hat = 2+sqrt3 lies in the tile's own field Q(sqrt3); nu_Spectre does not (sqrt6).
+- Caution: nu need not be quadratic in general (a 1D silver-mean variant has a cubic boundary unit, root of
+  x^3 - 2x^2 - 1), so (s, s') is special to these cases, not a general fact.
+Status: H4 consistent with all available data, but only two monotiles have known windows - too few to call it a law.
+Revised conjecture H5: an aperiodic monotile (connected, quasiperiodic) has a fractal window, s' != s.

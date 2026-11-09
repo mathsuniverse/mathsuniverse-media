@@ -108,3 +108,35 @@ Window boundary growth per inflation step (boxes at matched scales):
        clearly above the polygonal value mu = 7.873.
 Both published values reproduced independently. The same pipeline applies to any candidate that comes with a
 hierarchy, and the PCA version (bounded spread of the 4D lift) applies to any large patch without one.
+
+## 7. Tests of the conjectures against all known patterns (9 Nov)
+Known aperiodic monotiles (single shape, possibly decorated), by class:
+| tile | dim | class | inflation | in tile's own field? | window | source |
+| hat family Tile(a,b), a != b | 2 | quasiperiodic | mu = phi^2, s = 3 | no (sqrt5) | hexagon with fractal parts, nu = 2+sqrt3 | Smith et al.; Baake et al. |
+| Spectre Tile(1,1) | 2 | quasiperiodic | mu = 4+sqrt15, s = 8 | no (sqrt15) | fractal, nu = 5+2sqrt6 | Baake et al. |
+| Taylor-Socolar (decorated / non-connected) | 2 | LIMIT-PERIODIC | 2 | rational | 2-adic internal space | Lee-Moody, arXiv 1207.6237 |
+| Socolar-Taylor 3D, Schmitt-Conway-Danzer | 3 | weakly aperiodic (periodic stacking / screw) | - | - | - | |
+| Chair44 (Sept 2026, decorated chair) | 3 | LIMIT-PERIODIC | 2 | rational | 2-adic | arXiv 2609.23783 |
+Multi-tile comparison set: Penrose (phi, polygonal), Ammann-Beenker (1+sqrt2, polygonal), shield and Stampfli
+(2+sqrt3, dodecagonal polygonal), Niizeki-Gaehler square-triangle (2+sqrt3, FRACTAL windows - Baake, Klitzing,
+Schlottmann), Danzer 7-fold (cubic inflation, fractal).
+
+Verdicts:
+- H1 (quadratic unit, s integer): holds for both quasiperiodic monotiles. FAILS as stated for the class of all
+  monotiles: Taylor-Socolar and Chair44 have inflation 2, not a unit. Revised H1': monotiles split into two classes,
+  quasiperiodic (irrational unit inflation, Euclidean internal space) and limit-periodic (integer inflation, p-adic
+  internal space). All known connected 2D monotiles are in the first class; the only known strongly aperiodic 3D
+  monotile is in the second.
+- H2 (inflation outside the tile's own field): holds for both quasiperiodic monotiles; trivially inapplicable to the
+  limit-periodic class. Multi-tile sets all have the inflation INSIDE their field (Penrose, A-B, shield, Stampfli,
+  square-triangle), so H2 does separate monotiles from multi-tile sets in every known case. Watch-out: Gummelt's
+  decagon (a single-tile COVERING with overlaps) has phi inside its field, so H2 is about tilings, not coverings.
+- H5 (monotile => fractal window): holds for both quasiperiodic monotiles. The converse is false (square-triangle
+  and Danzer have fractal windows with several tiles), as expected.
+- H4 (s, s'): hat (3,4), Spectre (8,10). New observation: all four units are the smallest totally positive units
+  (norm +1) of their real quadratic fields: phi^2 in Q(sqrt5), 2+sqrt3 in Q(sqrt3), 4+sqrt15 in Q(sqrt15),
+  5+2sqrt6 in Q(sqrt6). Fields: hat (5, 3), Spectre (15 = 5*3, 6 = 2*3).
+Honest status: every conjecture is consistent with every known pattern, but the quasiperiodic monotile class has
+only two members. The theory cannot be confirmed from the literature; it needs new members, which is what the
+search is for. Concrete prediction to test: a 12-direction quasiperiodic monotile cannot have s = 4; an 8-direction
+one cannot have s = 6 (silver).

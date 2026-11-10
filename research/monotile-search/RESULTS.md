@@ -594,3 +594,8 @@ phi itself has not been run.
 Controls pass (Tile(1,1), hat, turtle, Tile(1,2): OPEN with mirrors, STUCK without). Full 12:14 / 12:16 runs: modal_cloud.py --job parity (fast cached outlines, resumable); modal_parity.py superseded (slow enumeration).
 - 9 Nov 17:25, parity_12_14_t3 DONE (86,814 outlines, 60-degree group): STUCK/STUCK 79,518; PERIODIC/PERIODIC 2,790;
   PERIODIC/STUCK 852; not simple 3,653; OPEN/STUCK 1 = Tile(1,1) (control passes). No new hat-type tile with 14 edges.
+- 10 Nov, parity_12_16_t3 DONE (1,806,942 outlines, 60-degree group): STUCK/STUCK 1,782,398; PERIODIC/PERIODIC 18,269;
+  PERIODIC/STUCK 6,271; OPEN/STUCK 4. Deep check of the 4 (R4 patch + patch_periods): all PERIODIC with mirrors, 2-tile
+  cells: [0,1,0,1,2,11,1,4,7,5,7,6,7,6,8,10] p1=(1,0,-2,0) p2=(5,6,0,-3); [0,1,0,2,3,0,2,5,8,6,8,6,7,6,9,11] and
+  [0,1,2,0,2,0,3,6,8,5,6,8,7,6,9,11] p1=(0,1,0,-2) p2=(4,3,4,0); [0,1,0,1,2,0,3,6,8,5,7,6,7,6,9,11] p1=(0,1,0,-2) p2=(3,5,3,0).
+  No hat-type (g = 1) monotile among 14- and 16-edge 12-direction outlines (corners within 90 degrees of straight).

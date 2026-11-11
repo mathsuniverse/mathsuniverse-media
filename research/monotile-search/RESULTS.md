@@ -599,3 +599,6 @@ Controls pass (Tile(1,1), hat, turtle, Tile(1,2): OPEN with mirrors, STUCK witho
   cells: [0,1,0,1,2,11,1,4,7,5,7,6,7,6,8,10] p1=(1,0,-2,0) p2=(5,6,0,-3); [0,1,0,2,3,0,2,5,8,6,8,6,7,6,9,11] and
   [0,1,2,0,2,0,3,6,8,5,6,8,7,6,9,11] p1=(0,1,0,-2) p2=(4,3,4,0); [0,1,0,1,2,0,3,6,8,5,7,6,7,6,9,11] p1=(0,1,0,-2) p2=(3,5,3,0).
   No hat-type (g = 1) monotile among 14- and 16-edge 12-direction outlines (corners within 90 degrees of straight).
+- 11 Nov, general_12_16_t3 DONE (1,806,942 outlines, all 12 rotations): STUCK/STUCK 1,774,874; PERIODIC/PERIODIC 19,033;
+  PERIODIC/STUCK 13,034; OPEN/STUCK 1 = [0,1,0,1,2,5,6,5,4,6,7,6,9,10,11,10]. Deep check: PERIODIC with mirrors at R5,
+  4-tile cell p1=(2,1,-2,-2), p2=(6,9,2,-2). No Spectre-type (g = sqrt-3) monotile with 16 edges.

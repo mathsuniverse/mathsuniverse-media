@@ -4,6 +4,9 @@ from multiprocessing import Pool
 import fractile as F
 k=int(sys.argv[1]); mu=(k+math.sqrt(k*k-4))/2; want=math.sqrt(mu)
 def one(r):
+    try: return _one(r)
+    except Exception: return None
+def _one(r):
     steps=[tuple(s) for s in r['steps']]; sq=[tuple(x) for x in r['sq']]
     try: I=F.ifs(steps,sq,r['refl'],0,1)
     except Exception: return None

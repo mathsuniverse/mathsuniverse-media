@@ -16,11 +16,19 @@ def _one(r):
     key=tuple(sorted((round(a.real,5),round(a.imag,5),round(b.real,4),round(b.imag,4),f) for a,b,f in I['maps']))
     return key, dict(r, stats=st)
 if __name__=='__main__':
-    rules=json.load(open(f'rules_k{k}.json')); t=time.time(); surv={}; n=0
-    with Pool(2) as p:
-        for res in p.imap_unordered(one, rules, chunksize=2000):
-            n+=1
-            if res and res[0] not in surv: surv[res[0]]=res[1]
-            if n%200000==0: print(n, len(surv), round(time.time()-t), flush=True)
+    import os
+    rules=json.load(open(f'rules_k{k}.json')); t=time.time(); B=200000
+    for b in range(0,len(rules),B):
+        fn=f'screen1_k{k}_b{b//B}.json'
+        if os.path.exists(fn): continue
+        surv={}
+        with Pool(2) as p:
+            for res in p.imap_unordered(one, rules[b:b+B], chunksize=2000):
+                if res and res[0] not in surv: surv[res[0]]=res[1]
+        json.dump([[list(map(list,kk)),v] for kk,v in surv.items()], open(fn,'w'))
+        print(b+B, len(surv), round(time.time()-t), flush=True)
+    surv={}
+    for b in range(0,len(rules),B):
+        for kk,v in json.load(open(f'screen1_k{k}_b{b//B}.json')): surv.setdefault(tuple(map(tuple,kk)),v)
     json.dump(list(surv.values()), open(f'screen1_k{k}.json','w'))
     print(f"k={k}: {len(rules)} rules -> {len(surv)} distinct geometries pass, {time.time()-t:.0f}s", flush=True)

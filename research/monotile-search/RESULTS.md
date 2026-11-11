@@ -602,3 +602,19 @@ Controls pass (Tile(1,1), hat, turtle, Tile(1,2): OPEN with mirrors, STUCK witho
 - 11 Nov, general_12_16_t3 DONE (1,806,942 outlines, all 12 rotations): STUCK/STUCK 1,774,874; PERIODIC/PERIODIC 19,033;
   PERIODIC/STUCK 13,034; OPEN/STUCK 1 = [0,1,0,1,2,5,6,5,4,6,7,6,9,10,11,10]. Deep check: PERIODIC with mirrors at R5,
   4-tile cell p1=(2,1,-2,-2), p2=(6,9,2,-2). No Spectre-type (g = sqrt-3) monotile with 16 edges.
+
+## Construction route, polygon stage (11 Nov, window/polysearch2.py, rulequads.py, screen1.py)
+- Spectre control (the Spectre's own gluing rule, arcs 2,2,4,6): on the true quad P3,P5,P7,P11 the pruned search
+  (quad overlap, corner sectors, single-tile level-1/2 overlaps, Mystic prefilter, realise.valid to level 3) tests 7,804
+  outlines and finds exactly ONE: the Spectre [3,0,2,5,7,4,6,6,8,11,9,0,10,1] (121 s). Pipeline validated.
+- Whole Spectre rule, arcs (2,2,4,6): 28,330 quads satisfy the relations; 9,286 pass quad overlap <= 1.05
+  (3,541 tile exactly), 32.6M corner-surviving outlines. Full sweep sent to the cloud (modal_poly.py --rule spectre):
+  answers whether the Spectre is the unique polygon realising its rule.
+- Exact quad tiling is NOT a sharp filter: lens-free, the Spectre rule has 824,065 relation-satisfying quads with
+  sides <= 6 steps, 98,622 exact at level 1, 59,231 exact at levels 1-2 with (m,e) = (7,2); the true quad is among them.
+- k = 5 rules (double-step trace 5): 1,728,458 -> 417,017 distinct eigen-geometries with a simple quad and
+  sum/union <= 1.10; tight Spectre signature (sum/union <= 1.03, hull cover within 1%): 91 (screen2_k5.json).
+  Their relations have kernel 12 (75 rules, like the Spectre) or 16 (16 rules, no extra coincidences).
+- Cost: ~65 outlines/s per core at the polygon stage. One rule x one (m,e) x one arc-length choice of total 14 costs
+  ~100 CPU-h; the construction route cannot be swept blindly over 91 rules x 20 (m,e) x arc lengths, nor reach 20+
+  edges by brute force. It needs a further structural constraint on the arcs (sub-arc matching), not more compute.

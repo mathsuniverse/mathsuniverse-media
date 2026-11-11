@@ -30,11 +30,19 @@ def overlaps(tiles, poly, tol=1e-6):
         for j in tree.query(p):
             if j>i and p.intersection(P[j]).area>tol: return True
     return False
+def solid(tiles, poly):
+    """the cluster is one piece with no holes (a supertile must be a solid region)"""
+    from shapely.ops import unary_union
+    P=[Polygon([(z.real,z.imag) for z in (F.ap(t,w) for w in poly)]) for t in tiles]
+    u=unary_union([p.buffer(1e-7) for p in P]).buffer(-1e-7)
+    if u.geom_type!='Polygon': return False
+    return len(u.interiors)==0
 def valid(steps, sq, refl, m, e, quad, poly, g, L=3):
     for lev in range(1,L+1):
         obj=level(steps,sq,refl,m,e,quad,poly,g,lev)
         for T in ('X','Y'):
             if overlaps(obj[T][0],poly): return False, lev, T
+            if not solid(obj[T][0],poly): return False, lev, T+' holes'
     return True, L, None
 if __name__=='__main__':
     import spectre_exact as SE

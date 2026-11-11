@@ -224,3 +224,15 @@ So the (5, sqrt-3) slot, if it is realised in the Spectre way, needs supertiles 
 cluster problem. Other 2x2 count matrices with trace s and det 1 exist (8 for s=5, 24 for s=8), e.g. [[3,1],[5,2]].
 Plan: (1) cluster search with control: from Tile(1,1) and the Spectre's keypoint quadrilateral, the search must
 rediscover the 7+1 / 6+1 supertiles; (2) run the same search for s = 5, 6, 7 over 12-direction tiles with 30-degree turns.
+
+## 12. Construction step A (11 Nov): the substitution rule IS the operator (window/quadmap.py, chainrules.py)
+The Spectre substitution (shrx/Kaplan) glues 8 copies of the keypoint quad by a fixed chain of turns; the super-quad is
+a fixed linear function of the quad. Computed: single step charpoly (x-1)^2 (x+1)^2 (x^4-8x^2+1)^2, double step
+(x-1)^4 (x^2-8x+1)^4. So the operator of s8 is exactly the linear map of the gluing rule.
+Step A enumerates gluing rules (k copies, turns in {0, +-60, +-120, 180}, Spectre-type vertex gluings, super-quad =
+4 vertices of 4 copies, with/without the reflection) and reads the slot from the eigenvalues. Control: the Spectre rule
+gives s = 8 (double step). k = 4 (1,492,992 rules): rules exist for every s = 3..7 (double step), e.g.
+s = 5: steps (0,3,1),(0,2,0),(60,3,1), super-quad [(3,2),(2,2),(1,1),(0,2)], with reflection (4,620 rules).
+These are linear maps only: most are not realisable by a tile (copies overlap, or the quad is degenerate).
+Step B (next): for each slot-5/6/7 rule, search tile outlines with 4 marked keypoints such that the k copies glued by
+the rule form a non-overlapping, edge-matched cluster, and the cluster's boundary repeats the rule at the next level.

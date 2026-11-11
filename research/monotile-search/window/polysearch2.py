@@ -132,7 +132,7 @@ def search(steps, sq, refl, m, e, lens, L=3, qtol=1.25, limit_time=3600, verbose
                         pg = Polygon([(z.real, z.imag) for z in poly])
                         if not pg.is_valid or pg.area <= 0: continue
                         stats['polys'] += 1
-                        if RL.overlaps(cl[0], poly) or RL.overlaps(cl[1], poly): continue
+                        if any(RL.overlaps(c, poly) for c in cl): continue
                         stats['single_ok'] += 1
                         for gm in PS.mystic_candidates(poly):
                             stats['valid_calls'] += 1

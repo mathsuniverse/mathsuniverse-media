@@ -211,3 +211,16 @@ be periodic with 30-degree turns and aperiodic without them. Controls, 60-degree
 | Tile(1,2) | - | OPEN / STUCK |
 So under the 60-degree group the behaviour does not depend on the lengths (supports H3), and Tile(1,1) moves from the
 Spectre class to the hat class, as the (s, g) table says. Search: modal_parity.py over all 12:14 and 12:16 outlines.
+
+## 11. Construction route (11 Nov): substitution templates per slot
+Spectre template: two prototiles, the tile X and the 2-tile cluster Y (Mystic). Per step the counts follow
+B = [[s-1, 1], [s-2, 1]] (X-supertile = (s-1) X + 1 Y; Y-supertile = (s-2) X + 1 Y); det 1, trace s, area factor mu.
+Spectre: s = 8 gives 7 + 1 and 6 + 1 (correct). The same template for the open slots:
+| s | mu | X-supertile | Y-supertile |
+| 5 | 4.791 | 4 X + 1 Y (6 tiles) | 3 X + 1 Y (5 tiles) |
+| 6 | 5.828 | 5 X + 1 Y | 4 X + 1 Y |
+| 7 | 6.854 | 6 X + 1 Y | 5 X + 1 Y |
+So the (5, sqrt-3) slot, if it is realised in the Spectre way, needs supertiles of only 5-6 tiles: a small, searchable
+cluster problem. Other 2x2 count matrices with trace s and det 1 exist (8 for s=5, 24 for s=8), e.g. [[3,1],[5,2]].
+Plan: (1) cluster search with control: from Tile(1,1) and the Spectre's keypoint quadrilateral, the search must
+rediscover the 7+1 / 6+1 supertiles; (2) run the same search for s = 5, 6, 7 over 12-direction tiles with 30-degree turns.

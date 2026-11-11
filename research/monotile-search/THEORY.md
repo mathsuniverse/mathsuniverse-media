@@ -236,3 +236,14 @@ s = 5: steps (0,3,1),(0,2,0),(60,3,1), super-quad [(3,2),(2,2),(1,1),(0,2)], wit
 These are linear maps only: most are not realisable by a tile (copies overlap, or the quad is degenerate).
 Step B (next): for each slot-5/6/7 rule, search tile outlines with 4 marked keypoints such that the k copies glued by
 the rule form a non-overlapping, edge-matched cluster, and the cluster's boundary repeats the rule at the next level.
+
+## 13. Search versus construction (11 Nov)
+(a) Area count: a Spectre-type rule with k slots, one slot holding the 2-tile Mystic Y and the Y-supertile leaving one
+slot empty, has count matrix [[k-1,1],[k-2,1]] (trace k, det 1). The quad map's double-step eigenvalue mu must equal the
+count growth, so s = k. Spectre: k = 8, s = 8. So slot (5, *) needs 5-slot rules, (6, *) 6-slot rules, etc.
+(b) A tile realising a gluing rule tiles the plane; if the rule keeps one handedness (Spectre: each level reflects every
+tile, so all tiles of a level share one handedness) the tile tiles without mirrors and the exhaustive classifier marks
+it OPEN without mirrors. In 12:14 and 12:16 (t3) only Tile(1,1) is OPEN without mirrors. So construction cannot find a
+new tile inside an exhaustively searched space; it is needed for tiles too large to enumerate (about 20+ edges).
+(c) Cheap tests the theory names: hat-type 8-fold (90-degree group; P1 allows it, never searched) and hat-type 10-fold
+(P1 forbids it: a hit would falsify the law). Job: modal_cloud.py --job parity --runs "8:14,8:16,8:18,10:15,10:20".

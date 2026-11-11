@@ -72,6 +72,39 @@ def sector(a_out, b_in, ccw):
 def place(s, w, r, f):
     return ((r + s) % 12, w) if not f else ((r - s - w) % 12, w)
 
+def mystic_slots(steps, sq, refl, m, e, qc, ci, _cache={}):
+    """indices (in cluster ci of clusters()) of tiles that sit in a Mystic slot of their parent, i.e. carry g(P)"""
+    key = (tuple(map(tuple, steps)), tuple(map(tuple, sq)), refl, m, e, tuple(qc), ci)
+    if key in _cache: return _cache[key]
+    level, typ = ci // 2 + 1, 'XY'[ci % 2]
+    # rebuild clusters while tagging the tiles that are Mystic first tiles at the bottom level
+    obj = {'X': [0], 'Y': [1]}   # 1 = this single tile is a Mystic's first tile
+    quad = list(qc)
+    for _ in range(level):
+        trs, Q1 = F.supermap(steps, sq, refl, quad)
+        new = {}
+        for T in ('X', 'Y'):
+            tags = []
+            for i, t in enumerate(trs):
+                if T == 'Y' and i == e: continue
+                tags += obj['Y' if i == m else 'X']
+            new[T] = tags
+        obj = new; quad = Q1
+    res = [i for i, tg in enumerate(obj[typ]) if tg]
+    _cache[key] = res
+    return res
+
+def mystic_fits(pre, cl, mslots, gm, poly, tol=1e-6):
+    for ci, tiles in enumerate(cl):
+        others = pre[ci]
+        for i in mslots[ci]:
+            t = F.comp(tiles[i], gm)
+            G = Polygon([(z.real, z.imag) for z in (F.ap(t, w) for w in poly)])
+            if not G.is_valid: return False
+            for j, Pj in enumerate(others):
+                if Pj.intersects(G) and Pj.intersection(G).area > tol: return False
+    return True
+
 def search(steps, sq, refl, m, e, lens, L=3, qtol=1.25, limit_time=3600, verbose=True, only_quads=None):
     t0 = time.time()
     pairs, A = relations(steps, sq, refl, m, e)
@@ -79,13 +112,20 @@ def search(steps, sq, refl, m, e, lens, L=3, qtol=1.25, limit_time=3600, verbose
     R = [PS.reach(l) for l in lens]
     stats = dict(quads=0, quad_ok=0, corner_combos=0, words=0, polys=0, single_ok=0, valid_calls=0)
     found = []
-    for e1 in R[0]:
-        for e2 in R[1]:
-            for e3 in R[2]:
-                e4 = PS.sub((0, 0, 0, 0), PS.add(PS.add(e1, e2), e3))
-                if e4 not in R[3]: continue
-                Q = [(0, 0, 0, 0), e1, PS.add(e1, e2), PS.add(PS.add(e1, e2), e3)]
-                if only_quads is not None and Q not in only_quads: continue
+    def quad_iter():
+        if only_quads is not None:
+            for Q in only_quads:
+                Q = [tuple(q) for q in Q]
+                yield Q, [PS.sub(Q[(k + 1) % 4], Q[k]) for k in range(4)]
+            return
+        for e1 in R[0]:
+            for e2 in R[1]:
+                for e3 in R[2]:
+                    e4 = PS.sub((0, 0, 0, 0), PS.add(PS.add(e1, e2), e3))
+                    if e4 not in R[3]: continue
+                    yield [(0, 0, 0, 0), e1, PS.add(e1, e2), PS.add(PS.add(e1, e2), e3)], [e1, e2, e3, e4]
+    for Q, (e1, e2, e3, e4) in quad_iter():
+                if any(ev not in R[k] for k, ev in enumerate((e1, e2, e3, e4))): continue
                 if A is not None and (A @ np.concatenate(Q)).any(): continue
                 qc = [cx(np.array(p)) for p in Q]
                 qa = Polygon([(z.real, z.imag) for z in qc])
@@ -134,7 +174,15 @@ def search(steps, sq, refl, m, e, lens, L=3, qtol=1.25, limit_time=3600, verbose
                         stats['polys'] += 1
                         if any(RL.overlaps(c, poly) for c in cl): continue
                         stats['single_ok'] += 1
-                        for gm in PS.mystic_candidates(poly):
+                        # Mystic prefilter: g(P) placed in the Mystic slot of each cluster must miss every other tile
+                        cand = PS.mystic_candidates(poly)
+                        if not cand: continue
+                        pre = []
+                        for ci, tiles in enumerate(cl):
+                            pre.append([Polygon([(z.real, z.imag) for z in (F.ap(tt, w) for w in poly)]) for tt in tiles])
+                        mslots = [mystic_slots(steps, sq, refl, m, e, qc, ci) for ci in range(len(cl))]
+                        for gm in cand:
+                            if not mystic_fits(pre, cl, mslots, gm, poly): continue
                             stats['valid_calls'] += 1
                             ok, lev, T = RL.valid(steps, sq, refl, m, e, qc, poly, gm, L)
                             if ok:

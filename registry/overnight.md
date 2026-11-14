@@ -157,3 +157,6 @@ Comments: no channel comment on KHqBvjPWvF8, L3X0ClYLdgU, Fyy457oZZak; Jt_K2IZLx
 - 11 Nov 17:04: countdown Short TeV9BpOTRIQ public at 17:00; pinned comment NOT posted (the browser step was interrupted before it ran). Approved text still pending: "Which shape should be #1 next time? 👇 Tile your own: symmetryengine.space". Views / stayed-to-watch at 2 h not recorded.
 
 - 14 Nov 17:04: pen-fill Short rx05Je58KHI public at 17:00 (scheduled). Comment NOT posted, Related video NOT changed: two Chrome browsers are connected, and when Razvan chose to pick one in Chrome no browser answered within 2 minutes. Pending: approved comment "Next step on the ladder is 7921 hats. Can you guess which number squared? 👇 Tile your own: symmetryengine.space" (pin it), and Related video -> TeV9BpOTRIQ (currently mhHGxDVe1Fc).
+
+- 14 Nov 17:3x (after Razvan connected Chrome "menowoman"): pen-fill Short rx05Je58KHI public, avatar The Math Universe; approved comment posted and pinned ("Pinned by @mathsuniversespace" verified after reload); Related video set to TeV9BpOTRIQ in Studio, verified after reload.
+- 14 Nov 17:4x: countdown Short TeV9BpOTRIQ (26 views after 3 days): approved comment "Which shape should be #1 next time? ..." posted and pinned, verified after reload. The 2 h stayed-to-watch figure was missed (task interrupted on 11 Nov).

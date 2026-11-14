@@ -153,3 +153,7 @@ Comments: no channel comment on KHqBvjPWvF8, L3X0ClYLdgU, Fyy457oZZak; Jt_K2IZLx
 - 9 Nov 17:1x: Turing Short 40U3nuBMRiM public; approved comment posted and pinned from Chrome as The Math Universe ("Pinned by @mathsuniversespace" verified after reload); Related video links mhHGxDVe1Fc. Built-in browser was signed out, so not used.
 
 - 10 Nov 17:05: lumpy-universe Short 9nwC1MaLqrc public, avatar The Math Universe, Related video links mhHGxDVe1Fc. Comment NOT posted: the posting step was blocked by a permission check; waiting for Razvan.
+
+- 11 Nov 17:04: countdown Short TeV9BpOTRIQ public at 17:00; pinned comment NOT posted (the browser step was interrupted before it ran). Approved text still pending: "Which shape should be #1 next time? 👇 Tile your own: symmetryengine.space". Views / stayed-to-watch at 2 h not recorded.
+
+- 14 Nov 17:04: pen-fill Short rx05Je58KHI public at 17:00 (scheduled). Comment NOT posted, Related video NOT changed: two Chrome browsers are connected, and when Razvan chose to pick one in Chrome no browser answered within 2 minutes. Pending: approved comment "Next step on the ladder is 7921 hats. Can you guess which number squared? 👇 Tile your own: symmetryengine.space" (pin it), and Related video -> TeV9BpOTRIQ (currently mhHGxDVe1Fc).
